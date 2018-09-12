@@ -1,0 +1,451 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="cadu (generated)" id="1536761536126-1">
+        <createTable tableName="aeroporto">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="aeroportoPK"/>
+            </column>
+            <column name="codigo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cidade_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-2">
+        <createTable tableName="cidade">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="cidadePK"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estado_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-3">
+        <createTable tableName="cliente">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="clientePK"/>
+            </column>
+            <column name="cpf" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="senha" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contrato_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-4">
+        <createTable tableName="contrato">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="contratoPK"/>
+            </column>
+            <column name="descricao" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="locadora_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-5">
+        <createTable tableName="endereco">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="enderecoPK"/>
+            </column>
+            <column name="complemento" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="logradouro" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cidade_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-6">
+        <createTable tableName="estado">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="estadoPK"/>
+            </column>
+            <column name="codigo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-7">
+        <createTable tableName="hotel">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="hotelPK"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nota" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="endereco_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-8">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-9">
+        <createTable tableName="jhi_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="BINARY(255)"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-10">
+        <createTable tableName="jhi_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-11">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="BINARY(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="BINARY(255)"/>
+            <column name="activated" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(254)"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="image_url" type="VARCHAR(256)"/>
+            <column name="lang_key" type="VARCHAR(6)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reset_date" type="BINARY(255)"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-12">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-13">
+        <createTable tableName="linha_aerea">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="linha_aereaPK"/>
+            </column>
+            <column name="codigo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-14">
+        <createTable tableName="locacao">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="locacaoPK"/>
+            </column>
+            <column name="duracao" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="inicio" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cliente_id" type="BIGINT"/>
+            <column name="veiculo_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-15">
+        <createTable tableName="locadora">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="locadoraPK"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="endereco_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-16">
+        <createTable tableName="passagem">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="passagemPK"/>
+            </column>
+            <column name="classe" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cpf" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cliente_id" type="BIGINT"/>
+            <column name="voo_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-17">
+        <createTable tableName="quarto">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="quartoPK"/>
+            </column>
+            <column name="capacidade" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="diaria" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hotel_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-18">
+        <createTable tableName="reserva">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="reservaPK"/>
+            </column>
+            <column name="duracao" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="inicio" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="num_pessoas" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cliente_id" type="BIGINT"/>
+            <column name="quarto_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-19">
+        <createTable tableName="seguradora">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="seguradoraPK"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-20">
+        <createTable tableName="telefone">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="telefonePK"/>
+            </column>
+            <column name="ddd" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hotel_id" type="BIGINT"/>
+            <column name="linha_aerea_id" type="BIGINT"/>
+            <column name="locadora_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-21">
+        <createTable tableName="veiculo">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="veiculoPK"/>
+            </column>
+            <column name="ano_fabricacao" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ano_modelo" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cor" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fabricante" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modelo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="num_passageiros" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="locadora_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-22">
+        <createTable tableName="voo">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="vooPK"/>
+            </column>
+            <column name="chegada" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="partida" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="aeroporto_id" type="BIGINT"/>
+            <column name="linha_aerea_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-23">
+        <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-24">
+        <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-25">
+        <addPrimaryKey columnNames="name" constraintName="jhi_authorityPK" tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-26">
+        <addUniqueConstraint columnNames="endereco_id" constraintName="UC_HOTELENDERECO_ID_COL" tableName="hotel"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-27">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-28">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-29">
+        <addUniqueConstraint columnNames="endereco_id" constraintName="UC_LOCADORAENDERECO_ID_COL" tableName="locadora"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-30">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-31">
+        <addForeignKeyConstraint baseColumnNames="linha_aerea_id" baseTableName="telefone" constraintName="FK299418fohkvl1ghx7wav7xu03" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="linha_aerea"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-32">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK2ehnyx2si4tjd2nt4q7y40v8m" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-33">
+        <addForeignKeyConstraint baseColumnNames="voo_id" baseTableName="passagem" constraintName="FK3n4oyqdofdpsvti0wx11weqnd" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="voo"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-34">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-35">
+        <addForeignKeyConstraint baseColumnNames="aeroporto_id" baseTableName="voo" constraintName="FK525a4mw4q4ux8vgxj2d2adwvw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="aeroporto"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-36">
+        <addForeignKeyConstraint baseColumnNames="cliente_id" baseTableName="reserva" constraintName="FK7cg2jiyn5cf6f6elccvb6963k" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cliente"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-37">
+        <addForeignKeyConstraint baseColumnNames="cidade_id" baseTableName="endereco" constraintName="FK8b1kcb3wucapb8dejshyn5fsx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cidade"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-38">
+        <addForeignKeyConstraint baseColumnNames="hotel_id" baseTableName="quarto" constraintName="FKbhu21vdpg3s8bu57c3d9f7ldr" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="hotel"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-39">
+        <addForeignKeyConstraint baseColumnNames="hotel_id" baseTableName="telefone" constraintName="FKbkv7khrue6guguv3h9dtp7ems" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="hotel"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-40">
+        <addForeignKeyConstraint baseColumnNames="contrato_id" baseTableName="cliente" constraintName="FKc6glblxyimg6onni9kn4ei4h2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="contrato"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-41">
+        <addForeignKeyConstraint baseColumnNames="endereco_id" baseTableName="hotel" constraintName="FKcwbwib8wewxhxhsac5w0clrgm" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="endereco"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-42">
+        <addForeignKeyConstraint baseColumnNames="locadora_id" baseTableName="telefone" constraintName="FKd2ok2ehuitg7bpsqlgh0tbqbg" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="locadora"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-43">
+        <addForeignKeyConstraint baseColumnNames="veiculo_id" baseTableName="locacao" constraintName="FKdp7q9w224yqs7al78ntljxxg" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="veiculo"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-44">
+        <addForeignKeyConstraint baseColumnNames="cliente_id" baseTableName="locacao" constraintName="FKf0b8q1vsp55ou4mtqiwrkyqis" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cliente"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-45">
+        <addForeignKeyConstraint baseColumnNames="locadora_id" baseTableName="contrato" constraintName="FKfw2prgcrim07avo2ep3623e76" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="locadora"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-46">
+        <addForeignKeyConstraint baseColumnNames="linha_aerea_id" baseTableName="voo" constraintName="FKht6dcelgoymhbciawb21hbggj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="linha_aerea"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-47">
+        <addForeignKeyConstraint baseColumnNames="cidade_id" baseTableName="aeroporto" constraintName="FKhv1yxhbmq8k2uykh34we5wwjx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cidade"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-48">
+        <addForeignKeyConstraint baseColumnNames="locadora_id" baseTableName="veiculo" constraintName="FKjps1gxsfv0s6tdy6cnc8lbyma" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="locadora"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-49">
+        <addForeignKeyConstraint baseColumnNames="estado_id" baseTableName="cidade" constraintName="FKkworrwk40xj58kevvh3evi500" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="estado"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-50">
+        <addForeignKeyConstraint baseColumnNames="quarto_id" baseTableName="reserva" constraintName="FKll90wdpmqcpwh6car9093ehxy" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="quarto"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-51">
+        <addForeignKeyConstraint baseColumnNames="cliente_id" baseTableName="passagem" constraintName="FKonyll9s8dt9fvwp6ra2xfnyu8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cliente"/>
+    </changeSet>
+    <changeSet author="cadu (generated)" id="1536761536126-52">
+        <addForeignKeyConstraint baseColumnNames="endereco_id" baseTableName="locadora" constraintName="FKt9404han61514jqhfy4u26mry" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="endereco"/>
+    </changeSet>
+</databaseChangeLog>
