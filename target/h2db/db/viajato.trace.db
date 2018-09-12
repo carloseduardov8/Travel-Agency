@@ -892,3 +892,6 @@ select voo0_.id as id1_21_, voo0_.chegada as chegada2_21_, voo0_.destino_id as d
 2018-09-12 13:52:34 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Table "ESTADO" already exists; SQL statement:
 CREATE TABLE PUBLIC.estado (id BIGINT AUTO_INCREMENT NOT NULL, nome VARCHAR(255) NOT NULL, codigo VARCHAR(255) NOT NULL, CONSTRAINT PK_ESTADO PRIMARY KEY (id)) [42101-197]
+2018-09-12 14:48:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ESTADO" already exists; SQL statement:
+CREATE TABLE PUBLIC.estado (id BIGINT AUTO_INCREMENT NOT NULL, nome VARCHAR(255) NOT NULL, codigo VARCHAR(255) NOT NULL, CONSTRAINT PK_ESTADO PRIMARY KEY (id)) [42101-197]
