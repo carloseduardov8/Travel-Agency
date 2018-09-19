@@ -148,5 +148,7 @@
         "idexists": "Novo(a) {{entityName}} não pode ter uma ID",
         "idnull": "Invalid ID"
     },
-    "footer": "Este é o seu rodapé"
+    "footer": {
+            "mainText": "Projeto de Qualidade de Software para o semestre de 2018.2"
+    }
 }
