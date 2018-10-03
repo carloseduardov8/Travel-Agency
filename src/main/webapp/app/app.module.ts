@@ -18,6 +18,7 @@ import { ViajatoHomeModule } from './home/home.module';
 import { ViajatoAccountModule } from './account/account.module';
 import { ViajatoEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
+import { ViajatoAppBasketModule } from './basket/basket.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
@@ -31,6 +32,7 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         ViajatoHomeModule,
         ViajatoAccountModule,
         ViajatoEntityModule
+        ViajatoAppBasketModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
