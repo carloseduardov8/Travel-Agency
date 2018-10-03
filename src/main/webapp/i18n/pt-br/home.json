@@ -1,7 +1,7 @@
 {
     "home": {
-        "title": "Bem vindo ao Viajato!",
-        "subtitle": "Compre sua passagem",
+        "title": "Bem-vindo ao Viajato!",
+        "subtitle": "Compre sua passagem e seu hotel sem preocupações.",
         "logged": {
             "message": "Você está logado como \"{{username}}\"."
         },
@@ -12,6 +12,11 @@
             "bugtracker": "Documento de Casos de Uso",
             "chat": "Plano de Testes",
             "follow": "Relatório de Reunião"
+        },
+		"choose-date": {
+            "title": "Em qual data você gostaria de viajar?",
+            "start": "Data de Ida",
+            "end": "Data de Volta"
         }
     }
 }
