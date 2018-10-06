@@ -12,6 +12,10 @@ Navbar
     font-weight: bold !important;
 }
 
+.navbar .dropdown-menu {
+    background: #fcdca2 !important;
+}
+
 .navbar-version {
     font-size: 10px;
     color: #ccc;

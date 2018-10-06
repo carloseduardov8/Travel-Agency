@@ -7,63 +7,64 @@
         <div class="alert alert-warning text-center">
             <span class="lead" class="text-center">Compre sua passagem e reserve seu hotel sem preocupações</span>
         </div>
-<!--        <div [ngSwitch]="isAuthenticated()">
-            <div class="alert alert-success" *ngSwitchCase="true">
-                <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
-                    translateValues="{username: '{{account.login}}'}"> You are logged in as user "{{account.login}}". </span>
-            </div>
-
-            <div class="alert alert-warning" *ngSwitchCase="false">
-                <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;
-                <a class="alert-link" routerLink="register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
-            </div>
-        </div>
-        -->
+        <!--        <div [ngSwitch]="isAuthenticated()">
+                    <div class="alert alert-success" *ngSwitchCase="true">
+                        <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
+                            translateValues="{username: '{{account.login}}'}"> You are logged in as user "{{account.login}}". </span>
+                    </div>
+                    <div class="alert alert-warning" *ngSwitchCase="false">
+                        <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;
+                        <a class="alert-link" routerLink="register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
+                    </div>
+                </div>
+                -->
         <div >
 
-        <form action="" method="get" class="card jh-card form-search-passengers">
-            <div class="form-row">
-                <div class="col">
-                    <label for="from">Origem</label>
-                    <input type="text" class="form-control" id="from" placeholder="Insira uma cidade">
-                </div>
-                <div class="col">
-                    <label for="to">Destino</label>
-                    <input type="text" class="form-control" id="to" placeholder="Insira uma cidade">
-                </div>
-            </div>
-
-            <div class="form-row mt-3">
-                <div class="datepicker-container col-md-3 col-6">
-                    <label>Data de Ida</label>
-                    <input type="text" class="form-control" id="datepicker-start">
-                </div>
-
-                <div class="datepicker-container  col-md-3 col-6">
-                    <label>Data de Volta</label>
-                    <input type="text" class="form-control" id="datepicker-end" placeholder="Opicional">
+            <form action="" method="get" class="card jh-card form-search-passengers">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="from">Origem</label>
+                        <select id="from" class="form-control">
+                            <option value="">Selecione uma cidade</option>
+                            <option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="to">Destino</label>
+                        <select id="to" class="form-control">
+                            <option value="">Selecione uma cidade</option>
+                            <option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="col-md-3 col-6">
-                    <label>Nº de Passageiros</label>
-                    <select class="form-control text-center">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
+                <div class="form-row mt-3">
+                    <div class="datepicker-container col-md-3 col-6">
+                        <label>Data de Ida</label>
+                        <input type="text" class="form-control" id="datepicker-start">
+                    </div>
+
+                    <div class="datepicker-container  col-md-3 col-6">
+                        <label>Data de Volta</label>
+                        <input type="text" class="form-control" id="datepicker-end" placeholder="Opicional">
+                    </div>
+
+                    <div class="col-md-3 col-6">
+                        <label>Nº de Passageiros</label>
+                        <select class="form-control text-center">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 col-6">
+                        <button type="button" class="btn btn-outline-warning btn-block">Procurar passagens</button>
+                    </div>
                 </div>
-
-                <div class="col-md-3 col-6">
-                    <button type="button" class="btn btn-outline-warning btn-block">Procurar passagens</button>
-                </div>
-
-
-            </div>
-
-        </form>
-
+            </form>
         </div>
 
 
