@@ -1,14 +1,13 @@
-
-
 <div class="row">
-    <div class="col-md-3">
+
+    <div class="col-12 text-center">
         <span class="hipster img-fluid rounded"></span>
     </div>
-    <div class="col-md-9">
-        <h1 class="display-4" jhiTranslate="home.title">Welcome, Java Hipster!</h1>
-        <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
-
-        <div [ngSwitch]="isAuthenticated()">
+    <div class="offset-md-2 col-md-8">
+        <div class="alert alert-warning text-center">
+            <span class="lead" class="text-center">Compre sua passagem e reserve seu hotel sem preocupações</span>
+        </div>
+<!--        <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
                     translateValues="{username: '{{account.login}}'}"> You are logged in as user "{{account.login}}". </span>
@@ -19,21 +18,57 @@
                 <a class="alert-link" routerLink="register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
             </div>
         </div>
+        -->
+        <div >
 
-		<p class="lead" jhiTranslate="home.choose-date.title">Em qual data você gostaria de viajar?</p>
+        <form action="" method="get" class="card jh-card form-search-passengers">
+            <div class="form-row">
+                <div class="col">
+                    <label for="from">Origem</label>
+                    <input type="text" class="form-control" id="from" placeholder="Insira uma cidade">
+                </div>
+                <div class="col">
+                    <label for="to">Destino</label>
+                    <input type="text" class="form-control" id="to" placeholder="Insira uma cidade">
+                </div>
+            </div>
 
-		<div class="datepicker-container">
-			<p jhiTranslate="home.choose-date.start">Date: </p>
-			<input type="text" id="datepicker-start">
-		</div>
+            <div class="form-row mt-3">
+                <div class="datepicker-container col-md-3 col-6">
+                    <label>Data de Ida</label>
+                    <input type="text" class="form-control" id="datepicker-start">
+                </div>
 
-		<div class="datepicker-container">
-			<p jhiTranslate="home.choose-date.end">Date: </p>
-			<input type="text" id="datepicker-end">
-		</div>
+                <div class="datepicker-container  col-md-3 col-6">
+                    <label>Data de Volta</label>
+                    <input type="text" class="form-control" id="datepicker-end" placeholder="Opicional">
+                </div>
 
-		<button type="button" class="btn btn-outline-warning">Selecionar</button>
+                <div class="col-md-3 col-6">
+                    <label>Nº de Passageiros</label>
+                    <select class="form-control text-center">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <button type="button" class="btn btn-outline-warning btn-block">Procurar passagens</button>
+                </div>
+
+
+            </div>
+
+        </form>
+
+        </div>
+
+
 
 
     </div>
+
 </div>

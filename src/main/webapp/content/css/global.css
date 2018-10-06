@@ -86,6 +86,11 @@ Generic styles
 .footer {
     border-top: 1px solid rgba(0, 0, 0, 0.125);
     text-align: center;
+    background: #767676;
+    color: white;
+    font-style: italic;
+    padding-top: 10px;
+    padding-bottom: 1px;
 }
 
 /* ==========================================================================
