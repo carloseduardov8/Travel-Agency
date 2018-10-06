@@ -58,13 +58,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.cliente.contrato" for="field_contrato">Contrato</label>
-                    <select class="form-control" id="field_contrato" name="contrato" [(ngModel)]="cliente.contrato" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="contratoOption.id === cliente.contrato?.id ? cliente.contrato : contratoOption" *ngFor="let contratoOption of contratoes; trackBy: trackContratoById">{{contratoOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

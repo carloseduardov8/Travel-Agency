@@ -30,6 +30,26 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="logradouro" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="numero" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="complemento" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="cep" type="integer">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="telefone" type="integer">
+                <constraints nullable="false" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         

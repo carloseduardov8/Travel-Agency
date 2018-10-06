@@ -42,6 +42,21 @@ public class SeguradoraResourceIntTest {
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_LOGRADOURO = "AAAAAAAAAA";
+    private static final String UPDATED_LOGRADOURO = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_NUMERO = 1;
+    private static final Integer UPDATED_NUMERO = 2;
+
+    private static final String DEFAULT_COMPLEMENTO = "AAAAAAAAAA";
+    private static final String UPDATED_COMPLEMENTO = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_CEP = 1;
+    private static final Integer UPDATED_CEP = 2;
+
+    private static final Integer DEFAULT_TELEFONE = 1;
+    private static final Integer UPDATED_TELEFONE = 2;
+
     @Autowired
     private SeguradoraRepository seguradoraRepository;
 
@@ -80,7 +95,12 @@ public class SeguradoraResourceIntTest {
      */
     public static Seguradora createEntity(EntityManager em) {
         Seguradora seguradora = new Seguradora()
-            .nome(DEFAULT_NOME);
+            .nome(DEFAULT_NOME)
+            .logradouro(DEFAULT_LOGRADOURO)
+            .numero(DEFAULT_NUMERO)
+            .complemento(DEFAULT_COMPLEMENTO)
+            .cep(DEFAULT_CEP)
+            .telefone(DEFAULT_TELEFONE);
         return seguradora;
     }
 
@@ -105,6 +125,11 @@ public class SeguradoraResourceIntTest {
         assertThat(seguradoraList).hasSize(databaseSizeBeforeCreate + 1);
         Seguradora testSeguradora = seguradoraList.get(seguradoraList.size() - 1);
         assertThat(testSeguradora.getNome()).isEqualTo(DEFAULT_NOME);
+        assertThat(testSeguradora.getLogradouro()).isEqualTo(DEFAULT_LOGRADOURO);
+        assertThat(testSeguradora.getNumero()).isEqualTo(DEFAULT_NUMERO);
+        assertThat(testSeguradora.getComplemento()).isEqualTo(DEFAULT_COMPLEMENTO);
+        assertThat(testSeguradora.getCep()).isEqualTo(DEFAULT_CEP);
+        assertThat(testSeguradora.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
     }
 
     @Test
@@ -146,6 +171,60 @@ public class SeguradoraResourceIntTest {
 
     @Test
     @Transactional
+    public void checkLogradouroIsRequired() throws Exception {
+        int databaseSizeBeforeTest = seguradoraRepository.findAll().size();
+        // set the field null
+        seguradora.setLogradouro(null);
+
+        // Create the Seguradora, which fails.
+
+        restSeguradoraMockMvc.perform(post("/api/seguradoras")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(seguradora)))
+            .andExpect(status().isBadRequest());
+
+        List<Seguradora> seguradoraList = seguradoraRepository.findAll();
+        assertThat(seguradoraList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCepIsRequired() throws Exception {
+        int databaseSizeBeforeTest = seguradoraRepository.findAll().size();
+        // set the field null
+        seguradora.setCep(null);
+
+        // Create the Seguradora, which fails.
+
+        restSeguradoraMockMvc.perform(post("/api/seguradoras")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(seguradora)))
+            .andExpect(status().isBadRequest());
+
+        List<Seguradora> seguradoraList = seguradoraRepository.findAll();
+        assertThat(seguradoraList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkTelefoneIsRequired() throws Exception {
+        int databaseSizeBeforeTest = seguradoraRepository.findAll().size();
+        // set the field null
+        seguradora.setTelefone(null);
+
+        // Create the Seguradora, which fails.
+
+        restSeguradoraMockMvc.perform(post("/api/seguradoras")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(seguradora)))
+            .andExpect(status().isBadRequest());
+
+        List<Seguradora> seguradoraList = seguradoraRepository.findAll();
+        assertThat(seguradoraList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllSeguradoras() throws Exception {
         // Initialize the database
         seguradoraRepository.saveAndFlush(seguradora);
@@ -155,7 +234,12 @@ public class SeguradoraResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(seguradora.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())));
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
+            .andExpect(jsonPath("$.[*].logradouro").value(hasItem(DEFAULT_LOGRADOURO.toString())))
+            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
+            .andExpect(jsonPath("$.[*].complemento").value(hasItem(DEFAULT_COMPLEMENTO.toString())))
+            .andExpect(jsonPath("$.[*].cep").value(hasItem(DEFAULT_CEP)))
+            .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE)));
     }
     
     @Test
@@ -169,7 +253,12 @@ public class SeguradoraResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(seguradora.getId().intValue()))
-            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()));
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
+            .andExpect(jsonPath("$.logradouro").value(DEFAULT_LOGRADOURO.toString()))
+            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
+            .andExpect(jsonPath("$.complemento").value(DEFAULT_COMPLEMENTO.toString()))
+            .andExpect(jsonPath("$.cep").value(DEFAULT_CEP))
+            .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE));
     }
 
     @Test
@@ -193,7 +282,12 @@ public class SeguradoraResourceIntTest {
         // Disconnect from session so that the updates on updatedSeguradora are not directly saved in db
         em.detach(updatedSeguradora);
         updatedSeguradora
-            .nome(UPDATED_NOME);
+            .nome(UPDATED_NOME)
+            .logradouro(UPDATED_LOGRADOURO)
+            .numero(UPDATED_NUMERO)
+            .complemento(UPDATED_COMPLEMENTO)
+            .cep(UPDATED_CEP)
+            .telefone(UPDATED_TELEFONE);
 
         restSeguradoraMockMvc.perform(put("/api/seguradoras")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -205,6 +299,11 @@ public class SeguradoraResourceIntTest {
         assertThat(seguradoraList).hasSize(databaseSizeBeforeUpdate);
         Seguradora testSeguradora = seguradoraList.get(seguradoraList.size() - 1);
         assertThat(testSeguradora.getNome()).isEqualTo(UPDATED_NOME);
+        assertThat(testSeguradora.getLogradouro()).isEqualTo(UPDATED_LOGRADOURO);
+        assertThat(testSeguradora.getNumero()).isEqualTo(UPDATED_NUMERO);
+        assertThat(testSeguradora.getComplemento()).isEqualTo(UPDATED_COMPLEMENTO);
+        assertThat(testSeguradora.getCep()).isEqualTo(UPDATED_CEP);
+        assertThat(testSeguradora.getTelefone()).isEqualTo(UPDATED_TELEFONE);
     }
 
     @Test

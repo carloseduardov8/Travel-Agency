@@ -34,15 +34,15 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="origem" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="destino" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
             <column name="linha_aerea_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="origem_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="destino_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

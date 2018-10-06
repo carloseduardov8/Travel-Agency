@@ -17,6 +17,11 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="viajatoApp.linhaAerea.nome">Nome</span></th>
             <th><span jhiTranslate="viajatoApp.linhaAerea.codigo">Codigo</span></th>
+            <th><span jhiTranslate="viajatoApp.linhaAerea.logradouro">Logradouro</span></th>
+            <th><span jhiTranslate="viajatoApp.linhaAerea.numero">Numero</span></th>
+            <th><span jhiTranslate="viajatoApp.linhaAerea.complemento">Complemento</span></th>
+            <th><span jhiTranslate="viajatoApp.linhaAerea.cep">Cep</span></th>
+            <th><span jhiTranslate="viajatoApp.linhaAerea.telefone">Telefone</span></th>
             <th></th>
             </tr>
             </thead>
@@ -25,6 +30,11 @@
                 <td><a [routerLink]="['/linha-aerea', linhaAerea.id, 'view' ]">{{linhaAerea.id}}</a></td>
                 <td>{{linhaAerea.nome}}</td>
                 <td>{{linhaAerea.codigo}}</td>
+                <td>{{linhaAerea.logradouro}}</td>
+                <td>{{linhaAerea.numero}}</td>
+                <td>{{linhaAerea.complemento}}</td>
+                <td>{{linhaAerea.cep}}</td>
+                <td>{{linhaAerea.telefone}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

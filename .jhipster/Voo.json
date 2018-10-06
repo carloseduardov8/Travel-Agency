@@ -21,6 +21,20 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "origem",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "destino",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [
@@ -34,18 +48,6 @@
             "relationshipType": "many-to-one",
             "relationshipName": "linhaAerea",
             "otherEntityName": "linhaAerea",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "origem",
-            "otherEntityName": "aeroporto",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "destino",
-            "otherEntityName": "aeroporto",
             "otherEntityField": "id"
         }
     ],

@@ -58,7 +58,6 @@ public class Veiculo implements Serializable {
     @OneToMany(mappedBy = "veiculo")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Locacao> locacaos = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties("veiculos")
     private Locadora locadora;

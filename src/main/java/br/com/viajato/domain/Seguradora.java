@@ -30,18 +30,27 @@ public class Seguradora implements Serializable {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Endereco endereco;
+    @NotNull
+    @Column(name = "logradouro", nullable = false)
+    private String logradouro;
+
+    @Column(name = "numero")
+    private Integer numero;
+
+    @Column(name = "complemento")
+    private String complemento;
+
+    @NotNull
+    @Column(name = "cep", nullable = false)
+    private Integer cep;
+
+    @NotNull
+    @Column(name = "telefone", nullable = false)
+    private Integer telefone;
 
     @OneToMany(mappedBy = "seguradora")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Contrato> contratoes = new HashSet<>();
-
-    @OneToMany(mappedBy = "seguradora")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Telefone> telefones = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -64,17 +73,69 @@ public class Seguradora implements Serializable {
         this.nome = nome;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public Seguradora endereco(Endereco endereco) {
-        this.endereco = endereco;
+    public Seguradora logradouro(String logradouro) {
+        this.logradouro = logradouro;
         return this;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public Seguradora numero(Integer numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public Seguradora complemento(String complemento) {
+        this.complemento = complemento;
+        return this;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public Integer getCep() {
+        return cep;
+    }
+
+    public Seguradora cep(Integer cep) {
+        this.cep = cep;
+        return this;
+    }
+
+    public void setCep(Integer cep) {
+        this.cep = cep;
+    }
+
+    public Integer getTelefone() {
+        return telefone;
+    }
+
+    public Seguradora telefone(Integer telefone) {
+        this.telefone = telefone;
+        return this;
+    }
+
+    public void setTelefone(Integer telefone) {
+        this.telefone = telefone;
     }
 
     public Set<Contrato> getContratoes() {
@@ -100,31 +161,6 @@ public class Seguradora implements Serializable {
 
     public void setContratoes(Set<Contrato> contratoes) {
         this.contratoes = contratoes;
-    }
-
-    public Set<Telefone> getTelefones() {
-        return telefones;
-    }
-
-    public Seguradora telefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
-        return this;
-    }
-
-    public Seguradora addTelefone(Telefone telefone) {
-        this.telefones.add(telefone);
-        telefone.setSeguradora(this);
-        return this;
-    }
-
-    public Seguradora removeTelefone(Telefone telefone) {
-        this.telefones.remove(telefone);
-        telefone.setSeguradora(null);
-        return this;
-    }
-
-    public void setTelefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -153,6 +189,11 @@ public class Seguradora implements Serializable {
         return "Seguradora{" +
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
+            ", logradouro='" + getLogradouro() + "'" +
+            ", numero=" + getNumero() +
+            ", complemento='" + getComplemento() + "'" +
+            ", cep=" + getCep() +
+            ", telefone=" + getTelefone() +
             "}";
     }
 }

@@ -46,7 +46,6 @@ public class Quarto implements Serializable {
     @OneToMany(mappedBy = "quarto")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Reserva> reservas = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties("quartos")
     private Hotel hotel;

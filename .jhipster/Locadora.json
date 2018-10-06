@@ -7,33 +7,42 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "logradouro",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "complemento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cep",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "telefone",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "relationshipName": "endereco",
-            "otherEntityName": "endereco",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "locadora"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "telefone",
-            "otherEntityName": "telefone",
-            "otherEntityRelationshipName": "locadora"
-        },
-        {
             "relationshipType": "one-to-many",
             "relationshipName": "veiculo",
             "otherEntityName": "veiculo",
-            "otherEntityRelationshipName": "locadora"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "contrato",
-            "otherEntityName": "contrato",
             "otherEntityRelationshipName": "locadora"
         }
     ],

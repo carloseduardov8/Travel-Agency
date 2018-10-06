@@ -21,12 +21,6 @@
                 <dd>
                     <span>{{cliente.senha}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.cliente.contrato">Contrato</span></dt>
-                <dd>
-                    <div *ngIf="cliente.contrato">
-                        <a [routerLink]="['/contrato', cliente.contrato?.id, 'view']">{{cliente.contrato?.id}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

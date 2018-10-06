@@ -3,7 +3,7 @@ import { ICliente } from 'app/shared/model//cliente.model';
 
 export interface IPassagem {
     id?: number;
-    classe?: string;
+    assento?: string;
     valor?: number;
     nome?: string;
     cpf?: number;
@@ -14,7 +14,7 @@ export interface IPassagem {
 export class Passagem implements IPassagem {
     constructor(
         public id?: number,
-        public classe?: string,
+        public assento?: string,
         public valor?: number,
         public nome?: string,
         public cpf?: number,

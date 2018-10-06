@@ -34,14 +34,27 @@ public class LinhaAerea implements Serializable {
     @Column(name = "codigo", nullable = false)
     private String codigo;
 
-    @OneToMany(mappedBy = "linhaAerea")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Telefone> telefones = new HashSet<>();
+    @NotNull
+    @Column(name = "logradouro", nullable = false)
+    private String logradouro;
+
+    @Column(name = "numero")
+    private Integer numero;
+
+    @Column(name = "complemento")
+    private String complemento;
+
+    @NotNull
+    @Column(name = "cep", nullable = false)
+    private Integer cep;
+
+    @NotNull
+    @Column(name = "telefone", nullable = false)
+    private Integer telefone;
 
     @OneToMany(mappedBy = "linhaAerea")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Voo> voos = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -77,29 +90,69 @@ public class LinhaAerea implements Serializable {
         this.codigo = codigo;
     }
 
-    public Set<Telefone> getTelefones() {
-        return telefones;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public LinhaAerea telefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
+    public LinhaAerea logradouro(String logradouro) {
+        this.logradouro = logradouro;
         return this;
     }
 
-    public LinhaAerea addTelefone(Telefone telefone) {
-        this.telefones.add(telefone);
-        telefone.setLinhaAerea(this);
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public LinhaAerea numero(Integer numero) {
+        this.numero = numero;
         return this;
     }
 
-    public LinhaAerea removeTelefone(Telefone telefone) {
-        this.telefones.remove(telefone);
-        telefone.setLinhaAerea(null);
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public LinhaAerea complemento(String complemento) {
+        this.complemento = complemento;
         return this;
     }
 
-    public void setTelefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public Integer getCep() {
+        return cep;
+    }
+
+    public LinhaAerea cep(Integer cep) {
+        this.cep = cep;
+        return this;
+    }
+
+    public void setCep(Integer cep) {
+        this.cep = cep;
+    }
+
+    public Integer getTelefone() {
+        return telefone;
+    }
+
+    public LinhaAerea telefone(Integer telefone) {
+        this.telefone = telefone;
+        return this;
+    }
+
+    public void setTelefone(Integer telefone) {
+        this.telefone = telefone;
     }
 
     public Set<Voo> getVoos() {
@@ -154,6 +207,11 @@ public class LinhaAerea implements Serializable {
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
             ", codigo='" + getCodigo() + "'" +
+            ", logradouro='" + getLogradouro() + "'" +
+            ", numero=" + getNumero() +
+            ", complemento='" + getComplemento() + "'" +
+            ", cep=" + getCep() +
+            ", telefone=" + getTelefone() +
             "}";
     }
 }

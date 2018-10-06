@@ -18,6 +18,10 @@
             },
             "nome": "Nome",
             "codigo": "Codigo",
+            "logradouro": "Logradouro",
+            "numero": "Numero",
+            "complemento": "Complemento",
+            "cep": "Cep",
             "telefone": "Telefone",
             "voo": "Voo"
         }

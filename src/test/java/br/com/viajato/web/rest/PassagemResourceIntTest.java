@@ -39,8 +39,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ViajatoApp.class)
 public class PassagemResourceIntTest {
 
-    private static final String DEFAULT_CLASSE = "AAAAAAAAAA";
-    private static final String UPDATED_CLASSE = "BBBBBBBBBB";
+    private static final String DEFAULT_ASSENTO = "AAAAAAAAAA";
+    private static final String UPDATED_ASSENTO = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_VALOR = 1;
     private static final Integer UPDATED_VALOR = 2;
@@ -89,7 +89,7 @@ public class PassagemResourceIntTest {
      */
     public static Passagem createEntity(EntityManager em) {
         Passagem passagem = new Passagem()
-            .classe(DEFAULT_CLASSE)
+            .assento(DEFAULT_ASSENTO)
             .valor(DEFAULT_VALOR)
             .nome(DEFAULT_NOME)
             .cpf(DEFAULT_CPF);
@@ -116,7 +116,7 @@ public class PassagemResourceIntTest {
         List<Passagem> passagemList = passagemRepository.findAll();
         assertThat(passagemList).hasSize(databaseSizeBeforeCreate + 1);
         Passagem testPassagem = passagemList.get(passagemList.size() - 1);
-        assertThat(testPassagem.getClasse()).isEqualTo(DEFAULT_CLASSE);
+        assertThat(testPassagem.getAssento()).isEqualTo(DEFAULT_ASSENTO);
         assertThat(testPassagem.getValor()).isEqualTo(DEFAULT_VALOR);
         assertThat(testPassagem.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testPassagem.getCpf()).isEqualTo(DEFAULT_CPF);
@@ -143,10 +143,10 @@ public class PassagemResourceIntTest {
 
     @Test
     @Transactional
-    public void checkClasseIsRequired() throws Exception {
+    public void checkAssentoIsRequired() throws Exception {
         int databaseSizeBeforeTest = passagemRepository.findAll().size();
         // set the field null
-        passagem.setClasse(null);
+        passagem.setAssento(null);
 
         // Create the Passagem, which fails.
 
@@ -224,7 +224,7 @@ public class PassagemResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(passagem.getId().intValue())))
-            .andExpect(jsonPath("$.[*].classe").value(hasItem(DEFAULT_CLASSE.toString())))
+            .andExpect(jsonPath("$.[*].assento").value(hasItem(DEFAULT_ASSENTO.toString())))
             .andExpect(jsonPath("$.[*].valor").value(hasItem(DEFAULT_VALOR)))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
             .andExpect(jsonPath("$.[*].cpf").value(hasItem(DEFAULT_CPF)));
@@ -241,7 +241,7 @@ public class PassagemResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(passagem.getId().intValue()))
-            .andExpect(jsonPath("$.classe").value(DEFAULT_CLASSE.toString()))
+            .andExpect(jsonPath("$.assento").value(DEFAULT_ASSENTO.toString()))
             .andExpect(jsonPath("$.valor").value(DEFAULT_VALOR))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
             .andExpect(jsonPath("$.cpf").value(DEFAULT_CPF));
@@ -268,7 +268,7 @@ public class PassagemResourceIntTest {
         // Disconnect from session so that the updates on updatedPassagem are not directly saved in db
         em.detach(updatedPassagem);
         updatedPassagem
-            .classe(UPDATED_CLASSE)
+            .assento(UPDATED_ASSENTO)
             .valor(UPDATED_VALOR)
             .nome(UPDATED_NOME)
             .cpf(UPDATED_CPF);
@@ -282,7 +282,7 @@ public class PassagemResourceIntTest {
         List<Passagem> passagemList = passagemRepository.findAll();
         assertThat(passagemList).hasSize(databaseSizeBeforeUpdate);
         Passagem testPassagem = passagemList.get(passagemList.size() - 1);
-        assertThat(testPassagem.getClasse()).isEqualTo(UPDATED_CLASSE);
+        assertThat(testPassagem.getAssento()).isEqualTo(UPDATED_ASSENTO);
         assertThat(testPassagem.getValor()).isEqualTo(UPDATED_VALOR);
         assertThat(testPassagem.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testPassagem.getCpf()).isEqualTo(UPDATED_CPF);

@@ -9,11 +9,25 @@
                 <dd>
                     <span>{{seguradora.nome}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.seguradora.endereco">Endereco</span></dt>
+                <dt><span jhiTranslate="viajatoApp.seguradora.logradouro">Logradouro</span></dt>
                 <dd>
-                    <div *ngIf="seguradora.endereco">
-                        <a [routerLink]="['/endereco', seguradora.endereco?.id, 'view']">{{seguradora.endereco?.id}}</a>
-                    </div>
+                    <span>{{seguradora.logradouro}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.seguradora.numero">Numero</span></dt>
+                <dd>
+                    <span>{{seguradora.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.seguradora.complemento">Complemento</span></dt>
+                <dd>
+                    <span>{{seguradora.complemento}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.seguradora.cep">Cep</span></dt>
+                <dd>
+                    <span>{{seguradora.cep}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.seguradora.telefone">Telefone</span></dt>
+                <dd>
+                    <span>{{seguradora.telefone}}</span>
                 </dd>
             </dl>
 

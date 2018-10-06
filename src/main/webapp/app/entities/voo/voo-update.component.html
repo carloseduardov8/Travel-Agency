@@ -46,26 +46,34 @@
                         </small>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.voo.origem" for="field_origem">Origem</label>
+                    <input type="text" class="form-control" name="origem" id="field_origem"
+                        [(ngModel)]="voo.origem" required/>
+                    <div [hidden]="!(editForm.controls.origem?.dirty && editForm.controls.origem?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.origem?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.voo.destino" for="field_destino">Destino</label>
+                    <input type="text" class="form-control" name="destino" id="field_destino"
+                        [(ngModel)]="voo.destino" required/>
+                    <div [hidden]="!(editForm.controls.destino?.dirty && editForm.controls.destino?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.destino?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="viajatoApp.voo.linhaAerea" for="field_linhaAerea">Linha Aerea</label>
                     <select class="form-control" id="field_linhaAerea" name="linhaAerea" [(ngModel)]="voo.linhaAerea" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="linhaAereaOption.id === voo.linhaAerea?.id ? voo.linhaAerea : linhaAereaOption" *ngFor="let linhaAereaOption of linhaaereas; trackBy: trackLinhaAereaById">{{linhaAereaOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.voo.origem" for="field_origem">Origem</label>
-                    <select class="form-control" id="field_origem" name="origem" [(ngModel)]="voo.origem" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="aeroportoOption.id === voo.origem?.id ? voo.origem : aeroportoOption" *ngFor="let aeroportoOption of aeroportos; trackBy: trackAeroportoById">{{aeroportoOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.voo.destino" for="field_destino">Destino</label>
-                    <select class="form-control" id="field_destino" name="destino" [(ngModel)]="voo.destino" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="aeroportoOption.id === voo.destino?.id ? voo.destino : aeroportoOption" *ngFor="let aeroportoOption of aeroportos; trackBy: trackAeroportoById">{{aeroportoOption.id}}</option>
                     </select>
                 </div>
             </div>

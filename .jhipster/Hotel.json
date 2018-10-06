@@ -14,23 +14,38 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "logradouro",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "complemento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cep",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "telefone",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "endereco",
-            "otherEntityName": "endereco",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "hotel"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "telefone",
-            "otherEntityName": "telefone",
-            "otherEntityRelationshipName": "hotel"
-        },
         {
             "relationshipType": "one-to-many",
             "relationshipName": "quarto",

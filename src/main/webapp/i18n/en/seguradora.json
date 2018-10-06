@@ -17,9 +17,12 @@
                 "title": "Seguradora"
             },
             "nome": "Nome",
-            "endereco": "Endereco",
-            "contrato": "Contrato",
-            "telefone": "Telefone"
+            "logradouro": "Logradouro",
+            "numero": "Numero",
+            "complemento": "Complemento",
+            "cep": "Cep",
+            "telefone": "Telefone",
+            "contrato": "Contrato"
         }
     }
 }

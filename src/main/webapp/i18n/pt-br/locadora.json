@@ -17,10 +17,12 @@
                 "title": "Locadora"
             },
             "nome": "Nome",
-            "endereco": "Endereco",
+            "logradouro": "Logradouro",
+            "numero": "Numero",
+            "complemento": "Complemento",
+            "cep": "Cep",
             "telefone": "Telefone",
-            "veiculo": "Veiculo",
-            "contrato": "Contrato"
+            "veiculo": "Veiculo"
         }
     }
 }

@@ -42,6 +42,21 @@ public class LocadoraResourceIntTest {
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_LOGRADOURO = "AAAAAAAAAA";
+    private static final String UPDATED_LOGRADOURO = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_NUMERO = 1;
+    private static final Integer UPDATED_NUMERO = 2;
+
+    private static final String DEFAULT_COMPLEMENTO = "AAAAAAAAAA";
+    private static final String UPDATED_COMPLEMENTO = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_CEP = 1;
+    private static final Integer UPDATED_CEP = 2;
+
+    private static final Integer DEFAULT_TELEFONE = 1;
+    private static final Integer UPDATED_TELEFONE = 2;
+
     @Autowired
     private LocadoraRepository locadoraRepository;
 
@@ -80,7 +95,12 @@ public class LocadoraResourceIntTest {
      */
     public static Locadora createEntity(EntityManager em) {
         Locadora locadora = new Locadora()
-            .nome(DEFAULT_NOME);
+            .nome(DEFAULT_NOME)
+            .logradouro(DEFAULT_LOGRADOURO)
+            .numero(DEFAULT_NUMERO)
+            .complemento(DEFAULT_COMPLEMENTO)
+            .cep(DEFAULT_CEP)
+            .telefone(DEFAULT_TELEFONE);
         return locadora;
     }
 
@@ -105,6 +125,11 @@ public class LocadoraResourceIntTest {
         assertThat(locadoraList).hasSize(databaseSizeBeforeCreate + 1);
         Locadora testLocadora = locadoraList.get(locadoraList.size() - 1);
         assertThat(testLocadora.getNome()).isEqualTo(DEFAULT_NOME);
+        assertThat(testLocadora.getLogradouro()).isEqualTo(DEFAULT_LOGRADOURO);
+        assertThat(testLocadora.getNumero()).isEqualTo(DEFAULT_NUMERO);
+        assertThat(testLocadora.getComplemento()).isEqualTo(DEFAULT_COMPLEMENTO);
+        assertThat(testLocadora.getCep()).isEqualTo(DEFAULT_CEP);
+        assertThat(testLocadora.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
     }
 
     @Test
@@ -146,6 +171,60 @@ public class LocadoraResourceIntTest {
 
     @Test
     @Transactional
+    public void checkLogradouroIsRequired() throws Exception {
+        int databaseSizeBeforeTest = locadoraRepository.findAll().size();
+        // set the field null
+        locadora.setLogradouro(null);
+
+        // Create the Locadora, which fails.
+
+        restLocadoraMockMvc.perform(post("/api/locadoras")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(locadora)))
+            .andExpect(status().isBadRequest());
+
+        List<Locadora> locadoraList = locadoraRepository.findAll();
+        assertThat(locadoraList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCepIsRequired() throws Exception {
+        int databaseSizeBeforeTest = locadoraRepository.findAll().size();
+        // set the field null
+        locadora.setCep(null);
+
+        // Create the Locadora, which fails.
+
+        restLocadoraMockMvc.perform(post("/api/locadoras")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(locadora)))
+            .andExpect(status().isBadRequest());
+
+        List<Locadora> locadoraList = locadoraRepository.findAll();
+        assertThat(locadoraList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkTelefoneIsRequired() throws Exception {
+        int databaseSizeBeforeTest = locadoraRepository.findAll().size();
+        // set the field null
+        locadora.setTelefone(null);
+
+        // Create the Locadora, which fails.
+
+        restLocadoraMockMvc.perform(post("/api/locadoras")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(locadora)))
+            .andExpect(status().isBadRequest());
+
+        List<Locadora> locadoraList = locadoraRepository.findAll();
+        assertThat(locadoraList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllLocadoras() throws Exception {
         // Initialize the database
         locadoraRepository.saveAndFlush(locadora);
@@ -155,7 +234,12 @@ public class LocadoraResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(locadora.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())));
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
+            .andExpect(jsonPath("$.[*].logradouro").value(hasItem(DEFAULT_LOGRADOURO.toString())))
+            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
+            .andExpect(jsonPath("$.[*].complemento").value(hasItem(DEFAULT_COMPLEMENTO.toString())))
+            .andExpect(jsonPath("$.[*].cep").value(hasItem(DEFAULT_CEP)))
+            .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE)));
     }
     
     @Test
@@ -169,7 +253,12 @@ public class LocadoraResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(locadora.getId().intValue()))
-            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()));
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
+            .andExpect(jsonPath("$.logradouro").value(DEFAULT_LOGRADOURO.toString()))
+            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
+            .andExpect(jsonPath("$.complemento").value(DEFAULT_COMPLEMENTO.toString()))
+            .andExpect(jsonPath("$.cep").value(DEFAULT_CEP))
+            .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE));
     }
 
     @Test
@@ -193,7 +282,12 @@ public class LocadoraResourceIntTest {
         // Disconnect from session so that the updates on updatedLocadora are not directly saved in db
         em.detach(updatedLocadora);
         updatedLocadora
-            .nome(UPDATED_NOME);
+            .nome(UPDATED_NOME)
+            .logradouro(UPDATED_LOGRADOURO)
+            .numero(UPDATED_NUMERO)
+            .complemento(UPDATED_COMPLEMENTO)
+            .cep(UPDATED_CEP)
+            .telefone(UPDATED_TELEFONE);
 
         restLocadoraMockMvc.perform(put("/api/locadoras")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -205,6 +299,11 @@ public class LocadoraResourceIntTest {
         assertThat(locadoraList).hasSize(databaseSizeBeforeUpdate);
         Locadora testLocadora = locadoraList.get(locadoraList.size() - 1);
         assertThat(testLocadora.getNome()).isEqualTo(UPDATED_NOME);
+        assertThat(testLocadora.getLogradouro()).isEqualTo(UPDATED_LOGRADOURO);
+        assertThat(testLocadora.getNumero()).isEqualTo(UPDATED_NUMERO);
+        assertThat(testLocadora.getComplemento()).isEqualTo(UPDATED_COMPLEMENTO);
+        assertThat(testLocadora.getCep()).isEqualTo(UPDATED_CEP);
+        assertThat(testLocadora.getTelefone()).isEqualTo(UPDATED_TELEFONE);
     }
 
     @Test

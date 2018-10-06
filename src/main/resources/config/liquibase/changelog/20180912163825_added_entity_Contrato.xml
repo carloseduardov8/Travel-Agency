@@ -34,7 +34,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="locadora_id" type="bigint">
+            <column name="cliente_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

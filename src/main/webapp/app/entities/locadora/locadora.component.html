@@ -16,7 +16,11 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="viajatoApp.locadora.nome">Nome</span></th>
-            <th><span jhiTranslate="viajatoApp.locadora.endereco">Endereco</span></th>
+            <th><span jhiTranslate="viajatoApp.locadora.logradouro">Logradouro</span></th>
+            <th><span jhiTranslate="viajatoApp.locadora.numero">Numero</span></th>
+            <th><span jhiTranslate="viajatoApp.locadora.complemento">Complemento</span></th>
+            <th><span jhiTranslate="viajatoApp.locadora.cep">Cep</span></th>
+            <th><span jhiTranslate="viajatoApp.locadora.telefone">Telefone</span></th>
             <th></th>
             </tr>
             </thead>
@@ -24,11 +28,11 @@
             <tr *ngFor="let locadora of locadoras ;trackBy: trackId">
                 <td><a [routerLink]="['/locadora', locadora.id, 'view' ]">{{locadora.id}}</a></td>
                 <td>{{locadora.nome}}</td>
-                <td>
-                    <div *ngIf="locadora.endereco">
-                        <a [routerLink]="['../endereco', locadora.endereco?.id, 'view' ]" >{{locadora.endereco?.id}}</a>
-                    </div>
-                </td>
+                <td>{{locadora.logradouro}}</td>
+                <td>{{locadora.numero}}</td>
+                <td>{{locadora.complemento}}</td>
+                <td>{{locadora.cep}}</td>
+                <td>{{locadora.telefone}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

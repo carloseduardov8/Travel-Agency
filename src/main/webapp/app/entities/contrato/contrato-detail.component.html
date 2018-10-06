@@ -17,10 +17,10 @@
                 <dd>
                     <span>{{contrato.descricao}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.contrato.locadora">Locadora</span></dt>
+                <dt><span jhiTranslate="viajatoApp.contrato.cliente">Cliente</span></dt>
                 <dd>
-                    <div *ngIf="contrato.locadora">
-                        <a [routerLink]="['/locadora', contrato.locadora?.id, 'view']">{{contrato.locadora?.id}}</a>
+                    <div *ngIf="contrato.cliente">
+                        <a [routerLink]="['/cliente', contrato.cliente?.id, 'view']">{{contrato.cliente?.id}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="viajatoApp.contrato.seguradora">Seguradora</span></dt>

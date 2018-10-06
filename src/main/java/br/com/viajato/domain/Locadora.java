@@ -30,22 +30,27 @@ public class Locadora implements Serializable {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Endereco endereco;
+    @NotNull
+    @Column(name = "logradouro", nullable = false)
+    private String logradouro;
 
-    @OneToMany(mappedBy = "locadora")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Telefone> telefones = new HashSet<>();
+    @Column(name = "numero")
+    private Integer numero;
+
+    @Column(name = "complemento")
+    private String complemento;
+
+    @NotNull
+    @Column(name = "cep", nullable = false)
+    private Integer cep;
+
+    @NotNull
+    @Column(name = "telefone", nullable = false)
+    private Integer telefone;
 
     @OneToMany(mappedBy = "locadora")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Veiculo> veiculos = new HashSet<>();
-
-    @OneToMany(mappedBy = "locadora")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Contrato> contratoes = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -68,42 +73,69 @@ public class Locadora implements Serializable {
         this.nome = nome;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public Locadora endereco(Endereco endereco) {
-        this.endereco = endereco;
+    public Locadora logradouro(String logradouro) {
+        this.logradouro = logradouro;
         return this;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
-    public Set<Telefone> getTelefones() {
-        return telefones;
+    public Integer getNumero() {
+        return numero;
     }
 
-    public Locadora telefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
+    public Locadora numero(Integer numero) {
+        this.numero = numero;
         return this;
     }
 
-    public Locadora addTelefone(Telefone telefone) {
-        this.telefones.add(telefone);
-        telefone.setLocadora(this);
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public Locadora complemento(String complemento) {
+        this.complemento = complemento;
         return this;
     }
 
-    public Locadora removeTelefone(Telefone telefone) {
-        this.telefones.remove(telefone);
-        telefone.setLocadora(null);
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public Integer getCep() {
+        return cep;
+    }
+
+    public Locadora cep(Integer cep) {
+        this.cep = cep;
         return this;
     }
 
-    public void setTelefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
+    public void setCep(Integer cep) {
+        this.cep = cep;
+    }
+
+    public Integer getTelefone() {
+        return telefone;
+    }
+
+    public Locadora telefone(Integer telefone) {
+        this.telefone = telefone;
+        return this;
+    }
+
+    public void setTelefone(Integer telefone) {
+        this.telefone = telefone;
     }
 
     public Set<Veiculo> getVeiculos() {
@@ -129,31 +161,6 @@ public class Locadora implements Serializable {
 
     public void setVeiculos(Set<Veiculo> veiculos) {
         this.veiculos = veiculos;
-    }
-
-    public Set<Contrato> getContratoes() {
-        return contratoes;
-    }
-
-    public Locadora contratoes(Set<Contrato> contratoes) {
-        this.contratoes = contratoes;
-        return this;
-    }
-
-    public Locadora addContrato(Contrato contrato) {
-        this.contratoes.add(contrato);
-        contrato.setLocadora(this);
-        return this;
-    }
-
-    public Locadora removeContrato(Contrato contrato) {
-        this.contratoes.remove(contrato);
-        contrato.setLocadora(null);
-        return this;
-    }
-
-    public void setContratoes(Set<Contrato> contratoes) {
-        this.contratoes = contratoes;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -182,6 +189,11 @@ public class Locadora implements Serializable {
         return "Locadora{" +
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
+            ", logradouro='" + getLogradouro() + "'" +
+            ", numero=" + getNumero() +
+            ", complemento='" + getComplemento() + "'" +
+            ", cep=" + getCep() +
+            ", telefone=" + getTelefone() +
             "}";
     }
 }

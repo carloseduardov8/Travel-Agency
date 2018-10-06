@@ -17,22 +17,18 @@
                 <dd>
                     <span>{{voo.chegada}}</span>
                 </dd>
+                <dt><span jhiTranslate="viajatoApp.voo.origem">Origem</span></dt>
+                <dd>
+                    <span>{{voo.origem}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.voo.destino">Destino</span></dt>
+                <dd>
+                    <span>{{voo.destino}}</span>
+                </dd>
                 <dt><span jhiTranslate="viajatoApp.voo.linhaAerea">Linha Aerea</span></dt>
                 <dd>
                     <div *ngIf="voo.linhaAerea">
                         <a [routerLink]="['/linha-aerea', voo.linhaAerea?.id, 'view']">{{voo.linhaAerea?.id}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="viajatoApp.voo.origem">Origem</span></dt>
-                <dd>
-                    <div *ngIf="voo.origem">
-                        <a [routerLink]="['/aeroporto', voo.origem?.id, 'view']">{{voo.origem?.id}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="viajatoApp.voo.destino">Destino</span></dt>
-                <dd>
-                    <div *ngIf="voo.destino">
-                        <a [routerLink]="['/aeroporto', voo.destino?.id, 'view']">{{voo.destino?.id}}</a>
                     </div>
                 </dd>
             </dl>

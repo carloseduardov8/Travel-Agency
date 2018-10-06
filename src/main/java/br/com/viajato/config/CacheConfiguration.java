@@ -76,6 +76,7 @@ public class CacheConfiguration {
             cm.createCache(br.com.viajato.domain.Seguradora.class.getName() + ".telefones", jcacheConfiguration);
             cm.createCache(br.com.viajato.domain.Contrato.class.getName(), jcacheConfiguration);
             cm.createCache(br.com.viajato.domain.Contrato.class.getName() + ".clientes", jcacheConfiguration);
+            cm.createCache(br.com.viajato.domain.Cliente.class.getName() + ".contratoes", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

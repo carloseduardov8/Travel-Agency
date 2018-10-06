@@ -13,11 +13,25 @@
                 <dd>
                     <span>{{hotel.nota}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.hotel.endereco">Endereco</span></dt>
+                <dt><span jhiTranslate="viajatoApp.hotel.logradouro">Logradouro</span></dt>
                 <dd>
-                    <div *ngIf="hotel.endereco">
-                        <a [routerLink]="['/endereco', hotel.endereco?.id, 'view']">{{hotel.endereco?.id}}</a>
-                    </div>
+                    <span>{{hotel.logradouro}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.hotel.numero">Numero</span></dt>
+                <dd>
+                    <span>{{hotel.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.hotel.complemento">Complemento</span></dt>
+                <dd>
+                    <span>{{hotel.complemento}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.hotel.cep">Cep</span></dt>
+                <dd>
+                    <span>{{hotel.cep}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.hotel.telefone">Telefone</span></dt>
+                <dd>
+                    <span>{{hotel.telefone}}</span>
                 </dd>
             </dl>
 

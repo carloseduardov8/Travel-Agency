@@ -52,10 +52,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.locadora" for="field_locadora">Locadora</label>
-                    <select class="form-control" id="field_locadora" name="locadora" [(ngModel)]="contrato.locadora" >
+                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.cliente" for="field_cliente">Cliente</label>
+                    <select class="form-control" id="field_cliente" name="cliente" [(ngModel)]="contrato.cliente" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="locadoraOption.id === contrato.locadora?.id ? contrato.locadora : locadoraOption" *ngFor="let locadoraOption of locadoras; trackBy: trackLocadoraById">{{locadoraOption.id}}</option>
+                        <option [ngValue]="clienteOption.id === contrato.cliente?.id ? contrato.cliente : clienteOption" *ngFor="let clienteOption of clientes; trackBy: trackClienteById">{{clienteOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">

@@ -39,21 +39,20 @@ public class Voo implements Serializable {
     @Column(name = "chegada", nullable = false)
     private String chegada;
 
+    @NotNull
+    @Column(name = "origem", nullable = false)
+    private String origem;
+
+    @NotNull
+    @Column(name = "destino", nullable = false)
+    private String destino;
+
     @OneToMany(mappedBy = "voo")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Passagem> passagems = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties("voos")
     private LinhaAerea linhaAerea;
-
-    @ManyToOne
-    @JsonIgnoreProperties("vemDes")
-    private Aeroporto origem;
-
-    @ManyToOne
-    @JsonIgnoreProperties("vaiParas")
-    private Aeroporto destino;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -103,6 +102,32 @@ public class Voo implements Serializable {
         this.chegada = chegada;
     }
 
+    public String getOrigem() {
+        return origem;
+    }
+
+    public Voo origem(String origem) {
+        this.origem = origem;
+        return this;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public Voo destino(String destino) {
+        this.destino = destino;
+        return this;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
     public Set<Passagem> getPassagems() {
         return passagems;
     }
@@ -140,32 +165,6 @@ public class Voo implements Serializable {
     public void setLinhaAerea(LinhaAerea linhaAerea) {
         this.linhaAerea = linhaAerea;
     }
-
-    public Aeroporto getOrigem() {
-        return origem;
-    }
-
-    public Voo origem(Aeroporto aeroporto) {
-        this.origem = aeroporto;
-        return this;
-    }
-
-    public void setOrigem(Aeroporto aeroporto) {
-        this.origem = aeroporto;
-    }
-
-    public Aeroporto getDestino() {
-        return destino;
-    }
-
-    public Voo destino(Aeroporto aeroporto) {
-        this.destino = aeroporto;
-        return this;
-    }
-
-    public void setDestino(Aeroporto aeroporto) {
-        this.destino = aeroporto;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -195,6 +194,8 @@ public class Voo implements Serializable {
             ", numero=" + getNumero() +
             ", partida='" + getPartida() + "'" +
             ", chegada='" + getChegada() + "'" +
+            ", origem='" + getOrigem() + "'" +
+            ", destino='" + getDestino() + "'" +
             "}";
     }
 }

@@ -34,18 +34,27 @@ public class Hotel implements Serializable {
     @Column(name = "nota", nullable = false)
     private Integer nota;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Endereco endereco;
+    @NotNull
+    @Column(name = "logradouro", nullable = false)
+    private String logradouro;
 
-    @OneToMany(mappedBy = "hotel")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Telefone> telefones = new HashSet<>();
+    @Column(name = "numero")
+    private Integer numero;
+
+    @Column(name = "complemento")
+    private String complemento;
+
+    @NotNull
+    @Column(name = "cep", nullable = false)
+    private Integer cep;
+
+    @NotNull
+    @Column(name = "telefone", nullable = false)
+    private Integer telefone;
 
     @OneToMany(mappedBy = "hotel")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Quarto> quartos = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -81,42 +90,69 @@ public class Hotel implements Serializable {
         this.nota = nota;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public Hotel endereco(Endereco endereco) {
-        this.endereco = endereco;
+    public Hotel logradouro(String logradouro) {
+        this.logradouro = logradouro;
         return this;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
-    public Set<Telefone> getTelefones() {
-        return telefones;
+    public Integer getNumero() {
+        return numero;
     }
 
-    public Hotel telefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
+    public Hotel numero(Integer numero) {
+        this.numero = numero;
         return this;
     }
 
-    public Hotel addTelefone(Telefone telefone) {
-        this.telefones.add(telefone);
-        telefone.setHotel(this);
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public Hotel complemento(String complemento) {
+        this.complemento = complemento;
         return this;
     }
 
-    public Hotel removeTelefone(Telefone telefone) {
-        this.telefones.remove(telefone);
-        telefone.setHotel(null);
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public Integer getCep() {
+        return cep;
+    }
+
+    public Hotel cep(Integer cep) {
+        this.cep = cep;
         return this;
     }
 
-    public void setTelefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
+    public void setCep(Integer cep) {
+        this.cep = cep;
+    }
+
+    public Integer getTelefone() {
+        return telefone;
+    }
+
+    public Hotel telefone(Integer telefone) {
+        this.telefone = telefone;
+        return this;
+    }
+
+    public void setTelefone(Integer telefone) {
+        this.telefone = telefone;
     }
 
     public Set<Quarto> getQuartos() {
@@ -171,6 +207,11 @@ public class Hotel implements Serializable {
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
             ", nota=" + getNota() +
+            ", logradouro='" + getLogradouro() + "'" +
+            ", numero=" + getNumero() +
+            ", complemento='" + getComplemento() + "'" +
+            ", cep=" + getCep() +
+            ", telefone=" + getTelefone() +
             "}";
     }
 }

@@ -1,5 +1,4 @@
 import { ICliente } from 'app/shared/model//cliente.model';
-import { ILocadora } from 'app/shared/model//locadora.model';
 import { ISeguradora } from 'app/shared/model//seguradora.model';
 
 export interface IContrato {
@@ -7,8 +6,7 @@ export interface IContrato {
     numero?: number;
     valor?: number;
     descricao?: string;
-    clientes?: ICliente[];
-    locadora?: ILocadora;
+    cliente?: ICliente;
     seguradora?: ISeguradora;
 }
 
@@ -18,8 +16,7 @@ export class Contrato implements IContrato {
         public numero?: number,
         public valor?: number,
         public descricao?: string,
-        public clientes?: ICliente[],
-        public locadora?: ILocadora,
+        public cliente?: ICliente,
         public seguradora?: ISeguradora
     ) {}
 }

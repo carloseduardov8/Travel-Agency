@@ -45,6 +45,21 @@ public class HotelResourceIntTest {
     private static final Integer DEFAULT_NOTA = 1;
     private static final Integer UPDATED_NOTA = 2;
 
+    private static final String DEFAULT_LOGRADOURO = "AAAAAAAAAA";
+    private static final String UPDATED_LOGRADOURO = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_NUMERO = 1;
+    private static final Integer UPDATED_NUMERO = 2;
+
+    private static final String DEFAULT_COMPLEMENTO = "AAAAAAAAAA";
+    private static final String UPDATED_COMPLEMENTO = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_CEP = 1;
+    private static final Integer UPDATED_CEP = 2;
+
+    private static final Integer DEFAULT_TELEFONE = 1;
+    private static final Integer UPDATED_TELEFONE = 2;
+
     @Autowired
     private HotelRepository hotelRepository;
 
@@ -84,7 +99,12 @@ public class HotelResourceIntTest {
     public static Hotel createEntity(EntityManager em) {
         Hotel hotel = new Hotel()
             .nome(DEFAULT_NOME)
-            .nota(DEFAULT_NOTA);
+            .nota(DEFAULT_NOTA)
+            .logradouro(DEFAULT_LOGRADOURO)
+            .numero(DEFAULT_NUMERO)
+            .complemento(DEFAULT_COMPLEMENTO)
+            .cep(DEFAULT_CEP)
+            .telefone(DEFAULT_TELEFONE);
         return hotel;
     }
 
@@ -110,6 +130,11 @@ public class HotelResourceIntTest {
         Hotel testHotel = hotelList.get(hotelList.size() - 1);
         assertThat(testHotel.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testHotel.getNota()).isEqualTo(DEFAULT_NOTA);
+        assertThat(testHotel.getLogradouro()).isEqualTo(DEFAULT_LOGRADOURO);
+        assertThat(testHotel.getNumero()).isEqualTo(DEFAULT_NUMERO);
+        assertThat(testHotel.getComplemento()).isEqualTo(DEFAULT_COMPLEMENTO);
+        assertThat(testHotel.getCep()).isEqualTo(DEFAULT_CEP);
+        assertThat(testHotel.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
     }
 
     @Test
@@ -169,6 +194,60 @@ public class HotelResourceIntTest {
 
     @Test
     @Transactional
+    public void checkLogradouroIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelRepository.findAll().size();
+        // set the field null
+        hotel.setLogradouro(null);
+
+        // Create the Hotel, which fails.
+
+        restHotelMockMvc.perform(post("/api/hotels")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(hotel)))
+            .andExpect(status().isBadRequest());
+
+        List<Hotel> hotelList = hotelRepository.findAll();
+        assertThat(hotelList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCepIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelRepository.findAll().size();
+        // set the field null
+        hotel.setCep(null);
+
+        // Create the Hotel, which fails.
+
+        restHotelMockMvc.perform(post("/api/hotels")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(hotel)))
+            .andExpect(status().isBadRequest());
+
+        List<Hotel> hotelList = hotelRepository.findAll();
+        assertThat(hotelList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkTelefoneIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelRepository.findAll().size();
+        // set the field null
+        hotel.setTelefone(null);
+
+        // Create the Hotel, which fails.
+
+        restHotelMockMvc.perform(post("/api/hotels")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(hotel)))
+            .andExpect(status().isBadRequest());
+
+        List<Hotel> hotelList = hotelRepository.findAll();
+        assertThat(hotelList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllHotels() throws Exception {
         // Initialize the database
         hotelRepository.saveAndFlush(hotel);
@@ -179,7 +258,12 @@ public class HotelResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(hotel.getId().intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
-            .andExpect(jsonPath("$.[*].nota").value(hasItem(DEFAULT_NOTA)));
+            .andExpect(jsonPath("$.[*].nota").value(hasItem(DEFAULT_NOTA)))
+            .andExpect(jsonPath("$.[*].logradouro").value(hasItem(DEFAULT_LOGRADOURO.toString())))
+            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
+            .andExpect(jsonPath("$.[*].complemento").value(hasItem(DEFAULT_COMPLEMENTO.toString())))
+            .andExpect(jsonPath("$.[*].cep").value(hasItem(DEFAULT_CEP)))
+            .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE)));
     }
     
     @Test
@@ -194,7 +278,12 @@ public class HotelResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(hotel.getId().intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
-            .andExpect(jsonPath("$.nota").value(DEFAULT_NOTA));
+            .andExpect(jsonPath("$.nota").value(DEFAULT_NOTA))
+            .andExpect(jsonPath("$.logradouro").value(DEFAULT_LOGRADOURO.toString()))
+            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
+            .andExpect(jsonPath("$.complemento").value(DEFAULT_COMPLEMENTO.toString()))
+            .andExpect(jsonPath("$.cep").value(DEFAULT_CEP))
+            .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE));
     }
 
     @Test
@@ -219,7 +308,12 @@ public class HotelResourceIntTest {
         em.detach(updatedHotel);
         updatedHotel
             .nome(UPDATED_NOME)
-            .nota(UPDATED_NOTA);
+            .nota(UPDATED_NOTA)
+            .logradouro(UPDATED_LOGRADOURO)
+            .numero(UPDATED_NUMERO)
+            .complemento(UPDATED_COMPLEMENTO)
+            .cep(UPDATED_CEP)
+            .telefone(UPDATED_TELEFONE);
 
         restHotelMockMvc.perform(put("/api/hotels")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -232,6 +326,11 @@ public class HotelResourceIntTest {
         Hotel testHotel = hotelList.get(hotelList.size() - 1);
         assertThat(testHotel.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testHotel.getNota()).isEqualTo(UPDATED_NOTA);
+        assertThat(testHotel.getLogradouro()).isEqualTo(UPDATED_LOGRADOURO);
+        assertThat(testHotel.getNumero()).isEqualTo(UPDATED_NUMERO);
+        assertThat(testHotel.getComplemento()).isEqualTo(UPDATED_COMPLEMENTO);
+        assertThat(testHotel.getCep()).isEqualTo(UPDATED_CEP);
+        assertThat(testHotel.getTelefone()).isEqualTo(UPDATED_TELEFONE);
     }
 
     @Test

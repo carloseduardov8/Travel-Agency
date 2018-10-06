@@ -9,11 +9,25 @@
                 <dd>
                     <span>{{locadora.nome}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.locadora.endereco">Endereco</span></dt>
+                <dt><span jhiTranslate="viajatoApp.locadora.logradouro">Logradouro</span></dt>
                 <dd>
-                    <div *ngIf="locadora.endereco">
-                        <a [routerLink]="['/endereco', locadora.endereco?.id, 'view']">{{locadora.endereco?.id}}</a>
-                    </div>
+                    <span>{{locadora.logradouro}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.locadora.numero">Numero</span></dt>
+                <dd>
+                    <span>{{locadora.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.locadora.complemento">Complemento</span></dt>
+                <dd>
+                    <span>{{locadora.complemento}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.locadora.cep">Cep</span></dt>
+                <dd>
+                    <span>{{locadora.cep}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.locadora.telefone">Telefone</span></dt>
+                <dd>
+                    <span>{{locadora.telefone}}</span>
                 </dd>
             </dl>
 

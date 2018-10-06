@@ -25,15 +25,9 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "many-to-one",
             "relationshipName": "cliente",
             "otherEntityName": "cliente",
-            "otherEntityRelationshipName": "contrato"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "locadora",
-            "otherEntityName": "locadora",
             "otherEntityField": "id"
         },
         {

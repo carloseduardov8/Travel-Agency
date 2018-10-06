@@ -12,7 +12,7 @@ export interface ICliente {
     passagems?: IPassagem[];
     locacaos?: ILocacao[];
     reservas?: IReserva[];
-    contrato?: IContrato;
+    contratoes?: IContrato[];
 }
 
 export class Cliente implements ICliente {
@@ -25,6 +25,6 @@ export class Cliente implements ICliente {
         public passagems?: IPassagem[],
         public locacaos?: ILocacao[],
         public reservas?: IReserva[],
-        public contrato?: IContrato
+        public contratoes?: IContrato[]
     ) {}
 }

@@ -8,8 +8,6 @@ import { IVoo } from 'app/shared/model/voo.model';
 import { VooService } from './voo.service';
 import { ILinhaAerea } from 'app/shared/model/linha-aerea.model';
 import { LinhaAereaService } from 'app/entities/linha-aerea';
-import { IAeroporto } from 'app/shared/model/aeroporto.model';
-import { AeroportoService } from 'app/entities/aeroporto';
 
 @Component({
     selector: 'jhi-voo-update',
@@ -21,13 +19,10 @@ export class VooUpdateComponent implements OnInit {
 
     linhaaereas: ILinhaAerea[];
 
-    aeroportos: IAeroporto[];
-
     constructor(
         private jhiAlertService: JhiAlertService,
         private vooService: VooService,
         private linhaAereaService: LinhaAereaService,
-        private aeroportoService: AeroportoService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -39,12 +34,6 @@ export class VooUpdateComponent implements OnInit {
         this.linhaAereaService.query().subscribe(
             (res: HttpResponse<ILinhaAerea[]>) => {
                 this.linhaaereas = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
-        this.aeroportoService.query().subscribe(
-            (res: HttpResponse<IAeroporto[]>) => {
-                this.aeroportos = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -81,10 +70,6 @@ export class VooUpdateComponent implements OnInit {
     }
 
     trackLinhaAereaById(index: number, item: ILinhaAerea) {
-        return item.id;
-    }
-
-    trackAeroportoById(index: number, item: IAeroporto) {
         return item.id;
     }
     get voo() {

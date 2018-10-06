@@ -18,7 +18,7 @@
             <th><span jhiTranslate="viajatoApp.contrato.numero">Numero</span></th>
             <th><span jhiTranslate="viajatoApp.contrato.valor">Valor</span></th>
             <th><span jhiTranslate="viajatoApp.contrato.descricao">Descricao</span></th>
-            <th><span jhiTranslate="viajatoApp.contrato.locadora">Locadora</span></th>
+            <th><span jhiTranslate="viajatoApp.contrato.cliente">Cliente</span></th>
             <th><span jhiTranslate="viajatoApp.contrato.seguradora">Seguradora</span></th>
             <th></th>
             </tr>
@@ -30,8 +30,8 @@
                 <td>{{contrato.valor}}</td>
                 <td>{{contrato.descricao}}</td>
                 <td>
-                    <div *ngIf="contrato.locadora">
-                        <a [routerLink]="['../locadora', contrato.locadora?.id, 'view' ]" >{{contrato.locadora?.id}}</a>
+                    <div *ngIf="contrato.cliente">
+                        <a [routerLink]="['../cliente', contrato.cliente?.id, 'view' ]" >{{contrato.cliente?.id}}</a>
                     </div>
                 </td>
                 <td>

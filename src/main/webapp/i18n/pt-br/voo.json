@@ -19,10 +19,10 @@
             "numero": "Numero",
             "partida": "Partida",
             "chegada": "Chegada",
-            "passagem": "Passagem",
-            "linhaAerea": "Linha Aerea",
             "origem": "Origem",
-            "destino": "Destino"
+            "destino": "Destino",
+            "passagem": "Passagem",
+            "linhaAerea": "Linha Aerea"
         }
     }
 }

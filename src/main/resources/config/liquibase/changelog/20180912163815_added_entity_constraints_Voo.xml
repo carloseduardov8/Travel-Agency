@@ -14,17 +14,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="linha_aerea"/>
 
-        <addForeignKeyConstraint baseColumnNames="origem_id"
-                                 baseTableName="voo"
-                                 constraintName="fk_voo_origem_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="aeroporto"/>
-
-        <addForeignKeyConstraint baseColumnNames="destino_id"
-                                 baseTableName="voo"
-                                 constraintName="fk_voo_destino_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="aeroporto"/>
-
     </changeSet>
 </databaseChangeLog>

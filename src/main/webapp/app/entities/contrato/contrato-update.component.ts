@@ -6,8 +6,8 @@ import { JhiAlertService } from 'ng-jhipster';
 
 import { IContrato } from 'app/shared/model/contrato.model';
 import { ContratoService } from './contrato.service';
-import { ILocadora } from 'app/shared/model/locadora.model';
-import { LocadoraService } from 'app/entities/locadora';
+import { ICliente } from 'app/shared/model/cliente.model';
+import { ClienteService } from 'app/entities/cliente';
 import { ISeguradora } from 'app/shared/model/seguradora.model';
 import { SeguradoraService } from 'app/entities/seguradora';
 
@@ -19,14 +19,14 @@ export class ContratoUpdateComponent implements OnInit {
     private _contrato: IContrato;
     isSaving: boolean;
 
-    locadoras: ILocadora[];
+    clientes: ICliente[];
 
     seguradoras: ISeguradora[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private contratoService: ContratoService,
-        private locadoraService: LocadoraService,
+        private clienteService: ClienteService,
         private seguradoraService: SeguradoraService,
         private activatedRoute: ActivatedRoute
     ) {}
@@ -36,9 +36,9 @@ export class ContratoUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ contrato }) => {
             this.contrato = contrato;
         });
-        this.locadoraService.query().subscribe(
-            (res: HttpResponse<ILocadora[]>) => {
-                this.locadoras = res.body;
+        this.clienteService.query().subscribe(
+            (res: HttpResponse<ICliente[]>) => {
+                this.clientes = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -80,7 +80,7 @@ export class ContratoUpdateComponent implements OnInit {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 
-    trackLocadoraById(index: number, item: ILocadora) {
+    trackClienteById(index: number, item: ICliente) {
         return item.id;
     }
 

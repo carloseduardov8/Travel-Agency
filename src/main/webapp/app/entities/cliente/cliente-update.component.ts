@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { JhiAlertService } from 'ng-jhipster';
 
 import { ICliente } from 'app/shared/model/cliente.model';
 import { ClienteService } from './cliente.service';
-import { IContrato } from 'app/shared/model/contrato.model';
-import { ContratoService } from 'app/entities/contrato';
 
 @Component({
     selector: 'jhi-cliente-update',
@@ -17,26 +14,13 @@ export class ClienteUpdateComponent implements OnInit {
     private _cliente: ICliente;
     isSaving: boolean;
 
-    contratoes: IContrato[];
-
-    constructor(
-        private jhiAlertService: JhiAlertService,
-        private clienteService: ClienteService,
-        private contratoService: ContratoService,
-        private activatedRoute: ActivatedRoute
-    ) {}
+    constructor(private clienteService: ClienteService, private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ cliente }) => {
             this.cliente = cliente;
         });
-        this.contratoService.query().subscribe(
-            (res: HttpResponse<IContrato[]>) => {
-                this.contratoes = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
     }
 
     previousState() {
@@ -63,14 +47,6 @@ export class ClienteUpdateComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
-    }
-
-    private onError(errorMessage: string) {
-        this.jhiAlertService.error(errorMessage, null, null);
-    }
-
-    trackContratoById(index: number, item: IContrato) {
-        return item.id;
     }
     get cliente() {
         return this._cliente;

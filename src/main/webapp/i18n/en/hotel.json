@@ -18,7 +18,10 @@
             },
             "nome": "Nome",
             "nota": "Nota",
-            "endereco": "Endereco",
+            "logradouro": "Logradouro",
+            "numero": "Numero",
+            "complemento": "Complemento",
+            "cep": "Cep",
             "telefone": "Telefone",
             "quarto": "Quarto"
         }

@@ -48,6 +48,12 @@ public class VooResourceIntTest {
     private static final String DEFAULT_CHEGADA = "AAAAAAAAAA";
     private static final String UPDATED_CHEGADA = "BBBBBBBBBB";
 
+    private static final String DEFAULT_ORIGEM = "AAAAAAAAAA";
+    private static final String UPDATED_ORIGEM = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DESTINO = "AAAAAAAAAA";
+    private static final String UPDATED_DESTINO = "BBBBBBBBBB";
+
     @Autowired
     private VooRepository vooRepository;
 
@@ -88,7 +94,9 @@ public class VooResourceIntTest {
         Voo voo = new Voo()
             .numero(DEFAULT_NUMERO)
             .partida(DEFAULT_PARTIDA)
-            .chegada(DEFAULT_CHEGADA);
+            .chegada(DEFAULT_CHEGADA)
+            .origem(DEFAULT_ORIGEM)
+            .destino(DEFAULT_DESTINO);
         return voo;
     }
 
@@ -115,6 +123,8 @@ public class VooResourceIntTest {
         assertThat(testVoo.getNumero()).isEqualTo(DEFAULT_NUMERO);
         assertThat(testVoo.getPartida()).isEqualTo(DEFAULT_PARTIDA);
         assertThat(testVoo.getChegada()).isEqualTo(DEFAULT_CHEGADA);
+        assertThat(testVoo.getOrigem()).isEqualTo(DEFAULT_ORIGEM);
+        assertThat(testVoo.getDestino()).isEqualTo(DEFAULT_DESTINO);
     }
 
     @Test
@@ -192,6 +202,42 @@ public class VooResourceIntTest {
 
     @Test
     @Transactional
+    public void checkOrigemIsRequired() throws Exception {
+        int databaseSizeBeforeTest = vooRepository.findAll().size();
+        // set the field null
+        voo.setOrigem(null);
+
+        // Create the Voo, which fails.
+
+        restVooMockMvc.perform(post("/api/voos")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(voo)))
+            .andExpect(status().isBadRequest());
+
+        List<Voo> vooList = vooRepository.findAll();
+        assertThat(vooList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDestinoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = vooRepository.findAll().size();
+        // set the field null
+        voo.setDestino(null);
+
+        // Create the Voo, which fails.
+
+        restVooMockMvc.perform(post("/api/voos")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(voo)))
+            .andExpect(status().isBadRequest());
+
+        List<Voo> vooList = vooRepository.findAll();
+        assertThat(vooList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllVoos() throws Exception {
         // Initialize the database
         vooRepository.saveAndFlush(voo);
@@ -203,7 +249,9 @@ public class VooResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(voo.getId().intValue())))
             .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
             .andExpect(jsonPath("$.[*].partida").value(hasItem(DEFAULT_PARTIDA.toString())))
-            .andExpect(jsonPath("$.[*].chegada").value(hasItem(DEFAULT_CHEGADA.toString())));
+            .andExpect(jsonPath("$.[*].chegada").value(hasItem(DEFAULT_CHEGADA.toString())))
+            .andExpect(jsonPath("$.[*].origem").value(hasItem(DEFAULT_ORIGEM.toString())))
+            .andExpect(jsonPath("$.[*].destino").value(hasItem(DEFAULT_DESTINO.toString())));
     }
     
     @Test
@@ -219,7 +267,9 @@ public class VooResourceIntTest {
             .andExpect(jsonPath("$.id").value(voo.getId().intValue()))
             .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
             .andExpect(jsonPath("$.partida").value(DEFAULT_PARTIDA.toString()))
-            .andExpect(jsonPath("$.chegada").value(DEFAULT_CHEGADA.toString()));
+            .andExpect(jsonPath("$.chegada").value(DEFAULT_CHEGADA.toString()))
+            .andExpect(jsonPath("$.origem").value(DEFAULT_ORIGEM.toString()))
+            .andExpect(jsonPath("$.destino").value(DEFAULT_DESTINO.toString()));
     }
 
     @Test
@@ -245,7 +295,9 @@ public class VooResourceIntTest {
         updatedVoo
             .numero(UPDATED_NUMERO)
             .partida(UPDATED_PARTIDA)
-            .chegada(UPDATED_CHEGADA);
+            .chegada(UPDATED_CHEGADA)
+            .origem(UPDATED_ORIGEM)
+            .destino(UPDATED_DESTINO);
 
         restVooMockMvc.perform(put("/api/voos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -259,6 +311,8 @@ public class VooResourceIntTest {
         assertThat(testVoo.getNumero()).isEqualTo(UPDATED_NUMERO);
         assertThat(testVoo.getPartida()).isEqualTo(UPDATED_PARTIDA);
         assertThat(testVoo.getChegada()).isEqualTo(UPDATED_CHEGADA);
+        assertThat(testVoo.getOrigem()).isEqualTo(UPDATED_ORIGEM);
+        assertThat(testVoo.getDestino()).isEqualTo(UPDATED_DESTINO);
     }
 
     @Test

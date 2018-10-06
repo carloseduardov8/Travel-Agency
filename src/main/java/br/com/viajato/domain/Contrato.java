@@ -1,6 +1,5 @@
 package br.com.viajato.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -9,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -39,13 +36,9 @@ public class Contrato implements Serializable {
     @Column(name = "descricao", nullable = false)
     private String descricao;
 
-    @OneToMany(mappedBy = "contrato")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Cliente> clientes = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties("contratoes")
-    private Locadora locadora;
+    private Cliente cliente;
 
     @ManyToOne
     @JsonIgnoreProperties("contratoes")
@@ -99,42 +92,17 @@ public class Contrato implements Serializable {
         this.descricao = descricao;
     }
 
-    public Set<Cliente> getClientes() {
-        return clientes;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public Contrato clientes(Set<Cliente> clientes) {
-        this.clientes = clientes;
+    public Contrato cliente(Cliente cliente) {
+        this.cliente = cliente;
         return this;
     }
 
-    public Contrato addCliente(Cliente cliente) {
-        this.clientes.add(cliente);
-        cliente.setContrato(this);
-        return this;
-    }
-
-    public Contrato removeCliente(Cliente cliente) {
-        this.clientes.remove(cliente);
-        cliente.setContrato(null);
-        return this;
-    }
-
-    public void setClientes(Set<Cliente> clientes) {
-        this.clientes = clientes;
-    }
-
-    public Locadora getLocadora() {
-        return locadora;
-    }
-
-    public Contrato locadora(Locadora locadora) {
-        this.locadora = locadora;
-        return this;
-    }
-
-    public void setLocadora(Locadora locadora) {
-        this.locadora = locadora;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Seguradora getSeguradora() {

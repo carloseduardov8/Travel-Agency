@@ -45,6 +45,21 @@ public class LinhaAereaResourceIntTest {
     private static final String DEFAULT_CODIGO = "AAAAAAAAAA";
     private static final String UPDATED_CODIGO = "BBBBBBBBBB";
 
+    private static final String DEFAULT_LOGRADOURO = "AAAAAAAAAA";
+    private static final String UPDATED_LOGRADOURO = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_NUMERO = 1;
+    private static final Integer UPDATED_NUMERO = 2;
+
+    private static final String DEFAULT_COMPLEMENTO = "AAAAAAAAAA";
+    private static final String UPDATED_COMPLEMENTO = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_CEP = 1;
+    private static final Integer UPDATED_CEP = 2;
+
+    private static final Integer DEFAULT_TELEFONE = 1;
+    private static final Integer UPDATED_TELEFONE = 2;
+
     @Autowired
     private LinhaAereaRepository linhaAereaRepository;
 
@@ -84,7 +99,12 @@ public class LinhaAereaResourceIntTest {
     public static LinhaAerea createEntity(EntityManager em) {
         LinhaAerea linhaAerea = new LinhaAerea()
             .nome(DEFAULT_NOME)
-            .codigo(DEFAULT_CODIGO);
+            .codigo(DEFAULT_CODIGO)
+            .logradouro(DEFAULT_LOGRADOURO)
+            .numero(DEFAULT_NUMERO)
+            .complemento(DEFAULT_COMPLEMENTO)
+            .cep(DEFAULT_CEP)
+            .telefone(DEFAULT_TELEFONE);
         return linhaAerea;
     }
 
@@ -110,6 +130,11 @@ public class LinhaAereaResourceIntTest {
         LinhaAerea testLinhaAerea = linhaAereaList.get(linhaAereaList.size() - 1);
         assertThat(testLinhaAerea.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testLinhaAerea.getCodigo()).isEqualTo(DEFAULT_CODIGO);
+        assertThat(testLinhaAerea.getLogradouro()).isEqualTo(DEFAULT_LOGRADOURO);
+        assertThat(testLinhaAerea.getNumero()).isEqualTo(DEFAULT_NUMERO);
+        assertThat(testLinhaAerea.getComplemento()).isEqualTo(DEFAULT_COMPLEMENTO);
+        assertThat(testLinhaAerea.getCep()).isEqualTo(DEFAULT_CEP);
+        assertThat(testLinhaAerea.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
     }
 
     @Test
@@ -169,6 +194,60 @@ public class LinhaAereaResourceIntTest {
 
     @Test
     @Transactional
+    public void checkLogradouroIsRequired() throws Exception {
+        int databaseSizeBeforeTest = linhaAereaRepository.findAll().size();
+        // set the field null
+        linhaAerea.setLogradouro(null);
+
+        // Create the LinhaAerea, which fails.
+
+        restLinhaAereaMockMvc.perform(post("/api/linha-aereas")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(linhaAerea)))
+            .andExpect(status().isBadRequest());
+
+        List<LinhaAerea> linhaAereaList = linhaAereaRepository.findAll();
+        assertThat(linhaAereaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCepIsRequired() throws Exception {
+        int databaseSizeBeforeTest = linhaAereaRepository.findAll().size();
+        // set the field null
+        linhaAerea.setCep(null);
+
+        // Create the LinhaAerea, which fails.
+
+        restLinhaAereaMockMvc.perform(post("/api/linha-aereas")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(linhaAerea)))
+            .andExpect(status().isBadRequest());
+
+        List<LinhaAerea> linhaAereaList = linhaAereaRepository.findAll();
+        assertThat(linhaAereaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkTelefoneIsRequired() throws Exception {
+        int databaseSizeBeforeTest = linhaAereaRepository.findAll().size();
+        // set the field null
+        linhaAerea.setTelefone(null);
+
+        // Create the LinhaAerea, which fails.
+
+        restLinhaAereaMockMvc.perform(post("/api/linha-aereas")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(linhaAerea)))
+            .andExpect(status().isBadRequest());
+
+        List<LinhaAerea> linhaAereaList = linhaAereaRepository.findAll();
+        assertThat(linhaAereaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllLinhaAereas() throws Exception {
         // Initialize the database
         linhaAereaRepository.saveAndFlush(linhaAerea);
@@ -179,7 +258,12 @@ public class LinhaAereaResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(linhaAerea.getId().intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
-            .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO.toString())));
+            .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO.toString())))
+            .andExpect(jsonPath("$.[*].logradouro").value(hasItem(DEFAULT_LOGRADOURO.toString())))
+            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
+            .andExpect(jsonPath("$.[*].complemento").value(hasItem(DEFAULT_COMPLEMENTO.toString())))
+            .andExpect(jsonPath("$.[*].cep").value(hasItem(DEFAULT_CEP)))
+            .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE)));
     }
     
     @Test
@@ -194,7 +278,12 @@ public class LinhaAereaResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(linhaAerea.getId().intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
-            .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO.toString()));
+            .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO.toString()))
+            .andExpect(jsonPath("$.logradouro").value(DEFAULT_LOGRADOURO.toString()))
+            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
+            .andExpect(jsonPath("$.complemento").value(DEFAULT_COMPLEMENTO.toString()))
+            .andExpect(jsonPath("$.cep").value(DEFAULT_CEP))
+            .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE));
     }
 
     @Test
@@ -219,7 +308,12 @@ public class LinhaAereaResourceIntTest {
         em.detach(updatedLinhaAerea);
         updatedLinhaAerea
             .nome(UPDATED_NOME)
-            .codigo(UPDATED_CODIGO);
+            .codigo(UPDATED_CODIGO)
+            .logradouro(UPDATED_LOGRADOURO)
+            .numero(UPDATED_NUMERO)
+            .complemento(UPDATED_COMPLEMENTO)
+            .cep(UPDATED_CEP)
+            .telefone(UPDATED_TELEFONE);
 
         restLinhaAereaMockMvc.perform(put("/api/linha-aereas")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -232,6 +326,11 @@ public class LinhaAereaResourceIntTest {
         LinhaAerea testLinhaAerea = linhaAereaList.get(linhaAereaList.size() - 1);
         assertThat(testLinhaAerea.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testLinhaAerea.getCodigo()).isEqualTo(UPDATED_CODIGO);
+        assertThat(testLinhaAerea.getLogradouro()).isEqualTo(UPDATED_LOGRADOURO);
+        assertThat(testLinhaAerea.getNumero()).isEqualTo(UPDATED_NUMERO);
+        assertThat(testLinhaAerea.getComplemento()).isEqualTo(UPDATED_COMPLEMENTO);
+        assertThat(testLinhaAerea.getCep()).isEqualTo(UPDATED_CEP);
+        assertThat(testLinhaAerea.getTelefone()).isEqualTo(UPDATED_TELEFONE);
     }
 
     @Test

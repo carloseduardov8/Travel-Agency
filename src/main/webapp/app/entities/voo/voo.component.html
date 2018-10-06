@@ -18,9 +18,9 @@
             <th><span jhiTranslate="viajatoApp.voo.numero">Numero</span></th>
             <th><span jhiTranslate="viajatoApp.voo.partida">Partida</span></th>
             <th><span jhiTranslate="viajatoApp.voo.chegada">Chegada</span></th>
-            <th><span jhiTranslate="viajatoApp.voo.linhaAerea">Linha Aerea</span></th>
             <th><span jhiTranslate="viajatoApp.voo.origem">Origem</span></th>
             <th><span jhiTranslate="viajatoApp.voo.destino">Destino</span></th>
+            <th><span jhiTranslate="viajatoApp.voo.linhaAerea">Linha Aerea</span></th>
             <th></th>
             </tr>
             </thead>
@@ -30,19 +30,11 @@
                 <td>{{voo.numero}}</td>
                 <td>{{voo.partida}}</td>
                 <td>{{voo.chegada}}</td>
+                <td>{{voo.origem}}</td>
+                <td>{{voo.destino}}</td>
                 <td>
                     <div *ngIf="voo.linhaAerea">
                         <a [routerLink]="['../linha-aerea', voo.linhaAerea?.id, 'view' ]" >{{voo.linhaAerea?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="voo.origem">
-                        <a [routerLink]="['../aeroporto', voo.origem?.id, 'view' ]" >{{voo.origem?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="voo.destino">
-                        <a [routerLink]="['../aeroporto', voo.destino?.id, 'view' ]" >{{voo.destino?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

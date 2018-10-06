@@ -20,7 +20,6 @@
             "valor": "Valor",
             "descricao": "Descricao",
             "cliente": "Cliente",
-            "locadora": "Locadora",
             "seguradora": "Seguradora"
         }
     }

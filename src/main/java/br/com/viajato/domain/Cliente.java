@@ -1,7 +1,6 @@
 package br.com.viajato.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -46,19 +45,15 @@ public class Cliente implements Serializable {
     @OneToMany(mappedBy = "cliente")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Passagem> passagems = new HashSet<>();
-
     @OneToMany(mappedBy = "cliente")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Locacao> locacaos = new HashSet<>();
-
     @OneToMany(mappedBy = "cliente")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Reserva> reservas = new HashSet<>();
-
-    @ManyToOne
-    @JsonIgnoreProperties("clientes")
-    private Contrato contrato;
-
+    @OneToMany(mappedBy = "cliente")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Contrato> contratoes = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -195,17 +190,29 @@ public class Cliente implements Serializable {
         this.reservas = reservas;
     }
 
-    public Contrato getContrato() {
-        return contrato;
+    public Set<Contrato> getContratoes() {
+        return contratoes;
     }
 
-    public Cliente contrato(Contrato contrato) {
-        this.contrato = contrato;
+    public Cliente contratoes(Set<Contrato> contratoes) {
+        this.contratoes = contratoes;
         return this;
     }
 
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
+    public Cliente addContrato(Contrato contrato) {
+        this.contratoes.add(contrato);
+        contrato.setCliente(this);
+        return this;
+    }
+
+    public Cliente removeContrato(Contrato contrato) {
+        this.contratoes.remove(contrato);
+        contrato.setCliente(null);
+        return this;
+    }
+
+    public void setContratoes(Set<Contrato> contratoes) {
+        this.contratoes = contratoes;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
