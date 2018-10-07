@@ -1,21 +1,26 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'jhi-basket',
-  templateUrl: './basket.component.html',
-  styleUrls: [
-    'basket.css'
-  ]
+    selector: 'jhi-basket',
+    templateUrl: './basket.component.html',
+    styleUrls: ['basket.css']
 })
 export class BasketComponent implements OnInit {
+    message: string;
 
-  message: string;
+    constructor(private route: ActivatedRoute, private router: Router) {
+        this.route.params.subscribe(params => {
+            console.log(params);
+            if (params['query']) {
+                this.doSearch(params['query']);
+            }
+        });
+    }
 
-  constructor() {
-    this.message = 'BasketComponent message';
-  }
+    ngOnInit() {}
 
-  ngOnInit() {
-  }
-
+    doSearch(query) {
+        console.log(query);
+    }
 }

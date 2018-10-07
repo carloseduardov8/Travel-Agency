@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
+import { RouterModule, Router } from '@angular/router';
 
 import { CidadeService } from '../entities/cidade/cidade.service';
 
@@ -17,9 +18,11 @@ export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
     cidades: ICidade[];
+
     private jhiAlertService: JhiAlertService;
 
     constructor(
+        private router: Router,
         private cidadeService: CidadeService,
         private principal: Principal,
         private loginModalService: LoginModalService,
@@ -60,7 +63,25 @@ export class HomeComponent implements OnInit {
         );
     }
 
-    private onError(errorMessage: string) {
+    onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    onSubmit(from, to, dateIn, dateOut, passengers) {
+        console.log(from.value);
+        console.log(to.value);
+        console.log(dateIn.value);
+        console.log(dateOut.value);
+        console.log(passengers.value);
+        this.router.navigate([
+            '/basket',
+            {
+                from: from.value,
+                to: to.value,
+                dateIn: dateIn.value,
+                dateOut: dateOut.value,
+                passaengers: passengers.value
+            }
+        ]);
     }
 }

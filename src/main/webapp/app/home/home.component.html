@@ -20,18 +20,20 @@
                 -->
         <div >
 
-            <form action="" method="get" class="card jh-card form-search-passengers">
+
+
+            <form class="card jh-card form-search-passengers" (ngSubmit)="onSubmit(from,to, dateIn, dateOut, passengers)">
                 <div class="form-row">
                     <div class="col">
                         <label for="from">Origem</label>
-                        <select id="from" class="form-control">
+                        <select id="from" class="form-control" required #from>
                             <option value="">Selecione uma cidade</option>
                             <option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</option>
                         </select>
                     </div>
                     <div class="col">
                         <label for="to">Destino</label>
-                        <select id="to" class="form-control">
+                        <select id="to" class="form-control" required #to>
                             <option value="">Selecione uma cidade</option>
                             <option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</option>
                         </select>
@@ -41,17 +43,17 @@
                 <div class="form-row mt-3">
                     <div class="datepicker-container col-md-3 col-6">
                         <label>Data de Ida</label>
-                        <input type="text" class="form-control" id="datepicker-start">
+                        <input type="text" class="form-control" id="datepicker-start" required #dateIn readonly>
                     </div>
 
                     <div class="datepicker-container  col-md-3 col-6">
                         <label>Data de Volta</label>
-                        <input type="text" class="form-control" id="datepicker-end" placeholder="Opicional">
+                        <input type="text" class="form-control" id="datepicker-end" placeholder="Opcional" #dateOut readonly>
                     </div>
 
                     <div class="col-md-3 col-6">
                         <label>Nº de Passageiros</label>
-                        <select class="form-control text-center">
+                        <select class="form-control text-center" required #passengers>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -61,7 +63,7 @@
                     </div>
 
                     <div class="col-md-3 col-6">
-                        <button type="button" class="btn btn-outline-warning btn-block">Procurar passagens</button>
+                        <input type="submit"  class="btn btn-outline-warning btn-block" value="Procurar passagens"/>
                     </div>
                 </div>
             </form>
