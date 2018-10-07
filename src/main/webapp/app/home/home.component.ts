@@ -7,7 +7,6 @@ import { CidadeService } from '../entities/cidade/cidade.service';
 import { LoginModalService, Principal, Account } from 'app/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ICidade } from 'app/shared/model/cidade.model';
-import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'jhi-home',
