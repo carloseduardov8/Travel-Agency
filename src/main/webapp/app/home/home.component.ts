@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
         this.modalRef = this.loginModalService.open();
     }
 
-    //Get all cities
+    // Get all cities
     loadAll() {
         this.cidadeService.query().subscribe(
             (res: HttpResponse<ICidade[]>) => {
