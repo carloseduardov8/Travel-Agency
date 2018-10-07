@@ -4,7 +4,13 @@
 	text-align: center;
 }
 
+.ticket-box {
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
 .ticket {
+	position: relative;
 	display: inline-block;
     width: 800px;
     height: 250px;
@@ -21,4 +27,20 @@
 
 .hotel-ticket {
 	background-image: url("../../content/images/hotel-ticket.png");
+}
+
+.ticket > span {
+	position: relative;
+	font-family: 'Yellowtail', cursive;
+	font-size: 17pt;
+}
+
+.plane-ticket > #plane-ticket-text1 {
+	left: -235px;
+	top: 14px;
+}
+
+.hotel-ticket > #hotel-ticket-text1 {
+	left: -214px;
+	top: 14px;
 }

@@ -1,6 +1,12 @@
 {
   "basket": {
     "title": "Build Your Trip",
-    "subtitle": "Choose which aspects of your trip you'd like to purchase."
-    }
+    "subtitle": "Choose which aspects of your trip you'd like to purchase.",
+	"plane": {
+		"text1": "Plane Ticket"
+	},
+	"hotel": {
+		"text1": "Hotel"
+	}
+	}
 }
