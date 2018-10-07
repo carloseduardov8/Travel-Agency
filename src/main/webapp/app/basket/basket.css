@@ -1,1 +1,24 @@
 /* basket.css */
+
+.col-md-10 {
+	text-align: center;
+}
+
+.ticket {
+	display: inline-block;
+    width: 800px;
+    height: 250px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size:contain;
+}
+
+.plane-ticket {
+	background-image: url("../../content/images/boarding-pass.png");
+}
+
+.hotel-ticket {
+	background-image: url("../../content/images/hotel-ticket.png");
+}
