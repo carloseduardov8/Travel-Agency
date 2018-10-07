@@ -6,15 +6,12 @@ import { HOME_ROUTE, HomeComponent } from './';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule, MatInputModule } from '@angular/material';
 
 @NgModule({
     imports: [
         ViajatoSharedModule,
         BrowserModule,
-        MatInputModule,
         ReactiveFormsModule,
-        MatAutocompleteModule,
         BrowserAnimationsModule,
         FormsModule,
         RouterModule.forChild([HOME_ROUTE])
