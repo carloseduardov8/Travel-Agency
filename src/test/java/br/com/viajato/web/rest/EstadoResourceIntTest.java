@@ -39,12 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ViajatoApp.class)
 public class EstadoResourceIntTest {
 
-    private static final String DEFAULT_NOME = "AAAAAAAAAA";
-    private static final String UPDATED_NOME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_CODIGO = "AAAAAAAAAA";
-    private static final String UPDATED_CODIGO = "BBBBBBBBBB";
-
     @Autowired
     private EstadoRepository estadoRepository;
 
@@ -82,9 +76,7 @@ public class EstadoResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Estado createEntity(EntityManager em) {
-        Estado estado = new Estado()
-            .nome(DEFAULT_NOME)
-            .codigo(DEFAULT_CODIGO);
+        Estado estado = new Estado();
         return estado;
     }
 
@@ -108,8 +100,6 @@ public class EstadoResourceIntTest {
         List<Estado> estadoList = estadoRepository.findAll();
         assertThat(estadoList).hasSize(databaseSizeBeforeCreate + 1);
         Estado testEstado = estadoList.get(estadoList.size() - 1);
-        assertThat(testEstado.getNome()).isEqualTo(DEFAULT_NOME);
-        assertThat(testEstado.getCodigo()).isEqualTo(DEFAULT_CODIGO);
     }
 
     @Test
@@ -133,42 +123,6 @@ public class EstadoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkNomeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = estadoRepository.findAll().size();
-        // set the field null
-        estado.setNome(null);
-
-        // Create the Estado, which fails.
-
-        restEstadoMockMvc.perform(post("/api/estados")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(estado)))
-            .andExpect(status().isBadRequest());
-
-        List<Estado> estadoList = estadoRepository.findAll();
-        assertThat(estadoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkCodigoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = estadoRepository.findAll().size();
-        // set the field null
-        estado.setCodigo(null);
-
-        // Create the Estado, which fails.
-
-        restEstadoMockMvc.perform(post("/api/estados")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(estado)))
-            .andExpect(status().isBadRequest());
-
-        List<Estado> estadoList = estadoRepository.findAll();
-        assertThat(estadoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllEstados() throws Exception {
         // Initialize the database
         estadoRepository.saveAndFlush(estado);
@@ -177,9 +131,7 @@ public class EstadoResourceIntTest {
         restEstadoMockMvc.perform(get("/api/estados?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(estado.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
-            .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO.toString())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(estado.getId().intValue())));
     }
     
     @Test
@@ -192,9 +144,7 @@ public class EstadoResourceIntTest {
         restEstadoMockMvc.perform(get("/api/estados/{id}", estado.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(estado.getId().intValue()))
-            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
-            .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO.toString()));
+            .andExpect(jsonPath("$.id").value(estado.getId().intValue()));
     }
 
     @Test
@@ -217,9 +167,6 @@ public class EstadoResourceIntTest {
         Estado updatedEstado = estadoRepository.findById(estado.getId()).get();
         // Disconnect from session so that the updates on updatedEstado are not directly saved in db
         em.detach(updatedEstado);
-        updatedEstado
-            .nome(UPDATED_NOME)
-            .codigo(UPDATED_CODIGO);
 
         restEstadoMockMvc.perform(put("/api/estados")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -230,8 +177,6 @@ public class EstadoResourceIntTest {
         List<Estado> estadoList = estadoRepository.findAll();
         assertThat(estadoList).hasSize(databaseSizeBeforeUpdate);
         Estado testEstado = estadoList.get(estadoList.size() - 1);
-        assertThat(testEstado.getNome()).isEqualTo(UPDATED_NOME);
-        assertThat(testEstado.getCodigo()).isEqualTo(UPDATED_CODIGO);
     }
 
     @Test

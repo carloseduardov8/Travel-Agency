@@ -15,10 +15,7 @@
             },
             "detail": {
                 "title": "Estado"
-            },
-            "nome": "Nome",
-            "codigo": "Codigo",
-            "cidade": "Cidade"
+            }
         }
     }
 }

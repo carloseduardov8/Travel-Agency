@@ -15,16 +15,12 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="viajatoApp.estado.nome">Nome</span></th>
-            <th><span jhiTranslate="viajatoApp.estado.codigo">Codigo</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let estado of estados ;trackBy: trackId">
                 <td><a [routerLink]="['/estado', estado.id, 'view' ]">{{estado.id}}</a></td>
-                <td>{{estado.nome}}</td>
-                <td>{{estado.codigo}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

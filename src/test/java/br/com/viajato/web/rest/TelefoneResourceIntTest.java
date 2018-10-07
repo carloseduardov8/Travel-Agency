@@ -39,12 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ViajatoApp.class)
 public class TelefoneResourceIntTest {
 
-    private static final Integer DEFAULT_DDD = 1;
-    private static final Integer UPDATED_DDD = 2;
-
-    private static final Integer DEFAULT_NUMERO = 1;
-    private static final Integer UPDATED_NUMERO = 2;
-
     @Autowired
     private TelefoneRepository telefoneRepository;
 
@@ -82,9 +76,7 @@ public class TelefoneResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Telefone createEntity(EntityManager em) {
-        Telefone telefone = new Telefone()
-            .ddd(DEFAULT_DDD)
-            .numero(DEFAULT_NUMERO);
+        Telefone telefone = new Telefone();
         return telefone;
     }
 
@@ -108,8 +100,6 @@ public class TelefoneResourceIntTest {
         List<Telefone> telefoneList = telefoneRepository.findAll();
         assertThat(telefoneList).hasSize(databaseSizeBeforeCreate + 1);
         Telefone testTelefone = telefoneList.get(telefoneList.size() - 1);
-        assertThat(testTelefone.getDdd()).isEqualTo(DEFAULT_DDD);
-        assertThat(testTelefone.getNumero()).isEqualTo(DEFAULT_NUMERO);
     }
 
     @Test
@@ -133,42 +123,6 @@ public class TelefoneResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDddIsRequired() throws Exception {
-        int databaseSizeBeforeTest = telefoneRepository.findAll().size();
-        // set the field null
-        telefone.setDdd(null);
-
-        // Create the Telefone, which fails.
-
-        restTelefoneMockMvc.perform(post("/api/telefones")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(telefone)))
-            .andExpect(status().isBadRequest());
-
-        List<Telefone> telefoneList = telefoneRepository.findAll();
-        assertThat(telefoneList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkNumeroIsRequired() throws Exception {
-        int databaseSizeBeforeTest = telefoneRepository.findAll().size();
-        // set the field null
-        telefone.setNumero(null);
-
-        // Create the Telefone, which fails.
-
-        restTelefoneMockMvc.perform(post("/api/telefones")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(telefone)))
-            .andExpect(status().isBadRequest());
-
-        List<Telefone> telefoneList = telefoneRepository.findAll();
-        assertThat(telefoneList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllTelefones() throws Exception {
         // Initialize the database
         telefoneRepository.saveAndFlush(telefone);
@@ -177,9 +131,7 @@ public class TelefoneResourceIntTest {
         restTelefoneMockMvc.perform(get("/api/telefones?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(telefone.getId().intValue())))
-            .andExpect(jsonPath("$.[*].ddd").value(hasItem(DEFAULT_DDD)))
-            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(telefone.getId().intValue())));
     }
     
     @Test
@@ -192,9 +144,7 @@ public class TelefoneResourceIntTest {
         restTelefoneMockMvc.perform(get("/api/telefones/{id}", telefone.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(telefone.getId().intValue()))
-            .andExpect(jsonPath("$.ddd").value(DEFAULT_DDD))
-            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO));
+            .andExpect(jsonPath("$.id").value(telefone.getId().intValue()));
     }
 
     @Test
@@ -217,9 +167,6 @@ public class TelefoneResourceIntTest {
         Telefone updatedTelefone = telefoneRepository.findById(telefone.getId()).get();
         // Disconnect from session so that the updates on updatedTelefone are not directly saved in db
         em.detach(updatedTelefone);
-        updatedTelefone
-            .ddd(UPDATED_DDD)
-            .numero(UPDATED_NUMERO);
 
         restTelefoneMockMvc.perform(put("/api/telefones")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -230,8 +177,6 @@ public class TelefoneResourceIntTest {
         List<Telefone> telefoneList = telefoneRepository.findAll();
         assertThat(telefoneList).hasSize(databaseSizeBeforeUpdate);
         Telefone testTelefone = telefoneList.get(telefoneList.size() - 1);
-        assertThat(testTelefone.getDdd()).isEqualTo(UPDATED_DDD);
-        assertThat(testTelefone.getNumero()).isEqualTo(UPDATED_NUMERO);
     }
 
     @Test

@@ -15,11 +15,7 @@
             },
             "detail": {
                 "title": "Cidade"
-            },
-            "nome": "Nome",
-            "aeroporto": "Aeroporto",
-            "endereco": "Endereco",
-            "estado": "Estado"
+            }
         }
     }
 }

@@ -5,20 +5,6 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="viajatoApp.aeroporto.nome">Nome</span></dt>
-                <dd>
-                    <span>{{aeroporto.nome}}</span>
-                </dd>
-                <dt><span jhiTranslate="viajatoApp.aeroporto.codigo">Codigo</span></dt>
-                <dd>
-                    <span>{{aeroporto.codigo}}</span>
-                </dd>
-                <dt><span jhiTranslate="viajatoApp.aeroporto.cidade">Cidade</span></dt>
-                <dd>
-                    <div *ngIf="aeroporto.cidade">
-                        <a [routerLink]="['/cidade', aeroporto.cidade?.id, 'view']">{{aeroporto.cidade?.id}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

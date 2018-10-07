@@ -1,15 +1,11 @@
 package br.com.viajato.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -26,18 +22,6 @@ public class Estado implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Column(name = "nome", nullable = false)
-    private String nome;
-
-    @NotNull
-    @Column(name = "codigo", nullable = false)
-    private String codigo;
-
-    @OneToMany(mappedBy = "estado")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Cidade> cidades = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -45,57 +29,6 @@ public class Estado implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public Estado nome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public Estado codigo(String codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public Set<Cidade> getCidades() {
-        return cidades;
-    }
-
-    public Estado cidades(Set<Cidade> cidades) {
-        this.cidades = cidades;
-        return this;
-    }
-
-    public Estado addCidade(Cidade cidade) {
-        this.cidades.add(cidade);
-        cidade.setEstado(this);
-        return this;
-    }
-
-    public Estado removeCidade(Cidade cidade) {
-        this.cidades.remove(cidade);
-        cidade.setEstado(null);
-        return this;
-    }
-
-    public void setCidades(Set<Cidade> cidades) {
-        this.cidades = cidades;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -123,8 +56,6 @@ public class Estado implements Serializable {
     public String toString() {
         return "Estado{" +
             "id=" + getId() +
-            ", nome='" + getNome() + "'" +
-            ", codigo='" + getCodigo() + "'" +
             "}";
     }
 }

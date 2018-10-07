@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { JhiAlertService } from 'ng-jhipster';
 
 import { IAeroporto } from 'app/shared/model/aeroporto.model';
 import { AeroportoService } from './aeroporto.service';
-import { ICidade } from 'app/shared/model/cidade.model';
-import { CidadeService } from 'app/entities/cidade';
 
 @Component({
     selector: 'jhi-aeroporto-update',
@@ -17,26 +14,13 @@ export class AeroportoUpdateComponent implements OnInit {
     private _aeroporto: IAeroporto;
     isSaving: boolean;
 
-    cidades: ICidade[];
-
-    constructor(
-        private jhiAlertService: JhiAlertService,
-        private aeroportoService: AeroportoService,
-        private cidadeService: CidadeService,
-        private activatedRoute: ActivatedRoute
-    ) {}
+    constructor(private aeroportoService: AeroportoService, private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ aeroporto }) => {
             this.aeroporto = aeroporto;
         });
-        this.cidadeService.query().subscribe(
-            (res: HttpResponse<ICidade[]>) => {
-                this.cidades = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
     }
 
     previousState() {
@@ -63,14 +47,6 @@ export class AeroportoUpdateComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
-    }
-
-    private onError(errorMessage: string) {
-        this.jhiAlertService.error(errorMessage, null, null);
-    }
-
-    trackCidadeById(index: number, item: ICidade) {
-        return item.id;
     }
     get aeroporto() {
         return this._aeroporto;

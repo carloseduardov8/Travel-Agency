@@ -15,15 +15,7 @@
             },
             "detail": {
                 "title": "Endereco"
-            },
-            "tipo": "Tipo",
-            "logradouro": "Logradouro",
-            "numero": "Numero",
-            "complemento": "Complemento",
-            "locadora": "Locadora",
-            "hotel": "Hotel",
-            "seguradora": "Seguradora",
-            "cidade": "Cidade"
+            }
         }
     }
 }

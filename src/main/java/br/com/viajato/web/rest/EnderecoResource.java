@@ -11,14 +11,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing Endereco.
@@ -46,7 +43,7 @@ public class EnderecoResource {
      */
     @PostMapping("/enderecos")
     @Timed
-    public ResponseEntity<Endereco> createEndereco(@Valid @RequestBody Endereco endereco) throws URISyntaxException {
+    public ResponseEntity<Endereco> createEndereco(@RequestBody Endereco endereco) throws URISyntaxException {
         log.debug("REST request to save Endereco : {}", endereco);
         if (endereco.getId() != null) {
             throw new BadRequestAlertException("A new endereco cannot already have an ID", ENTITY_NAME, "idexists");
@@ -68,7 +65,7 @@ public class EnderecoResource {
      */
     @PutMapping("/enderecos")
     @Timed
-    public ResponseEntity<Endereco> updateEndereco(@Valid @RequestBody Endereco endereco) throws URISyntaxException {
+    public ResponseEntity<Endereco> updateEndereco(@RequestBody Endereco endereco) throws URISyntaxException {
         log.debug("REST request to update Endereco : {}", endereco);
         if (endereco.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -82,33 +79,11 @@ public class EnderecoResource {
     /**
      * GET  /enderecos : get all the enderecos.
      *
-     * @param filter the filter of the request
      * @return the ResponseEntity with status 200 (OK) and the list of enderecos in body
      */
     @GetMapping("/enderecos")
     @Timed
-    public List<Endereco> getAllEnderecos(@RequestParam(required = false) String filter) {
-        if ("locadora-is-null".equals(filter)) {
-            log.debug("REST request to get all Enderecos where locadora is null");
-            return StreamSupport
-                .stream(enderecoRepository.findAll().spliterator(), false)
-                .filter(endereco -> endereco.getLocadora() == null)
-                .collect(Collectors.toList());
-        }
-        if ("hotel-is-null".equals(filter)) {
-            log.debug("REST request to get all Enderecos where hotel is null");
-            return StreamSupport
-                .stream(enderecoRepository.findAll().spliterator(), false)
-                .filter(endereco -> endereco.getHotel() == null)
-                .collect(Collectors.toList());
-        }
-        if ("seguradora-is-null".equals(filter)) {
-            log.debug("REST request to get all Enderecos where seguradora is null");
-            return StreamSupport
-                .stream(enderecoRepository.findAll().spliterator(), false)
-                .filter(endereco -> endereco.getSeguradora() == null)
-                .collect(Collectors.toList());
-        }
+    public List<Endereco> getAllEnderecos() {
         log.debug("REST request to get all Enderecos");
         return enderecoRepository.findAll();
     }

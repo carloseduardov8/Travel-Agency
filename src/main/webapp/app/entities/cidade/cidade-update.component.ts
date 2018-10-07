@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { JhiAlertService } from 'ng-jhipster';
 
 import { ICidade } from 'app/shared/model/cidade.model';
 import { CidadeService } from './cidade.service';
-import { IEstado } from 'app/shared/model/estado.model';
-import { EstadoService } from 'app/entities/estado';
 
 @Component({
     selector: 'jhi-cidade-update',
@@ -17,26 +14,13 @@ export class CidadeUpdateComponent implements OnInit {
     private _cidade: ICidade;
     isSaving: boolean;
 
-    estados: IEstado[];
-
-    constructor(
-        private jhiAlertService: JhiAlertService,
-        private cidadeService: CidadeService,
-        private estadoService: EstadoService,
-        private activatedRoute: ActivatedRoute
-    ) {}
+    constructor(private cidadeService: CidadeService, private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ cidade }) => {
             this.cidade = cidade;
         });
-        this.estadoService.query().subscribe(
-            (res: HttpResponse<IEstado[]>) => {
-                this.estados = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
     }
 
     previousState() {
@@ -63,14 +47,6 @@ export class CidadeUpdateComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
-    }
-
-    private onError(errorMessage: string) {
-        this.jhiAlertService.error(errorMessage, null, null);
-    }
-
-    trackEstadoById(index: number, item: IEstado) {
-        return item.id;
     }
     get cidade() {
         return this._cidade;

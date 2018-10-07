@@ -39,9 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ViajatoApp.class)
 public class CidadeResourceIntTest {
 
-    private static final String DEFAULT_NOME = "AAAAAAAAAA";
-    private static final String UPDATED_NOME = "BBBBBBBBBB";
-
     @Autowired
     private CidadeRepository cidadeRepository;
 
@@ -79,8 +76,7 @@ public class CidadeResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Cidade createEntity(EntityManager em) {
-        Cidade cidade = new Cidade()
-            .nome(DEFAULT_NOME);
+        Cidade cidade = new Cidade();
         return cidade;
     }
 
@@ -104,7 +100,6 @@ public class CidadeResourceIntTest {
         List<Cidade> cidadeList = cidadeRepository.findAll();
         assertThat(cidadeList).hasSize(databaseSizeBeforeCreate + 1);
         Cidade testCidade = cidadeList.get(cidadeList.size() - 1);
-        assertThat(testCidade.getNome()).isEqualTo(DEFAULT_NOME);
     }
 
     @Test
@@ -128,24 +123,6 @@ public class CidadeResourceIntTest {
 
     @Test
     @Transactional
-    public void checkNomeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = cidadeRepository.findAll().size();
-        // set the field null
-        cidade.setNome(null);
-
-        // Create the Cidade, which fails.
-
-        restCidadeMockMvc.perform(post("/api/cidades")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(cidade)))
-            .andExpect(status().isBadRequest());
-
-        List<Cidade> cidadeList = cidadeRepository.findAll();
-        assertThat(cidadeList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllCidades() throws Exception {
         // Initialize the database
         cidadeRepository.saveAndFlush(cidade);
@@ -154,8 +131,7 @@ public class CidadeResourceIntTest {
         restCidadeMockMvc.perform(get("/api/cidades?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(cidade.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(cidade.getId().intValue())));
     }
     
     @Test
@@ -168,8 +144,7 @@ public class CidadeResourceIntTest {
         restCidadeMockMvc.perform(get("/api/cidades/{id}", cidade.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(cidade.getId().intValue()))
-            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()));
+            .andExpect(jsonPath("$.id").value(cidade.getId().intValue()));
     }
 
     @Test
@@ -192,8 +167,6 @@ public class CidadeResourceIntTest {
         Cidade updatedCidade = cidadeRepository.findById(cidade.getId()).get();
         // Disconnect from session so that the updates on updatedCidade are not directly saved in db
         em.detach(updatedCidade);
-        updatedCidade
-            .nome(UPDATED_NOME);
 
         restCidadeMockMvc.perform(put("/api/cidades")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -204,7 +177,6 @@ public class CidadeResourceIntTest {
         List<Cidade> cidadeList = cidadeRepository.findAll();
         assertThat(cidadeList).hasSize(databaseSizeBeforeUpdate);
         Cidade testCidade = cidadeList.get(cidadeList.size() - 1);
-        assertThat(testCidade.getNome()).isEqualTo(UPDATED_NOME);
     }
 
     @Test

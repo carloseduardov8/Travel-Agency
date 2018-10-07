@@ -15,12 +15,7 @@
             },
             "detail": {
                 "title": "Aeroporto"
-            },
-            "nome": "Nome",
-            "codigo": "Codigo",
-            "vemDe": "Vem De",
-            "vaiPara": "Vai Para",
-            "cidade": "Cidade"
+            }
         }
     }
 }

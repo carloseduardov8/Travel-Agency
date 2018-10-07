@@ -39,18 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ViajatoApp.class)
 public class EnderecoResourceIntTest {
 
-    private static final String DEFAULT_TIPO = "AAAAAAAAAA";
-    private static final String UPDATED_TIPO = "BBBBBBBBBB";
-
-    private static final String DEFAULT_LOGRADOURO = "AAAAAAAAAA";
-    private static final String UPDATED_LOGRADOURO = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_NUMERO = 1;
-    private static final Integer UPDATED_NUMERO = 2;
-
-    private static final String DEFAULT_COMPLEMENTO = "AAAAAAAAAA";
-    private static final String UPDATED_COMPLEMENTO = "BBBBBBBBBB";
-
     @Autowired
     private EnderecoRepository enderecoRepository;
 
@@ -88,11 +76,7 @@ public class EnderecoResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Endereco createEntity(EntityManager em) {
-        Endereco endereco = new Endereco()
-            .tipo(DEFAULT_TIPO)
-            .logradouro(DEFAULT_LOGRADOURO)
-            .numero(DEFAULT_NUMERO)
-            .complemento(DEFAULT_COMPLEMENTO);
+        Endereco endereco = new Endereco();
         return endereco;
     }
 
@@ -116,10 +100,6 @@ public class EnderecoResourceIntTest {
         List<Endereco> enderecoList = enderecoRepository.findAll();
         assertThat(enderecoList).hasSize(databaseSizeBeforeCreate + 1);
         Endereco testEndereco = enderecoList.get(enderecoList.size() - 1);
-        assertThat(testEndereco.getTipo()).isEqualTo(DEFAULT_TIPO);
-        assertThat(testEndereco.getLogradouro()).isEqualTo(DEFAULT_LOGRADOURO);
-        assertThat(testEndereco.getNumero()).isEqualTo(DEFAULT_NUMERO);
-        assertThat(testEndereco.getComplemento()).isEqualTo(DEFAULT_COMPLEMENTO);
     }
 
     @Test
@@ -143,78 +123,6 @@ public class EnderecoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkTipoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = enderecoRepository.findAll().size();
-        // set the field null
-        endereco.setTipo(null);
-
-        // Create the Endereco, which fails.
-
-        restEnderecoMockMvc.perform(post("/api/enderecos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(endereco)))
-            .andExpect(status().isBadRequest());
-
-        List<Endereco> enderecoList = enderecoRepository.findAll();
-        assertThat(enderecoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkLogradouroIsRequired() throws Exception {
-        int databaseSizeBeforeTest = enderecoRepository.findAll().size();
-        // set the field null
-        endereco.setLogradouro(null);
-
-        // Create the Endereco, which fails.
-
-        restEnderecoMockMvc.perform(post("/api/enderecos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(endereco)))
-            .andExpect(status().isBadRequest());
-
-        List<Endereco> enderecoList = enderecoRepository.findAll();
-        assertThat(enderecoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkNumeroIsRequired() throws Exception {
-        int databaseSizeBeforeTest = enderecoRepository.findAll().size();
-        // set the field null
-        endereco.setNumero(null);
-
-        // Create the Endereco, which fails.
-
-        restEnderecoMockMvc.perform(post("/api/enderecos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(endereco)))
-            .andExpect(status().isBadRequest());
-
-        List<Endereco> enderecoList = enderecoRepository.findAll();
-        assertThat(enderecoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkComplementoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = enderecoRepository.findAll().size();
-        // set the field null
-        endereco.setComplemento(null);
-
-        // Create the Endereco, which fails.
-
-        restEnderecoMockMvc.perform(post("/api/enderecos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(endereco)))
-            .andExpect(status().isBadRequest());
-
-        List<Endereco> enderecoList = enderecoRepository.findAll();
-        assertThat(enderecoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllEnderecos() throws Exception {
         // Initialize the database
         enderecoRepository.saveAndFlush(endereco);
@@ -223,11 +131,7 @@ public class EnderecoResourceIntTest {
         restEnderecoMockMvc.perform(get("/api/enderecos?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(endereco.getId().intValue())))
-            .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO.toString())))
-            .andExpect(jsonPath("$.[*].logradouro").value(hasItem(DEFAULT_LOGRADOURO.toString())))
-            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
-            .andExpect(jsonPath("$.[*].complemento").value(hasItem(DEFAULT_COMPLEMENTO.toString())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(endereco.getId().intValue())));
     }
     
     @Test
@@ -240,11 +144,7 @@ public class EnderecoResourceIntTest {
         restEnderecoMockMvc.perform(get("/api/enderecos/{id}", endereco.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(endereco.getId().intValue()))
-            .andExpect(jsonPath("$.tipo").value(DEFAULT_TIPO.toString()))
-            .andExpect(jsonPath("$.logradouro").value(DEFAULT_LOGRADOURO.toString()))
-            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
-            .andExpect(jsonPath("$.complemento").value(DEFAULT_COMPLEMENTO.toString()));
+            .andExpect(jsonPath("$.id").value(endereco.getId().intValue()));
     }
 
     @Test
@@ -267,11 +167,6 @@ public class EnderecoResourceIntTest {
         Endereco updatedEndereco = enderecoRepository.findById(endereco.getId()).get();
         // Disconnect from session so that the updates on updatedEndereco are not directly saved in db
         em.detach(updatedEndereco);
-        updatedEndereco
-            .tipo(UPDATED_TIPO)
-            .logradouro(UPDATED_LOGRADOURO)
-            .numero(UPDATED_NUMERO)
-            .complemento(UPDATED_COMPLEMENTO);
 
         restEnderecoMockMvc.perform(put("/api/enderecos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -282,10 +177,6 @@ public class EnderecoResourceIntTest {
         List<Endereco> enderecoList = enderecoRepository.findAll();
         assertThat(enderecoList).hasSize(databaseSizeBeforeUpdate);
         Endereco testEndereco = enderecoList.get(enderecoList.size() - 1);
-        assertThat(testEndereco.getTipo()).isEqualTo(UPDATED_TIPO);
-        assertThat(testEndereco.getLogradouro()).isEqualTo(UPDATED_LOGRADOURO);
-        assertThat(testEndereco.getNumero()).isEqualTo(UPDATED_NUMERO);
-        assertThat(testEndereco.getComplemento()).isEqualTo(UPDATED_COMPLEMENTO);
     }
 
     @Test

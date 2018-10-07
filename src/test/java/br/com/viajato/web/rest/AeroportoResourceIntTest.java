@@ -39,12 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ViajatoApp.class)
 public class AeroportoResourceIntTest {
 
-    private static final String DEFAULT_NOME = "AAAAAAAAAA";
-    private static final String UPDATED_NOME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_CODIGO = "AAAAAAAAAA";
-    private static final String UPDATED_CODIGO = "BBBBBBBBBB";
-
     @Autowired
     private AeroportoRepository aeroportoRepository;
 
@@ -82,9 +76,7 @@ public class AeroportoResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Aeroporto createEntity(EntityManager em) {
-        Aeroporto aeroporto = new Aeroporto()
-            .nome(DEFAULT_NOME)
-            .codigo(DEFAULT_CODIGO);
+        Aeroporto aeroporto = new Aeroporto();
         return aeroporto;
     }
 
@@ -108,8 +100,6 @@ public class AeroportoResourceIntTest {
         List<Aeroporto> aeroportoList = aeroportoRepository.findAll();
         assertThat(aeroportoList).hasSize(databaseSizeBeforeCreate + 1);
         Aeroporto testAeroporto = aeroportoList.get(aeroportoList.size() - 1);
-        assertThat(testAeroporto.getNome()).isEqualTo(DEFAULT_NOME);
-        assertThat(testAeroporto.getCodigo()).isEqualTo(DEFAULT_CODIGO);
     }
 
     @Test
@@ -133,42 +123,6 @@ public class AeroportoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkNomeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = aeroportoRepository.findAll().size();
-        // set the field null
-        aeroporto.setNome(null);
-
-        // Create the Aeroporto, which fails.
-
-        restAeroportoMockMvc.perform(post("/api/aeroportos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(aeroporto)))
-            .andExpect(status().isBadRequest());
-
-        List<Aeroporto> aeroportoList = aeroportoRepository.findAll();
-        assertThat(aeroportoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkCodigoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = aeroportoRepository.findAll().size();
-        // set the field null
-        aeroporto.setCodigo(null);
-
-        // Create the Aeroporto, which fails.
-
-        restAeroportoMockMvc.perform(post("/api/aeroportos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(aeroporto)))
-            .andExpect(status().isBadRequest());
-
-        List<Aeroporto> aeroportoList = aeroportoRepository.findAll();
-        assertThat(aeroportoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllAeroportos() throws Exception {
         // Initialize the database
         aeroportoRepository.saveAndFlush(aeroporto);
@@ -177,9 +131,7 @@ public class AeroportoResourceIntTest {
         restAeroportoMockMvc.perform(get("/api/aeroportos?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(aeroporto.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
-            .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO.toString())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(aeroporto.getId().intValue())));
     }
     
     @Test
@@ -192,9 +144,7 @@ public class AeroportoResourceIntTest {
         restAeroportoMockMvc.perform(get("/api/aeroportos/{id}", aeroporto.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(aeroporto.getId().intValue()))
-            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
-            .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO.toString()));
+            .andExpect(jsonPath("$.id").value(aeroporto.getId().intValue()));
     }
 
     @Test
@@ -217,9 +167,6 @@ public class AeroportoResourceIntTest {
         Aeroporto updatedAeroporto = aeroportoRepository.findById(aeroporto.getId()).get();
         // Disconnect from session so that the updates on updatedAeroporto are not directly saved in db
         em.detach(updatedAeroporto);
-        updatedAeroporto
-            .nome(UPDATED_NOME)
-            .codigo(UPDATED_CODIGO);
 
         restAeroportoMockMvc.perform(put("/api/aeroportos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -230,8 +177,6 @@ public class AeroportoResourceIntTest {
         List<Aeroporto> aeroportoList = aeroportoRepository.findAll();
         assertThat(aeroportoList).hasSize(databaseSizeBeforeUpdate);
         Aeroporto testAeroporto = aeroportoList.get(aeroportoList.size() - 1);
-        assertThat(testAeroporto.getNome()).isEqualTo(UPDATED_NOME);
-        assertThat(testAeroporto.getCodigo()).isEqualTo(UPDATED_CODIGO);
     }
 
     @Test

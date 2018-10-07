@@ -15,40 +15,12 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="viajatoApp.telefone.ddd">Ddd</span></th>
-            <th><span jhiTranslate="viajatoApp.telefone.numero">Numero</span></th>
-            <th><span jhiTranslate="viajatoApp.telefone.linhaAerea">Linha Aerea</span></th>
-            <th><span jhiTranslate="viajatoApp.telefone.locadora">Locadora</span></th>
-            <th><span jhiTranslate="viajatoApp.telefone.hotel">Hotel</span></th>
-            <th><span jhiTranslate="viajatoApp.telefone.seguradora">Seguradora</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let telefone of telefones ;trackBy: trackId">
                 <td><a [routerLink]="['/telefone', telefone.id, 'view' ]">{{telefone.id}}</a></td>
-                <td>{{telefone.ddd}}</td>
-                <td>{{telefone.numero}}</td>
-                <td>
-                    <div *ngIf="telefone.linhaAerea">
-                        <a [routerLink]="['../linha-aerea', telefone.linhaAerea?.id, 'view' ]" >{{telefone.linhaAerea?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="telefone.locadora">
-                        <a [routerLink]="['../locadora', telefone.locadora?.id, 'view' ]" >{{telefone.locadora?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="telefone.hotel">
-                        <a [routerLink]="['../hotel', telefone.hotel?.id, 'view' ]" >{{telefone.hotel?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="telefone.seguradora">
-                        <a [routerLink]="['../seguradora', telefone.seguradora?.id, 'view' ]" >{{telefone.seguradora?.id}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

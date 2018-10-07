@@ -15,22 +15,12 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="viajatoApp.aeroporto.nome">Nome</span></th>
-            <th><span jhiTranslate="viajatoApp.aeroporto.codigo">Codigo</span></th>
-            <th><span jhiTranslate="viajatoApp.aeroporto.cidade">Cidade</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let aeroporto of aeroportos ;trackBy: trackId">
                 <td><a [routerLink]="['/aeroporto', aeroporto.id, 'view' ]">{{aeroporto.id}}</a></td>
-                <td>{{aeroporto.nome}}</td>
-                <td>{{aeroporto.codigo}}</td>
-                <td>
-                    <div *ngIf="aeroporto.cidade">
-                        <a [routerLink]="['../cidade', aeroporto.cidade?.id, 'view' ]" >{{aeroporto.cidade?.id}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

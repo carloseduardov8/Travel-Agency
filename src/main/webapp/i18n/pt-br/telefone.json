@@ -15,13 +15,7 @@
             },
             "detail": {
                 "title": "Telefone"
-            },
-            "ddd": "Ddd",
-            "numero": "Numero",
-            "linhaAerea": "Linha Aerea",
-            "locadora": "Locadora",
-            "hotel": "Hotel",
-            "seguradora": "Seguradora"
+            }
         }
     }
 }
