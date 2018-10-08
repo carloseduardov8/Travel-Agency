@@ -21,6 +21,11 @@
 	background-size:contain;
 }
 
+.ticket:hover{
+	-webkit-filter: drop-shadow(10px 10px 6px rgba(249, 224, 153, 0.5));
+     filter: drop-shadow(10px 10px 6px rgba(249, 224, 153, 0.5));
+}
+
 .plane-ticket {
 	background-image: url("../../content/images/boarding-pass.png");
 }
@@ -41,6 +46,12 @@
 }
 
 .hotel-ticket > #hotel-ticket-text1 {
-	left: -214px;
+	left: -210px;
 	top: 14px;
+}
+
+.buy-button {
+	margin: 0 auto;
+	width: 230px;
+	margin-top: 10px;
 }

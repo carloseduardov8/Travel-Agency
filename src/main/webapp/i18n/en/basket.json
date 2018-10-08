@@ -6,7 +6,8 @@
 		"text1": "Plane Ticket"
 	},
 	"hotel": {
-		"text1": "Hotel"
-	}
+		"text1": "Accommodations"
+	},
+	"purchase": "Purchase"
 	}
 }
