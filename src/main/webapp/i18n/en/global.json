@@ -2,7 +2,11 @@
     "global": {
         "title": "Viajato",
         "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
-        "menu": {
+		"ticket": {
+			"plane1": "Plane Ticket",
+			"hotel1": "Accommodations"
+		},
+		"menu": {
             "home": "Home",
             "basket": "Basket",
             "choose-plane": "Choose Plane",

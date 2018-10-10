@@ -2,12 +2,6 @@
   "basket": {
     "title": "Construa Sua Viagem",
     "subtitle": "Escolha quais aspectos da sua viagem você gostaria de comprar.",
-	"plane": {
-		"text1": "Passagem Aérea"
-	},
-	"hotel": {
-		"text1": "Acomodações"
-	},
 	"purchase": "Comprar"
 	}
 }

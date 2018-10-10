@@ -1,4 +1,73 @@
 /* ==============================================================
+Our custom CSS goes here
+===============================================================*/
+
+
+.col-md-10 {
+	text-align: center;
+	margin-top: 13px;
+}
+
+.our-button {
+	margin: 0 auto;
+	width: 230px;
+	margin-top: 10px;
+}
+
+
+.ticket-box {
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+.ticket {
+	position: relative;
+	display: inline-block;
+    width: 800px;
+    height: 250px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size:contain;
+}
+
+.ticket:hover{
+	-webkit-filter: drop-shadow(10px 10px 6px rgba(249, 224, 153, 0.5));
+     filter: drop-shadow(10px 10px 6px rgba(249, 224, 153, 0.5));
+}
+
+.plane-ticket {
+	background-image: url("../../content/images/boarding-pass.png");
+}
+
+.hotel-ticket {
+	background-image: url("../../content/images/hotel-ticket.png");
+}
+
+.ticket > span {
+	position: relative;
+	font-family: 'Yellowtail', cursive;
+	font-size: 17pt;
+}
+
+.plane-ticket > #plane-ticket-text1 {
+	left: -235px;
+	top: 14px;
+}
+
+.hotel-ticket > #hotel-ticket-text1 {
+	left: -210px;
+	top: 14px;
+}
+
+
+
+
+
+
+
+/* ==============================================================
 Bootstrap tweaks
 ===============================================================*/
 
