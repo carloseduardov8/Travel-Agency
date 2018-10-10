@@ -3,8 +3,17 @@
         "title": "Viajato",
         "browsehappy": "Você está usando um navegador <strong>desatualizado</strong>. Favor <a href=\"http://browsehappy.com/?locale=pt_BR\">atualizar o seu navegador</a> para ter uma experiência melhor.",
 		"ticket": {
-			"plane1": "Passagem Aérea",
-			"hotel1": "Acomodações"
+			"plane": {
+				"title": "Passagem Aérea",
+				"from": "Origem: ",
+				"to": "Destino: ",
+				"flight": "Voo GL1104",
+				"departure": "Saída: 05/08/2018 23h55",
+				"arrival": "Chegada: 06/08/2018 23h55"
+			},
+			"hotel": {
+				"title": "Acomodações"
+			}
 		},
 		"menu": {
             "home": "Início",

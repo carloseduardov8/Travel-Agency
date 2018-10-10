@@ -45,18 +45,54 @@ Our custom CSS goes here
 	background-image: url("../../content/images/hotel-ticket.png");
 }
 
-.ticket > span {
+.ticket span {
 	position: relative;
+	text-align: center;
 	font-family: 'Yellowtail', cursive;
 	font-size: 17pt;
 }
 
-.plane-ticket > #plane-ticket-text1 {
+.ticket absolute-pos {
+	position: absolute;
+}
+
+/* Plane ticket */
+
+.plane-ticket #plane-ticket-title {
 	left: -235px;
 	top: 14px;
 }
 
-.hotel-ticket > #hotel-ticket-text1 {
+.plane-ticket #plane-ticket-flight {
+	left: -20px;
+	top: 0px;
+}
+
+.plane-ticket #plane-ticket-departure {
+	left: -75px;
+	top: -7px;
+}
+
+.plane-ticket #plane-ticket-arrival {
+	left: -75px;
+	top: -9px;
+}
+
+.plane-ticket #plane-ticket-from {
+	position: absolute;
+	left: 560px;
+	top: 34px;
+}
+
+.plane-ticket #plane-ticket-to {
+	position: absolute;
+	left: 560px;
+	top: 57px;
+}
+
+/* Hotel ticket */
+
+.hotel-ticket #hotel-ticket-title {
 	left: -210px;
 	top: 14px;
 }

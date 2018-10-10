@@ -3,8 +3,17 @@
         "title": "Viajato",
         "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
 		"ticket": {
-			"plane1": "Plane Ticket",
-			"hotel1": "Accommodations"
+			"plane": {
+				"title": "Plane Ticket",
+				"from": "From: ",
+				"to": "To: ",
+				"flight": "Flight ",
+				"departure": "Departure: ",
+				"arrival": "Arrival: "
+			},
+			"hotel": {
+				"title": "Accommodations"
+			}
 		},
 		"menu": {
             "home": "Home",
