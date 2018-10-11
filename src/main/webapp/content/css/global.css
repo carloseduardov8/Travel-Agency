@@ -64,7 +64,7 @@ Our custom CSS goes here
 }
 
 .plane-ticket #plane-ticket-flight {
-	left: -20px;
+	left: -24px;
 	top: 0px;
 }
 
@@ -88,6 +88,17 @@ Our custom CSS goes here
 	position: absolute;
 	left: 560px;
 	top: 57px;
+}
+
+.plane-ticket #plane-ticket-airline {
+    display: inline-block;
+	position: relative;
+	top: 35px;
+	left: -268px;
+    width: 80px;
+    height: 47px;
+    background: url('../../content/images/latam-logo.png') no-repeat center top;
+    background-size: contain;
 }
 
 /* Hotel ticket */
