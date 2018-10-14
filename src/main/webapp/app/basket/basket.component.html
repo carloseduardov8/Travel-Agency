@@ -11,46 +11,30 @@
 		<div class="ticket-box">
 
 			<!-- Passagem aérea -->
-			<div class="tp-wrapper">
-				<div class="tp-box" (click)="toggleFlip()" [@flipState]="flip">
-					<a class="ticket plane-ticket tp-ticket-side tp-ticket-front">
-						<div *ngIf="flip == 'inactive' ">
-							<div class="absolute-pos">
-								<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.title">Plane Ticket</span>
-							</div>
-							<div class="absolute-pos">
-								<span id="plane-ticket-flight" jhiTranslate="global.ticket.plane.flight">Flight</span>
-							</div>
-							<div class="absolute-pos">
-								<span id="plane-ticket-departure" jhiTranslate="global.ticket.plane.departure">Departure</span>
-							</div>
-							<div class="absolute-pos">
-								<span id="plane-ticket-arrival" jhiTranslate="global.ticket.plane.arrival">Arrival</span>
-							</div>
-							<div class="absolute-pos">
-								<span id="plane-ticket-from" jhiTranslate="global.ticket.plane.from">From</span>
-							</div>
-							<div class="absolute-pos">
-								<span id="plane-ticket-to" jhiTranslate="global.ticket.plane.to">To</span>
-							</div>
-							<div class="absolute-pos">
-								<div id="plane-ticket-airline">
-								</div>
-							</div>
-						</div>
-					</a>
-
-					<a class="ticket plane-ticket tp-ticket-side tp-ticket-back">
-						<div *ngIf="flip == 'active' ">
-							<div class="absolute-pos">
-								<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.flight">Plane Ticket</span>
-							</div>
-						</div>
-					</a>
-
+			<a class="ticket plane-ticket">
+				<div class="absolute-pos">
+					<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.title">Plane Ticket</span>
 				</div>
-
-			</div>
+				<div class="absolute-pos">
+					<span id="plane-ticket-flight" jhiTranslate="global.ticket.plane.flight">Flight</span>
+				</div>
+				<div class="absolute-pos">
+					<span id="plane-ticket-departure" jhiTranslate="global.ticket.plane.departure">Departure</span>
+				</div>
+				<div class="absolute-pos">
+					<span id="plane-ticket-arrival" jhiTranslate="global.ticket.plane.arrival">Arrival</span>
+				</div>
+				<div class="absolute-pos">
+					<span id="plane-ticket-from" jhiTranslate="global.ticket.plane.from">From</span>
+				</div>
+				<div class="absolute-pos">
+					<span id="plane-ticket-to" jhiTranslate="global.ticket.plane.to">To</span>
+				</div>
+				<div class="absolute-pos">
+					<div id="plane-ticket-airline">
+					</div>
+				</div>
+			</a>
 
 
 			<!-- Hotel -->
