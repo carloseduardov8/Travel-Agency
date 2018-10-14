@@ -9,6 +9,8 @@ import { LoginModalService, Principal, Account } from 'app/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ICidade } from 'app/shared/model/cidade.model';
 
+declare var $: any;
+
 @Component({
     selector: 'jhi-home',
     templateUrl: './home.component.html',
@@ -30,10 +32,16 @@ export class HomeComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        // DatePicker inicializacao
+        $('#datepicker-start').datepicker();
+        $('#datepicker-end').datepicker();
+
         this.principal.identity().then(account => {
             this.account = account;
         });
         this.registerAuthenticationSuccess();
+
+        // Carrega todas as cidades no select
         this.loadAll();
     }
 
@@ -53,7 +61,7 @@ export class HomeComponent implements OnInit {
         this.modalRef = this.loginModalService.open();
     }
 
-    // Get all cities
+    // Carrega todas as cidades no select
     loadAll() {
         this.cidadeService.query().subscribe(
             (res: HttpResponse<ICidade[]>) => {
