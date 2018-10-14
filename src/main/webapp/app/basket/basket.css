@@ -1,1 +1,32 @@
 /* basket.css */
+
+.tp-wrapper {
+    height: 300px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tp-box {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0px;
+    left: 0px;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+.tp-ticket-side {
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    backface-visibility: hidden;
+    cursor: pointer;
+    user-select: none;
+    -webkit-backface-visibility: hidden;
+    transition: transform 0.5s;
+}
+
+.tp-ticket-back {
+    transform: rotateY(179.9deg);
+}
