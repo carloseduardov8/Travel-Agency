@@ -42,8 +42,17 @@
 
 					<a class="ticket plane-ticket tp-ticket-side tp-ticket-back">
 						<div *ngIf="flip == 'active' ">
-							<div class="absolute-pos">
-								<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.flight">Plane Ticket</span>
+							<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.flight">Plane Ticket</span>
+							<div class="absolute-pos" id="seat-wrapper">
+								<!-- Plane seats-->
+								<li class="seat-row" *ngFor="let seatRow of seats">
+									<ol class="seats" type="A">
+										<li class="seat" *ngFor="let seat of seatRow">
+								          <input type="checkbox" id="{{ seat }}" />
+								          <label for="{{ seat }}">{{ seat }}</label>
+								        </li>
+									</ol>
+								</li>
 							</div>
 						</div>
 					</a>

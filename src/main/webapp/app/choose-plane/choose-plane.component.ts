@@ -25,14 +25,34 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ]
 })
 export class ChoosePlaneComponent implements OnInit {
-    message: string;
+	message: string;
     flip = 'inactive';
+	seats: any[][];
+	columns: any[];
 
     constructor() {
         this.message = 'ChoosePlaneComponent message';
-    }
+		this.seats = new Array();
 
-    ngOnInit() {}
+		let numOfSeats = 17;
+
+		// Plane rows:
+		this.rows = ["A", "B", "C", "D"];
+		// Loops through rows:
+		for (let j=0; j< 4; j++){
+			this.seats[j] = new Array();
+			// Loops through seats:
+			for (let i = 0; i < numOfSeats; i++){
+	    		this.seats[j].push( this.rows[j]+(numOfSeats-i) );
+			}
+		}
+	}
+
+
+
+    ngOnInit() {
+
+	}
 
     // Troca o estado de flip, acionando a animacao
     toggleFlip() {
