@@ -30,4 +30,5 @@
 
 .tp-ticket-back {
     transform: rotateY(179.9deg);
+	background-image: url("../../content/images/boarding-pass-back.png");
 }
