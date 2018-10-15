@@ -1,5 +1,10 @@
 /* choose-plane.css */
 
+#plane-ticket-seats-text {
+	left: -247px;
+	top: 14px;
+}
+
 /* Flip ticket css */
 .tp-wrapper {
     height: 300px;
@@ -31,6 +36,14 @@
 .tp-ticket-back {
     transform: rotateY(179.9deg);
 	background-image: url("../../content/images/boarding-pass-back.png");
+}
+
+.plane-ticket-btn {
+	margin-top: 100px;
+	margin-left: 410px;
+	width: 100px !important;
+	zoom: 0.85;
+    -moz-transform: scale(0.85);
 }
 
 

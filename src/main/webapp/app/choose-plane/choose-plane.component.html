@@ -12,8 +12,8 @@
 
 			<!-- Passagem aérea -->
 			<div class="tp-wrapper">
-				<div class="tp-box" (click)="toggleFlip()" [@flipState]="flip">
-					<a class="ticket plane-ticket tp-ticket-side tp-ticket-front">
+				<div class="tp-box" [@flipState]="flip">
+					<a class="ticket plane-ticket tp-ticket-side tp-ticket-front" (click)="toggleFlip()">
 						<div *ngIf="flip == 'inactive' ">
 							<div class="absolute-pos">
 								<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.title">Plane Ticket</span>
@@ -42,9 +42,10 @@
 
 					<a class="ticket plane-ticket tp-ticket-side tp-ticket-back">
 						<div *ngIf="flip == 'active' ">
-							<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.flight">Plane Ticket</span>
+							<!-- Text-->
+							<span id="plane-ticket-seats-text" jhiTranslate="choose-plane.choose-seats">Choose Seats</span>
+							<!-- Plane seats-->
 							<div class="absolute-pos" id="seat-wrapper">
-								<!-- Plane seats-->
 								<li class="seat-row" *ngFor="let seatRow of seats">
 									<ol class="seats" type="A">
 										<li class="seat" *ngFor="let seat of seatRow">
@@ -53,6 +54,10 @@
 								        </li>
 									</ol>
 								</li>
+							</div>
+							<!-- Botão de voltar -->
+							<div class="our-button">
+								<input type="submit" (click)="toggleFlip()" class="btn btn-outline-warning btn-block plane-ticket-btn" value="{{ 'choose-plane.buttons.back' | translate }}" />
 							</div>
 						</div>
 					</a>
