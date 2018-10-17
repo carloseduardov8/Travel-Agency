@@ -33,8 +33,13 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         // DatePicker inicializacao
-        $('#datepicker-start').datepicker();
-        $('#datepicker-end').datepicker();
+        $('#datepicker-start').datepicker({
+            showAnim: 'drop',
+            dateFormat: 'dd-mm-yy'
+        });
+        $('#datepicker-end').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
 
         this.principal.identity().then(account => {
             this.account = account;
@@ -88,7 +93,7 @@ export class HomeComponent implements OnInit {
                 to: to.value,
                 dateIn: dateIn.value,
                 dateOut: dateOut.value,
-                passaengers: passengers.value
+                passangers: passengers.value
             }
         ]);
     }

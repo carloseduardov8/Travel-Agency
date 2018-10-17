@@ -7,9 +7,9 @@
 				"title": "Passagem Aérea",
 				"from": "Origem: ",
 				"to": "Destino: ",
-				"flight": "Voo GL1104",
-				"departure": "Saída: 05/08/2018 23h55",
-				"arrival": "Chegada: 06/08/2018 23h55"
+				"flight": "Voo ",
+				"departure": "Saída: ",
+				"arrival": "Chegada: "
 			},
 			"hotel": {
 				"title": "Acomodações"
