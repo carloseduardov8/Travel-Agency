@@ -53,7 +53,9 @@ export class ChoosePlaneComponent implements OnInit {
                         this.vooService.findVoos(params.dateIn, params.from, params.to).subscribe(
                             (res: HttpResponse<IVoo[]>) => {
                                 this.voos = res.body;
-                                if (this.voos.length == 0) this.withoutVoos = true;
+                                if (this.voos.length === 0) {
+                                    this.withoutVoos = true;
+                                }
                             },
                             (res: HttpErrorResponse) => this.onError(res.message)
                         )
@@ -65,7 +67,7 @@ export class ChoosePlaneComponent implements OnInit {
         this.message = 'ChoosePlaneComponent message';
         this.seats = new Array();
 
-        let numOfSeats = 17;
+        const numOfSeats = 17;
 
         // Plane rows:
         this.rows = ['A', 'B', 'C', 'D'];
