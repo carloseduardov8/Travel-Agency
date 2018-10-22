@@ -5,9 +5,11 @@ import { RouterModule, Router } from '@angular/router';
 
 import { CidadeService } from '../entities/cidade/cidade.service';
 
+import { DatePipe } from '@angular/common';
 import { LoginModalService, Principal, Account } from 'app/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ICidade } from 'app/shared/model/cidade.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 declare var $: any;
 
@@ -20,6 +22,9 @@ export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
     cidades: ICidade[];
+    registerForm: FormGroup;
+    submitted = false;
+    dateInDefault: String;
 
     private jhiAlertService: JhiAlertService;
 
@@ -28,17 +33,23 @@ export class HomeComponent implements OnInit {
         private cidadeService: CidadeService,
         private principal: Principal,
         private loginModalService: LoginModalService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private formBuilder: FormBuilder,
+        private datePipe: DatePipe
     ) {}
 
     ngOnInit() {
         // DatePicker inicializacao
         $('#datepicker-start').datepicker({
             showAnim: 'drop',
-            dateFormat: 'dd-mm-yy'
+            dateFormat: 'dd-mm-yy',
+            minDate: new Date()
         });
+        this.dateInDefault = this.datePipe.transform(new Date(), 'dd-MM-yyyy');
+
         $('#datepicker-end').datepicker({
-            dateFormat: 'dd-mm-yy'
+            dateFormat: 'dd-mm-yy',
+            minDate: new Date()
         });
 
         this.principal.identity().then(account => {
@@ -48,6 +59,11 @@ export class HomeComponent implements OnInit {
 
         // Carrega todas as cidades no select
         this.loadAll();
+
+        this.registerForm = this.formBuilder.group({
+            from: ['', Validators.required],
+            to: ['', Validators.required]
+        });
     }
 
     registerAuthenticationSuccess() {
@@ -80,7 +96,24 @@ export class HomeComponent implements OnInit {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 
+    // Acesso conveninente aos campos do formulario
+    get f() {
+        return this.registerForm.controls;
+    }
+
     onSubmit(from, to, dateIn, dateOut, passengers) {
+        this.submitted = true;
+
+        // Verifica se cidade de ida e volta são as mesmas
+        if (from.value === to.value) {
+            this.registerForm.controls.to.setErrors({ required: true });
+            return;
+        }
+
+        if (this.registerForm.invalid) {
+            return;
+        }
+
         console.log(from.value);
         console.log(to.value);
         console.log(dateIn.value);

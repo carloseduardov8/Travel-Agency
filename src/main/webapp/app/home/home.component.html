@@ -7,48 +7,41 @@
         <div class="alert alert-warning text-center">
             <span class="lead" class="text-center">Compre sua passagem e reserve seu hotel sem preocupações</span>
         </div>
-        <!--        <div [ngSwitch]="isAuthenticated()">
-                    <div class="alert alert-success" *ngSwitchCase="true">
-                        <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
-                            translateValues="{username: '{{account.login}}'}"> You are logged in as user "{{account.login}}". </span>
-                    </div>
-                    <div class="alert alert-warning" *ngSwitchCase="false">
-                        <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;
-                        <a class="alert-link" routerLink="register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
-                    </div>
-                </div>
-                -->
-        <div >
 
-
-
-            <form class="card jh-card form-search-passengers" (ngSubmit)="onSubmit(from,to, dateIn, dateOut, passengers)">
+        <div>
+            <form autocomplete="off" [formGroup]="registerForm" class="card jh-card form-search-passengers" (ngSubmit)="onSubmit(from,to, dateIn, dateOut, passengers)">
                 <div class="form-row">
                     <div class="col">
                         <label for="from">Origem</label>
-                        <select id="from" class="form-control" required #from>
+                        <select id="from" class="form-control" required #from formControlName="from" [ngClass]="{ 'is-invalid': submitted && f.from.errors }">
                             <option value="">Selecione uma cidade</option>
                             <option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</option>
                         </select>
+                        <div *ngIf="submitted && f.from.errors" class="invalid-feedback">
+                            <div *ngIf="f.from.errors.required">Escolha uma cidade de origem</div>
+                        </div>
                     </div>
                     <div class="col">
                         <label for="to">Destino</label>
-                        <select id="to" class="form-control" required #to>
+                        <select id="to" class="form-control" required #to formControlName="to" [ngClass]="{ 'is-invalid': submitted && f.to.errors }">
                             <option value="">Selecione uma cidade</option>
                             <option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</option>
                         </select>
+                        <div *ngIf="submitted && f.to.errors" class="invalid-feedback">
+                            <div *ngIf="f.to.errors.required">Escolha uma cidade de destino, diferente da de origem</div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-row mt-3">
                     <div class="datepicker-container col-md-3 col-6">
                         <label>Data de Ida</label>
-                        <input type="text" class="form-control" id="datepicker-start" required #dateIn readonly>
+                        <input type="text" class="form-control" id="datepicker-start" required #dateIn value="{{dateInDefault}}">
                     </div>
 
                     <div class="datepicker-container  col-md-3 col-6">
                         <label>Data de Volta</label>
-                        <input type="text" class="form-control" id="datepicker-end" placeholder="Opcional" #dateOut readonly>
+                        <input type="text" class="form-control" id="datepicker-end" placeholder="Opcional" #dateOut>
                     </div>
 
                     <div class="col-md-3 col-6">
@@ -63,7 +56,7 @@
                     </div>
 
                     <div class="col-md-3 col-6">
-                        <input type="submit"  class="btn btn-outline-warning btn-block" value="Procurar passagens"/>
+                        <input type="submit" class="btn btn-outline-warning btn-block" value="Procurar passagens" />
                     </div>
                 </div>
             </form>
