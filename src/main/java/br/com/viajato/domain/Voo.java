@@ -39,6 +39,10 @@ public class Voo implements Serializable {
     @Column(name = "chegada", nullable = false)
     private String chegada;
 
+    @NotNull
+    @Column(name = "valor", nullable = false)
+    private Float valor;
+
     @OneToMany(mappedBy = "voo")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Passagem> passagems = new HashSet<>();
@@ -101,6 +105,19 @@ public class Voo implements Serializable {
 
     public void setChegada(String chegada) {
         this.chegada = chegada;
+    }
+
+    public Float getValor() {
+        return valor;
+    }
+
+    public Voo valor(Float valor) {
+        this.valor = valor;
+        return this;
+    }
+
+    public void setValor(Float valor) {
+        this.valor = valor;
     }
 
     public Set<Passagem> getPassagems() {
@@ -195,6 +212,7 @@ public class Voo implements Serializable {
             ", numero=" + getNumero() +
             ", partida='" + getPartida() + "'" +
             ", chegada='" + getChegada() + "'" +
+            ", valor=" + getValor() +
             "}";
     }
 }

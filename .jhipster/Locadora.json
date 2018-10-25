@@ -7,37 +7,45 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "telefone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cidade",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endereco",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "endereco",
-            "otherEntityName": "endereco",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "locadora"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "telefone",
-            "otherEntityName": "telefone",
-            "otherEntityRelationshipName": "locadora"
-        },
         {
             "relationshipType": "one-to-many",
             "relationshipName": "veiculo",
             "otherEntityName": "veiculo",
             "otherEntityRelationshipName": "locadora"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "contrato",
-            "otherEntityName": "contrato",
-            "otherEntityRelationshipName": "locadora"
         }
     ],
-    "changelogDate": "20180912163817",
+    "changelogDate": "20181025033520",
     "entityTableName": "locadora",
     "dto": "no",
     "pagination": "no",

@@ -1,0 +1,49 @@
+{
+    "name": "Seguro",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descricao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "valorPorPessoa",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "contrato",
+            "otherEntityName": "contrato",
+            "otherEntityRelationshipName": "seguro"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "seguradora",
+            "otherEntityName": "seguradora",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181025033531",
+    "entityTableName": "seguro",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

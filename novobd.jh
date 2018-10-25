@@ -1,0 +1,114 @@
+// JDL definition for application 'Viajato' generated with command 'jhipster export-jdl'
+
+entity Aeroporto {
+  nome String required,
+  telefone String required,
+  cidade String required,
+  estado String required,
+  endereco String required
+}
+
+entity LinhaAerea {
+  nome String required,
+  telefone String required
+}
+entity Voo {
+  numero Integer required,
+  partida String required,
+  chegada String required,
+  valor Float required
+}
+
+entity Locadora {
+  nome String required,
+  telefone String required,
+  cidade String required,
+  estado String required,
+  endereco String required
+}
+entity Veiculo {
+  tipo String required,
+  fabricante String required,
+  modelo String required,
+  cor String required,
+  numPassageiros Integer required
+}
+entity Locacao {
+  inicio String required,
+  dataInicio String required,
+  dataFim String required,
+  valor Float required
+}
+entity Hotel {
+  nome String required,
+  nota Integer required,
+  telefone String required,
+  cidade String required,
+  estado String required,
+  endereco String required
+}
+entity Quarto {
+  tipo String required,
+  capacidade Integer required,
+  diaria Float required,
+  descricao String required
+}
+entity Reserva {
+  numPessoas Integer required,
+  dataInicio String required,
+  dataFim String required,
+  valor Float required
+}
+
+entity User {
+}
+
+entity Seguradora {
+  nome String required,
+  telefone String required,
+  cidade String required,
+  estado String required,
+  endereco String required
+}
+entity Contrato {
+  numPessoas Integer required,
+  dataInicio String required,
+  dataFim String required
+}
+
+entity Compra {
+}
+
+entity Passagem{
+  nome String required,
+  cpf String required,
+  assento String required
+}
+
+entity Seguro{
+  nome String required,
+  descricao String required,
+  valorPorPessoa Float required
+}
+
+relationship ManyToOne {
+  Compra{user} to User
+}
+
+relationship OneToMany {
+  LinhaAerea{voo} to Voo{linhaAerea},
+  Aeroporto{vemDe} to Voo{origem},
+  Aeroporto{vaiPara} to Voo{destino},
+  Voo{passagem} to Passagem{voo},
+  Compra{passagem} to Passagem{compra},
+  Locadora{veiculo} to Veiculo{locadora},
+  Veiculo{locacao} to Locacao{veiculo},
+  Compra{locacao} to Locacao{compra},
+  Hotel{quarto} to Quarto{hotel},
+  Quarto{reserva} to Reserva{quarto},
+  Compra{reserva} to Reserva{compra},
+  Compra{contrato} to Contrato{compra},
+  Seguro{contrato} to Contrato{seguro},
+  Seguradora{seguro} to Seguro{seguradora},
+}
+

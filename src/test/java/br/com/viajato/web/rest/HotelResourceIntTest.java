@@ -45,6 +45,18 @@ public class HotelResourceIntTest {
     private static final Integer DEFAULT_NOTA = 1;
     private static final Integer UPDATED_NOTA = 2;
 
+    private static final String DEFAULT_TELEFONE = "AAAAAAAAAA";
+    private static final String UPDATED_TELEFONE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CIDADE = "AAAAAAAAAA";
+    private static final String UPDATED_CIDADE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ESTADO = "AAAAAAAAAA";
+    private static final String UPDATED_ESTADO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ENDERECO = "AAAAAAAAAA";
+    private static final String UPDATED_ENDERECO = "BBBBBBBBBB";
+
     @Autowired
     private HotelRepository hotelRepository;
 
@@ -84,7 +96,11 @@ public class HotelResourceIntTest {
     public static Hotel createEntity(EntityManager em) {
         Hotel hotel = new Hotel()
             .nome(DEFAULT_NOME)
-            .nota(DEFAULT_NOTA);
+            .nota(DEFAULT_NOTA)
+            .telefone(DEFAULT_TELEFONE)
+            .cidade(DEFAULT_CIDADE)
+            .estado(DEFAULT_ESTADO)
+            .endereco(DEFAULT_ENDERECO);
         return hotel;
     }
 
@@ -110,6 +126,10 @@ public class HotelResourceIntTest {
         Hotel testHotel = hotelList.get(hotelList.size() - 1);
         assertThat(testHotel.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testHotel.getNota()).isEqualTo(DEFAULT_NOTA);
+        assertThat(testHotel.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
+        assertThat(testHotel.getCidade()).isEqualTo(DEFAULT_CIDADE);
+        assertThat(testHotel.getEstado()).isEqualTo(DEFAULT_ESTADO);
+        assertThat(testHotel.getEndereco()).isEqualTo(DEFAULT_ENDERECO);
     }
 
     @Test
@@ -169,6 +189,78 @@ public class HotelResourceIntTest {
 
     @Test
     @Transactional
+    public void checkTelefoneIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelRepository.findAll().size();
+        // set the field null
+        hotel.setTelefone(null);
+
+        // Create the Hotel, which fails.
+
+        restHotelMockMvc.perform(post("/api/hotels")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(hotel)))
+            .andExpect(status().isBadRequest());
+
+        List<Hotel> hotelList = hotelRepository.findAll();
+        assertThat(hotelList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCidadeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelRepository.findAll().size();
+        // set the field null
+        hotel.setCidade(null);
+
+        // Create the Hotel, which fails.
+
+        restHotelMockMvc.perform(post("/api/hotels")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(hotel)))
+            .andExpect(status().isBadRequest());
+
+        List<Hotel> hotelList = hotelRepository.findAll();
+        assertThat(hotelList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkEstadoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelRepository.findAll().size();
+        // set the field null
+        hotel.setEstado(null);
+
+        // Create the Hotel, which fails.
+
+        restHotelMockMvc.perform(post("/api/hotels")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(hotel)))
+            .andExpect(status().isBadRequest());
+
+        List<Hotel> hotelList = hotelRepository.findAll();
+        assertThat(hotelList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkEnderecoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelRepository.findAll().size();
+        // set the field null
+        hotel.setEndereco(null);
+
+        // Create the Hotel, which fails.
+
+        restHotelMockMvc.perform(post("/api/hotels")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(hotel)))
+            .andExpect(status().isBadRequest());
+
+        List<Hotel> hotelList = hotelRepository.findAll();
+        assertThat(hotelList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllHotels() throws Exception {
         // Initialize the database
         hotelRepository.saveAndFlush(hotel);
@@ -179,7 +271,11 @@ public class HotelResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(hotel.getId().intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
-            .andExpect(jsonPath("$.[*].nota").value(hasItem(DEFAULT_NOTA)));
+            .andExpect(jsonPath("$.[*].nota").value(hasItem(DEFAULT_NOTA)))
+            .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE.toString())))
+            .andExpect(jsonPath("$.[*].cidade").value(hasItem(DEFAULT_CIDADE.toString())))
+            .andExpect(jsonPath("$.[*].estado").value(hasItem(DEFAULT_ESTADO.toString())))
+            .andExpect(jsonPath("$.[*].endereco").value(hasItem(DEFAULT_ENDERECO.toString())));
     }
     
     @Test
@@ -194,7 +290,11 @@ public class HotelResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(hotel.getId().intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
-            .andExpect(jsonPath("$.nota").value(DEFAULT_NOTA));
+            .andExpect(jsonPath("$.nota").value(DEFAULT_NOTA))
+            .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE.toString()))
+            .andExpect(jsonPath("$.cidade").value(DEFAULT_CIDADE.toString()))
+            .andExpect(jsonPath("$.estado").value(DEFAULT_ESTADO.toString()))
+            .andExpect(jsonPath("$.endereco").value(DEFAULT_ENDERECO.toString()));
     }
 
     @Test
@@ -219,7 +319,11 @@ public class HotelResourceIntTest {
         em.detach(updatedHotel);
         updatedHotel
             .nome(UPDATED_NOME)
-            .nota(UPDATED_NOTA);
+            .nota(UPDATED_NOTA)
+            .telefone(UPDATED_TELEFONE)
+            .cidade(UPDATED_CIDADE)
+            .estado(UPDATED_ESTADO)
+            .endereco(UPDATED_ENDERECO);
 
         restHotelMockMvc.perform(put("/api/hotels")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -232,6 +336,10 @@ public class HotelResourceIntTest {
         Hotel testHotel = hotelList.get(hotelList.size() - 1);
         assertThat(testHotel.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testHotel.getNota()).isEqualTo(UPDATED_NOTA);
+        assertThat(testHotel.getTelefone()).isEqualTo(UPDATED_TELEFONE);
+        assertThat(testHotel.getCidade()).isEqualTo(UPDATED_CIDADE);
+        assertThat(testHotel.getEstado()).isEqualTo(UPDATED_ESTADO);
+        assertThat(testHotel.getEndereco()).isEqualTo(UPDATED_ENDERECO);
     }
 
     @Test

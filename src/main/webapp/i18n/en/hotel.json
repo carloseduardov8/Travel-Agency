@@ -18,8 +18,10 @@
             },
             "nome": "Nome",
             "nota": "Nota",
-            "endereco": "Endereco",
             "telefone": "Telefone",
+            "cidade": "Cidade",
+            "estado": "Estado",
+            "endereco": "Endereco",
             "quarto": "Quarto"
         }
     }

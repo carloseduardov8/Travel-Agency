@@ -48,6 +48,9 @@ public class VooResourceIntTest {
     private static final String DEFAULT_CHEGADA = "AAAAAAAAAA";
     private static final String UPDATED_CHEGADA = "BBBBBBBBBB";
 
+    private static final Float DEFAULT_VALOR = 1F;
+    private static final Float UPDATED_VALOR = 2F;
+
     @Autowired
     private VooRepository vooRepository;
 
@@ -88,7 +91,8 @@ public class VooResourceIntTest {
         Voo voo = new Voo()
             .numero(DEFAULT_NUMERO)
             .partida(DEFAULT_PARTIDA)
-            .chegada(DEFAULT_CHEGADA);
+            .chegada(DEFAULT_CHEGADA)
+            .valor(DEFAULT_VALOR);
         return voo;
     }
 
@@ -115,6 +119,7 @@ public class VooResourceIntTest {
         assertThat(testVoo.getNumero()).isEqualTo(DEFAULT_NUMERO);
         assertThat(testVoo.getPartida()).isEqualTo(DEFAULT_PARTIDA);
         assertThat(testVoo.getChegada()).isEqualTo(DEFAULT_CHEGADA);
+        assertThat(testVoo.getValor()).isEqualTo(DEFAULT_VALOR);
     }
 
     @Test
@@ -192,6 +197,24 @@ public class VooResourceIntTest {
 
     @Test
     @Transactional
+    public void checkValorIsRequired() throws Exception {
+        int databaseSizeBeforeTest = vooRepository.findAll().size();
+        // set the field null
+        voo.setValor(null);
+
+        // Create the Voo, which fails.
+
+        restVooMockMvc.perform(post("/api/voos")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(voo)))
+            .andExpect(status().isBadRequest());
+
+        List<Voo> vooList = vooRepository.findAll();
+        assertThat(vooList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllVoos() throws Exception {
         // Initialize the database
         vooRepository.saveAndFlush(voo);
@@ -203,7 +226,8 @@ public class VooResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(voo.getId().intValue())))
             .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
             .andExpect(jsonPath("$.[*].partida").value(hasItem(DEFAULT_PARTIDA.toString())))
-            .andExpect(jsonPath("$.[*].chegada").value(hasItem(DEFAULT_CHEGADA.toString())));
+            .andExpect(jsonPath("$.[*].chegada").value(hasItem(DEFAULT_CHEGADA.toString())))
+            .andExpect(jsonPath("$.[*].valor").value(hasItem(DEFAULT_VALOR.doubleValue())));
     }
     
     @Test
@@ -219,7 +243,8 @@ public class VooResourceIntTest {
             .andExpect(jsonPath("$.id").value(voo.getId().intValue()))
             .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
             .andExpect(jsonPath("$.partida").value(DEFAULT_PARTIDA.toString()))
-            .andExpect(jsonPath("$.chegada").value(DEFAULT_CHEGADA.toString()));
+            .andExpect(jsonPath("$.chegada").value(DEFAULT_CHEGADA.toString()))
+            .andExpect(jsonPath("$.valor").value(DEFAULT_VALOR.doubleValue()));
     }
 
     @Test
@@ -245,7 +270,8 @@ public class VooResourceIntTest {
         updatedVoo
             .numero(UPDATED_NUMERO)
             .partida(UPDATED_PARTIDA)
-            .chegada(UPDATED_CHEGADA);
+            .chegada(UPDATED_CHEGADA)
+            .valor(UPDATED_VALOR);
 
         restVooMockMvc.perform(put("/api/voos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -259,6 +285,7 @@ public class VooResourceIntTest {
         assertThat(testVoo.getNumero()).isEqualTo(UPDATED_NUMERO);
         assertThat(testVoo.getPartida()).isEqualTo(UPDATED_PARTIDA);
         assertThat(testVoo.getChegada()).isEqualTo(UPDATED_CHEGADA);
+        assertThat(testVoo.getValor()).isEqualTo(UPDATED_VALOR);
     }
 
     @Test

@@ -1,6 +1,5 @@
 package br.com.viajato.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -9,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -28,28 +25,24 @@ public class Contrato implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "numero", nullable = false)
-    private Integer numero;
+    @Column(name = "num_pessoas", nullable = false)
+    private Integer numPessoas;
 
     @NotNull
-    @Column(name = "valor", nullable = false)
-    private Integer valor;
+    @Column(name = "data_inicio", nullable = false)
+    private String dataInicio;
 
     @NotNull
-    @Column(name = "descricao", nullable = false)
-    private String descricao;
-
-    @OneToMany(mappedBy = "contrato")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Cliente> clientes = new HashSet<>();
+    @Column(name = "data_fim", nullable = false)
+    private String dataFim;
 
     @ManyToOne
     @JsonIgnoreProperties("contratoes")
-    private Locadora locadora;
+    private Compra compra;
 
     @ManyToOne
     @JsonIgnoreProperties("contratoes")
-    private Seguradora seguradora;
+    private Seguro seguro;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -60,94 +53,69 @@ public class Contrato implements Serializable {
         this.id = id;
     }
 
-    public Integer getNumero() {
-        return numero;
+    public Integer getNumPessoas() {
+        return numPessoas;
     }
 
-    public Contrato numero(Integer numero) {
-        this.numero = numero;
+    public Contrato numPessoas(Integer numPessoas) {
+        this.numPessoas = numPessoas;
         return this;
     }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
+    public void setNumPessoas(Integer numPessoas) {
+        this.numPessoas = numPessoas;
     }
 
-    public Integer getValor() {
-        return valor;
+    public String getDataInicio() {
+        return dataInicio;
     }
 
-    public Contrato valor(Integer valor) {
-        this.valor = valor;
+    public Contrato dataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
         return this;
     }
 
-    public void setValor(Integer valor) {
-        this.valor = valor;
+    public void setDataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDataFim() {
+        return dataFim;
     }
 
-    public Contrato descricao(String descricao) {
-        this.descricao = descricao;
+    public Contrato dataFim(String dataFim) {
+        this.dataFim = dataFim;
         return this;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDataFim(String dataFim) {
+        this.dataFim = dataFim;
     }
 
-    public Set<Cliente> getClientes() {
-        return clientes;
+    public Compra getCompra() {
+        return compra;
     }
 
-    public Contrato clientes(Set<Cliente> clientes) {
-        this.clientes = clientes;
+    public Contrato compra(Compra compra) {
+        this.compra = compra;
         return this;
     }
 
-    public Contrato addCliente(Cliente cliente) {
-        this.clientes.add(cliente);
-        cliente.setContrato(this);
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
+    public Seguro getSeguro() {
+        return seguro;
+    }
+
+    public Contrato seguro(Seguro seguro) {
+        this.seguro = seguro;
         return this;
     }
 
-    public Contrato removeCliente(Cliente cliente) {
-        this.clientes.remove(cliente);
-        cliente.setContrato(null);
-        return this;
-    }
-
-    public void setClientes(Set<Cliente> clientes) {
-        this.clientes = clientes;
-    }
-
-    public Locadora getLocadora() {
-        return locadora;
-    }
-
-    public Contrato locadora(Locadora locadora) {
-        this.locadora = locadora;
-        return this;
-    }
-
-    public void setLocadora(Locadora locadora) {
-        this.locadora = locadora;
-    }
-
-    public Seguradora getSeguradora() {
-        return seguradora;
-    }
-
-    public Contrato seguradora(Seguradora seguradora) {
-        this.seguradora = seguradora;
-        return this;
-    }
-
-    public void setSeguradora(Seguradora seguradora) {
-        this.seguradora = seguradora;
+    public void setSeguro(Seguro seguro) {
+        this.seguro = seguro;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -175,9 +143,9 @@ public class Contrato implements Serializable {
     public String toString() {
         return "Contrato{" +
             "id=" + getId() +
-            ", numero=" + getNumero() +
-            ", valor=" + getValor() +
-            ", descricao='" + getDescricao() + "'" +
+            ", numPessoas=" + getNumPessoas() +
+            ", dataInicio='" + getDataInicio() + "'" +
+            ", dataFim='" + getDataFim() + "'" +
             "}";
     }
 }

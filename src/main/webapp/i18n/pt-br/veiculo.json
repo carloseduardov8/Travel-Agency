@@ -19,8 +19,6 @@
             "tipo": "Tipo",
             "fabricante": "Fabricante",
             "modelo": "Modelo",
-            "anoModelo": "Ano Modelo",
-            "anoFabricacao": "Ano Fabricacao",
             "cor": "Cor",
             "numPassageiros": "Num Passageiros",
             "locacao": "Locacao",

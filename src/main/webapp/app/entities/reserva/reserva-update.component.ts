@@ -8,8 +8,8 @@ import { IReserva } from 'app/shared/model/reserva.model';
 import { ReservaService } from './reserva.service';
 import { IQuarto } from 'app/shared/model/quarto.model';
 import { QuartoService } from 'app/entities/quarto';
-import { ICliente } from 'app/shared/model/cliente.model';
-import { ClienteService } from 'app/entities/cliente';
+import { ICompra } from 'app/shared/model/compra.model';
+import { CompraService } from 'app/entities/compra';
 
 @Component({
     selector: 'jhi-reserva-update',
@@ -21,13 +21,13 @@ export class ReservaUpdateComponent implements OnInit {
 
     quartos: IQuarto[];
 
-    clientes: ICliente[];
+    compras: ICompra[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private reservaService: ReservaService,
         private quartoService: QuartoService,
-        private clienteService: ClienteService,
+        private compraService: CompraService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -42,9 +42,9 @@ export class ReservaUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-        this.clienteService.query().subscribe(
-            (res: HttpResponse<ICliente[]>) => {
-                this.clientes = res.body;
+        this.compraService.query().subscribe(
+            (res: HttpResponse<ICompra[]>) => {
+                this.compras = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -84,7 +84,7 @@ export class ReservaUpdateComponent implements OnInit {
         return item.id;
     }
 
-    trackClienteById(index: number, item: ICliente) {
+    trackCompraById(index: number, item: ICompra) {
         return item.id;
     }
     get reserva() {

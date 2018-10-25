@@ -43,36 +43,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.veiculo.anoModelo" for="field_anoModelo">Ano Modelo</label>
-                    <input type="number" class="form-control" name="anoModelo" id="field_anoModelo"
-                        [(ngModel)]="veiculo.anoModelo" required/>
-                    <div [hidden]="!(editForm.controls.anoModelo?.dirty && editForm.controls.anoModelo?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.anoModelo?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.anoModelo?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.veiculo.anoFabricacao" for="field_anoFabricacao">Ano Fabricacao</label>
-                    <input type="number" class="form-control" name="anoFabricacao" id="field_anoFabricacao"
-                        [(ngModel)]="veiculo.anoFabricacao" required/>
-                    <div [hidden]="!(editForm.controls.anoFabricacao?.dirty && editForm.controls.anoFabricacao?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.anoFabricacao?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.anoFabricacao?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="viajatoApp.veiculo.cor" for="field_cor">Cor</label>
                     <input type="text" class="form-control" name="cor" id="field_cor"
                         [(ngModel)]="veiculo.cor" required/>

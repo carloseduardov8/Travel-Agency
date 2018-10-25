@@ -34,13 +34,21 @@ public class Hotel implements Serializable {
     @Column(name = "nota", nullable = false)
     private Integer nota;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Endereco endereco;
+    @NotNull
+    @Column(name = "telefone", nullable = false)
+    private String telefone;
 
-    @OneToMany(mappedBy = "hotel")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Telefone> telefones = new HashSet<>();
+    @NotNull
+    @Column(name = "cidade", nullable = false)
+    private String cidade;
+
+    @NotNull
+    @Column(name = "estado", nullable = false)
+    private String estado;
+
+    @NotNull
+    @Column(name = "endereco", nullable = false)
+    private String endereco;
 
     @OneToMany(mappedBy = "hotel")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -81,42 +89,56 @@ public class Hotel implements Serializable {
         this.nota = nota;
     }
 
-    public Endereco getEndereco() {
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public Hotel telefone(String telefone) {
+        this.telefone = telefone;
+        return this;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public Hotel cidade(String cidade) {
+        this.cidade = cidade;
+        return this;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public Hotel estado(String estado) {
+        this.estado = estado;
+        return this;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getEndereco() {
         return endereco;
     }
 
-    public Hotel endereco(Endereco endereco) {
+    public Hotel endereco(String endereco) {
         this.endereco = endereco;
         return this;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    public Set<Telefone> getTelefones() {
-        return telefones;
-    }
-
-    public Hotel telefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
-        return this;
-    }
-
-    public Hotel addTelefone(Telefone telefone) {
-        this.telefones.add(telefone);
-        telefone.setHotel(this);
-        return this;
-    }
-
-    public Hotel removeTelefone(Telefone telefone) {
-        this.telefones.remove(telefone);
-        telefone.setHotel(null);
-        return this;
-    }
-
-    public void setTelefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
     }
 
     public Set<Quarto> getQuartos() {
@@ -171,6 +193,10 @@ public class Hotel implements Serializable {
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
             ", nota=" + getNota() +
+            ", telefone='" + getTelefone() + "'" +
+            ", cidade='" + getCidade() + "'" +
+            ", estado='" + getEstado() + "'" +
+            ", endereco='" + getEndereco() + "'" +
             "}";
     }
 }

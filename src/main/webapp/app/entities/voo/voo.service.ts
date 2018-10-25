@@ -27,10 +27,6 @@ export class VooService {
         return this.http.get<IVoo>(`${this.resourceUrl}/${id}`, { observe: 'response' });
     }
 
-    findVoos(partida: String, origem: String, destino: String): Observable<EntityArrayResponseType> {
-        return this.http.get<IVoo[]>(`${this.resourceUrl}/${partida}/${origem}/${destino}`, { observe: 'response' });
-    }
-
     query(req?: any): Observable<EntityArrayResponseType> {
         const options = createRequestOption(req);
         return this.http.get<IVoo[]>(this.resourceUrl, { params: options, observe: 'response' });

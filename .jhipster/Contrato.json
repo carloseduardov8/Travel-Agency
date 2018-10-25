@@ -2,21 +2,21 @@
     "name": "Contrato",
     "fields": [
         {
-            "fieldName": "numero",
+            "fieldName": "numPessoas",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "valor",
-            "fieldType": "Integer",
+            "fieldName": "dataInicio",
+            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "descricao",
+            "fieldName": "dataFim",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
@@ -25,25 +25,19 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "relationshipName": "cliente",
-            "otherEntityName": "cliente",
-            "otherEntityRelationshipName": "contrato"
-        },
-        {
             "relationshipType": "many-to-one",
-            "relationshipName": "locadora",
-            "otherEntityName": "locadora",
+            "relationshipName": "compra",
+            "otherEntityName": "compra",
             "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "seguradora",
-            "otherEntityName": "seguradora",
+            "relationshipName": "seguro",
+            "otherEntityName": "seguro",
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180912163825",
+    "changelogDate": "20181025033528",
     "entityTableName": "contrato",
     "dto": "no",
     "pagination": "no",

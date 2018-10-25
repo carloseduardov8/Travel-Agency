@@ -9,22 +9,22 @@
             ]
         },
         {
-            "fieldName": "inicio",
+            "fieldName": "dataInicio",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "duracao",
-            "fieldType": "Integer",
+            "fieldName": "dataFim",
+            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
             "fieldName": "valor",
-            "fieldType": "Integer",
+            "fieldType": "Float",
             "fieldValidateRules": [
                 "required"
             ]
@@ -39,12 +39,12 @@
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "cliente",
-            "otherEntityName": "cliente",
+            "relationshipName": "compra",
+            "otherEntityName": "compra",
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180912163822",
+    "changelogDate": "20181025033525",
     "entityTableName": "reserva",
     "dto": "no",
     "pagination": "no",

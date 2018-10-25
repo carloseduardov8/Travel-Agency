@@ -1,24 +1,24 @@
 import { IQuarto } from 'app/shared/model//quarto.model';
-import { ICliente } from 'app/shared/model//cliente.model';
+import { ICompra } from 'app/shared/model//compra.model';
 
 export interface IReserva {
     id?: number;
     numPessoas?: number;
-    inicio?: string;
-    duracao?: number;
+    dataInicio?: string;
+    dataFim?: string;
     valor?: number;
     quarto?: IQuarto;
-    cliente?: ICliente;
+    compra?: ICompra;
 }
 
 export class Reserva implements IReserva {
     constructor(
         public id?: number,
         public numPessoas?: number,
-        public inicio?: string,
-        public duracao?: number,
+        public dataInicio?: string,
+        public dataFim?: string,
         public valor?: number,
         public quarto?: IQuarto,
-        public cliente?: ICliente
+        public compra?: ICompra
     ) {}
 }

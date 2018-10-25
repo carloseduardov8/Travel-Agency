@@ -45,8 +45,8 @@ public class QuartoResourceIntTest {
     private static final Integer DEFAULT_CAPACIDADE = 1;
     private static final Integer UPDATED_CAPACIDADE = 2;
 
-    private static final Integer DEFAULT_DIARIA = 1;
-    private static final Integer UPDATED_DIARIA = 2;
+    private static final Float DEFAULT_DIARIA = 1F;
+    private static final Float UPDATED_DIARIA = 2F;
 
     private static final String DEFAULT_DESCRICAO = "AAAAAAAAAA";
     private static final String UPDATED_DESCRICAO = "BBBBBBBBBB";
@@ -226,7 +226,7 @@ public class QuartoResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(quarto.getId().intValue())))
             .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO.toString())))
             .andExpect(jsonPath("$.[*].capacidade").value(hasItem(DEFAULT_CAPACIDADE)))
-            .andExpect(jsonPath("$.[*].diaria").value(hasItem(DEFAULT_DIARIA)))
+            .andExpect(jsonPath("$.[*].diaria").value(hasItem(DEFAULT_DIARIA.doubleValue())))
             .andExpect(jsonPath("$.[*].descricao").value(hasItem(DEFAULT_DESCRICAO.toString())));
     }
     
@@ -243,7 +243,7 @@ public class QuartoResourceIntTest {
             .andExpect(jsonPath("$.id").value(quarto.getId().intValue()))
             .andExpect(jsonPath("$.tipo").value(DEFAULT_TIPO.toString()))
             .andExpect(jsonPath("$.capacidade").value(DEFAULT_CAPACIDADE))
-            .andExpect(jsonPath("$.diaria").value(DEFAULT_DIARIA))
+            .andExpect(jsonPath("$.diaria").value(DEFAULT_DIARIA.doubleValue()))
             .andExpect(jsonPath("$.descricao").value(DEFAULT_DESCRICAO.toString()));
     }
 

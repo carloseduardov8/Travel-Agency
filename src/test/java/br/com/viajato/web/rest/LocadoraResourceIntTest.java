@@ -42,6 +42,18 @@ public class LocadoraResourceIntTest {
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_TELEFONE = "AAAAAAAAAA";
+    private static final String UPDATED_TELEFONE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CIDADE = "AAAAAAAAAA";
+    private static final String UPDATED_CIDADE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ESTADO = "AAAAAAAAAA";
+    private static final String UPDATED_ESTADO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ENDERECO = "AAAAAAAAAA";
+    private static final String UPDATED_ENDERECO = "BBBBBBBBBB";
+
     @Autowired
     private LocadoraRepository locadoraRepository;
 
@@ -80,7 +92,11 @@ public class LocadoraResourceIntTest {
      */
     public static Locadora createEntity(EntityManager em) {
         Locadora locadora = new Locadora()
-            .nome(DEFAULT_NOME);
+            .nome(DEFAULT_NOME)
+            .telefone(DEFAULT_TELEFONE)
+            .cidade(DEFAULT_CIDADE)
+            .estado(DEFAULT_ESTADO)
+            .endereco(DEFAULT_ENDERECO);
         return locadora;
     }
 
@@ -105,6 +121,10 @@ public class LocadoraResourceIntTest {
         assertThat(locadoraList).hasSize(databaseSizeBeforeCreate + 1);
         Locadora testLocadora = locadoraList.get(locadoraList.size() - 1);
         assertThat(testLocadora.getNome()).isEqualTo(DEFAULT_NOME);
+        assertThat(testLocadora.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
+        assertThat(testLocadora.getCidade()).isEqualTo(DEFAULT_CIDADE);
+        assertThat(testLocadora.getEstado()).isEqualTo(DEFAULT_ESTADO);
+        assertThat(testLocadora.getEndereco()).isEqualTo(DEFAULT_ENDERECO);
     }
 
     @Test
@@ -146,6 +166,78 @@ public class LocadoraResourceIntTest {
 
     @Test
     @Transactional
+    public void checkTelefoneIsRequired() throws Exception {
+        int databaseSizeBeforeTest = locadoraRepository.findAll().size();
+        // set the field null
+        locadora.setTelefone(null);
+
+        // Create the Locadora, which fails.
+
+        restLocadoraMockMvc.perform(post("/api/locadoras")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(locadora)))
+            .andExpect(status().isBadRequest());
+
+        List<Locadora> locadoraList = locadoraRepository.findAll();
+        assertThat(locadoraList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCidadeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = locadoraRepository.findAll().size();
+        // set the field null
+        locadora.setCidade(null);
+
+        // Create the Locadora, which fails.
+
+        restLocadoraMockMvc.perform(post("/api/locadoras")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(locadora)))
+            .andExpect(status().isBadRequest());
+
+        List<Locadora> locadoraList = locadoraRepository.findAll();
+        assertThat(locadoraList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkEstadoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = locadoraRepository.findAll().size();
+        // set the field null
+        locadora.setEstado(null);
+
+        // Create the Locadora, which fails.
+
+        restLocadoraMockMvc.perform(post("/api/locadoras")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(locadora)))
+            .andExpect(status().isBadRequest());
+
+        List<Locadora> locadoraList = locadoraRepository.findAll();
+        assertThat(locadoraList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkEnderecoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = locadoraRepository.findAll().size();
+        // set the field null
+        locadora.setEndereco(null);
+
+        // Create the Locadora, which fails.
+
+        restLocadoraMockMvc.perform(post("/api/locadoras")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(locadora)))
+            .andExpect(status().isBadRequest());
+
+        List<Locadora> locadoraList = locadoraRepository.findAll();
+        assertThat(locadoraList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllLocadoras() throws Exception {
         // Initialize the database
         locadoraRepository.saveAndFlush(locadora);
@@ -155,7 +247,11 @@ public class LocadoraResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(locadora.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())));
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
+            .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE.toString())))
+            .andExpect(jsonPath("$.[*].cidade").value(hasItem(DEFAULT_CIDADE.toString())))
+            .andExpect(jsonPath("$.[*].estado").value(hasItem(DEFAULT_ESTADO.toString())))
+            .andExpect(jsonPath("$.[*].endereco").value(hasItem(DEFAULT_ENDERECO.toString())));
     }
     
     @Test
@@ -169,7 +265,11 @@ public class LocadoraResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(locadora.getId().intValue()))
-            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()));
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
+            .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE.toString()))
+            .andExpect(jsonPath("$.cidade").value(DEFAULT_CIDADE.toString()))
+            .andExpect(jsonPath("$.estado").value(DEFAULT_ESTADO.toString()))
+            .andExpect(jsonPath("$.endereco").value(DEFAULT_ENDERECO.toString()));
     }
 
     @Test
@@ -193,7 +293,11 @@ public class LocadoraResourceIntTest {
         // Disconnect from session so that the updates on updatedLocadora are not directly saved in db
         em.detach(updatedLocadora);
         updatedLocadora
-            .nome(UPDATED_NOME);
+            .nome(UPDATED_NOME)
+            .telefone(UPDATED_TELEFONE)
+            .cidade(UPDATED_CIDADE)
+            .estado(UPDATED_ESTADO)
+            .endereco(UPDATED_ENDERECO);
 
         restLocadoraMockMvc.perform(put("/api/locadoras")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -205,6 +309,10 @@ public class LocadoraResourceIntTest {
         assertThat(locadoraList).hasSize(databaseSizeBeforeUpdate);
         Locadora testLocadora = locadoraList.get(locadoraList.size() - 1);
         assertThat(testLocadora.getNome()).isEqualTo(UPDATED_NOME);
+        assertThat(testLocadora.getTelefone()).isEqualTo(UPDATED_TELEFONE);
+        assertThat(testLocadora.getCidade()).isEqualTo(UPDATED_CIDADE);
+        assertThat(testLocadora.getEstado()).isEqualTo(UPDATED_ESTADO);
+        assertThat(testLocadora.getEndereco()).isEqualTo(UPDATED_ENDERECO);
     }
 
     @Test

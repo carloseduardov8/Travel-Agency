@@ -17,9 +17,11 @@
                 "title": "Seguradora"
             },
             "nome": "Nome",
+            "telefone": "Telefone",
+            "cidade": "Cidade",
+            "estado": "Estado",
             "endereco": "Endereco",
-            "contrato": "Contrato",
-            "telefone": "Telefone"
+            "seguro": "Seguro"
         }
     }
 }

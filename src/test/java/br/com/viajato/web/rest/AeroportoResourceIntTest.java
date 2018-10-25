@@ -42,8 +42,17 @@ public class AeroportoResourceIntTest {
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CODIGO = "AAAAAAAAAA";
-    private static final String UPDATED_CODIGO = "BBBBBBBBBB";
+    private static final String DEFAULT_TELEFONE = "AAAAAAAAAA";
+    private static final String UPDATED_TELEFONE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CIDADE = "AAAAAAAAAA";
+    private static final String UPDATED_CIDADE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ESTADO = "AAAAAAAAAA";
+    private static final String UPDATED_ESTADO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ENDERECO = "AAAAAAAAAA";
+    private static final String UPDATED_ENDERECO = "BBBBBBBBBB";
 
     @Autowired
     private AeroportoRepository aeroportoRepository;
@@ -84,7 +93,10 @@ public class AeroportoResourceIntTest {
     public static Aeroporto createEntity(EntityManager em) {
         Aeroporto aeroporto = new Aeroporto()
             .nome(DEFAULT_NOME)
-            .codigo(DEFAULT_CODIGO);
+            .telefone(DEFAULT_TELEFONE)
+            .cidade(DEFAULT_CIDADE)
+            .estado(DEFAULT_ESTADO)
+            .endereco(DEFAULT_ENDERECO);
         return aeroporto;
     }
 
@@ -109,7 +121,10 @@ public class AeroportoResourceIntTest {
         assertThat(aeroportoList).hasSize(databaseSizeBeforeCreate + 1);
         Aeroporto testAeroporto = aeroportoList.get(aeroportoList.size() - 1);
         assertThat(testAeroporto.getNome()).isEqualTo(DEFAULT_NOME);
-        assertThat(testAeroporto.getCodigo()).isEqualTo(DEFAULT_CODIGO);
+        assertThat(testAeroporto.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
+        assertThat(testAeroporto.getCidade()).isEqualTo(DEFAULT_CIDADE);
+        assertThat(testAeroporto.getEstado()).isEqualTo(DEFAULT_ESTADO);
+        assertThat(testAeroporto.getEndereco()).isEqualTo(DEFAULT_ENDERECO);
     }
 
     @Test
@@ -151,10 +166,64 @@ public class AeroportoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkCodigoIsRequired() throws Exception {
+    public void checkTelefoneIsRequired() throws Exception {
         int databaseSizeBeforeTest = aeroportoRepository.findAll().size();
         // set the field null
-        aeroporto.setCodigo(null);
+        aeroporto.setTelefone(null);
+
+        // Create the Aeroporto, which fails.
+
+        restAeroportoMockMvc.perform(post("/api/aeroportos")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(aeroporto)))
+            .andExpect(status().isBadRequest());
+
+        List<Aeroporto> aeroportoList = aeroportoRepository.findAll();
+        assertThat(aeroportoList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCidadeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = aeroportoRepository.findAll().size();
+        // set the field null
+        aeroporto.setCidade(null);
+
+        // Create the Aeroporto, which fails.
+
+        restAeroportoMockMvc.perform(post("/api/aeroportos")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(aeroporto)))
+            .andExpect(status().isBadRequest());
+
+        List<Aeroporto> aeroportoList = aeroportoRepository.findAll();
+        assertThat(aeroportoList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkEstadoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = aeroportoRepository.findAll().size();
+        // set the field null
+        aeroporto.setEstado(null);
+
+        // Create the Aeroporto, which fails.
+
+        restAeroportoMockMvc.perform(post("/api/aeroportos")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(aeroporto)))
+            .andExpect(status().isBadRequest());
+
+        List<Aeroporto> aeroportoList = aeroportoRepository.findAll();
+        assertThat(aeroportoList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkEnderecoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = aeroportoRepository.findAll().size();
+        // set the field null
+        aeroporto.setEndereco(null);
 
         // Create the Aeroporto, which fails.
 
@@ -179,7 +248,10 @@ public class AeroportoResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(aeroporto.getId().intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
-            .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO.toString())));
+            .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE.toString())))
+            .andExpect(jsonPath("$.[*].cidade").value(hasItem(DEFAULT_CIDADE.toString())))
+            .andExpect(jsonPath("$.[*].estado").value(hasItem(DEFAULT_ESTADO.toString())))
+            .andExpect(jsonPath("$.[*].endereco").value(hasItem(DEFAULT_ENDERECO.toString())));
     }
     
     @Test
@@ -194,7 +266,10 @@ public class AeroportoResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(aeroporto.getId().intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
-            .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO.toString()));
+            .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE.toString()))
+            .andExpect(jsonPath("$.cidade").value(DEFAULT_CIDADE.toString()))
+            .andExpect(jsonPath("$.estado").value(DEFAULT_ESTADO.toString()))
+            .andExpect(jsonPath("$.endereco").value(DEFAULT_ENDERECO.toString()));
     }
 
     @Test
@@ -219,7 +294,10 @@ public class AeroportoResourceIntTest {
         em.detach(updatedAeroporto);
         updatedAeroporto
             .nome(UPDATED_NOME)
-            .codigo(UPDATED_CODIGO);
+            .telefone(UPDATED_TELEFONE)
+            .cidade(UPDATED_CIDADE)
+            .estado(UPDATED_ESTADO)
+            .endereco(UPDATED_ENDERECO);
 
         restAeroportoMockMvc.perform(put("/api/aeroportos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -231,7 +309,10 @@ public class AeroportoResourceIntTest {
         assertThat(aeroportoList).hasSize(databaseSizeBeforeUpdate);
         Aeroporto testAeroporto = aeroportoList.get(aeroportoList.size() - 1);
         assertThat(testAeroporto.getNome()).isEqualTo(UPDATED_NOME);
-        assertThat(testAeroporto.getCodigo()).isEqualTo(UPDATED_CODIGO);
+        assertThat(testAeroporto.getTelefone()).isEqualTo(UPDATED_TELEFONE);
+        assertThat(testAeroporto.getCidade()).isEqualTo(UPDATED_CIDADE);
+        assertThat(testAeroporto.getEstado()).isEqualTo(UPDATED_ESTADO);
+        assertThat(testAeroporto.getEndereco()).isEqualTo(UPDATED_ENDERECO);
     }
 
     @Test

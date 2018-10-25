@@ -5,14 +5,6 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="viajatoApp.passagem.classe">Classe</span></dt>
-                <dd>
-                    <span>{{passagem.classe}}</span>
-                </dd>
-                <dt><span jhiTranslate="viajatoApp.passagem.valor">Valor</span></dt>
-                <dd>
-                    <span>{{passagem.valor}}</span>
-                </dd>
                 <dt><span jhiTranslate="viajatoApp.passagem.nome">Nome</span></dt>
                 <dd>
                     <span>{{passagem.nome}}</span>
@@ -21,16 +13,20 @@
                 <dd>
                     <span>{{passagem.cpf}}</span>
                 </dd>
+                <dt><span jhiTranslate="viajatoApp.passagem.assento">Assento</span></dt>
+                <dd>
+                    <span>{{passagem.assento}}</span>
+                </dd>
                 <dt><span jhiTranslate="viajatoApp.passagem.voo">Voo</span></dt>
                 <dd>
                     <div *ngIf="passagem.voo">
                         <a [routerLink]="['/voo', passagem.voo?.id, 'view']">{{passagem.voo?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.passagem.cliente">Cliente</span></dt>
+                <dt><span jhiTranslate="viajatoApp.passagem.compra">Compra</span></dt>
                 <dd>
-                    <div *ngIf="passagem.cliente">
-                        <a [routerLink]="['/cliente', passagem.cliente?.id, 'view']">{{passagem.cliente?.id}}</a>
+                    <div *ngIf="passagem.compra">
+                        <a [routerLink]="['/compra', passagem.compra?.id, 'view']">{{passagem.compra?.id}}</a>
                     </div>
                 </dd>
             </dl>

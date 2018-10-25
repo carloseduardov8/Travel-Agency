@@ -1,7 +1,6 @@
 package br.com.viajato.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -32,8 +31,20 @@ public class Aeroporto implements Serializable {
     private String nome;
 
     @NotNull
-    @Column(name = "codigo", nullable = false)
-    private String codigo;
+    @Column(name = "telefone", nullable = false)
+    private String telefone;
+
+    @NotNull
+    @Column(name = "cidade", nullable = false)
+    private String cidade;
+
+    @NotNull
+    @Column(name = "estado", nullable = false)
+    private String estado;
+
+    @NotNull
+    @Column(name = "endereco", nullable = false)
+    private String endereco;
 
     @OneToMany(mappedBy = "origem")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -42,10 +53,6 @@ public class Aeroporto implements Serializable {
     @OneToMany(mappedBy = "destino")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Voo> vaiParas = new HashSet<>();
-
-    @ManyToOne
-    @JsonIgnoreProperties("aeroportos")
-    private Cidade cidade;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -69,17 +76,56 @@ public class Aeroporto implements Serializable {
         this.nome = nome;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public Aeroporto codigo(String codigo) {
-        this.codigo = codigo;
+    public Aeroporto telefone(String telefone) {
+        this.telefone = telefone;
         return this;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public Aeroporto cidade(String cidade) {
+        this.cidade = cidade;
+        return this;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public Aeroporto estado(String estado) {
+        this.estado = estado;
+        return this;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public Aeroporto endereco(String endereco) {
+        this.endereco = endereco;
+        return this;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public Set<Voo> getVemDes() {
@@ -131,19 +177,6 @@ public class Aeroporto implements Serializable {
     public void setVaiParas(Set<Voo> voos) {
         this.vaiParas = voos;
     }
-
-    public Cidade getCidade() {
-        return cidade;
-    }
-
-    public Aeroporto cidade(Cidade cidade) {
-        this.cidade = cidade;
-        return this;
-    }
-
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -171,7 +204,10 @@ public class Aeroporto implements Serializable {
         return "Aeroporto{" +
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
-            ", codigo='" + getCodigo() + "'" +
+            ", telefone='" + getTelefone() + "'" +
+            ", cidade='" + getCidade() + "'" +
+            ", estado='" + getEstado() + "'" +
+            ", endereco='" + getEndereco() + "'" +
             "}";
     }
 }

@@ -18,6 +18,7 @@
             <th><span jhiTranslate="viajatoApp.voo.numero">Numero</span></th>
             <th><span jhiTranslate="viajatoApp.voo.partida">Partida</span></th>
             <th><span jhiTranslate="viajatoApp.voo.chegada">Chegada</span></th>
+            <th><span jhiTranslate="viajatoApp.voo.valor">Valor</span></th>
             <th><span jhiTranslate="viajatoApp.voo.linhaAerea">Linha Aerea</span></th>
             <th><span jhiTranslate="viajatoApp.voo.origem">Origem</span></th>
             <th><span jhiTranslate="viajatoApp.voo.destino">Destino</span></th>
@@ -30,6 +31,7 @@
                 <td>{{voo.numero}}</td>
                 <td>{{voo.partida}}</td>
                 <td>{{voo.chegada}}</td>
+                <td>{{voo.valor}}</td>
                 <td>
                     <div *ngIf="voo.linhaAerea">
                         <a [routerLink]="['../linha-aerea', voo.linhaAerea?.id, 'view' ]" >{{voo.linhaAerea?.id}}</a>

@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { JhiAlertService } from 'ng-jhipster';
 
 import { IHotel } from 'app/shared/model/hotel.model';
 import { HotelService } from './hotel.service';
-import { IEndereco } from 'app/shared/model/endereco.model';
-import { EnderecoService } from 'app/entities/endereco';
 
 @Component({
     selector: 'jhi-hotel-update',
@@ -17,35 +14,13 @@ export class HotelUpdateComponent implements OnInit {
     private _hotel: IHotel;
     isSaving: boolean;
 
-    enderecos: IEndereco[];
-
-    constructor(
-        private jhiAlertService: JhiAlertService,
-        private hotelService: HotelService,
-        private enderecoService: EnderecoService,
-        private activatedRoute: ActivatedRoute
-    ) {}
+    constructor(private hotelService: HotelService, private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ hotel }) => {
             this.hotel = hotel;
         });
-        this.enderecoService.query({ filter: 'hotel-is-null' }).subscribe(
-            (res: HttpResponse<IEndereco[]>) => {
-                if (!this.hotel.endereco || !this.hotel.endereco.id) {
-                    this.enderecos = res.body;
-                } else {
-                    this.enderecoService.find(this.hotel.endereco.id).subscribe(
-                        (subRes: HttpResponse<IEndereco>) => {
-                            this.enderecos = [subRes.body].concat(res.body);
-                        },
-                        (subRes: HttpErrorResponse) => this.onError(subRes.message)
-                    );
-                }
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
     }
 
     previousState() {
@@ -72,14 +47,6 @@ export class HotelUpdateComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
-    }
-
-    private onError(errorMessage: string) {
-        this.jhiAlertService.error(errorMessage, null, null);
-    }
-
-    trackEnderecoById(index: number, item: IEndereco) {
-        return item.id;
     }
     get hotel() {
         return this._hotel;

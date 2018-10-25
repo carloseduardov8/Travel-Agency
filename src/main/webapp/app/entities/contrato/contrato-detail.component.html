@@ -5,28 +5,28 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="viajatoApp.contrato.numero">Numero</span></dt>
+                <dt><span jhiTranslate="viajatoApp.contrato.numPessoas">Num Pessoas</span></dt>
                 <dd>
-                    <span>{{contrato.numero}}</span>
+                    <span>{{contrato.numPessoas}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.contrato.valor">Valor</span></dt>
+                <dt><span jhiTranslate="viajatoApp.contrato.dataInicio">Data Inicio</span></dt>
                 <dd>
-                    <span>{{contrato.valor}}</span>
+                    <span>{{contrato.dataInicio}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.contrato.descricao">Descricao</span></dt>
+                <dt><span jhiTranslate="viajatoApp.contrato.dataFim">Data Fim</span></dt>
                 <dd>
-                    <span>{{contrato.descricao}}</span>
+                    <span>{{contrato.dataFim}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.contrato.locadora">Locadora</span></dt>
+                <dt><span jhiTranslate="viajatoApp.contrato.compra">Compra</span></dt>
                 <dd>
-                    <div *ngIf="contrato.locadora">
-                        <a [routerLink]="['/locadora', contrato.locadora?.id, 'view']">{{contrato.locadora?.id}}</a>
+                    <div *ngIf="contrato.compra">
+                        <a [routerLink]="['/compra', contrato.compra?.id, 'view']">{{contrato.compra?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.contrato.seguradora">Seguradora</span></dt>
+                <dt><span jhiTranslate="viajatoApp.contrato.seguro">Seguro</span></dt>
                 <dd>
-                    <div *ngIf="contrato.seguradora">
-                        <a [routerLink]="['/seguradora', contrato.seguradora?.id, 'view']">{{contrato.seguradora?.id}}</a>
+                    <div *ngIf="contrato.seguro">
+                        <a [routerLink]="['/seguro', contrato.seguro?.id, 'view']">{{contrato.seguro?.id}}</a>
                     </div>
                 </dd>
             </dl>

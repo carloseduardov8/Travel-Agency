@@ -17,11 +17,11 @@
                 "title": "Reserva"
             },
             "numPessoas": "Num Pessoas",
-            "inicio": "Inicio",
-            "duracao": "Duracao",
+            "dataInicio": "Data Inicio",
+            "dataFim": "Data Fim",
             "valor": "Valor",
             "quarto": "Quarto",
-            "cliente": "Cliente"
+            "compra": "Compra"
         }
     }
 }

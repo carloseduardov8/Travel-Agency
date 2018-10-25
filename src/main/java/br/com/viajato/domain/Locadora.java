@@ -30,21 +30,25 @@ public class Locadora implements Serializable {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Endereco endereco;
+    @NotNull
+    @Column(name = "telefone", nullable = false)
+    private String telefone;
 
-    @OneToMany(mappedBy = "locadora")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Telefone> telefones = new HashSet<>();
+    @NotNull
+    @Column(name = "cidade", nullable = false)
+    private String cidade;
+
+    @NotNull
+    @Column(name = "estado", nullable = false)
+    private String estado;
+
+    @NotNull
+    @Column(name = "endereco", nullable = false)
+    private String endereco;
 
     @OneToMany(mappedBy = "locadora")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Veiculo> veiculos = new HashSet<>();
-
-    @OneToMany(mappedBy = "locadora")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Contrato> contratoes = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -68,42 +72,56 @@ public class Locadora implements Serializable {
         this.nome = nome;
     }
 
-    public Endereco getEndereco() {
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public Locadora telefone(String telefone) {
+        this.telefone = telefone;
+        return this;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public Locadora cidade(String cidade) {
+        this.cidade = cidade;
+        return this;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public Locadora estado(String estado) {
+        this.estado = estado;
+        return this;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getEndereco() {
         return endereco;
     }
 
-    public Locadora endereco(Endereco endereco) {
+    public Locadora endereco(String endereco) {
         this.endereco = endereco;
         return this;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    public Set<Telefone> getTelefones() {
-        return telefones;
-    }
-
-    public Locadora telefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
-        return this;
-    }
-
-    public Locadora addTelefone(Telefone telefone) {
-        this.telefones.add(telefone);
-        telefone.setLocadora(this);
-        return this;
-    }
-
-    public Locadora removeTelefone(Telefone telefone) {
-        this.telefones.remove(telefone);
-        telefone.setLocadora(null);
-        return this;
-    }
-
-    public void setTelefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
     }
 
     public Set<Veiculo> getVeiculos() {
@@ -129,31 +147,6 @@ public class Locadora implements Serializable {
 
     public void setVeiculos(Set<Veiculo> veiculos) {
         this.veiculos = veiculos;
-    }
-
-    public Set<Contrato> getContratoes() {
-        return contratoes;
-    }
-
-    public Locadora contratoes(Set<Contrato> contratoes) {
-        this.contratoes = contratoes;
-        return this;
-    }
-
-    public Locadora addContrato(Contrato contrato) {
-        this.contratoes.add(contrato);
-        contrato.setLocadora(this);
-        return this;
-    }
-
-    public Locadora removeContrato(Contrato contrato) {
-        this.contratoes.remove(contrato);
-        contrato.setLocadora(null);
-        return this;
-    }
-
-    public void setContratoes(Set<Contrato> contratoes) {
-        this.contratoes = contratoes;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -182,6 +175,10 @@ public class Locadora implements Serializable {
         return "Locadora{" +
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
+            ", telefone='" + getTelefone() + "'" +
+            ", cidade='" + getCidade() + "'" +
+            ", estado='" + getEstado() + "'" +
+            ", endereco='" + getEndereco() + "'" +
             "}";
     }
 }

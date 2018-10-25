@@ -13,11 +13,21 @@
                 <dd>
                     <span>{{hotel.nota}}</span>
                 </dd>
+                <dt><span jhiTranslate="viajatoApp.hotel.telefone">Telefone</span></dt>
+                <dd>
+                    <span>{{hotel.telefone}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.hotel.cidade">Cidade</span></dt>
+                <dd>
+                    <span>{{hotel.cidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.hotel.estado">Estado</span></dt>
+                <dd>
+                    <span>{{hotel.estado}}</span>
+                </dd>
                 <dt><span jhiTranslate="viajatoApp.hotel.endereco">Endereco</span></dt>
                 <dd>
-                    <div *ngIf="hotel.endereco">
-                        <a [routerLink]="['/endereco', hotel.endereco?.id, 'view']">{{hotel.endereco?.id}}</a>
-                    </div>
+                    <span>{{hotel.endereco}}</span>
                 </dd>
             </dl>
 

@@ -29,16 +29,16 @@ public class Reserva implements Serializable {
     private Integer numPessoas;
 
     @NotNull
-    @Column(name = "inicio", nullable = false)
-    private String inicio;
+    @Column(name = "data_inicio", nullable = false)
+    private String dataInicio;
 
     @NotNull
-    @Column(name = "duracao", nullable = false)
-    private Integer duracao;
+    @Column(name = "data_fim", nullable = false)
+    private String dataFim;
 
     @NotNull
     @Column(name = "valor", nullable = false)
-    private Integer valor;
+    private Float valor;
 
     @ManyToOne
     @JsonIgnoreProperties("reservas")
@@ -46,7 +46,7 @@ public class Reserva implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("reservas")
-    private Cliente cliente;
+    private Compra compra;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -70,42 +70,42 @@ public class Reserva implements Serializable {
         this.numPessoas = numPessoas;
     }
 
-    public String getInicio() {
-        return inicio;
+    public String getDataInicio() {
+        return dataInicio;
     }
 
-    public Reserva inicio(String inicio) {
-        this.inicio = inicio;
+    public Reserva dataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
         return this;
     }
 
-    public void setInicio(String inicio) {
-        this.inicio = inicio;
+    public void setDataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
     }
 
-    public Integer getDuracao() {
-        return duracao;
+    public String getDataFim() {
+        return dataFim;
     }
 
-    public Reserva duracao(Integer duracao) {
-        this.duracao = duracao;
+    public Reserva dataFim(String dataFim) {
+        this.dataFim = dataFim;
         return this;
     }
 
-    public void setDuracao(Integer duracao) {
-        this.duracao = duracao;
+    public void setDataFim(String dataFim) {
+        this.dataFim = dataFim;
     }
 
-    public Integer getValor() {
+    public Float getValor() {
         return valor;
     }
 
-    public Reserva valor(Integer valor) {
+    public Reserva valor(Float valor) {
         this.valor = valor;
         return this;
     }
 
-    public void setValor(Integer valor) {
+    public void setValor(Float valor) {
         this.valor = valor;
     }
 
@@ -122,17 +122,17 @@ public class Reserva implements Serializable {
         this.quarto = quarto;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Compra getCompra() {
+        return compra;
     }
 
-    public Reserva cliente(Cliente cliente) {
-        this.cliente = cliente;
+    public Reserva compra(Compra compra) {
+        this.compra = compra;
         return this;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -161,8 +161,8 @@ public class Reserva implements Serializable {
         return "Reserva{" +
             "id=" + getId() +
             ", numPessoas=" + getNumPessoas() +
-            ", inicio='" + getInicio() + "'" +
-            ", duracao=" + getDuracao() +
+            ", dataInicio='" + getDataInicio() + "'" +
+            ", dataFim='" + getDataFim() + "'" +
             ", valor=" + getValor() +
             "}";
     }

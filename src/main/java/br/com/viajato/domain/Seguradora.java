@@ -30,17 +30,25 @@ public class Seguradora implements Serializable {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Endereco endereco;
+    @NotNull
+    @Column(name = "telefone", nullable = false)
+    private String telefone;
+
+    @NotNull
+    @Column(name = "cidade", nullable = false)
+    private String cidade;
+
+    @NotNull
+    @Column(name = "estado", nullable = false)
+    private String estado;
+
+    @NotNull
+    @Column(name = "endereco", nullable = false)
+    private String endereco;
 
     @OneToMany(mappedBy = "seguradora")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Contrato> contratoes = new HashSet<>();
-
-    @OneToMany(mappedBy = "seguradora")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Telefone> telefones = new HashSet<>();
+    private Set<Seguro> seguros = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -64,67 +72,81 @@ public class Seguradora implements Serializable {
         this.nome = nome;
     }
 
-    public Endereco getEndereco() {
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public Seguradora telefone(String telefone) {
+        this.telefone = telefone;
+        return this;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public Seguradora cidade(String cidade) {
+        this.cidade = cidade;
+        return this;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public Seguradora estado(String estado) {
+        this.estado = estado;
+        return this;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getEndereco() {
         return endereco;
     }
 
-    public Seguradora endereco(Endereco endereco) {
+    public Seguradora endereco(String endereco) {
         this.endereco = endereco;
         return this;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
 
-    public Set<Contrato> getContratoes() {
-        return contratoes;
+    public Set<Seguro> getSeguros() {
+        return seguros;
     }
 
-    public Seguradora contratoes(Set<Contrato> contratoes) {
-        this.contratoes = contratoes;
+    public Seguradora seguros(Set<Seguro> seguros) {
+        this.seguros = seguros;
         return this;
     }
 
-    public Seguradora addContrato(Contrato contrato) {
-        this.contratoes.add(contrato);
-        contrato.setSeguradora(this);
+    public Seguradora addSeguro(Seguro seguro) {
+        this.seguros.add(seguro);
+        seguro.setSeguradora(this);
         return this;
     }
 
-    public Seguradora removeContrato(Contrato contrato) {
-        this.contratoes.remove(contrato);
-        contrato.setSeguradora(null);
+    public Seguradora removeSeguro(Seguro seguro) {
+        this.seguros.remove(seguro);
+        seguro.setSeguradora(null);
         return this;
     }
 
-    public void setContratoes(Set<Contrato> contratoes) {
-        this.contratoes = contratoes;
-    }
-
-    public Set<Telefone> getTelefones() {
-        return telefones;
-    }
-
-    public Seguradora telefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
-        return this;
-    }
-
-    public Seguradora addTelefone(Telefone telefone) {
-        this.telefones.add(telefone);
-        telefone.setSeguradora(this);
-        return this;
-    }
-
-    public Seguradora removeTelefone(Telefone telefone) {
-        this.telefones.remove(telefone);
-        telefone.setSeguradora(null);
-        return this;
-    }
-
-    public void setTelefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
+    public void setSeguros(Set<Seguro> seguros) {
+        this.seguros = seguros;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -153,6 +175,10 @@ public class Seguradora implements Serializable {
         return "Seguradora{" +
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
+            ", telefone='" + getTelefone() + "'" +
+            ", cidade='" + getCidade() + "'" +
+            ", estado='" + getEstado() + "'" +
+            ", endereco='" + getEndereco() + "'" +
             "}";
     }
 }

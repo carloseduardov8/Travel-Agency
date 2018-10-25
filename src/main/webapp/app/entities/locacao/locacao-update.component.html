@@ -21,17 +21,24 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.locacao.duracao" for="field_duracao">Duracao</label>
-                    <input type="number" class="form-control" name="duracao" id="field_duracao"
-                        [(ngModel)]="locacao.duracao" required/>
-                    <div [hidden]="!(editForm.controls.duracao?.dirty && editForm.controls.duracao?.invalid)">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.locacao.dataInicio" for="field_dataInicio">Data Inicio</label>
+                    <input type="text" class="form-control" name="dataInicio" id="field_dataInicio"
+                        [(ngModel)]="locacao.dataInicio" required/>
+                    <div [hidden]="!(editForm.controls.dataInicio?.dirty && editForm.controls.dataInicio?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.duracao?.errors?.required" jhiTranslate="entity.validation.required">
+                        [hidden]="!editForm.controls.dataInicio?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.locacao.dataFim" for="field_dataFim">Data Fim</label>
+                    <input type="text" class="form-control" name="dataFim" id="field_dataFim"
+                        [(ngModel)]="locacao.dataFim" required/>
+                    <div [hidden]="!(editForm.controls.dataFim?.dirty && editForm.controls.dataFim?.invalid)">
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.duracao?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
+                        [hidden]="!editForm.controls.dataFim?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
                         </small>
                     </div>
                 </div>
@@ -59,10 +66,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.locacao.cliente" for="field_cliente">Cliente</label>
-                    <select class="form-control" id="field_cliente" name="cliente" [(ngModel)]="locacao.cliente" >
+                    <label class="form-control-label" jhiTranslate="viajatoApp.locacao.compra" for="field_compra">Compra</label>
+                    <select class="form-control" id="field_compra" name="compra" [(ngModel)]="locacao.compra" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="clienteOption.id === locacao.cliente?.id ? locacao.cliente : clienteOption" *ngFor="let clienteOption of clientes; trackBy: trackClienteById">{{clienteOption.id}}</option>
+                        <option [ngValue]="compraOption.id === locacao.compra?.id ? locacao.compra : compraOption" *ngFor="let compraOption of compras; trackBy: trackCompraById">{{compraOption.id}}</option>
                     </select>
                 </div>
             </div>

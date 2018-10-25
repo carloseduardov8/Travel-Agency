@@ -1,0 +1,45 @@
+{
+    "name": "Compra",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "passagem",
+            "otherEntityName": "passagem",
+            "otherEntityRelationshipName": "compra"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "locacao",
+            "otherEntityName": "locacao",
+            "otherEntityRelationshipName": "compra"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "reserva",
+            "otherEntityName": "reserva",
+            "otherEntityRelationshipName": "compra"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "contrato",
+            "otherEntityName": "contrato",
+            "otherEntityRelationshipName": "compra"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181025033529",
+    "entityTableName": "compra",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

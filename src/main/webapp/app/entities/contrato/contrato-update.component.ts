@@ -6,10 +6,10 @@ import { JhiAlertService } from 'ng-jhipster';
 
 import { IContrato } from 'app/shared/model/contrato.model';
 import { ContratoService } from './contrato.service';
-import { ILocadora } from 'app/shared/model/locadora.model';
-import { LocadoraService } from 'app/entities/locadora';
-import { ISeguradora } from 'app/shared/model/seguradora.model';
-import { SeguradoraService } from 'app/entities/seguradora';
+import { ICompra } from 'app/shared/model/compra.model';
+import { CompraService } from 'app/entities/compra';
+import { ISeguro } from 'app/shared/model/seguro.model';
+import { SeguroService } from 'app/entities/seguro';
 
 @Component({
     selector: 'jhi-contrato-update',
@@ -19,15 +19,15 @@ export class ContratoUpdateComponent implements OnInit {
     private _contrato: IContrato;
     isSaving: boolean;
 
-    locadoras: ILocadora[];
+    compras: ICompra[];
 
-    seguradoras: ISeguradora[];
+    seguros: ISeguro[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private contratoService: ContratoService,
-        private locadoraService: LocadoraService,
-        private seguradoraService: SeguradoraService,
+        private compraService: CompraService,
+        private seguroService: SeguroService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -36,15 +36,15 @@ export class ContratoUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ contrato }) => {
             this.contrato = contrato;
         });
-        this.locadoraService.query().subscribe(
-            (res: HttpResponse<ILocadora[]>) => {
-                this.locadoras = res.body;
+        this.compraService.query().subscribe(
+            (res: HttpResponse<ICompra[]>) => {
+                this.compras = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-        this.seguradoraService.query().subscribe(
-            (res: HttpResponse<ISeguradora[]>) => {
-                this.seguradoras = res.body;
+        this.seguroService.query().subscribe(
+            (res: HttpResponse<ISeguro[]>) => {
+                this.seguros = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -80,11 +80,11 @@ export class ContratoUpdateComponent implements OnInit {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 
-    trackLocadoraById(index: number, item: ILocadora) {
+    trackCompraById(index: number, item: ICompra) {
         return item.id;
     }
 
-    trackSeguradoraById(index: number, item: ISeguradora) {
+    trackSeguroById(index: number, item: ISeguro) {
         return item.id;
     }
     get contrato() {

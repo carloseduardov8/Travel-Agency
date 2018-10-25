@@ -16,7 +16,7 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="viajatoApp.linhaAerea.nome">Nome</span></th>
-            <th><span jhiTranslate="viajatoApp.linhaAerea.codigo">Codigo</span></th>
+            <th><span jhiTranslate="viajatoApp.linhaAerea.telefone">Telefone</span></th>
             <th></th>
             </tr>
             </thead>
@@ -24,7 +24,7 @@
             <tr *ngFor="let linhaAerea of linhaAereas ;trackBy: trackId">
                 <td><a [routerLink]="['/linha-aerea', linhaAerea.id, 'view' ]">{{linhaAerea.id}}</a></td>
                 <td>{{linhaAerea.nome}}</td>
-                <td>{{linhaAerea.codigo}}</td>
+                <td>{{linhaAerea.telefone}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

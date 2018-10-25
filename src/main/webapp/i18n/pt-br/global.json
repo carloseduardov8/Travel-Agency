@@ -2,43 +2,25 @@
     "global": {
         "title": "Viajato",
         "browsehappy": "Você está usando um navegador <strong>desatualizado</strong>. Favor <a href=\"http://browsehappy.com/?locale=pt_BR\">atualizar o seu navegador</a> para ter uma experiência melhor.",
-		"ticket": {
-			"plane": {
-				"title": "Passagem Aérea",
-				"from": "Origem: ",
-				"to": "Destino: ",
-				"flight": "Voo ",
-				"departure": "Saída: ",
-				"arrival": "Chegada: "
-			},
-			"hotel": {
-				"title": "Acomodações"
-			}
-		},
-		"menu": {
+        "menu": {
             "home": "Início",
-            "basket": "Basket",
-            "choose-plane": "Choose Plane",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
-                "estado": "Estado",
-                "cidade": "Cidade",
                 "aeroporto": "Aeroporto",
-                "endereco": "Endereco",
-                "telefone": "Telefone",
                 "linhaAerea": "Linha Aerea",
                 "voo": "Voo",
-                "passagem": "Passagem",
                 "locadora": "Locadora",
                 "veiculo": "Veiculo",
                 "locacao": "Locacao",
                 "hotel": "Hotel",
                 "quarto": "Quarto",
                 "reserva": "Reserva",
-                "cliente": "Cliente",
                 "seguradora": "Seguradora",
                 "contrato": "Contrato",
+                "compra": "Compra",
+                "passagem": "Passagem",
+                "seguro": "Seguro",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -163,7 +145,5 @@
         "idexists": "Novo(a) {{entityName}} não pode ter uma ID",
         "idnull": "Invalid ID"
     },
-    "footer": {
-            "mainText": "Projeto de Qualidade de Software para o semestre de 2018.2"
-    }
+    "footer": "Este é o seu rodapé"
 }

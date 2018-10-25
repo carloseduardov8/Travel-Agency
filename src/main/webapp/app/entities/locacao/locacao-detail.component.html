@@ -9,9 +9,13 @@
                 <dd>
                     <span>{{locacao.inicio}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.locacao.duracao">Duracao</span></dt>
+                <dt><span jhiTranslate="viajatoApp.locacao.dataInicio">Data Inicio</span></dt>
                 <dd>
-                    <span>{{locacao.duracao}}</span>
+                    <span>{{locacao.dataInicio}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.locacao.dataFim">Data Fim</span></dt>
+                <dd>
+                    <span>{{locacao.dataFim}}</span>
                 </dd>
                 <dt><span jhiTranslate="viajatoApp.locacao.valor">Valor</span></dt>
                 <dd>
@@ -23,10 +27,10 @@
                         <a [routerLink]="['/veiculo', locacao.veiculo?.id, 'view']">{{locacao.veiculo?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.locacao.cliente">Cliente</span></dt>
+                <dt><span jhiTranslate="viajatoApp.locacao.compra">Compra</span></dt>
                 <dd>
-                    <div *ngIf="locacao.cliente">
-                        <a [routerLink]="['/cliente', locacao.cliente?.id, 'view']">{{locacao.cliente?.id}}</a>
+                    <div *ngIf="locacao.compra">
+                        <a [routerLink]="['/compra', locacao.compra?.id, 'view']">{{locacao.compra?.id}}</a>
                     </div>
                 </dd>
             </dl>

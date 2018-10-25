@@ -16,12 +16,11 @@
             "detail": {
                 "title": "Contrato"
             },
-            "numero": "Numero",
-            "valor": "Valor",
-            "descricao": "Descricao",
-            "cliente": "Cliente",
-            "locadora": "Locadora",
-            "seguradora": "Seguradora"
+            "numPessoas": "Num Pessoas",
+            "dataInicio": "Data Inicio",
+            "dataFim": "Data Fim",
+            "compra": "Compra",
+            "seguro": "Seguro"
         }
     }
 }
