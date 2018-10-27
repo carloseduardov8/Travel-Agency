@@ -1,0 +1,10 @@
+{
+  "choose-plane": {
+    "title": "Choose Your Plane Tickets",
+	"subtitle": "Click on which tickets you'd like to purchase.",
+	"buttons": {
+		"back": "Back"
+	},
+	"choose-seats": "Choose your seats"
+	}
+}

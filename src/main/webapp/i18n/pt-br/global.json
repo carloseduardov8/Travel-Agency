@@ -2,6 +2,19 @@
     "global": {
         "title": "Viajato",
         "browsehappy": "Você está usando um navegador <strong>desatualizado</strong>. Favor <a href=\"http://browsehappy.com/?locale=pt_BR\">atualizar o seu navegador</a> para ter uma experiência melhor.",
+        "ticket": {
+            "plane": {
+                "title": "Passagem Aérea",
+                "from": "Origem: ",
+                "to": "Destino: ",
+                "flight": "Voo ",
+                "departure": "Saída: ",
+                "arrival": "Chegada: "
+            },
+            "hotel": {
+                "title": "Acomodações"
+            }
+        },
         "menu": {
             "home": "Início",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",

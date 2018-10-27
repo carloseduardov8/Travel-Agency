@@ -4,6 +4,8 @@ import br.com.viajato.domain.Voo;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Spring Data  repository for the Voo entity.
@@ -11,5 +13,7 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface VooRepository extends JpaRepository<Voo, Long> {
+    @Query("SELECT v FROM Voo v WHERE v.partida LIKE ?1% and v.origem.cidade = ?2 and v.destino.cidade= ?3")
+    List<Voo> findVooByPartidaAndOrigemAndDestino(String partida, String origem, String destino);
 
 }

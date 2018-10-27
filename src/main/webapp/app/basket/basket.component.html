@@ -1,3 +1,54 @@
-<p>
-  basket works!
-</p>
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+
+		<!-- Título da página e descrição -->
+		<h1 class="text-capitalize text-center" jhiTranslate="basket.title">Title</h1>
+		<h5 class="text-center" jhiTranslate="basket.subtitle">Subtitle</h5>
+		<hr/>
+
+		<!-- Box contendo os tickets -->
+		<div class="ticket-box">
+
+			<!-- Passagem aérea -->
+			<a class="ticket plane-ticket" (click)="goToChoosePlane()">
+				<div class="absolute-pos">
+					<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.title">Plane Ticket</span>
+				</div>
+				<div class="absolute-pos">
+					<span id="plane-ticket-flight" jhiTranslate="global.ticket.plane.flight">Flight</span>
+				</div>
+				<div class="absolute-pos">
+					<span id="plane-ticket-departure" jhiTranslate="global.ticket.plane.departure">Departure</span>
+				</div>
+				<div class="absolute-pos">
+					<span id="plane-ticket-arrival" jhiTranslate="global.ticket.plane.arrival">Arrival</span>
+				</div>
+				<div class="absolute-pos">
+					<span id="plane-ticket-from" jhiTranslate="global.ticket.plane.from">From</span>
+				</div>
+				<div class="absolute-pos">
+					<span id="plane-ticket-to" jhiTranslate="global.ticket.plane.to">To</span>
+				</div>
+				<div class="absolute-pos">
+					<div id="plane-ticket-airline">
+					</div>
+				</div>
+			</a>
+
+
+			<!-- Hotel -->
+			<a class="ticket hotel-ticket">
+				<span id="hotel-ticket-title" jhiTranslate="global.ticket.hotel.title">Hotel</span>
+			</a>
+
+			<!-- Botão de compra -->
+			<div class="our-button">
+				<input type="submit" class="btn btn-outline-warning btn-block" value="{{ 'basket.purchase' | translate }}" />
+			</div>
+
+		</div>
+
+	</div>
+	<div class="col-md-1"></div>
+</div>

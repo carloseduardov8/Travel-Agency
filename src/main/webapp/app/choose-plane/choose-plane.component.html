@@ -1,0 +1,87 @@
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+
+		<!-- Título da página e descrição -->
+		<h1 class="text-capitalize text-center" jhiTranslate="choose-plane.title">Title</h1>
+		<h5 class="text-center" jhiTranslate="choose-plane.subtitle">Subtitle</h5>
+		<hr/>
+
+		<!-- Box contendo os tickets -->
+		<div class="ticket-box">
+
+			<!-- Passagem aérea -->
+            <div *ngIf="withoutVoos">
+                <p>Não há passagens disponíveis.</p>
+            </div>
+
+            <div *ngIf="voos?.length > 0">
+                <div class="tp-wrapper" *ngFor="let voo of voos">
+                    <div class="tp-box" [@flipState]="flip">
+                        <a class="ticket plane-ticket tp-ticket-side tp-ticket-front" (click)="toggleFlip()">
+                            <div *ngIf="flip == 'inactive' ">
+                                <div class="absolute-pos">
+                                    <span id="plane-ticket-title" jhiTranslate="global.ticket.plane.title">Plane Ticket</span>
+                                </div>
+                                <div class="absolute-pos">
+                                    <span id="plane-ticket-flight"> <span jhiTranslate="global.ticket.plane.flight">Flight</span>
+                                        nº {{ voo.numero }} </span>
+                                </div>
+                                <div class="absolute-pos">
+                                    <span id="plane-ticket-departure"> <span jhiTranslate="global.ticket.plane.departure">Departure</span>
+                                        {{ voo.partida }} </span>
+                                </div>
+                                <div class="absolute-pos">
+                                    <span id="plane-ticket-arrival"> <span jhiTranslate="global.ticket.plane.arrival">Arrival</span>
+                                        {{ voo.chegada }}</span>
+                                </div>
+                                <div class="absolute-pos">
+                                    <span id="plane-ticket-from"><span jhiTranslate="global.ticket.plane.from">From</span>
+                                        {{voo.origem.cidade.nome}}</span>
+                                </div>
+                                <div class="absolute-pos">
+                                    <span id="plane-ticket-to"> <span jhiTranslate="global.ticket.plane.to">To </span>
+                                        {{voo.destino.cidade.nome}}</span>
+                                </div>
+                                <div class="absolute-pos">
+                                    <div id="plane-ticket-airline">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a class="ticket plane-ticket tp-ticket-side tp-ticket-back">
+                            <div *ngIf="flip == 'active' ">
+                                <!-- Text-->
+                                <span id="plane-ticket-seats-text" jhiTranslate="choose-plane.choose-seats">Choose Seats</span>
+                                <!-- Plane seats-->
+                                <div class="absolute-pos" id="seat-wrapper">
+                                    <li class="seat-row" *ngFor="let seatRow of seats">
+                                        <ol class="seats" type="A">
+                                            <li class="seat" *ngFor="let seat of seatRow">
+                                                <input type="checkbox" id="{{ seat }}" />
+                                                <label for="{{ seat }}">{{ seat }}</label>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </div>
+                                <!-- Botão de voltar -->
+                                <div class="our-button">
+                                    <input type="submit" (click)="toggleFlip()" class="btn btn-outline-warning btn-block plane-ticket-btn" value="{{ 'choose-plane.buttons.back' | translate }}" />
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+			<!-- Botão de voltar -->
+			<div class="our-button">
+				<input type="submit" class="btn btn-outline-warning btn-block" value="{{ 'choose-plane.buttons.back' | translate }}" />
+			</div>
+
+		</div>
+
+	</div>
+	<div class="col-md-1"></div>
+</div>

@@ -15,7 +15,9 @@
                         <label for="from">Origem</label>
                         <select id="from" class="form-control" required #from formControlName="from" [ngClass]="{ 'is-invalid': submitted && f.from.errors }">
                             <option value="">Selecione uma cidade</option>
-                            <option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</option>
+                            <option value="Rio de Janeiro">Rio de Janeiro</option>
+                            <option value="São Paulo">São Paulo</option>
+                            <option value="Londres">Londres</option>
                         </select>
                         <div *ngIf="submitted && f.from.errors" class="invalid-feedback">
                             <div *ngIf="f.from.errors.required">Escolha uma cidade de origem</div>
@@ -25,7 +27,9 @@
                         <label for="to">Destino</label>
                         <select id="to" class="form-control" required #to formControlName="to" [ngClass]="{ 'is-invalid': submitted && f.to.errors }">
                             <option value="">Selecione uma cidade</option>
-                            <option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</option>
+                            <option value="Rio de Janeiro">Rio de Janeiro</option>
+                            <option value="São Paulo">São Paulo</option>
+                            <option value="Londres">Londres</option>
                         </select>
                         <div *ngIf="submitted && f.to.errors" class="invalid-feedback">
                             <div *ngIf="f.to.errors.required">Escolha uma cidade de destino, diferente da de origem</div>
