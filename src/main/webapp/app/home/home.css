@@ -4,10 +4,50 @@ Main page styles
 
 .hipster {
     display: inline-block;
-    width: 347px;
-    height: 497px;
-    background: url('../../content/images/hipster.png') no-repeat center top;
+    width: 300px;
+    height: 250px;
+    background: url('../../content/images/viajato.png') no-repeat center top;
     background-size: contain;
+}
+
+.form-search-passengers {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+    padding: 20px;
+    margin-bottom: 20em;
+}
+
+.form-search-passengers .btn {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.form-search-passengers .btn:hover {
+    color: white !important;
+}
+
+textarea:focus,
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='datetime']:focus,
+input[type='datetime-local']:focus,
+input[type='date']:focus,
+input[type='month']:focus,
+input[type='time']:focus,
+input[type='week']:focus,
+input[type='number']:focus,
+input[type='email']:focus,
+input[type='url']:focus,
+input[type='search']:focus,
+input[type='tel']:focus,
+input[type='color']:focus,
+.uneditable-input:focus,
+select:focus {
+    border-color: rgb(255, 244, 25) !important;
+    box-shadow: 0 1px 1px rgba(250, 252, 200, 0.8) inset, 0 0 8px rgba(250, 252, 200, 0.8) !important;
+    outline: 0 none;
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
@@ -17,7 +57,7 @@ Main page styles
     only screen and (min-resolution: 192dpi),
     only screen and (min-resolution: 2dppx) {
     .hipster {
-        background: url('../../content/images/hipster2x.png') no-repeat center top;
+        background: url('../../content/images/viajato.png') no-repeat center top;
         background-size: contain;
     }
 }
