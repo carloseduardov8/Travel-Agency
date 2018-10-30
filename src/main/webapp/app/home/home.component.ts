@@ -114,7 +114,7 @@ export class HomeComponent implements OnInit {
                 to: to.value,
                 dateIn: dateIn.value,
                 dateOut: dateOut.value,
-                passangers: passengers.value
+                passengers: passengers.value
             }
         ]);
     }

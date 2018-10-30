@@ -16,7 +16,7 @@
             </div>
 
             <div *ngIf="voos?.length > 0">
-                <div class="tp-wrapper" *ngFor="let voo of voos">
+                <div class="tp-wrapper" *ngFor="let voo of voos; let i = index" [attr.data-index]="i">
                     <div class="tp-box" [@flipState]="voo.flip">
                         <a class="ticket plane-ticket tp-ticket-side tp-ticket-front" (click)="toggleFlip(voo)">
                             <div>
@@ -71,11 +71,11 @@
                                 <span id="plane-ticket-seats-text" jhiTranslate="choose-plane.choose-seats">Choose Seats</span>
                                 <!-- Plane seats-->
                                 <div class="absolute-pos" id="seat-wrapper">
-                                    <li class="seat-row" *ngFor="let seatRow of seats">
+                                    <li class="seat-row" *ngFor="let seatRow of seats[i]">
                                         <ol class="seats" type="A">
                                             <li class="seat" *ngFor="let seat of seatRow">
-                                                <input type="checkbox" id="{{ seat }}" />
-                                                <label for="{{ seat }}">{{ seat }}</label>
+                                                <input type="checkbox" id="{{ seat.id }}" (click)="selectSeat(seat)" [disabled]="seatsSelected >= passengers && seat.checked == false"/>
+                                                <label for="{{ seat.id }}">{{ seat.id }}</label>
                                             </li>
                                         </ol>
                                     </li>

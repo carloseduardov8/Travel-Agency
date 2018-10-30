@@ -15,7 +15,7 @@ export class BasketComponent implements OnInit {
     to: string;
     dateIn: string;
     dateOut: string;
-    passangers: string;
+    passengers: string;
 
     constructor(private route: ActivatedRoute, private router: Router, private vooService: VooService) {
         this.route.params.subscribe(params => {
@@ -25,7 +25,7 @@ export class BasketComponent implements OnInit {
                 this.to = params.to;
                 this.dateIn = params.dateIn;
                 this.dateOut = params.dateOut;
-                this.passangers = params.passangers;
+                this.passengers = params.passengers;
             }
         });
 
@@ -55,7 +55,7 @@ export class BasketComponent implements OnInit {
                 to: this.to,
                 dateIn: this.dateIn,
                 dateOut: this.dateOut,
-                passangers: this.passangers
+                passengers: this.passengers
             }
         ]);
     }
