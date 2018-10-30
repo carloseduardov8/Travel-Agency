@@ -93,12 +93,23 @@ Our custom CSS goes here
 .plane-ticket #plane-ticket-airline {
     display: inline-block;
     position: relative;
-    top: 35px;
+    top: 31px;
     left: -268px;
     width: 80px;
     height: 47px;
-    background: url('../../content/images/latam-logo.png') no-repeat center top;
     background-size: contain;
+}
+
+.Latam {
+	background: url('../../content/images/latam-logo.png') no-repeat center top;
+}
+
+.Gol {
+	background: url('../../content/images/gol-logo.png') no-repeat center top;
+}
+
+.Azul {
+	background: url('../../content/images/azul-logo.png') no-repeat center top;
 }
 
 /* Hotel ticket */

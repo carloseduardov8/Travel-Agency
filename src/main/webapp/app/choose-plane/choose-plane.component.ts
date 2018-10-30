@@ -85,8 +85,8 @@ export class ChoosePlaneComponent implements OnInit {
 
     // Troca o estado de flip, acionando a animacao
     toggleFlip(voo) {
-		console.log(voo)
-        voo.flip = ((voo.flip == 'inactive') || (voo.flip == undefined)) ? 'active' : 'inactive';
+		console.log(voo);
+        voo.flip = ((voo.flip === 'inactive') || (voo.flip === undefined)) ? 'active' : 'inactive';
     }
 
     private onError(errorMessage: string) {
