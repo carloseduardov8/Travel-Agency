@@ -18,6 +18,8 @@
             <div *ngIf="voos?.length > 0">
                 <div class="tp-wrapper" *ngFor="let voo of voos; let i = index" [attr.data-index]="i">
                     <div class="tp-box" [@flipState]="voo.flip">
+
+						<!-- Plane ticket front -->
                         <a class="ticket plane-ticket tp-ticket-side tp-ticket-front" (click)="toggleFlip(voo)">
                             <div>
                                 <div class="absolute-pos">
@@ -65,6 +67,8 @@
                             </div>
                         </a>
 
+
+						<!-- Plane ticket back -->
                         <a class="ticket plane-ticket tp-ticket-side tp-ticket-back">
                             <div *ngIf="voo.flip == 'active' ">
                                 <!-- Text-->
@@ -74,7 +78,7 @@
                                     <li class="seat-row" *ngFor="let seatRow of seats[i]">
                                         <ol class="seats" type="A">
                                             <li class="seat" *ngFor="let seat of seatRow">
-                                                <input type="checkbox" id="{{ seat.id }}" (click)="selectSeat(seat)" [disabled]="seatsSelected >= passengers && seat.checked == false"/>
+                                                <input type="checkbox" id="{{ seat.id }}" (click)="selectSeat(seat)" [checked]="seat.checked == true" [disabled]="seatsSelected >= passengers && seat.checked == false"/>
                                                 <label for="{{ seat.id }}">{{ seat.name }}</label>
                                             </li>
                                         </ol>
@@ -86,12 +90,19 @@
                                 </div>
                             </div>
                         </a>
+
                     </div>
                 </div>
             </div>
 
+			<!-- Confirmation window -->
+			<div *ngIf="seatsSelected > 0">
+				<div class="confirmation-window">
+				</div>
+			</div>
+
 			<!-- Botão de voltar -->
-			<div class="our-button">
+			<div class="our-button" *ngIf="seatsSelected > 0">
 				<input type="submit" class="btn btn-outline-warning btn-block" value="{{ 'choose-plane.buttons.back' | translate }}" />
 			</div>
 

@@ -56,6 +56,34 @@ Our custom CSS goes here
     position: absolute;
 }
 
+/* Confirmation window (when selecting tickets) */
+.confirmation-window {
+	position: fixed;
+	background-color: #f1b200;
+	-webkit-animation: fadeIn 0.7s ease-in-out;
+	-moz-animation: fadeIn 0.7s ease-in-out;
+	-o-animation: fadeIn 0.7s ease-in-out;
+	animation: fadeIn 0.7s ease-in-out;
+	opacity: 0.4;
+	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 20px;
+	width: 250px;
+	height: 170px;
+	z-index: 1000;
+	top: 170px;
+	left: 1130px;
+}
+
+@-webkit-keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 0.4; }
+}
+
+@-webkit-keyframes fadeOut {
+	100% { opacity: 0.4; }
+	0% { opacity: 0; }
+}
+
 /* Plane ticket */
 
 .plane-ticket #plane-ticket-title {
