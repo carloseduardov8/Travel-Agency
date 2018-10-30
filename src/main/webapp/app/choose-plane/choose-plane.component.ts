@@ -31,9 +31,9 @@ import { JhiAlertService } from 'ng-jhipster';
 })
 export class ChoosePlaneComponent implements OnInit {
     message: string;
-    flip = 'inactive';
     seats: any[][];
     columns: any[];
+	flip: string = 'inactive';
     rows: any[];
     voos: any[] = [];
     withoutVoos = false;
@@ -63,6 +63,7 @@ export class ChoosePlaneComponent implements OnInit {
             }
         });
 
+
         this.message = 'ChoosePlaneComponent message';
         this.seats = new Array();
 
@@ -83,8 +84,9 @@ export class ChoosePlaneComponent implements OnInit {
     ngOnInit() {}
 
     // Troca o estado de flip, acionando a animacao
-    toggleFlip() {
-        this.flip = this.flip === 'inactive' ? 'active' : 'inactive';
+    toggleFlip(voo) {
+		console.log(voo)
+        voo.flip = ((voo.flip == 'inactive') || (voo.flip == undefined)) ? 'active' : 'inactive';
     }
 
     private onError(errorMessage: string) {
