@@ -90,11 +90,27 @@ Our custom CSS goes here
     top: 57px;
 }
 
-.plane-ticket #plane-ticket-airline {
+.plane-ticket #plane-ticket-price {
+	left: -130px;
+    top: -75px;
+	font-size: 23pt;
+}
+
+.plane-ticket #plane-ticket-airline1 {
     display: inline-block;
     position: relative;
     top: 31px;
     left: -268px;
+    width: 80px;
+    height: 47px;
+    background-size: contain;
+}
+
+.plane-ticket #plane-ticket-airline2 {
+    display: inline-block;
+    position: relative;
+    top: -22px;
+    left: 20px;
     width: 80px;
     height: 47px;
     background-size: contain;
