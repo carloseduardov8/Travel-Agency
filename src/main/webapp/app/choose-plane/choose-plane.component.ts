@@ -78,12 +78,16 @@ export class ChoosePlaneComponent implements OnInit {
 									console.log("Creating seats for flight " + k);
 									this.seats[k] = new Array();
 							        // Loops through rows:
-							        for (let j = 0; j < 4; j++) {
+							        for (let j = 0; j < this.rows.length; j++) {
 							            this.seats[k][j] = new Array();
 							            // Loops through seats:
 							            for (let i = 0; i < numOfSeats; i++) {
 											let seat = {
-												id: this.rows[j] + (numOfSeats - i),
+												// Calculates a unique identifier for each seat:
+												id: "seat" + k*this.voos.length*numOfSeats + j*this.rows.length + i;
+												// Seat name to be displayed on plane ticket:
+												name: this.rows[j] + (numOfSeats - i),
+												// Seat status (if selected by the user):
 												checked: false
 											}
 							                this.seats[k][j].push(seat);
@@ -109,13 +113,12 @@ export class ChoosePlaneComponent implements OnInit {
 
     // Troca o estado de flip, acionando a animacao
     toggleFlip(voo) {
-		console.log(voo);
         voo.flip = ((voo.flip === 'inactive') || (voo.flip === undefined)) ? 'active' : 'inactive';
     }
 
 
 	selectSeat(seat) {
-		console.log(seat, this.seatsSelected, this.passengers);
+		// Checks state of seat:
 		if (seat.checked == false){
 			seat.checked = true;
 			this.seatsSelected += 1;

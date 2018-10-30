@@ -75,7 +75,7 @@
                                         <ol class="seats" type="A">
                                             <li class="seat" *ngFor="let seat of seatRow">
                                                 <input type="checkbox" id="{{ seat.id }}" (click)="selectSeat(seat)" [disabled]="seatsSelected >= passengers && seat.checked == false"/>
-                                                <label for="{{ seat.id }}">{{ seat.id }}</label>
+                                                <label for="{{ seat.id }}">{{ seat.name }}</label>
                                             </li>
                                         </ol>
                                     </li>
