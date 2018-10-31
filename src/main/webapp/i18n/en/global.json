@@ -15,6 +15,10 @@
                 "title": "Accommodations"
             }
         },
+		"confirmation-window": {
+			"title": "Selection",
+			"button": "Confirm"
+		},
         "menu": {
             "home": "Home",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",

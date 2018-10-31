@@ -78,7 +78,7 @@
                                     <li class="seat-row" *ngFor="let seatRow of seats[i]">
                                         <ol class="seats" type="A">
                                             <li class="seat" *ngFor="let seat of seatRow">
-                                                <input type="checkbox" id="{{ seat.id }}" (click)="selectSeat(seat)" [checked]="seat.checked == true" [disabled]="seatsSelected >= passengers && seat.checked == false"/>
+                                                <input type="checkbox" id="{{ seat.id }}" (click)="selectSeat(seat)" [checked]="seat.checked == true" [disabled]="seatsSelected.length >= passengers && seat.checked == false"/>
                                                 <label for="{{ seat.id }}">{{ seat.name }}</label>
                                             </li>
                                         </ol>
@@ -95,14 +95,31 @@
                 </div>
             </div>
 
-			<!-- Confirmation window -->
-			<div *ngIf="seatsSelected > 0">
+			<!-- Confirmation window, only display if a seat has been selected -->
+			<div *ngIf="seatsSelected.length > 0">
 				<div class="confirmation-window">
+					<span id="confirmation-window-title" jhiTranslate="global.confirmation-window.title">Title</span>
+
+					<!-- Lista de assentos escolhidos: -->
+					<div id="confirmation-window-item-wrapper" *ngFor="let seat of seatsSelected">
+						<span id="confirmation-window-item">
+							<span jhiTranslate="global.ticket.plane.flight">Flight</span>
+							{{ seat.flight }}:
+						</span>
+						<div id="seat-confirmation">
+							<span>{{ seat.name }}</span>
+						</div>
+					</div>
+
+					<!-- Botão de confirmação: -->
+					<div class="our-button confirm-button">
+						<input type="submit" class="btn btn-outline-warning btn-block" value="{{ 'global.confirmation-window.button' | translate }}" />
+					</div>
 				</div>
 			</div>
 
 			<!-- Botão de voltar -->
-			<div class="our-button" *ngIf="seatsSelected > 0">
+			<div class="our-button">
 				<input type="submit" class="btn btn-outline-warning btn-block" value="{{ 'choose-plane.buttons.back' | translate }}" />
 			</div>
 

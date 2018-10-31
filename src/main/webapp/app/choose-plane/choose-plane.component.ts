@@ -38,7 +38,7 @@ export class ChoosePlaneComponent implements OnInit {
     voos: any[] = [];
     withoutVoos = false;
 	passengers: number = 0;
-	seatsSelected: number = 0;
+	seatsSelected: any[];
 
 
     constructor(
@@ -68,6 +68,7 @@ export class ChoosePlaneComponent implements OnInit {
 
 								// Generates airplane seats for each flight:
 								this.seats = new Array();
+								this.seatsSelected = new Array();
 
 						        const numOfSeats = 17;
 
@@ -87,6 +88,8 @@ export class ChoosePlaneComponent implements OnInit {
 												id: "seat" + k*this.voos.length*numOfSeats + j*this.rows.length + i;
 												// Seat name to be displayed on plane ticket:
 												name: this.rows[j] + (numOfSeats - i),
+												// Flight that this seat is associated with:
+												flight: this.voos[k].numero,
 												// Seat status (if selected by the user):
 												checked: false
 											}
@@ -121,11 +124,17 @@ export class ChoosePlaneComponent implements OnInit {
 		// Checks state of seat:
 		if (seat.checked == false){
 			seat.checked = true;
-			this.seatsSelected += 1;
+			this.seatsSelected.push(seat);
 		} else {
 			seat.checked = false;
-			this.seatsSelected -= 1;
+			for (let i = 0; i < this.seatsSelected.length; i++){
+			   	if ( this.seatsSelected[i].id === seat.id) {
+			   		this.seatsSelected.splice(i, 1);
+			   	}
+			}
 		}
+		// Sets the height of the confirmation window:
+		$(".confirmation-window").height(110 + this.seatsSelected.length*31);
 	}
 
     private onError(errorMessage: string) {
