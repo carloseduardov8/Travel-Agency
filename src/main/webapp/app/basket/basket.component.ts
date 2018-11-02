@@ -10,7 +10,6 @@ import { IVoo } from 'app/shared/model/voo.model';
     styleUrls: ['basket.css']
 })
 export class BasketComponent implements OnInit {
-    message: string;
     from: string;
     to: string;
     dateIn: string;
@@ -28,28 +27,14 @@ export class BasketComponent implements OnInit {
                 this.passengers = params.passengers;
             }
         });
-
-        console.log('ok');
-
-        // console.log(
-        //     this.vooService.findVoos('20-10-2018', '1', '2').subscribe(
-        //         res => {
-        //             console.log(res);
-        //         },
-        //         res => console.log(res.message)
-        //     )
-        // );
     }
 
     ngOnInit() {}
 
-    doSearch(query) {
-        console.log(query);
-    }
-
-    goToChoosePlane() {
+    // Ir para uma das páginas de selecao com os parametros selecionados
+    goTo(page: string) {
         this.router.navigate([
-            '/choose-plane',
+            '/' + page,
             {
                 from: this.from,
                 to: this.to,

@@ -90,6 +90,18 @@ public class SeguroResource {
     }
 
     /**
+     * GET  /seguros/:cidade : get seguros by cidade.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of seguros in body
+     */
+    @GetMapping("/seguros/cidade/{cidade}")
+    @Timed
+    public List<Seguro> getSegurosByCidade(@PathVariable String cidade) {
+        log.debug("REST request to Seguros by cidade");
+        return seguroRepository.getSegurosByCidade(cidade);
+    }
+
+    /**
      * GET  /seguros/:id : get the "id" seguro.
      *
      * @param id the id of the seguro to retrieve

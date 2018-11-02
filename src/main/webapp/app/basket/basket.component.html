@@ -11,7 +11,7 @@
 		<div class="ticket-box">
 
 			<!-- Passagem aérea -->
-			<a class="ticket plane-ticket" (click)="goToChoosePlane()">
+			<a class="ticket plane-ticket" (click)="goTo('choose-plane')">
 				<div class="absolute-pos">
 					<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.title">Plane Ticket</span>
 				</div>
@@ -38,11 +38,28 @@
 
 
 			<!-- Hotel -->
-			<a class="ticket hotel-ticket">
+			<a  class="ticket hotel-ticket" (click)="goTo('choose-hotel')">
 				<span id="hotel-ticket-title" jhiTranslate="global.ticket.hotel.title">Hotel</span>
 			</a>
 
-			<!-- Botão de compra -->
+            <br>
+
+            <!-- Veiculo -->
+            <a  (click)="goTo('choose-vehicle')">
+                Veículo
+            </a>
+
+            <br>
+
+            <!-- Seguro -->
+            <a  (click)="goTo('choose-insurance')">
+                Seguro
+            </a>
+
+            <br>
+
+
+            <!-- Botão de compra -->
 			<div class="our-button">
 				<input type="submit" class="btn btn-outline-warning btn-block" value="{{ 'basket.purchase' | translate }}" />
 			</div>

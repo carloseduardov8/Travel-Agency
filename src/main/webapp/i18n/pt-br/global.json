@@ -21,6 +21,9 @@
 		},
         "menu": {
             "home": "Início",
+            "choose-insurance": "Choose Insurance",
+            "choose-hotel": "Choose Hotel",
+            "choose-vehicle": "Choose Vehicle",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
