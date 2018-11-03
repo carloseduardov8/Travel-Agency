@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
         this.dateInDefault = this.datePipe.transform(new Date(), 'dd-MM-yyyy');
 
         $('#datepicker-end').datepicker({
+            showAnim: 'fadeIn',
             dateFormat: 'dd-mm-yy',
             minDate: new Date()
         });

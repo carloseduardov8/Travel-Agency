@@ -124,3 +124,7 @@ select:focus {
     -o-animation-delay: 2s;
     animation-delay: 2s;
 }
+
+.ui-datepicker {
+    background: rgba(255, 255, 255, 0.7) !important;
+}

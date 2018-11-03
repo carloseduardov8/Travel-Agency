@@ -58,78 +58,79 @@ Our custom CSS goes here
 
 /* Confirmation window (when selecting tickets) */
 .confirmation-window {
-	position: fixed;
-	background-color: #F9E098; /* Dark yellow */
-	-webkit-animation: fadeIn 0.7s ease-in-out;
-	-moz-animation: fadeIn 0.7s ease-in-out;
-	-o-animation: fadeIn 0.7s ease-in-out;
-	animation: fadeIn 0.7s ease-in-out;
-	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
-	border-radius: 20px;
-	font-family: 'Yellowtail', cursive;
-	user-select: none;
-	width: 250px;
-	height: 140px;
-	z-index: 1000;
-	top: 170px;
-	left: 1130px;
+    position: fixed;
+    background-color: #f9e098; /* Dark yellow */
+    -webkit-animation: fadeIn 0.7s ease-in-out;
+    -moz-animation: fadeIn 0.7s ease-in-out;
+    -o-animation: fadeIn 0.7s ease-in-out;
+    animation: fadeIn 0.7s ease-in-out;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    font-family: 'Yellowtail', cursive;
+    user-select: none;
+    width: 250px;
+    height: 140px;
+    z-index: 1000;
+    top: 170px;
+    left: 1130px;
 }
 
 .confirmation-window #confirmation-window-title {
-	position: relative;
-	font-size: 20pt;
-	opacity: 0.7;
-	text-decoration: underline;
-	top: 4px;
+    position: relative;
+    font-size: 20pt;
+    opacity: 0.7;
+    text-decoration: underline;
+    top: 4px;
 }
 
 .confirmation-window #confirmation-window-item {
-	position: relative;
-	display: inline;
-	font-size: 15pt;
-	top: 10px;
+    position: relative;
+    display: inline;
+    font-size: 15pt;
+    top: 10px;
 }
 
 .confirmation-window #confirmation-window-item-wrapper {
-	text-align: center;
+    text-align: center;
 }
 
 .confirmation-window #seat-confirmation {
-	display: inline;
-	position: relative;
-	top: 9px;
-	width: 33px;
-	left: 4px;
-	background-color: #7570FF;
-	border: 2px solid #1911ff;
-	border-radius: 5px;
+    display: inline;
+    position: relative;
+    top: 9px;
+    width: 33px;
+    left: 4px;
+    background-color: #7570ff;
+    border: 2px solid #1911ff;
+    border-radius: 5px;
 }
 
 .confirmation-window #seat-confirmation span {
-	padding: 0 3px 0 3px;
-	position: relative;
-	font-size: 7pt;
-	font-family: arial;
-	font-weight: bold;
-	top: -2px;
-	opacity: 0.8;
+    padding: 0 3px 0 3px;
+    position: relative;
+    font-size: 7pt;
+    font-family: arial;
+    font-weight: bold;
+    top: -2px;
+    opacity: 0.8;
 }
 
 .confirmation-window .confirm-button {
-	position: relative;
-	top: 12px;
-	max-width: 100px;
-	border-radius: 4px;
-	background-color: #fff5db;
+    position: relative;
+    top: 12px;
+    max-width: 100px;
+    border-radius: 4px;
+    background-color: #fff5db;
 }
-
-
 
 @-webkit-keyframes fadeIn {
-	0% { opacity: 0; }
-	100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
-
 
 /* Plane ticket */
 
@@ -153,37 +154,36 @@ Our custom CSS goes here
     top: -11px;
 }
 
-
 .plane-ticket #plane-ticket-to {
-	color: #7a7a7a;
-	position: absolute;
+    color: #7a7a7a;
+    position: absolute;
     left: 557px;
     top: 80px;
 }
 
 .plane-ticket #plane-ticket-to-airport {
-	position: absolute;
-	left: 558px;
-	top: 103px;
+    position: absolute;
+    left: 558px;
+    top: 103px;
 }
 
 .plane-ticket #plane-ticket-from {
-	color: #7a7a7a;
-	position: absolute;
+    color: #7a7a7a;
+    position: absolute;
     left: 560px;
     top: 34px;
 }
 
 .plane-ticket #plane-ticket-from-airport {
-	position: absolute;
-	left: 557px;
-	top: 58px;
+    position: absolute;
+    left: 557px;
+    top: 58px;
 }
 
 .plane-ticket #plane-ticket-price {
-	left: -130px;
+    left: -130px;
     top: -75px;
-	font-size: 23pt;
+    font-size: 23pt;
 }
 
 .plane-ticket #plane-ticket-airline1 {
@@ -207,15 +207,15 @@ Our custom CSS goes here
 }
 
 .Latam {
-	background: url('../../content/images/latam-logo.png') no-repeat center top;
+    background: url('../../content/images/latam-logo.png') no-repeat center top;
 }
 
 .Gol {
-	background: url('../../content/images/gol-logo.png') no-repeat center top;
+    background: url('../../content/images/gol-logo.png') no-repeat center top;
 }
 
 .Azul {
-	background: url('../../content/images/azul-logo.png') no-repeat center top;
+    background: url('../../content/images/azul-logo.png') no-repeat center top;
 }
 
 /* Hotel ticket */
@@ -462,4 +462,61 @@ ui bootstrap tweaks
     white-space: nowrap;
 }
 
-/* jhipster-needle-css-add-main JHipster will add new css style */
+/* ui-datepicker */
+.ui-datepicker {
+    background: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: rgba(0, 0, 0, 0.2) 2px 1px 8px 2px !important;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+    border: 0px;
+    background: #f6f6f6;
+    border-radius: 100%;
+    width: 2em;
+    text-align: center;
+    font-weight: normal;
+    color: #454545;
+}
+
+.ui-state-active,
+.ui-state-hover {
+    background: #ffbf00 !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.ui-datepicker-header {
+    border: 1px solid rgba(0, 0, 0, 0.07) !important;
+}
+.ui-datepicker-title,
+.ui-datepicker-header {
+    background: #ffbf00 !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.ui-datepicker-next.ui-state-hover:hover,
+.ui-datepicker-prev.ui-state-hover:hover {
+    border: none !important;
+}
+
+.ui-icon.ui-icon-circle-triangle-e {
+    color: white !important;
+}
+
+.ui-widget.ui-widget-content {
+    border: none !important;
+}
+
+.ui-datepicker th {
+    color: #fec141;
+}
+
+.ui-icon {
+    background-image: url('../../content/images/ui-icons.png') !important;
+}
