@@ -2,9 +2,13 @@
   <div class="col-md-1"></div>
   <div class="col-md-10">
     <h6 class="text-right">{{message}}</h6>
-    <h1 class="text-capitalize text-center" jhiTranslate="choose-hotel.title">Title</h1>
-    <hr/>
+    <h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-hotel.title">Title</h1>
+    <hr class="h1-hr"/>
     <p class="text-justify">{{ quartos | json}}</p>
   </div>
-  <div class="col-md-1"></div>
+    <!-- Botão de voltar -->
+    <div class="our-button">
+        <input type="submit" class="btn btn-outline-warning btn-block"
+               value="{{ 'choose-plane.buttons.back' | translate }}" (click)="back()" />
+    </div>
 </div>

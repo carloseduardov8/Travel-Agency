@@ -3,9 +3,9 @@
 	<div class="col-md-10">
 
 		<!-- Título da página e descrição -->
-		<h1 class="text-capitalize text-center" jhiTranslate="choose-plane.title">Title</h1>
-		<h5 class="text-center" jhiTranslate="choose-plane.subtitle">Subtitle</h5>
-		<hr/>
+		<h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-plane.title">Title</h1>
+		<h5 class="text-center" *ngIf="voos?.length > 0" jhiTranslate="choose-plane.subtitle">Subtitle</h5>
+		<hr class="h1-hr"/>
 
 		<!-- Box contendo os tickets -->
 		<div class="ticket-box">
@@ -120,7 +120,8 @@
 
 			<!-- Botão de voltar -->
 			<div class="our-button">
-				<input type="submit" class="btn btn-outline-warning btn-block" value="{{ 'choose-plane.buttons.back' | translate }}" />
+				<input type="submit" class="btn btn-outline-warning btn-block"
+                       value="{{ 'choose-plane.buttons.back' | translate }}" (click)="back()" />
 			</div>
 
 		</div>

@@ -1,8 +1,21 @@
 /* choose-insurance.css */
+
+h1 {
+    color: #f4a83a;
+    font-weight: bold;
+}
+
+hr {
+    border-color: #f4a83a;
+}
+
 .card-insurance {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
     padding: 20px;
     margin-bottom: 30px;
+    border-bottom: 4px solid red;
+    border-top-right-radius: 10px;
+    border-top: 5px solid red;
 }
 
 .card-insurance img {
@@ -13,7 +26,6 @@
 }
 
 .insurance-content {
-    border-left: 2px dashed red;
 }
 
 .insurance-total {

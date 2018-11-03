@@ -6,6 +6,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { IVoo } from 'app/shared/model/voo.model';
 import { JhiAlertService } from 'ng-jhipster';
 import { Passagem } from 'app/shared/model/passagem.model';
+import { Location } from '@angular/common';
 
 declare var $: any;
 
@@ -47,7 +48,8 @@ export class ChoosePlaneComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private vooService: VooService,
-        private jhiAlertService: JhiAlertService
+        private jhiAlertService: JhiAlertService,
+        private location: Location
     ) {
         this.route.params.subscribe(params => {
             console.log(params);
@@ -141,5 +143,10 @@ export class ChoosePlaneComponent implements OnInit {
 
     private onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    // Funcao para voltar ao componente anterior
+    back() {
+        this.location.back();
     }
 }

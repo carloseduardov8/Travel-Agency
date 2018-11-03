@@ -521,3 +521,40 @@ html .ui-button.ui-state-disabled:active {
 .ui-icon {
     background-image: url('../../content/images/ui-icons.png') !important;
 }
+
+/* Geral */
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+.btn-outline-warning:hover {
+    color: white !important;
+}
+
+.btn-outline-warning {
+    font-weight: bold !important;
+    transition: 0.5s all !important;
+}
+
+.h1-pages {
+    color: #f4a83a !important;
+    font-weight: bold !important;
+}
+
+.h1-hr {
+    border-color: #f4a83a;
+}

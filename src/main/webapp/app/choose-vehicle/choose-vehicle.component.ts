@@ -5,6 +5,7 @@ import { HttpResponse } from '@angular/common/http';
 import { IVoo } from 'app/shared/model/voo.model';
 import { VeiculoService } from 'app/entities/veiculo';
 import { IVeiculo } from 'app/shared/model/veiculo.model';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'jhi-choose-vehicle',
@@ -18,7 +19,8 @@ export class ChooseVehicleComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private veiculoService: VeiculoService // private jhiAlertService: JhiAlertService
+        private veiculoService: VeiculoService, // private jhiAlertService: JhiAlertService,
+        private location: Location
     ) {
         this.route.params.subscribe(params => {
             console.log(params);
@@ -37,4 +39,9 @@ export class ChooseVehicleComponent implements OnInit {
     }
 
     ngOnInit() {}
+
+    // Funcao para voltar ao componente anterior
+    back() {
+        this.location.back();
+    }
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { QuartoService } from 'app/entities/quarto';
 import { IQuarto } from 'app/shared/model/quarto.model';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'jhi-choose-hotel',
@@ -17,7 +18,8 @@ export class ChooseHotelComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private quartoService: QuartoService //  private jhiAlertService: JhiAlertService
+        private quartoService: QuartoService, //  private jhiAlertService: JhiAlertService
+        private location: Location
     ) {
         this.route.params.subscribe(params => {
             console.log(params);
@@ -36,4 +38,9 @@ export class ChooseHotelComponent implements OnInit {
     }
 
     ngOnInit() {}
+
+    // Funcao para voltar ao componente anterior
+    back() {
+        this.location.back();
+    }
 }

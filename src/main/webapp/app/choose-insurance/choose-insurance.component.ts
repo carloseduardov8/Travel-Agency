@@ -6,6 +6,7 @@ import { HttpResponse } from '@angular/common/http';
 import { IVoo } from 'app/shared/model/voo.model';
 import { SeguroService } from 'app/entities/seguro';
 import { ISeguro, Seguro } from 'app/shared/model/seguro.model';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'jhi-choose-insurance',
@@ -23,7 +24,8 @@ export class ChooseInsuranceComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private seguroService: SeguroService,
-        private jhiAlertService: JhiAlertService
+        private jhiAlertService: JhiAlertService,
+        private location: Location
     ) {
         this.route.params.subscribe(params => {
             console.log(params);
@@ -53,7 +55,13 @@ export class ChooseInsuranceComponent implements OnInit {
 
     ngOnInit() {}
 
+    // Comprar seguro
     buy(insurance) {
         console.log(insurance);
+    }
+
+    // Funcao para voltar ao componente anterior
+    back() {
+        this.location.back();
     }
 }
