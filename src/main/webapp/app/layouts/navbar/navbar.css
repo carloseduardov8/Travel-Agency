@@ -13,12 +13,62 @@ Navbar
 }
 
 .navbar .dropdown-menu {
-    background: #fcdca2 !important;
+    background: rgba(241, 178, 0, 0.4) !important;
+    border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 .navbar-version {
     font-size: 10px;
     color: #ccc;
+}
+
+@keyframes bounceInRight {
+    0%,
+    60%,
+    75%,
+    90%,
+    100% {
+        -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(3000px, 0, 0);
+        transform: translate3d(3000px, 0, 0);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(-25px, 0, 0);
+        transform: translate3d(-25px, 0, 0);
+    }
+    75% {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(10px, 0, 0);
+    }
+    90% {
+        -webkit-transform: translate3d(-5px, 0, 0);
+        transform: translate3d(-5px, 0, 0);
+    }
+    100% {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.nav-link {
+    transition: all 0.8s;
+    -webkit-animation: bounceInRight 1.3s both;
+    animation: bounceInRight 1.3s both;
+    animation-delay: 0.5s;
+}
+
+.nav-link span:first-child {
+    transition: 0.2s all;
+}
+
+.nav-link span:first-child:hover {
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
 }
 
 .jh-navbar {
@@ -35,8 +85,17 @@ Navbar
 
 .jh-navbar .dropdown-item.active,
 .jh-navbar .dropdown-item.active:focus,
+.jh-navbar .dropdown-item.active:active,
 .jh-navbar .dropdown-item.active:hover {
-    background-color: #353d47;
+    color: #f1b200 !important;
+    background: white;
+}
+
+.jh-navbar .dropdown-item:focus,
+.jh-navbar .dropdown-item:active,
+.jh-navbar .dropdown-item:hover {
+    color: #f1b200 !important;
+    background: white;
 }
 
 .jh-navbar .dropdown-toggle::after {

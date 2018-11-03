@@ -8,6 +8,42 @@ Main page styles
     height: 250px;
     background: url('../../content/images/viajato.png') no-repeat center top;
     background-size: contain;
+    -webkit-animation: puff-in-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: puff-in-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: 1s;
+}
+
+@-webkit-keyframes puff-in-center {
+    0% {
+        -webkit-transform: scale(2);
+        transform: scale(2);
+        -webkit-filter: blur(2px);
+        filter: blur(2px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+@keyframes puff-in-center {
+    0% {
+        -webkit-transform: scale(2);
+        transform: scale(2);
+        -webkit-filter: blur(2px);
+        filter: blur(2px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
 }
 
 .form-search-passengers {
@@ -60,4 +96,31 @@ select:focus {
         background: url('../../content/images/viajato.png') no-repeat center top;
         background-size: contain;
     }
+}
+
+/**
+ * ----------------------------------------
+ * animation swing-in-top-fwd
+ * ----------------------------------------
+ */
+@keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(-1000px);
+        transform: translateX(-1000px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.offset-md-2 {
+    -webkit-animation: slide-right 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    animation: slide-right 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    -webkit-animation-delay: 2s;
+    -moz-animation-delay: 2s;
+    -o-animation-delay: 2s;
+    animation-delay: 2s;
 }
