@@ -16,6 +16,8 @@ export class ChooseInsuranceComponent implements OnInit {
     message: string;
     seguros: ISeguro[];
     withoutSeguros: boolean;
+    passengers = 1;
+    diffDays = 1;
 
     constructor(
         private route: ActivatedRoute,
@@ -28,6 +30,16 @@ export class ChooseInsuranceComponent implements OnInit {
             if (params) {
                 if (params.from && params.to && params.dateIn) {
                     console.log('Passengers are ' + params.passengers);
+                    this.passengers = params.passengers;
+
+                    // Preco calculado pelo preco * numero de passageiros * num de dias
+                    if (params.dateOut) {
+                        let dateIn = new Date(params.dateIn);
+                        let dateOut = new Date(params.dateOut);
+                        let diff = Math.ceil(Math.abs(dateOut.getTime() - dateIn.getTime()) / (1000 * 3600 * 24));
+                        this.diffDays = diff > 1 ? diff : this.diffDays;
+                    }
+
                     this.seguroService.findSeguros(params.to).subscribe((res: HttpResponse<IVoo[]>) => {
                         this.seguros = res.body;
                         if (this.seguros.length === 0) {
@@ -40,4 +52,8 @@ export class ChooseInsuranceComponent implements OnInit {
     }
 
     ngOnInit() {}
+
+    buy(insurance) {
+        console.log(insurance);
+    }
 }

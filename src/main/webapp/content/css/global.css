@@ -311,6 +311,7 @@ Generic styles
 }
 
 .footer {
+    margin-top: 3em;
     border-top: 1px solid rgba(0, 0, 0, 0.125);
     text-align: center;
     background: #767676;

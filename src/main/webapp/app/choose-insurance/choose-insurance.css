@@ -1,1 +1,46 @@
 /* choose-insurance.css */
+.card-insurance {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.card-insurance img {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0px;
+    padding-right: 10px;
+}
+
+.insurance-content {
+    border-left: 2px dashed red;
+}
+
+.insurance-total {
+    font-size: 0.8em;
+}
+.insurance-buy {
+    font-size: 0.7em;
+    border-left: 1px solid red;
+}
+
+.insurance-value {
+    color: red;
+    font-size: 2em;
+}
+
+.insurance-btn {
+    border: solid 1px red !important;
+    color: red !important;
+    transition: 0.5s;
+}
+
+.insurance-btn:hover {
+    background: red;
+    color: white !important;
+}
+
+.card-title {
+    color: red !important;
+    font-weight: bold;
+}
