@@ -31,12 +31,8 @@ public class LinhaAerea implements Serializable {
     private String nome;
 
     @NotNull
-    @Column(name = "codigo", nullable = false)
-    private String codigo;
-
-    @OneToMany(mappedBy = "linhaAerea")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Telefone> telefones = new HashSet<>();
+    @Column(name = "telefone", nullable = false)
+    private String telefone;
 
     @OneToMany(mappedBy = "linhaAerea")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -64,42 +60,17 @@ public class LinhaAerea implements Serializable {
         this.nome = nome;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public LinhaAerea codigo(String codigo) {
-        this.codigo = codigo;
+    public LinhaAerea telefone(String telefone) {
+        this.telefone = telefone;
         return this;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public Set<Telefone> getTelefones() {
-        return telefones;
-    }
-
-    public LinhaAerea telefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
-        return this;
-    }
-
-    public LinhaAerea addTelefone(Telefone telefone) {
-        this.telefones.add(telefone);
-        telefone.setLinhaAerea(this);
-        return this;
-    }
-
-    public LinhaAerea removeTelefone(Telefone telefone) {
-        this.telefones.remove(telefone);
-        telefone.setLinhaAerea(null);
-        return this;
-    }
-
-    public void setTelefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public Set<Voo> getVoos() {
@@ -153,7 +124,7 @@ public class LinhaAerea implements Serializable {
         return "LinhaAerea{" +
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
-            ", codigo='" + getCodigo() + "'" +
+            ", telefone='" + getTelefone() + "'" +
             "}";
     }
 }

@@ -25,20 +25,16 @@ public class Passagem implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "classe", nullable = false)
-    private String classe;
-
-    @NotNull
-    @Column(name = "valor", nullable = false)
-    private Integer valor;
-
-    @NotNull
     @Column(name = "nome", nullable = false)
     private String nome;
 
     @NotNull
     @Column(name = "cpf", nullable = false)
-    private Integer cpf;
+    private String cpf;
+
+    @NotNull
+    @Column(name = "assento", nullable = false)
+    private String assento;
 
     @ManyToOne
     @JsonIgnoreProperties("passagems")
@@ -46,7 +42,7 @@ public class Passagem implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("passagems")
-    private Cliente cliente;
+    private Compra compra;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -55,32 +51,6 @@ public class Passagem implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getClasse() {
-        return classe;
-    }
-
-    public Passagem classe(String classe) {
-        this.classe = classe;
-        return this;
-    }
-
-    public void setClasse(String classe) {
-        this.classe = classe;
-    }
-
-    public Integer getValor() {
-        return valor;
-    }
-
-    public Passagem valor(Integer valor) {
-        this.valor = valor;
-        return this;
-    }
-
-    public void setValor(Integer valor) {
-        this.valor = valor;
     }
 
     public String getNome() {
@@ -96,17 +66,30 @@ public class Passagem implements Serializable {
         this.nome = nome;
     }
 
-    public Integer getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public Passagem cpf(Integer cpf) {
+    public Passagem cpf(String cpf) {
         this.cpf = cpf;
         return this;
     }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getAssento() {
+        return assento;
+    }
+
+    public Passagem assento(String assento) {
+        this.assento = assento;
+        return this;
+    }
+
+    public void setAssento(String assento) {
+        this.assento = assento;
     }
 
     public Voo getVoo() {
@@ -122,17 +105,17 @@ public class Passagem implements Serializable {
         this.voo = voo;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Compra getCompra() {
+        return compra;
     }
 
-    public Passagem cliente(Cliente cliente) {
-        this.cliente = cliente;
+    public Passagem compra(Compra compra) {
+        this.compra = compra;
         return this;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -160,10 +143,9 @@ public class Passagem implements Serializable {
     public String toString() {
         return "Passagem{" +
             "id=" + getId() +
-            ", classe='" + getClasse() + "'" +
-            ", valor=" + getValor() +
             ", nome='" + getNome() + "'" +
-            ", cpf=" + getCpf() +
+            ", cpf='" + getCpf() + "'" +
+            ", assento='" + getAssento() + "'" +
             "}";
     }
 }

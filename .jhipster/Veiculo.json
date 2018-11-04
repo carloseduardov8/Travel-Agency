@@ -23,20 +23,6 @@
             ]
         },
         {
-            "fieldName": "anoModelo",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "anoFabricacao",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "cor",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -65,7 +51,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180912163818",
+    "changelogDate": "20181025033521",
     "entityTableName": "veiculo",
     "dto": "no",
     "pagination": "no",

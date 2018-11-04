@@ -2,20 +2,6 @@
     "name": "Passagem",
     "fields": [
         {
-            "fieldName": "classe",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "valor",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "nome",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -24,7 +10,14 @@
         },
         {
             "fieldName": "cpf",
-            "fieldType": "Integer",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "assento",
+            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
@@ -39,12 +32,12 @@
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "cliente",
-            "otherEntityName": "cliente",
+            "relationshipName": "compra",
+            "otherEntityName": "compra",
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180912163816",
+    "changelogDate": "20181025033530",
     "entityTableName": "passagem",
     "dto": "no",
     "pagination": "no",

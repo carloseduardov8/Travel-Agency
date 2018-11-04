@@ -1,22 +1,25 @@
 import { IVoo } from 'app/shared/model//voo.model';
-import { ICidade } from 'app/shared/model//cidade.model';
 
 export interface IAeroporto {
     id?: number;
     nome?: string;
-    codigo?: string;
+    telefone?: string;
+    cidade?: string;
+    estado?: string;
+    endereco?: string;
     vemDes?: IVoo[];
     vaiParas?: IVoo[];
-    cidade?: ICidade;
 }
 
 export class Aeroporto implements IAeroporto {
     constructor(
         public id?: number,
         public nome?: string,
-        public codigo?: string,
+        public telefone?: string,
+        public cidade?: string,
+        public estado?: string,
+        public endereco?: string,
         public vemDes?: IVoo[],
-        public vaiParas?: IVoo[],
-        public cidade?: ICidade
+        public vaiParas?: IVoo[]
     ) {}
 }

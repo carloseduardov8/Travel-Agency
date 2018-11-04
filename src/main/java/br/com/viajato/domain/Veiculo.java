@@ -40,14 +40,6 @@ public class Veiculo implements Serializable {
     private String modelo;
 
     @NotNull
-    @Column(name = "ano_modelo", nullable = false)
-    private Integer anoModelo;
-
-    @NotNull
-    @Column(name = "ano_fabricacao", nullable = false)
-    private Integer anoFabricacao;
-
-    @NotNull
     @Column(name = "cor", nullable = false)
     private String cor;
 
@@ -109,32 +101,6 @@ public class Veiculo implements Serializable {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
-    }
-
-    public Integer getAnoModelo() {
-        return anoModelo;
-    }
-
-    public Veiculo anoModelo(Integer anoModelo) {
-        this.anoModelo = anoModelo;
-        return this;
-    }
-
-    public void setAnoModelo(Integer anoModelo) {
-        this.anoModelo = anoModelo;
-    }
-
-    public Integer getAnoFabricacao() {
-        return anoFabricacao;
-    }
-
-    public Veiculo anoFabricacao(Integer anoFabricacao) {
-        this.anoFabricacao = anoFabricacao;
-        return this;
-    }
-
-    public void setAnoFabricacao(Integer anoFabricacao) {
-        this.anoFabricacao = anoFabricacao;
     }
 
     public String getCor() {
@@ -229,8 +195,6 @@ public class Veiculo implements Serializable {
             ", tipo='" + getTipo() + "'" +
             ", fabricante='" + getFabricante() + "'" +
             ", modelo='" + getModelo() + "'" +
-            ", anoModelo=" + getAnoModelo() +
-            ", anoFabricacao=" + getAnoFabricacao() +
             ", cor='" + getCor() + "'" +
             ", numPassageiros=" + getNumPassageiros() +
             "}";

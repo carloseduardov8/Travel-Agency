@@ -9,15 +9,21 @@
                 <dd>
                     <span>{{aeroporto.nome}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.aeroporto.codigo">Codigo</span></dt>
+                <dt><span jhiTranslate="viajatoApp.aeroporto.telefone">Telefone</span></dt>
                 <dd>
-                    <span>{{aeroporto.codigo}}</span>
+                    <span>{{aeroporto.telefone}}</span>
                 </dd>
                 <dt><span jhiTranslate="viajatoApp.aeroporto.cidade">Cidade</span></dt>
                 <dd>
-                    <div *ngIf="aeroporto.cidade">
-                        <a [routerLink]="['/cidade', aeroporto.cidade?.id, 'view']">{{aeroporto.cidade?.id}}</a>
-                    </div>
+                    <span>{{aeroporto.cidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.aeroporto.estado">Estado</span></dt>
+                <dd>
+                    <span>{{aeroporto.estado}}</span>
+                </dd>
+                <dt><span jhiTranslate="viajatoApp.aeroporto.endereco">Endereco</span></dt>
+                <dd>
+                    <span>{{aeroporto.endereco}}</span>
                 </dd>
             </dl>
 

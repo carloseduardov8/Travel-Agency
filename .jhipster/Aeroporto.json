@@ -9,7 +9,28 @@
             ]
         },
         {
-            "fieldName": "codigo",
+            "fieldName": "telefone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cidade",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endereco",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
@@ -28,15 +49,9 @@
             "relationshipName": "vaiPara",
             "otherEntityName": "voo",
             "otherEntityRelationshipName": "destino"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "cidade",
-            "otherEntityName": "cidade",
-            "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180912163811",
+    "changelogDate": "20181025033517",
     "entityTableName": "aeroporto",
     "dto": "no",
     "pagination": "no",

@@ -1,24 +1,22 @@
 import { IVoo } from 'app/shared/model//voo.model';
-import { ICliente } from 'app/shared/model//cliente.model';
+import { ICompra } from 'app/shared/model//compra.model';
 
 export interface IPassagem {
     id?: number;
-    classe?: string;
-    valor?: number;
     nome?: string;
-    cpf?: number;
+    cpf?: string;
+    assento?: string;
     voo?: IVoo;
-    cliente?: ICliente;
+    compra?: ICompra;
 }
 
 export class Passagem implements IPassagem {
     constructor(
         public id?: number,
-        public classe?: string,
-        public valor?: number,
         public nome?: string,
-        public cpf?: number,
+        public cpf?: string,
+        public assento?: string,
         public voo?: IVoo,
-        public cliente?: ICliente
+        public compra?: ICompra
     ) {}
 }

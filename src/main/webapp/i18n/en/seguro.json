@@ -1,0 +1,26 @@
+
+{
+    "viajatoApp": {
+        "seguro" : {
+            "home": {
+                "title": "Seguros",
+                "createLabel": "Create a new Seguro",
+                "createOrEditLabel": "Create or edit a Seguro"
+            },
+            "created": "A new Seguro is created with identifier {{ param }}",
+            "updated": "A Seguro is updated with identifier {{ param }}",
+            "deleted": "A Seguro is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Seguro {{ id }}?"
+            },
+            "detail": {
+                "title": "Seguro"
+            },
+            "nome": "Nome",
+            "descricao": "Descricao",
+            "valorPorPessoa": "Valor Por Pessoa",
+            "contrato": "Contrato",
+            "seguradora": "Seguradora"
+        }
+    }
+}

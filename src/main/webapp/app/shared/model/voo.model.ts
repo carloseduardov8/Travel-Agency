@@ -7,6 +7,7 @@ export interface IVoo {
     numero?: number;
     partida?: string;
     chegada?: string;
+    valor?: number;
     passagems?: IPassagem[];
     linhaAerea?: ILinhaAerea;
     origem?: IAeroporto;
@@ -19,6 +20,7 @@ export class Voo implements IVoo {
         public numero?: number,
         public partida?: string,
         public chegada?: string,
+        public valor?: number,
         public passagems?: IPassagem[],
         public linhaAerea?: ILinhaAerea,
         public origem?: IAeroporto,

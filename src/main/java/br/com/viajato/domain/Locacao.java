@@ -29,12 +29,16 @@ public class Locacao implements Serializable {
     private String inicio;
 
     @NotNull
-    @Column(name = "duracao", nullable = false)
-    private Integer duracao;
+    @Column(name = "data_inicio", nullable = false)
+    private String dataInicio;
+
+    @NotNull
+    @Column(name = "data_fim", nullable = false)
+    private String dataFim;
 
     @NotNull
     @Column(name = "valor", nullable = false)
-    private Integer valor;
+    private Float valor;
 
     @ManyToOne
     @JsonIgnoreProperties("locacaos")
@@ -42,7 +46,7 @@ public class Locacao implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("locacaos")
-    private Cliente cliente;
+    private Compra compra;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -66,29 +70,42 @@ public class Locacao implements Serializable {
         this.inicio = inicio;
     }
 
-    public Integer getDuracao() {
-        return duracao;
+    public String getDataInicio() {
+        return dataInicio;
     }
 
-    public Locacao duracao(Integer duracao) {
-        this.duracao = duracao;
+    public Locacao dataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
         return this;
     }
 
-    public void setDuracao(Integer duracao) {
-        this.duracao = duracao;
+    public void setDataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
     }
 
-    public Integer getValor() {
+    public String getDataFim() {
+        return dataFim;
+    }
+
+    public Locacao dataFim(String dataFim) {
+        this.dataFim = dataFim;
+        return this;
+    }
+
+    public void setDataFim(String dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public Float getValor() {
         return valor;
     }
 
-    public Locacao valor(Integer valor) {
+    public Locacao valor(Float valor) {
         this.valor = valor;
         return this;
     }
 
-    public void setValor(Integer valor) {
+    public void setValor(Float valor) {
         this.valor = valor;
     }
 
@@ -105,17 +122,17 @@ public class Locacao implements Serializable {
         this.veiculo = veiculo;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Compra getCompra() {
+        return compra;
     }
 
-    public Locacao cliente(Cliente cliente) {
-        this.cliente = cliente;
+    public Locacao compra(Compra compra) {
+        this.compra = compra;
         return this;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -144,7 +161,8 @@ public class Locacao implements Serializable {
         return "Locacao{" +
             "id=" + getId() +
             ", inicio='" + getInicio() + "'" +
-            ", duracao=" + getDuracao() +
+            ", dataInicio='" + getDataInicio() + "'" +
+            ", dataFim='" + getDataFim() + "'" +
             ", valor=" + getValor() +
             "}";
     }

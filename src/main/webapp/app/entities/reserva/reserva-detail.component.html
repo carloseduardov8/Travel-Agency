@@ -9,13 +9,13 @@
                 <dd>
                     <span>{{reserva.numPessoas}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.reserva.inicio">Inicio</span></dt>
+                <dt><span jhiTranslate="viajatoApp.reserva.dataInicio">Data Inicio</span></dt>
                 <dd>
-                    <span>{{reserva.inicio}}</span>
+                    <span>{{reserva.dataInicio}}</span>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.reserva.duracao">Duracao</span></dt>
+                <dt><span jhiTranslate="viajatoApp.reserva.dataFim">Data Fim</span></dt>
                 <dd>
-                    <span>{{reserva.duracao}}</span>
+                    <span>{{reserva.dataFim}}</span>
                 </dd>
                 <dt><span jhiTranslate="viajatoApp.reserva.valor">Valor</span></dt>
                 <dd>
@@ -27,10 +27,10 @@
                         <a [routerLink]="['/quarto', reserva.quarto?.id, 'view']">{{reserva.quarto?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="viajatoApp.reserva.cliente">Cliente</span></dt>
+                <dt><span jhiTranslate="viajatoApp.reserva.compra">Compra</span></dt>
                 <dd>
-                    <div *ngIf="reserva.cliente">
-                        <a [routerLink]="['/cliente', reserva.cliente?.id, 'view']">{{reserva.cliente?.id}}</a>
+                    <div *ngIf="reserva.compra">
+                        <a [routerLink]="['/compra', reserva.compra?.id, 'view']">{{reserva.compra?.id}}</a>
                     </div>
                 </dd>
             </dl>

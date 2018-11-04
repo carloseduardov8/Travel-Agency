@@ -1,3 +1,0 @@
-describe('HiThereComponent Tests', () => {
-
-});

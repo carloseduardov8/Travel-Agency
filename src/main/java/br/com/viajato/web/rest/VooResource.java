@@ -89,20 +89,20 @@ public class VooResource {
         return vooRepository.findAll();
     }
 
-
     /**
-     * GET  /voos : get all the voos.
+     * GET  /voos:partida:origem:destino : get all the voos.
      *
      * @return the ResponseEntity with status 200 (OK) and the list of voos in body
      */
     @GetMapping("/voos/{partida}/{origem}/{destino}")
     @Timed
-    public List<Voo> getVoos(@PathVariable String partida, @PathVariable Long origem,
-                                @PathVariable Long destino) {
-        log.debug("REST request to get all Voos");
+    public List<Voo> getVoos(@PathVariable String partida, @PathVariable String origem,
+                             @PathVariable String destino) {
+        log.debug("REST request to get all Voos with partida, origem and destino");
 
         return vooRepository.findVooByPartidaAndOrigemAndDestino(partida, origem, destino);
     }
+
 
     /**
      * GET  /voos/:id : get the "id" voo.
@@ -117,8 +117,6 @@ public class VooResource {
         Optional<Voo> voo = vooRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(voo);
     }
-
-
 
     /**
      * DELETE  /voos/:id : delete the "id" voo.

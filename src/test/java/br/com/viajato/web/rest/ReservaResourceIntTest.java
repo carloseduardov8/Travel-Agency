@@ -42,14 +42,14 @@ public class ReservaResourceIntTest {
     private static final Integer DEFAULT_NUM_PESSOAS = 1;
     private static final Integer UPDATED_NUM_PESSOAS = 2;
 
-    private static final String DEFAULT_INICIO = "AAAAAAAAAA";
-    private static final String UPDATED_INICIO = "BBBBBBBBBB";
+    private static final String DEFAULT_DATA_INICIO = "AAAAAAAAAA";
+    private static final String UPDATED_DATA_INICIO = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_DURACAO = 1;
-    private static final Integer UPDATED_DURACAO = 2;
+    private static final String DEFAULT_DATA_FIM = "AAAAAAAAAA";
+    private static final String UPDATED_DATA_FIM = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_VALOR = 1;
-    private static final Integer UPDATED_VALOR = 2;
+    private static final Float DEFAULT_VALOR = 1F;
+    private static final Float UPDATED_VALOR = 2F;
 
     @Autowired
     private ReservaRepository reservaRepository;
@@ -90,8 +90,8 @@ public class ReservaResourceIntTest {
     public static Reserva createEntity(EntityManager em) {
         Reserva reserva = new Reserva()
             .numPessoas(DEFAULT_NUM_PESSOAS)
-            .inicio(DEFAULT_INICIO)
-            .duracao(DEFAULT_DURACAO)
+            .dataInicio(DEFAULT_DATA_INICIO)
+            .dataFim(DEFAULT_DATA_FIM)
             .valor(DEFAULT_VALOR);
         return reserva;
     }
@@ -117,8 +117,8 @@ public class ReservaResourceIntTest {
         assertThat(reservaList).hasSize(databaseSizeBeforeCreate + 1);
         Reserva testReserva = reservaList.get(reservaList.size() - 1);
         assertThat(testReserva.getNumPessoas()).isEqualTo(DEFAULT_NUM_PESSOAS);
-        assertThat(testReserva.getInicio()).isEqualTo(DEFAULT_INICIO);
-        assertThat(testReserva.getDuracao()).isEqualTo(DEFAULT_DURACAO);
+        assertThat(testReserva.getDataInicio()).isEqualTo(DEFAULT_DATA_INICIO);
+        assertThat(testReserva.getDataFim()).isEqualTo(DEFAULT_DATA_FIM);
         assertThat(testReserva.getValor()).isEqualTo(DEFAULT_VALOR);
     }
 
@@ -161,10 +161,10 @@ public class ReservaResourceIntTest {
 
     @Test
     @Transactional
-    public void checkInicioIsRequired() throws Exception {
+    public void checkDataInicioIsRequired() throws Exception {
         int databaseSizeBeforeTest = reservaRepository.findAll().size();
         // set the field null
-        reserva.setInicio(null);
+        reserva.setDataInicio(null);
 
         // Create the Reserva, which fails.
 
@@ -179,10 +179,10 @@ public class ReservaResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDuracaoIsRequired() throws Exception {
+    public void checkDataFimIsRequired() throws Exception {
         int databaseSizeBeforeTest = reservaRepository.findAll().size();
         // set the field null
-        reserva.setDuracao(null);
+        reserva.setDataFim(null);
 
         // Create the Reserva, which fails.
 
@@ -225,9 +225,9 @@ public class ReservaResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(reserva.getId().intValue())))
             .andExpect(jsonPath("$.[*].numPessoas").value(hasItem(DEFAULT_NUM_PESSOAS)))
-            .andExpect(jsonPath("$.[*].inicio").value(hasItem(DEFAULT_INICIO.toString())))
-            .andExpect(jsonPath("$.[*].duracao").value(hasItem(DEFAULT_DURACAO)))
-            .andExpect(jsonPath("$.[*].valor").value(hasItem(DEFAULT_VALOR)));
+            .andExpect(jsonPath("$.[*].dataInicio").value(hasItem(DEFAULT_DATA_INICIO.toString())))
+            .andExpect(jsonPath("$.[*].dataFim").value(hasItem(DEFAULT_DATA_FIM.toString())))
+            .andExpect(jsonPath("$.[*].valor").value(hasItem(DEFAULT_VALOR.doubleValue())));
     }
     
     @Test
@@ -242,9 +242,9 @@ public class ReservaResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(reserva.getId().intValue()))
             .andExpect(jsonPath("$.numPessoas").value(DEFAULT_NUM_PESSOAS))
-            .andExpect(jsonPath("$.inicio").value(DEFAULT_INICIO.toString()))
-            .andExpect(jsonPath("$.duracao").value(DEFAULT_DURACAO))
-            .andExpect(jsonPath("$.valor").value(DEFAULT_VALOR));
+            .andExpect(jsonPath("$.dataInicio").value(DEFAULT_DATA_INICIO.toString()))
+            .andExpect(jsonPath("$.dataFim").value(DEFAULT_DATA_FIM.toString()))
+            .andExpect(jsonPath("$.valor").value(DEFAULT_VALOR.doubleValue()));
     }
 
     @Test
@@ -269,8 +269,8 @@ public class ReservaResourceIntTest {
         em.detach(updatedReserva);
         updatedReserva
             .numPessoas(UPDATED_NUM_PESSOAS)
-            .inicio(UPDATED_INICIO)
-            .duracao(UPDATED_DURACAO)
+            .dataInicio(UPDATED_DATA_INICIO)
+            .dataFim(UPDATED_DATA_FIM)
             .valor(UPDATED_VALOR);
 
         restReservaMockMvc.perform(put("/api/reservas")
@@ -283,8 +283,8 @@ public class ReservaResourceIntTest {
         assertThat(reservaList).hasSize(databaseSizeBeforeUpdate);
         Reserva testReserva = reservaList.get(reservaList.size() - 1);
         assertThat(testReserva.getNumPessoas()).isEqualTo(UPDATED_NUM_PESSOAS);
-        assertThat(testReserva.getInicio()).isEqualTo(UPDATED_INICIO);
-        assertThat(testReserva.getDuracao()).isEqualTo(UPDATED_DURACAO);
+        assertThat(testReserva.getDataInicio()).isEqualTo(UPDATED_DATA_INICIO);
+        assertThat(testReserva.getDataFim()).isEqualTo(UPDATED_DATA_FIM);
         assertThat(testReserva.getValor()).isEqualTo(UPDATED_VALOR);
     }
 

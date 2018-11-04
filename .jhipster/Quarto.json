@@ -17,7 +17,7 @@
         },
         {
             "fieldName": "diaria",
-            "fieldType": "Integer",
+            "fieldType": "Float",
             "fieldValidateRules": [
                 "required"
             ]
@@ -44,7 +44,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180912163821",
+    "changelogDate": "20181025033524",
     "entityTableName": "quarto",
     "dto": "no",
     "pagination": "no",

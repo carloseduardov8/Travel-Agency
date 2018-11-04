@@ -10,12 +10,11 @@ import { IVoo } from 'app/shared/model/voo.model';
     styleUrls: ['basket.css']
 })
 export class BasketComponent implements OnInit {
-    message: string;
     from: string;
     to: string;
     dateIn: string;
     dateOut: string;
-    passangers: string;
+    passengers: string;
 
     constructor(private route: ActivatedRoute, private router: Router, private vooService: VooService) {
         this.route.params.subscribe(params => {
@@ -25,37 +24,23 @@ export class BasketComponent implements OnInit {
                 this.to = params.to;
                 this.dateIn = params.dateIn;
                 this.dateOut = params.dateOut;
-                this.passangers = params.passangers;
+                this.passengers = params.passengers;
             }
         });
-
-        console.log('ok');
-
-        console.log(
-            this.vooService.findVoos('20-10-2018', '1', '2').subscribe(
-                res => {
-                    console.log(res);
-                },
-                res => console.log(res.message)
-            )
-        );
     }
 
     ngOnInit() {}
 
-    doSearch(query) {
-        console.log(query);
-    }
-
-    goToChoosePlane() {
+    // Ir para uma das páginas de selecao com os parametros selecionados
+    goTo(page: string) {
         this.router.navigate([
-            '/choose-plane',
+            '/' + page,
             {
                 from: this.from,
                 to: this.to,
                 dateIn: this.dateIn,
                 dateOut: this.dateOut,
-                passangers: this.passangers
+                passengers: this.passengers
             }
         ]);
     }

@@ -9,15 +9,22 @@
             ]
         },
         {
-            "fieldName": "duracao",
-            "fieldType": "Integer",
+            "fieldName": "dataInicio",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dataFim",
+            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
             "fieldName": "valor",
-            "fieldType": "Integer",
+            "fieldType": "Float",
             "fieldValidateRules": [
                 "required"
             ]
@@ -32,12 +39,12 @@
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "cliente",
-            "otherEntityName": "cliente",
+            "relationshipName": "compra",
+            "otherEntityName": "compra",
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180912163819",
+    "changelogDate": "20181025033522",
     "entityTableName": "locacao",
     "dto": "no",
     "pagination": "no",

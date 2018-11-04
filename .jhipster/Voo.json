@@ -21,6 +21,13 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "valor",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [
@@ -49,7 +56,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180912163815",
+    "changelogDate": "20181025033519",
     "entityTableName": "voo",
     "dto": "no",
     "pagination": "no",

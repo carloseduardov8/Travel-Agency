@@ -8,8 +8,8 @@ import { ILocacao } from 'app/shared/model/locacao.model';
 import { LocacaoService } from './locacao.service';
 import { IVeiculo } from 'app/shared/model/veiculo.model';
 import { VeiculoService } from 'app/entities/veiculo';
-import { ICliente } from 'app/shared/model/cliente.model';
-import { ClienteService } from 'app/entities/cliente';
+import { ICompra } from 'app/shared/model/compra.model';
+import { CompraService } from 'app/entities/compra';
 
 @Component({
     selector: 'jhi-locacao-update',
@@ -21,13 +21,13 @@ export class LocacaoUpdateComponent implements OnInit {
 
     veiculos: IVeiculo[];
 
-    clientes: ICliente[];
+    compras: ICompra[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private locacaoService: LocacaoService,
         private veiculoService: VeiculoService,
-        private clienteService: ClienteService,
+        private compraService: CompraService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -42,9 +42,9 @@ export class LocacaoUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-        this.clienteService.query().subscribe(
-            (res: HttpResponse<ICliente[]>) => {
-                this.clientes = res.body;
+        this.compraService.query().subscribe(
+            (res: HttpResponse<ICompra[]>) => {
+                this.compras = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -84,7 +84,7 @@ export class LocacaoUpdateComponent implements OnInit {
         return item.id;
     }
 
-    trackClienteById(index: number, item: ICliente) {
+    trackCompraById(index: number, item: ICompra) {
         return item.id;
     }
     get locacao() {

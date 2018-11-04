@@ -10,59 +10,55 @@
                         [(ngModel)]="contrato.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.numero" for="field_numero">Numero</label>
-                    <input type="number" class="form-control" name="numero" id="field_numero"
-                        [(ngModel)]="contrato.numero" required/>
-                    <div [hidden]="!(editForm.controls.numero?.dirty && editForm.controls.numero?.invalid)">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.numPessoas" for="field_numPessoas">Num Pessoas</label>
+                    <input type="number" class="form-control" name="numPessoas" id="field_numPessoas"
+                        [(ngModel)]="contrato.numPessoas" required/>
+                    <div [hidden]="!(editForm.controls.numPessoas?.dirty && editForm.controls.numPessoas?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.numero?.errors?.required" jhiTranslate="entity.validation.required">
+                        [hidden]="!editForm.controls.numPessoas?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.numero?.errors?.number" jhiTranslate="entity.validation.number">
+                            [hidden]="!editForm.controls.numPessoas?.errors?.number" jhiTranslate="entity.validation.number">
                             This field should be a number.
                         </small>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.valor" for="field_valor">Valor</label>
-                    <input type="number" class="form-control" name="valor" id="field_valor"
-                        [(ngModel)]="contrato.valor" required/>
-                    <div [hidden]="!(editForm.controls.valor?.dirty && editForm.controls.valor?.invalid)">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.dataInicio" for="field_dataInicio">Data Inicio</label>
+                    <input type="text" class="form-control" name="dataInicio" id="field_dataInicio"
+                        [(ngModel)]="contrato.dataInicio" required/>
+                    <div [hidden]="!(editForm.controls.dataInicio?.dirty && editForm.controls.dataInicio?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.valor?.errors?.required" jhiTranslate="entity.validation.required">
+                        [hidden]="!editForm.controls.dataInicio?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.valor?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
                         </small>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.descricao" for="field_descricao">Descricao</label>
-                    <input type="text" class="form-control" name="descricao" id="field_descricao"
-                        [(ngModel)]="contrato.descricao" required/>
-                    <div [hidden]="!(editForm.controls.descricao?.dirty && editForm.controls.descricao?.invalid)">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.dataFim" for="field_dataFim">Data Fim</label>
+                    <input type="text" class="form-control" name="dataFim" id="field_dataFim"
+                        [(ngModel)]="contrato.dataFim" required/>
+                    <div [hidden]="!(editForm.controls.dataFim?.dirty && editForm.controls.dataFim?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.descricao?.errors?.required" jhiTranslate="entity.validation.required">
+                        [hidden]="!editForm.controls.dataFim?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.locadora" for="field_locadora">Locadora</label>
-                    <select class="form-control" id="field_locadora" name="locadora" [(ngModel)]="contrato.locadora" >
+                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.compra" for="field_compra">Compra</label>
+                    <select class="form-control" id="field_compra" name="compra" [(ngModel)]="contrato.compra" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="locadoraOption.id === contrato.locadora?.id ? contrato.locadora : locadoraOption" *ngFor="let locadoraOption of locadoras; trackBy: trackLocadoraById">{{locadoraOption.id}}</option>
+                        <option [ngValue]="compraOption.id === contrato.compra?.id ? contrato.compra : compraOption" *ngFor="let compraOption of compras; trackBy: trackCompraById">{{compraOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.seguradora" for="field_seguradora">Seguradora</label>
-                    <select class="form-control" id="field_seguradora" name="seguradora" [(ngModel)]="contrato.seguradora" >
+                    <label class="form-control-label" jhiTranslate="viajatoApp.contrato.seguro" for="field_seguro">Seguro</label>
+                    <select class="form-control" id="field_seguro" name="seguro" [(ngModel)]="contrato.seguro" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="seguradoraOption.id === contrato.seguradora?.id ? contrato.seguradora : seguradoraOption" *ngFor="let seguradoraOption of seguradoras; trackBy: trackSeguradoraById">{{seguradoraOption.id}}</option>
+                        <option [ngValue]="seguroOption.id === contrato.seguro?.id ? contrato.seguro : seguroOption" *ngFor="let seguroOption of seguros; trackBy: trackSeguroById">{{seguroOption.id}}</option>
                     </select>
                 </div>
             </div>

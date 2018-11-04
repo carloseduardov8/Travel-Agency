@@ -2,43 +2,45 @@
     "global": {
         "title": "Viajato",
         "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
-		"ticket": {
-			"plane": {
-				"title": "Plane Ticket",
-				"from": "From: ",
-				"to": "To: ",
-				"flight": "Flight ",
-				"departure": "Departure: ",
-				"arrival": "Arrival: "
-			},
-			"hotel": {
-				"title": "Accommodations"
-			}
+        "ticket": {
+            "plane": {
+                "title": "Plane Ticket",
+                "from": "From: ",
+                "to": "To: ",
+                "flight": "Flight ",
+                "departure": "Departure: ",
+                "arrival": "Arrival: "
+            },
+            "hotel": {
+                "title": "Accommodations"
+            }
+        },
+		"confirmation-window": {
+			"title": "Selection",
+			"button": "Confirm"
 		},
-		"menu": {
+        "menu": {
             "home": "Home",
-            "basket": "Basket",
-            "choose-plane": "Choose Plane",
+            "choose-insurance": "Choose Insurance",
+            "choose-hotel": "Choose Hotel",
+            "choose-vehicle": "Choose Vehicle",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
-                "estado": "Estado",
-                "cidade": "Cidade",
                 "aeroporto": "Aeroporto",
-                "endereco": "Endereco",
-                "telefone": "Telefone",
                 "linhaAerea": "Linha Aerea",
                 "voo": "Voo",
-                "passagem": "Passagem",
                 "locadora": "Locadora",
                 "veiculo": "Veiculo",
                 "locacao": "Locacao",
                 "hotel": "Hotel",
                 "quarto": "Quarto",
                 "reserva": "Reserva",
-                "cliente": "Cliente",
                 "seguradora": "Seguradora",
                 "contrato": "Contrato",
+                "compra": "Compra",
+                "passagem": "Passagem",
+                "seguro": "Seguro",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -2,119 +2,228 @@
 Our custom CSS goes here
 ===============================================================*/
 
-
 .col-md-10 {
-	text-align: center;
-	margin-top: 13px;
+    text-align: center;
+    margin-top: 13px;
 }
 
 .our-button {
-	margin: 0 auto;
-	width: 230px;
-	margin-top: 10px;
+    margin: 0 auto;
+    width: 230px;
+    margin-top: 10px;
 }
 
-
 .ticket-box {
-	margin-top: 10px;
-	margin-bottom: 30px;
-	zoom: 1.3;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    zoom: 1.3;
     -moz-transform: scale(1.3);
 }
 
 .ticket {
-	position: relative;
-	display: inline-block;
+    position: relative;
+    display: inline-block;
     width: 800px;
     height: 250px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size:contain;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
 }
 
-.ticket:hover{
-	-webkit-filter: drop-shadow(10px 10px 6px rgba(249, 224, 153, 0.5));
-     filter: drop-shadow(10px 10px 6px rgba(249, 224, 153, 0.5));
+.ticket:hover {
+    -webkit-filter: drop-shadow(10px 10px 6px rgba(249, 224, 153, 0.5));
+    filter: drop-shadow(10px 10px 6px rgba(249, 224, 153, 0.5));
 }
 
 .plane-ticket {
-	background-image: url("../../content/images/boarding-pass.png");
+    background-image: url('../../content/images/boarding-pass.png');
 }
 
 .hotel-ticket {
-	background-image: url("../../content/images/hotel-ticket.png");
+    background-image: url('../../content/images/hotel-ticket.png');
 }
 
 .ticket span {
-	position: relative;
-	text-align: center;
-	font-family: 'Yellowtail', cursive;
-	font-size: 17pt;
+    position: relative;
+    text-align: center;
+    font-family: 'Yellowtail', cursive;
+    font-size: 17pt;
 }
 
 .ticket absolute-pos {
-	position: absolute;
+    position: absolute;
+}
+
+/* Confirmation window (when selecting tickets) */
+.confirmation-window {
+    position: fixed;
+    background-color: #f9e098; /* Dark yellow */
+    -webkit-animation: fadeIn 0.7s ease-in-out;
+    -moz-animation: fadeIn 0.7s ease-in-out;
+    -o-animation: fadeIn 0.7s ease-in-out;
+    animation: fadeIn 0.7s ease-in-out;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    font-family: 'Yellowtail', cursive;
+    user-select: none;
+    width: 250px;
+    height: 140px;
+    z-index: 1000;
+    top: 170px;
+    left: 1130px;
+}
+
+.confirmation-window #confirmation-window-title {
+    position: relative;
+    font-size: 20pt;
+    opacity: 0.7;
+    text-decoration: underline;
+    top: 4px;
+}
+
+.confirmation-window #confirmation-window-item {
+    position: relative;
+    display: inline;
+    font-size: 15pt;
+    top: 10px;
+}
+
+.confirmation-window #confirmation-window-item-wrapper {
+    text-align: center;
+}
+
+.confirmation-window #seat-confirmation {
+    display: inline;
+    position: relative;
+    top: 9px;
+    width: 33px;
+    left: 4px;
+    background-color: #7570ff;
+    border: 2px solid #1911ff;
+    border-radius: 5px;
+}
+
+.confirmation-window #seat-confirmation span {
+    padding: 0 3px 0 3px;
+    position: relative;
+    font-size: 7pt;
+    font-family: arial;
+    font-weight: bold;
+    top: -2px;
+    opacity: 0.8;
+}
+
+.confirmation-window .confirm-button {
+    position: relative;
+    top: 12px;
+    max-width: 100px;
+    border-radius: 4px;
+    background-color: #fff5db;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Plane ticket */
 
 .plane-ticket #plane-ticket-title {
-	left: -235px;
-	top: 14px;
+    left: -235px;
+    top: 14px;
 }
 
 .plane-ticket #plane-ticket-flight {
-	left: -24px;
-	top: 0px;
+    left: -24px;
+    top: 0px;
 }
 
 .plane-ticket #plane-ticket-departure {
-	left: -75px;
-	top: -7px;
+    left: -75px;
+    top: -8px;
 }
 
 .plane-ticket #plane-ticket-arrival {
-	left: -75px;
-	top: -9px;
-}
-
-.plane-ticket #plane-ticket-from {
-	position: absolute;
-	left: 560px;
-	top: 34px;
+    left: -75px;
+    top: -11px;
 }
 
 .plane-ticket #plane-ticket-to {
-	position: absolute;
-	left: 560px;
-	top: 57px;
+    color: #7a7a7a;
+    position: absolute;
+    left: 557px;
+    top: 80px;
 }
 
-.plane-ticket #plane-ticket-airline {
+.plane-ticket #plane-ticket-to-airport {
+    position: absolute;
+    left: 558px;
+    top: 103px;
+}
+
+.plane-ticket #plane-ticket-from {
+    color: #7a7a7a;
+    position: absolute;
+    left: 560px;
+    top: 34px;
+}
+
+.plane-ticket #plane-ticket-from-airport {
+    position: absolute;
+    left: 557px;
+    top: 58px;
+}
+
+.plane-ticket #plane-ticket-price {
+    left: -130px;
+    top: -75px;
+    font-size: 23pt;
+}
+
+.plane-ticket #plane-ticket-airline1 {
     display: inline-block;
-	position: relative;
-	top: 35px;
-	left: -268px;
+    position: relative;
+    top: 31px;
+    left: -268px;
     width: 80px;
     height: 47px;
-    background: url('../../content/images/latam-logo.png') no-repeat center top;
     background-size: contain;
+}
+
+.plane-ticket #plane-ticket-airline2 {
+    display: inline-block;
+    position: relative;
+    top: -22px;
+    left: 20px;
+    width: 80px;
+    height: 47px;
+    background-size: contain;
+}
+
+.Latam {
+    background: url('../../content/images/latam-logo.png') no-repeat center top;
+}
+
+.Gol {
+    background: url('../../content/images/gol-logo.png') no-repeat center top;
+}
+
+.Azul {
+    background: url('../../content/images/azul-logo.png') no-repeat center top;
 }
 
 /* Hotel ticket */
 
 .hotel-ticket #hotel-ticket-title {
-	left: -210px;
-	top: 14px;
+    left: -210px;
+    top: 14px;
 }
-
-
-
-
-
-
 
 /* ==============================================================
 Bootstrap tweaks
@@ -202,6 +311,7 @@ Generic styles
 }
 
 .footer {
+    margin-top: 3em;
     border-top: 1px solid rgba(0, 0, 0, 0.125);
     text-align: center;
     background: #767676;
@@ -353,4 +463,98 @@ ui bootstrap tweaks
     white-space: nowrap;
 }
 
-/* jhipster-needle-css-add-main JHipster will add new css style */
+/* ui-datepicker */
+.ui-datepicker {
+    background: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: rgba(0, 0, 0, 0.2) 2px 1px 8px 2px !important;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+    border: 0px;
+    background: #f6f6f6;
+    border-radius: 100%;
+    width: 2em;
+    text-align: center;
+    font-weight: normal;
+    color: #454545;
+}
+
+.ui-state-active,
+.ui-state-hover {
+    background: #ffbf00 !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.ui-datepicker-header {
+    border: 1px solid rgba(0, 0, 0, 0.07) !important;
+}
+.ui-datepicker-title,
+.ui-datepicker-header {
+    background: #ffbf00 !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.ui-datepicker-next.ui-state-hover:hover,
+.ui-datepicker-prev.ui-state-hover:hover {
+    border: none !important;
+}
+
+.ui-icon.ui-icon-circle-triangle-e {
+    color: white !important;
+}
+
+.ui-widget.ui-widget-content {
+    border: none !important;
+}
+
+.ui-datepicker th {
+    color: #fec141;
+}
+
+.ui-icon {
+    background-image: url('../../content/images/ui-icons.png') !important;
+}
+
+/* Geral */
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+.btn-outline-warning:hover {
+    color: white !important;
+}
+
+.btn-outline-warning {
+    font-weight: bold !important;
+    transition: 0.5s all !important;
+}
+
+.h1-pages {
+    color: #f4a83a !important;
+    font-weight: bold !important;
+}
+
+.h1-hr {
+    border-color: #f4a83a;
+}

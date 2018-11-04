@@ -42,8 +42,8 @@ public class LinhaAereaResourceIntTest {
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CODIGO = "AAAAAAAAAA";
-    private static final String UPDATED_CODIGO = "BBBBBBBBBB";
+    private static final String DEFAULT_TELEFONE = "AAAAAAAAAA";
+    private static final String UPDATED_TELEFONE = "BBBBBBBBBB";
 
     @Autowired
     private LinhaAereaRepository linhaAereaRepository;
@@ -84,7 +84,7 @@ public class LinhaAereaResourceIntTest {
     public static LinhaAerea createEntity(EntityManager em) {
         LinhaAerea linhaAerea = new LinhaAerea()
             .nome(DEFAULT_NOME)
-            .codigo(DEFAULT_CODIGO);
+            .telefone(DEFAULT_TELEFONE);
         return linhaAerea;
     }
 
@@ -109,7 +109,7 @@ public class LinhaAereaResourceIntTest {
         assertThat(linhaAereaList).hasSize(databaseSizeBeforeCreate + 1);
         LinhaAerea testLinhaAerea = linhaAereaList.get(linhaAereaList.size() - 1);
         assertThat(testLinhaAerea.getNome()).isEqualTo(DEFAULT_NOME);
-        assertThat(testLinhaAerea.getCodigo()).isEqualTo(DEFAULT_CODIGO);
+        assertThat(testLinhaAerea.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
     }
 
     @Test
@@ -151,10 +151,10 @@ public class LinhaAereaResourceIntTest {
 
     @Test
     @Transactional
-    public void checkCodigoIsRequired() throws Exception {
+    public void checkTelefoneIsRequired() throws Exception {
         int databaseSizeBeforeTest = linhaAereaRepository.findAll().size();
         // set the field null
-        linhaAerea.setCodigo(null);
+        linhaAerea.setTelefone(null);
 
         // Create the LinhaAerea, which fails.
 
@@ -179,7 +179,7 @@ public class LinhaAereaResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(linhaAerea.getId().intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
-            .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO.toString())));
+            .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE.toString())));
     }
     
     @Test
@@ -194,7 +194,7 @@ public class LinhaAereaResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(linhaAerea.getId().intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
-            .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO.toString()));
+            .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE.toString()));
     }
 
     @Test
@@ -219,7 +219,7 @@ public class LinhaAereaResourceIntTest {
         em.detach(updatedLinhaAerea);
         updatedLinhaAerea
             .nome(UPDATED_NOME)
-            .codigo(UPDATED_CODIGO);
+            .telefone(UPDATED_TELEFONE);
 
         restLinhaAereaMockMvc.perform(put("/api/linha-aereas")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -231,7 +231,7 @@ public class LinhaAereaResourceIntTest {
         assertThat(linhaAereaList).hasSize(databaseSizeBeforeUpdate);
         LinhaAerea testLinhaAerea = linhaAereaList.get(linhaAereaList.size() - 1);
         assertThat(testLinhaAerea.getNome()).isEqualTo(UPDATED_NOME);
-        assertThat(testLinhaAerea.getCodigo()).isEqualTo(UPDATED_CODIGO);
+        assertThat(testLinhaAerea.getTelefone()).isEqualTo(UPDATED_TELEFONE);
     }
 
     @Test

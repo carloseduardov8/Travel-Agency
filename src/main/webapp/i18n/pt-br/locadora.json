@@ -17,10 +17,11 @@
                 "title": "Locadora"
             },
             "nome": "Nome",
-            "endereco": "Endereco",
             "telefone": "Telefone",
-            "veiculo": "Veiculo",
-            "contrato": "Contrato"
+            "cidade": "Cidade",
+            "estado": "Estado",
+            "endereco": "Endereco",
+            "veiculo": "Veiculo"
         }
     }
 }

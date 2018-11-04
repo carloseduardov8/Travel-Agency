@@ -17,10 +17,11 @@
                 "title": "Locacao"
             },
             "inicio": "Inicio",
-            "duracao": "Duracao",
+            "dataInicio": "Data Inicio",
+            "dataFim": "Data Fim",
             "valor": "Valor",
             "veiculo": "Veiculo",
-            "cliente": "Cliente"
+            "compra": "Compra"
         }
     }
 }

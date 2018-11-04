@@ -37,7 +37,7 @@ public class Quarto implements Serializable {
 
     @NotNull
     @Column(name = "diaria", nullable = false)
-    private Integer diaria;
+    private Float diaria;
 
     @NotNull
     @Column(name = "descricao", nullable = false)
@@ -86,16 +86,16 @@ public class Quarto implements Serializable {
         this.capacidade = capacidade;
     }
 
-    public Integer getDiaria() {
+    public Float getDiaria() {
         return diaria;
     }
 
-    public Quarto diaria(Integer diaria) {
+    public Quarto diaria(Float diaria) {
         this.diaria = diaria;
         return this;
     }
 
-    public void setDiaria(Integer diaria) {
+    public void setDiaria(Float diaria) {
         this.diaria = diaria;
     }
 

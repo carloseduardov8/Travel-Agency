@@ -90,6 +90,20 @@ public class QuartoResource {
     }
 
     /**
+     * GET  /quartos/:cidade : get quartos by cidade.
+     *
+     * @param cidade the cidade of the quarto's hotel
+     * @return the ResponseEntity with status 200 (OK) and the list of quartos in body
+     */
+    @GetMapping("/quartos/cidade/{cidade}")
+    @Timed
+    public List<Quarto> getQuartosByCidade(@PathVariable String cidade) {
+        log.debug("REST request to get Quartos by Cidade");
+        return quartoRepository.getQuartosByCidade(cidade);
+    }
+
+
+    /**
      * GET  /quartos/:id : get the "id" quarto.
      *
      * @param id the id of the quarto to retrieve

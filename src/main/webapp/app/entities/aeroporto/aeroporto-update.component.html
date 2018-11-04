@@ -21,24 +21,50 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.aeroporto.codigo" for="field_codigo">Codigo</label>
-                    <input type="text" class="form-control" name="codigo" id="field_codigo"
-                        [(ngModel)]="aeroporto.codigo" required/>
-                    <div [hidden]="!(editForm.controls.codigo?.dirty && editForm.controls.codigo?.invalid)">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.aeroporto.telefone" for="field_telefone">Telefone</label>
+                    <input type="text" class="form-control" name="telefone" id="field_telefone"
+                        [(ngModel)]="aeroporto.telefone" required/>
+                    <div [hidden]="!(editForm.controls.telefone?.dirty && editForm.controls.telefone?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.codigo?.errors?.required" jhiTranslate="entity.validation.required">
+                        [hidden]="!editForm.controls.telefone?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.aeroporto.cidade" for="field_cidade">Cidade</label>
+                    <input type="text" class="form-control" name="cidade" id="field_cidade"
+                        [(ngModel)]="aeroporto.cidade" required/>
+                    <div [hidden]="!(editForm.controls.cidade?.dirty && editForm.controls.cidade?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.cidade?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.aeroporto.estado" for="field_estado">Estado</label>
+                    <input type="text" class="form-control" name="estado" id="field_estado"
+                        [(ngModel)]="aeroporto.estado" required/>
+                    <div [hidden]="!(editForm.controls.estado?.dirty && editForm.controls.estado?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.estado?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.aeroporto.endereco" for="field_endereco">Endereco</label>
+                    <input type="text" class="form-control" name="endereco" id="field_endereco"
+                        [(ngModel)]="aeroporto.endereco" required/>
+                    <div [hidden]="!(editForm.controls.endereco?.dirty && editForm.controls.endereco?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.endereco?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.aeroporto.cidade" for="field_cidade">Cidade</label>
-                    <select class="form-control" id="field_cidade" name="cidade" [(ngModel)]="aeroporto.cidade" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="cidadeOption.id === aeroporto.cidade?.id ? aeroporto.cidade : cidadeOption" *ngFor="let cidadeOption of cidades; trackBy: trackCidadeById">{{cidadeOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

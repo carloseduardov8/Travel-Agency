@@ -39,14 +39,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ViajatoApp.class)
 public class ContratoResourceIntTest {
 
-    private static final Integer DEFAULT_NUMERO = 1;
-    private static final Integer UPDATED_NUMERO = 2;
+    private static final Integer DEFAULT_NUM_PESSOAS = 1;
+    private static final Integer UPDATED_NUM_PESSOAS = 2;
 
-    private static final Integer DEFAULT_VALOR = 1;
-    private static final Integer UPDATED_VALOR = 2;
+    private static final String DEFAULT_DATA_INICIO = "AAAAAAAAAA";
+    private static final String UPDATED_DATA_INICIO = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DESCRICAO = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRICAO = "BBBBBBBBBB";
+    private static final String DEFAULT_DATA_FIM = "AAAAAAAAAA";
+    private static final String UPDATED_DATA_FIM = "BBBBBBBBBB";
 
     @Autowired
     private ContratoRepository contratoRepository;
@@ -86,9 +86,9 @@ public class ContratoResourceIntTest {
      */
     public static Contrato createEntity(EntityManager em) {
         Contrato contrato = new Contrato()
-            .numero(DEFAULT_NUMERO)
-            .valor(DEFAULT_VALOR)
-            .descricao(DEFAULT_DESCRICAO);
+            .numPessoas(DEFAULT_NUM_PESSOAS)
+            .dataInicio(DEFAULT_DATA_INICIO)
+            .dataFim(DEFAULT_DATA_FIM);
         return contrato;
     }
 
@@ -112,9 +112,9 @@ public class ContratoResourceIntTest {
         List<Contrato> contratoList = contratoRepository.findAll();
         assertThat(contratoList).hasSize(databaseSizeBeforeCreate + 1);
         Contrato testContrato = contratoList.get(contratoList.size() - 1);
-        assertThat(testContrato.getNumero()).isEqualTo(DEFAULT_NUMERO);
-        assertThat(testContrato.getValor()).isEqualTo(DEFAULT_VALOR);
-        assertThat(testContrato.getDescricao()).isEqualTo(DEFAULT_DESCRICAO);
+        assertThat(testContrato.getNumPessoas()).isEqualTo(DEFAULT_NUM_PESSOAS);
+        assertThat(testContrato.getDataInicio()).isEqualTo(DEFAULT_DATA_INICIO);
+        assertThat(testContrato.getDataFim()).isEqualTo(DEFAULT_DATA_FIM);
     }
 
     @Test
@@ -138,10 +138,10 @@ public class ContratoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkNumeroIsRequired() throws Exception {
+    public void checkNumPessoasIsRequired() throws Exception {
         int databaseSizeBeforeTest = contratoRepository.findAll().size();
         // set the field null
-        contrato.setNumero(null);
+        contrato.setNumPessoas(null);
 
         // Create the Contrato, which fails.
 
@@ -156,10 +156,10 @@ public class ContratoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkValorIsRequired() throws Exception {
+    public void checkDataInicioIsRequired() throws Exception {
         int databaseSizeBeforeTest = contratoRepository.findAll().size();
         // set the field null
-        contrato.setValor(null);
+        contrato.setDataInicio(null);
 
         // Create the Contrato, which fails.
 
@@ -174,10 +174,10 @@ public class ContratoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDescricaoIsRequired() throws Exception {
+    public void checkDataFimIsRequired() throws Exception {
         int databaseSizeBeforeTest = contratoRepository.findAll().size();
         // set the field null
-        contrato.setDescricao(null);
+        contrato.setDataFim(null);
 
         // Create the Contrato, which fails.
 
@@ -201,9 +201,9 @@ public class ContratoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(contrato.getId().intValue())))
-            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
-            .andExpect(jsonPath("$.[*].valor").value(hasItem(DEFAULT_VALOR)))
-            .andExpect(jsonPath("$.[*].descricao").value(hasItem(DEFAULT_DESCRICAO.toString())));
+            .andExpect(jsonPath("$.[*].numPessoas").value(hasItem(DEFAULT_NUM_PESSOAS)))
+            .andExpect(jsonPath("$.[*].dataInicio").value(hasItem(DEFAULT_DATA_INICIO.toString())))
+            .andExpect(jsonPath("$.[*].dataFim").value(hasItem(DEFAULT_DATA_FIM.toString())));
     }
     
     @Test
@@ -217,9 +217,9 @@ public class ContratoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(contrato.getId().intValue()))
-            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
-            .andExpect(jsonPath("$.valor").value(DEFAULT_VALOR))
-            .andExpect(jsonPath("$.descricao").value(DEFAULT_DESCRICAO.toString()));
+            .andExpect(jsonPath("$.numPessoas").value(DEFAULT_NUM_PESSOAS))
+            .andExpect(jsonPath("$.dataInicio").value(DEFAULT_DATA_INICIO.toString()))
+            .andExpect(jsonPath("$.dataFim").value(DEFAULT_DATA_FIM.toString()));
     }
 
     @Test
@@ -243,9 +243,9 @@ public class ContratoResourceIntTest {
         // Disconnect from session so that the updates on updatedContrato are not directly saved in db
         em.detach(updatedContrato);
         updatedContrato
-            .numero(UPDATED_NUMERO)
-            .valor(UPDATED_VALOR)
-            .descricao(UPDATED_DESCRICAO);
+            .numPessoas(UPDATED_NUM_PESSOAS)
+            .dataInicio(UPDATED_DATA_INICIO)
+            .dataFim(UPDATED_DATA_FIM);
 
         restContratoMockMvc.perform(put("/api/contratoes")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -256,9 +256,9 @@ public class ContratoResourceIntTest {
         List<Contrato> contratoList = contratoRepository.findAll();
         assertThat(contratoList).hasSize(databaseSizeBeforeUpdate);
         Contrato testContrato = contratoList.get(contratoList.size() - 1);
-        assertThat(testContrato.getNumero()).isEqualTo(UPDATED_NUMERO);
-        assertThat(testContrato.getValor()).isEqualTo(UPDATED_VALOR);
-        assertThat(testContrato.getDescricao()).isEqualTo(UPDATED_DESCRICAO);
+        assertThat(testContrato.getNumPessoas()).isEqualTo(UPDATED_NUM_PESSOAS);
+        assertThat(testContrato.getDataInicio()).isEqualTo(UPDATED_DATA_INICIO);
+        assertThat(testContrato.getDataFim()).isEqualTo(UPDATED_DATA_FIM);
     }
 
     @Test

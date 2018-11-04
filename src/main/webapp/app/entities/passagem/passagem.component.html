@@ -15,30 +15,28 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="viajatoApp.passagem.classe">Classe</span></th>
-            <th><span jhiTranslate="viajatoApp.passagem.valor">Valor</span></th>
             <th><span jhiTranslate="viajatoApp.passagem.nome">Nome</span></th>
             <th><span jhiTranslate="viajatoApp.passagem.cpf">Cpf</span></th>
+            <th><span jhiTranslate="viajatoApp.passagem.assento">Assento</span></th>
             <th><span jhiTranslate="viajatoApp.passagem.voo">Voo</span></th>
-            <th><span jhiTranslate="viajatoApp.passagem.cliente">Cliente</span></th>
+            <th><span jhiTranslate="viajatoApp.passagem.compra">Compra</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let passagem of passagems ;trackBy: trackId">
                 <td><a [routerLink]="['/passagem', passagem.id, 'view' ]">{{passagem.id}}</a></td>
-                <td>{{passagem.classe}}</td>
-                <td>{{passagem.valor}}</td>
                 <td>{{passagem.nome}}</td>
                 <td>{{passagem.cpf}}</td>
+                <td>{{passagem.assento}}</td>
                 <td>
                     <div *ngIf="passagem.voo">
                         <a [routerLink]="['../voo', passagem.voo?.id, 'view' ]" >{{passagem.voo?.id}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="passagem.cliente">
-                        <a [routerLink]="['../cliente', passagem.cliente?.id, 'view' ]" >{{passagem.cliente?.id}}</a>
+                    <div *ngIf="passagem.compra">
+                        <a [routerLink]="['../compra', passagem.compra?.id, 'view' ]" >{{passagem.compra?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

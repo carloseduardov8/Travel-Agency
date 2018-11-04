@@ -16,6 +16,9 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="viajatoApp.seguradora.nome">Nome</span></th>
+            <th><span jhiTranslate="viajatoApp.seguradora.telefone">Telefone</span></th>
+            <th><span jhiTranslate="viajatoApp.seguradora.cidade">Cidade</span></th>
+            <th><span jhiTranslate="viajatoApp.seguradora.estado">Estado</span></th>
             <th><span jhiTranslate="viajatoApp.seguradora.endereco">Endereco</span></th>
             <th></th>
             </tr>
@@ -24,11 +27,10 @@
             <tr *ngFor="let seguradora of seguradoras ;trackBy: trackId">
                 <td><a [routerLink]="['/seguradora', seguradora.id, 'view' ]">{{seguradora.id}}</a></td>
                 <td>{{seguradora.nome}}</td>
-                <td>
-                    <div *ngIf="seguradora.endereco">
-                        <a [routerLink]="['../endereco', seguradora.endereco?.id, 'view' ]" >{{seguradora.endereco?.id}}</a>
-                    </div>
-                </td>
+                <td>{{seguradora.telefone}}</td>
+                <td>{{seguradora.cidade}}</td>
+                <td>{{seguradora.estado}}</td>
+                <td>{{seguradora.endereco}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

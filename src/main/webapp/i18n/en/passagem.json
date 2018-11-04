@@ -16,12 +16,11 @@
             "detail": {
                 "title": "Passagem"
             },
-            "classe": "Classe",
-            "valor": "Valor",
             "nome": "Nome",
             "cpf": "Cpf",
+            "assento": "Assento",
             "voo": "Voo",
-            "cliente": "Cliente"
+            "compra": "Compra"
         }
     }
 }

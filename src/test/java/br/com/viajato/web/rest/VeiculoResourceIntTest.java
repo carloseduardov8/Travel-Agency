@@ -48,12 +48,6 @@ public class VeiculoResourceIntTest {
     private static final String DEFAULT_MODELO = "AAAAAAAAAA";
     private static final String UPDATED_MODELO = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_ANO_MODELO = 1;
-    private static final Integer UPDATED_ANO_MODELO = 2;
-
-    private static final Integer DEFAULT_ANO_FABRICACAO = 1;
-    private static final Integer UPDATED_ANO_FABRICACAO = 2;
-
     private static final String DEFAULT_COR = "AAAAAAAAAA";
     private static final String UPDATED_COR = "BBBBBBBBBB";
 
@@ -101,8 +95,6 @@ public class VeiculoResourceIntTest {
             .tipo(DEFAULT_TIPO)
             .fabricante(DEFAULT_FABRICANTE)
             .modelo(DEFAULT_MODELO)
-            .anoModelo(DEFAULT_ANO_MODELO)
-            .anoFabricacao(DEFAULT_ANO_FABRICACAO)
             .cor(DEFAULT_COR)
             .numPassageiros(DEFAULT_NUM_PASSAGEIROS);
         return veiculo;
@@ -131,8 +123,6 @@ public class VeiculoResourceIntTest {
         assertThat(testVeiculo.getTipo()).isEqualTo(DEFAULT_TIPO);
         assertThat(testVeiculo.getFabricante()).isEqualTo(DEFAULT_FABRICANTE);
         assertThat(testVeiculo.getModelo()).isEqualTo(DEFAULT_MODELO);
-        assertThat(testVeiculo.getAnoModelo()).isEqualTo(DEFAULT_ANO_MODELO);
-        assertThat(testVeiculo.getAnoFabricacao()).isEqualTo(DEFAULT_ANO_FABRICACAO);
         assertThat(testVeiculo.getCor()).isEqualTo(DEFAULT_COR);
         assertThat(testVeiculo.getNumPassageiros()).isEqualTo(DEFAULT_NUM_PASSAGEIROS);
     }
@@ -212,42 +202,6 @@ public class VeiculoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkAnoModeloIsRequired() throws Exception {
-        int databaseSizeBeforeTest = veiculoRepository.findAll().size();
-        // set the field null
-        veiculo.setAnoModelo(null);
-
-        // Create the Veiculo, which fails.
-
-        restVeiculoMockMvc.perform(post("/api/veiculos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(veiculo)))
-            .andExpect(status().isBadRequest());
-
-        List<Veiculo> veiculoList = veiculoRepository.findAll();
-        assertThat(veiculoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkAnoFabricacaoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = veiculoRepository.findAll().size();
-        // set the field null
-        veiculo.setAnoFabricacao(null);
-
-        // Create the Veiculo, which fails.
-
-        restVeiculoMockMvc.perform(post("/api/veiculos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(veiculo)))
-            .andExpect(status().isBadRequest());
-
-        List<Veiculo> veiculoList = veiculoRepository.findAll();
-        assertThat(veiculoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void checkCorIsRequired() throws Exception {
         int databaseSizeBeforeTest = veiculoRepository.findAll().size();
         // set the field null
@@ -296,8 +250,6 @@ public class VeiculoResourceIntTest {
             .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO.toString())))
             .andExpect(jsonPath("$.[*].fabricante").value(hasItem(DEFAULT_FABRICANTE.toString())))
             .andExpect(jsonPath("$.[*].modelo").value(hasItem(DEFAULT_MODELO.toString())))
-            .andExpect(jsonPath("$.[*].anoModelo").value(hasItem(DEFAULT_ANO_MODELO)))
-            .andExpect(jsonPath("$.[*].anoFabricacao").value(hasItem(DEFAULT_ANO_FABRICACAO)))
             .andExpect(jsonPath("$.[*].cor").value(hasItem(DEFAULT_COR.toString())))
             .andExpect(jsonPath("$.[*].numPassageiros").value(hasItem(DEFAULT_NUM_PASSAGEIROS)));
     }
@@ -316,8 +268,6 @@ public class VeiculoResourceIntTest {
             .andExpect(jsonPath("$.tipo").value(DEFAULT_TIPO.toString()))
             .andExpect(jsonPath("$.fabricante").value(DEFAULT_FABRICANTE.toString()))
             .andExpect(jsonPath("$.modelo").value(DEFAULT_MODELO.toString()))
-            .andExpect(jsonPath("$.anoModelo").value(DEFAULT_ANO_MODELO))
-            .andExpect(jsonPath("$.anoFabricacao").value(DEFAULT_ANO_FABRICACAO))
             .andExpect(jsonPath("$.cor").value(DEFAULT_COR.toString()))
             .andExpect(jsonPath("$.numPassageiros").value(DEFAULT_NUM_PASSAGEIROS));
     }
@@ -346,8 +296,6 @@ public class VeiculoResourceIntTest {
             .tipo(UPDATED_TIPO)
             .fabricante(UPDATED_FABRICANTE)
             .modelo(UPDATED_MODELO)
-            .anoModelo(UPDATED_ANO_MODELO)
-            .anoFabricacao(UPDATED_ANO_FABRICACAO)
             .cor(UPDATED_COR)
             .numPassageiros(UPDATED_NUM_PASSAGEIROS);
 
@@ -363,8 +311,6 @@ public class VeiculoResourceIntTest {
         assertThat(testVeiculo.getTipo()).isEqualTo(UPDATED_TIPO);
         assertThat(testVeiculo.getFabricante()).isEqualTo(UPDATED_FABRICANTE);
         assertThat(testVeiculo.getModelo()).isEqualTo(UPDATED_MODELO);
-        assertThat(testVeiculo.getAnoModelo()).isEqualTo(UPDATED_ANO_MODELO);
-        assertThat(testVeiculo.getAnoFabricacao()).isEqualTo(UPDATED_ANO_FABRICACAO);
         assertThat(testVeiculo.getCor()).isEqualTo(UPDATED_COR);
         assertThat(testVeiculo.getNumPassageiros()).isEqualTo(UPDATED_NUM_PASSAGEIROS);
     }

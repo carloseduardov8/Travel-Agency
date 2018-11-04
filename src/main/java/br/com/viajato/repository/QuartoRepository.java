@@ -4,6 +4,8 @@ import br.com.viajato.domain.Quarto;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Spring Data  repository for the Quarto entity.
@@ -11,5 +13,8 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface QuartoRepository extends JpaRepository<Quarto, Long> {
+
+    @Query("SELECT q FROM Quarto q WHERE q.hotel.cidade LIKE ?1%")
+    List<Quarto> getQuartosByCidade(String cidade);
 
 }

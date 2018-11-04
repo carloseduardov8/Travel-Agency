@@ -21,12 +21,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.linhaAerea.codigo" for="field_codigo">Codigo</label>
-                    <input type="text" class="form-control" name="codigo" id="field_codigo"
-                        [(ngModel)]="linhaAerea.codigo" required/>
-                    <div [hidden]="!(editForm.controls.codigo?.dirty && editForm.controls.codigo?.invalid)">
+                    <label class="form-control-label" jhiTranslate="viajatoApp.linhaAerea.telefone" for="field_telefone">Telefone</label>
+                    <input type="text" class="form-control" name="telefone" id="field_telefone"
+                        [(ngModel)]="linhaAerea.telefone" required/>
+                    <div [hidden]="!(editForm.controls.telefone?.dirty && editForm.controls.telefone?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.codigo?.errors?.required" jhiTranslate="entity.validation.required">
+                        [hidden]="!editForm.controls.telefone?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>

@@ -17,10 +17,12 @@
                 "title": "Aeroporto"
             },
             "nome": "Nome",
-            "codigo": "Codigo",
+            "telefone": "Telefone",
+            "cidade": "Cidade",
+            "estado": "Estado",
+            "endereco": "Endereco",
             "vemDe": "Vem De",
-            "vaiPara": "Vai Para",
-            "cidade": "Cidade"
+            "vaiPara": "Vai Para"
         }
     }
 }

@@ -17,9 +17,13 @@ import { ViajatoAppRoutingModule } from './app-routing.module';
 import { ViajatoHomeModule } from './home/home.module';
 import { ViajatoAccountModule } from './account/account.module';
 import { ViajatoEntityModule } from './entities/entity.module';
-import * as moment from 'moment';
 import { ViajatoAppBasketModule } from './basket/basket.module';
 import { ViajatoAppChoosePlaneModule } from './choose-plane/choose-plane.module';
+
+import * as moment from 'moment';
+import { ViajatoAppChooseInsuranceModule } from './choose-insurance/choose-insurance.module';
+import { ViajatoAppChooseHotelModule } from './choose-hotel/choose-hotel.module';
+import { ViajatoAppChooseVehicleModule } from './choose-vehicle/choose-vehicle.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
@@ -32,9 +36,12 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         ViajatoCoreModule,
         ViajatoHomeModule,
         ViajatoAccountModule,
-        ViajatoEntityModule
+        ViajatoEntityModule,
         ViajatoAppBasketModule,
         ViajatoAppChoosePlaneModule,
+        ViajatoAppChooseInsuranceModule,
+        ViajatoAppChooseHotelModule,
+        ViajatoAppChooseVehicleModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],

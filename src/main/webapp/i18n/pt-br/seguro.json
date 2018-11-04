@@ -1,0 +1,26 @@
+
+{
+    "viajatoApp": {
+        "seguro" : {
+            "home": {
+                "title": "Seguros",
+                "createLabel": "Criar novo Seguro",
+                "createOrEditLabel": "Criar ou editar Seguro"
+            },
+            "created": "Um novo Seguro foi criado com o identificador {{ param }}",
+            "updated": "Um Seguro foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Seguro foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Seguro {{ id }}?"
+            },
+            "detail": {
+                "title": "Seguro"
+            },
+            "nome": "Nome",
+            "descricao": "Descricao",
+            "valorPorPessoa": "Valor Por Pessoa",
+            "contrato": "Contrato",
+            "seguradora": "Seguradora"
+        }
+    }
+}
