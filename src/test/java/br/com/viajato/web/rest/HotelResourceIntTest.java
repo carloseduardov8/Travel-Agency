@@ -57,6 +57,9 @@ public class HotelResourceIntTest {
     private static final String DEFAULT_ENDERECO = "AAAAAAAAAA";
     private static final String UPDATED_ENDERECO = "BBBBBBBBBB";
 
+    private static final String DEFAULT_IMAGEM = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGEM = "BBBBBBBBBB";
+
     @Autowired
     private HotelRepository hotelRepository;
 
@@ -100,7 +103,8 @@ public class HotelResourceIntTest {
             .telefone(DEFAULT_TELEFONE)
             .cidade(DEFAULT_CIDADE)
             .estado(DEFAULT_ESTADO)
-            .endereco(DEFAULT_ENDERECO);
+            .endereco(DEFAULT_ENDERECO)
+            .imagem(DEFAULT_IMAGEM);
         return hotel;
     }
 
@@ -130,6 +134,7 @@ public class HotelResourceIntTest {
         assertThat(testHotel.getCidade()).isEqualTo(DEFAULT_CIDADE);
         assertThat(testHotel.getEstado()).isEqualTo(DEFAULT_ESTADO);
         assertThat(testHotel.getEndereco()).isEqualTo(DEFAULT_ENDERECO);
+        assertThat(testHotel.getImagem()).isEqualTo(DEFAULT_IMAGEM);
     }
 
     @Test
@@ -275,7 +280,8 @@ public class HotelResourceIntTest {
             .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE.toString())))
             .andExpect(jsonPath("$.[*].cidade").value(hasItem(DEFAULT_CIDADE.toString())))
             .andExpect(jsonPath("$.[*].estado").value(hasItem(DEFAULT_ESTADO.toString())))
-            .andExpect(jsonPath("$.[*].endereco").value(hasItem(DEFAULT_ENDERECO.toString())));
+            .andExpect(jsonPath("$.[*].endereco").value(hasItem(DEFAULT_ENDERECO.toString())))
+            .andExpect(jsonPath("$.[*].imagem").value(hasItem(DEFAULT_IMAGEM.toString())));
     }
     
     @Test
@@ -294,7 +300,8 @@ public class HotelResourceIntTest {
             .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE.toString()))
             .andExpect(jsonPath("$.cidade").value(DEFAULT_CIDADE.toString()))
             .andExpect(jsonPath("$.estado").value(DEFAULT_ESTADO.toString()))
-            .andExpect(jsonPath("$.endereco").value(DEFAULT_ENDERECO.toString()));
+            .andExpect(jsonPath("$.endereco").value(DEFAULT_ENDERECO.toString()))
+            .andExpect(jsonPath("$.imagem").value(DEFAULT_IMAGEM.toString()));
     }
 
     @Test
@@ -323,7 +330,8 @@ public class HotelResourceIntTest {
             .telefone(UPDATED_TELEFONE)
             .cidade(UPDATED_CIDADE)
             .estado(UPDATED_ESTADO)
-            .endereco(UPDATED_ENDERECO);
+            .endereco(UPDATED_ENDERECO)
+            .imagem(UPDATED_IMAGEM);
 
         restHotelMockMvc.perform(put("/api/hotels")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -340,6 +348,7 @@ public class HotelResourceIntTest {
         assertThat(testHotel.getCidade()).isEqualTo(UPDATED_CIDADE);
         assertThat(testHotel.getEstado()).isEqualTo(UPDATED_ESTADO);
         assertThat(testHotel.getEndereco()).isEqualTo(UPDATED_ENDERECO);
+        assertThat(testHotel.getImagem()).isEqualTo(UPDATED_IMAGEM);
     }
 
     @Test

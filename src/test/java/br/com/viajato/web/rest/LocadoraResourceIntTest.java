@@ -54,6 +54,9 @@ public class LocadoraResourceIntTest {
     private static final String DEFAULT_ENDERECO = "AAAAAAAAAA";
     private static final String UPDATED_ENDERECO = "BBBBBBBBBB";
 
+    private static final String DEFAULT_IMAGEM = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGEM = "BBBBBBBBBB";
+
     @Autowired
     private LocadoraRepository locadoraRepository;
 
@@ -96,7 +99,8 @@ public class LocadoraResourceIntTest {
             .telefone(DEFAULT_TELEFONE)
             .cidade(DEFAULT_CIDADE)
             .estado(DEFAULT_ESTADO)
-            .endereco(DEFAULT_ENDERECO);
+            .endereco(DEFAULT_ENDERECO)
+            .imagem(DEFAULT_IMAGEM);
         return locadora;
     }
 
@@ -125,6 +129,7 @@ public class LocadoraResourceIntTest {
         assertThat(testLocadora.getCidade()).isEqualTo(DEFAULT_CIDADE);
         assertThat(testLocadora.getEstado()).isEqualTo(DEFAULT_ESTADO);
         assertThat(testLocadora.getEndereco()).isEqualTo(DEFAULT_ENDERECO);
+        assertThat(testLocadora.getImagem()).isEqualTo(DEFAULT_IMAGEM);
     }
 
     @Test
@@ -251,7 +256,8 @@ public class LocadoraResourceIntTest {
             .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE.toString())))
             .andExpect(jsonPath("$.[*].cidade").value(hasItem(DEFAULT_CIDADE.toString())))
             .andExpect(jsonPath("$.[*].estado").value(hasItem(DEFAULT_ESTADO.toString())))
-            .andExpect(jsonPath("$.[*].endereco").value(hasItem(DEFAULT_ENDERECO.toString())));
+            .andExpect(jsonPath("$.[*].endereco").value(hasItem(DEFAULT_ENDERECO.toString())))
+            .andExpect(jsonPath("$.[*].imagem").value(hasItem(DEFAULT_IMAGEM.toString())));
     }
     
     @Test
@@ -269,7 +275,8 @@ public class LocadoraResourceIntTest {
             .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE.toString()))
             .andExpect(jsonPath("$.cidade").value(DEFAULT_CIDADE.toString()))
             .andExpect(jsonPath("$.estado").value(DEFAULT_ESTADO.toString()))
-            .andExpect(jsonPath("$.endereco").value(DEFAULT_ENDERECO.toString()));
+            .andExpect(jsonPath("$.endereco").value(DEFAULT_ENDERECO.toString()))
+            .andExpect(jsonPath("$.imagem").value(DEFAULT_IMAGEM.toString()));
     }
 
     @Test
@@ -297,7 +304,8 @@ public class LocadoraResourceIntTest {
             .telefone(UPDATED_TELEFONE)
             .cidade(UPDATED_CIDADE)
             .estado(UPDATED_ESTADO)
-            .endereco(UPDATED_ENDERECO);
+            .endereco(UPDATED_ENDERECO)
+            .imagem(UPDATED_IMAGEM);
 
         restLocadoraMockMvc.perform(put("/api/locadoras")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -313,6 +321,7 @@ public class LocadoraResourceIntTest {
         assertThat(testLocadora.getCidade()).isEqualTo(UPDATED_CIDADE);
         assertThat(testLocadora.getEstado()).isEqualTo(UPDATED_ESTADO);
         assertThat(testLocadora.getEndereco()).isEqualTo(UPDATED_ENDERECO);
+        assertThat(testLocadora.getImagem()).isEqualTo(UPDATED_IMAGEM);
     }
 
     @Test

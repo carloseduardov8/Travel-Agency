@@ -1,5 +1,20 @@
 {
-    "name": "Contrato",
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "compra",
+            "otherEntityName": "compra",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "seguro",
+            "otherEntityName": "seguro",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldName": "numPessoas",
@@ -21,29 +36,20 @@
             "fieldValidateRules": [
                 "required"
             ]
-        }
-    ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "compra",
-            "otherEntityName": "compra",
-            "otherEntityField": "id"
         },
         {
-            "relationshipType": "many-to-one",
-            "relationshipName": "seguro",
-            "otherEntityName": "seguro",
-            "otherEntityField": "id"
+            "fieldName": "valor",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20181025033528",
-    "entityTableName": "contrato",
     "dto": "no",
-    "pagination": "no",
+    "searchEngine": false,
     "service": "no",
+    "entityTableName": "contrato",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*"
+    "pagination": "no"
 }

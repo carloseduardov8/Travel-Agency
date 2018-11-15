@@ -50,6 +50,9 @@ public class Hotel implements Serializable {
     @Column(name = "endereco", nullable = false)
     private String endereco;
 
+    @Column(name = "imagem")
+    private String imagem;
+
     @OneToMany(mappedBy = "hotel")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Quarto> quartos = new HashSet<>();
@@ -141,6 +144,19 @@ public class Hotel implements Serializable {
         this.endereco = endereco;
     }
 
+    public String getImagem() {
+        return imagem;
+    }
+
+    public Hotel imagem(String imagem) {
+        this.imagem = imagem;
+        return this;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
     public Set<Quarto> getQuartos() {
         return quartos;
     }
@@ -197,6 +213,7 @@ public class Hotel implements Serializable {
             ", cidade='" + getCidade() + "'" +
             ", estado='" + getEstado() + "'" +
             ", endereco='" + getEndereco() + "'" +
+            ", imagem='" + getImagem() + "'" +
             "}";
     }
 }

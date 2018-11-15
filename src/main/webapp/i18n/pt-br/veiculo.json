@@ -21,6 +21,7 @@
             "modelo": "Modelo",
             "cor": "Cor",
             "numPassageiros": "Num Passageiros",
+            "imagem": "Imagem",
             "locacao": "Locacao",
             "locadora": "Locadora"
         }

@@ -8,6 +8,7 @@ export interface IHotel {
     cidade?: string;
     estado?: string;
     endereco?: string;
+    imagem?: string;
     quartos?: IQuarto[];
 }
 
@@ -20,6 +21,7 @@ export class Hotel implements IHotel {
         public cidade?: string,
         public estado?: string,
         public endereco?: string,
+        public imagem?: string,
         public quartos?: IQuarto[]
     ) {}
 }

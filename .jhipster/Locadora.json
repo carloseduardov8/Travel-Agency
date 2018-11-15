@@ -1,5 +1,14 @@
 {
-    "name": "Locadora",
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "veiculo",
+            "otherEntityName": "veiculo",
+            "otherEntityRelationshipName": "locadora"
+        }
+    ],
     "fields": [
         {
             "fieldName": "nome",
@@ -35,23 +44,17 @@
             "fieldValidateRules": [
                 "required"
             ]
-        }
-    ],
-    "relationships": [
+        },
         {
-            "relationshipType": "one-to-many",
-            "relationshipName": "veiculo",
-            "otherEntityName": "veiculo",
-            "otherEntityRelationshipName": "locadora"
+            "fieldName": "imagem",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20181025033520",
-    "entityTableName": "locadora",
     "dto": "no",
-    "pagination": "no",
+    "searchEngine": false,
     "service": "no",
+    "entityTableName": "locadora",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*"
+    "pagination": "no"
 }

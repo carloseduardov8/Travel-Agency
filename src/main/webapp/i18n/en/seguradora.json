@@ -3,25 +3,26 @@
     "viajatoApp": {
         "seguradora" : {
             "home": {
-                "title": "Insurance Companies",
-                "createLabel": "Create a new Insurance Company",
-                "createOrEditLabel": "Create or edit a Insurance Company"
+                "title": "Seguradoras",
+                "createLabel": "Create a new Seguradora",
+                "createOrEditLabel": "Create or edit a Seguradora"
             },
-            "created": "A new Insurance Company is created with identifier {{ param }}",
-            "updated": "An Insurance Company is updated with identifier {{ param }}",
-            "deleted": "An Insurance Company is deleted with identifier {{ param }}",
+            "created": "A new Seguradora is created with identifier {{ param }}",
+            "updated": "A Seguradora is updated with identifier {{ param }}",
+            "deleted": "A Seguradora is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Insurance Company {{ id }}?"
+                "question": "Are you sure you want to delete Seguradora {{ id }}?"
             },
             "detail": {
-                "title": "Insurance Company"
+                "title": "Seguradora"
             },
-            "nome": "Name",
-            "telefone": "Phone",
-            "cidade": "City",
-            "estado": "State",
-            "endereco": "Address",
-            "seguro": "Insurance"
+            "nome": "Nome",
+            "telefone": "Telefone",
+            "cidade": "Cidade",
+            "estado": "Estado",
+            "endereco": "Endereco",
+            "imagem": "Imagem",
+            "seguro": "Seguro"
         }
     }
 }

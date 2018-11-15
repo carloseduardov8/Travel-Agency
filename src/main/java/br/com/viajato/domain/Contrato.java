@@ -36,6 +36,10 @@ public class Contrato implements Serializable {
     @Column(name = "data_fim", nullable = false)
     private String dataFim;
 
+    @NotNull
+    @Column(name = "valor", nullable = false)
+    private Float valor;
+
     @ManyToOne
     @JsonIgnoreProperties("contratoes")
     private Compra compra;
@@ -92,6 +96,19 @@ public class Contrato implements Serializable {
         this.dataFim = dataFim;
     }
 
+    public Float getValor() {
+        return valor;
+    }
+
+    public Contrato valor(Float valor) {
+        this.valor = valor;
+        return this;
+    }
+
+    public void setValor(Float valor) {
+        this.valor = valor;
+    }
+
     public Compra getCompra() {
         return compra;
     }
@@ -146,6 +163,7 @@ public class Contrato implements Serializable {
             ", numPessoas=" + getNumPessoas() +
             ", dataInicio='" + getDataInicio() + "'" +
             ", dataFim='" + getDataFim() + "'" +
+            ", valor=" + getValor() +
             "}";
     }
 }

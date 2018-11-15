@@ -46,6 +46,9 @@ public class Locadora implements Serializable {
     @Column(name = "endereco", nullable = false)
     private String endereco;
 
+    @Column(name = "imagem")
+    private String imagem;
+
     @OneToMany(mappedBy = "locadora")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Veiculo> veiculos = new HashSet<>();
@@ -124,6 +127,19 @@ public class Locadora implements Serializable {
         this.endereco = endereco;
     }
 
+    public String getImagem() {
+        return imagem;
+    }
+
+    public Locadora imagem(String imagem) {
+        this.imagem = imagem;
+        return this;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
     public Set<Veiculo> getVeiculos() {
         return veiculos;
     }
@@ -179,6 +195,7 @@ public class Locadora implements Serializable {
             ", cidade='" + getCidade() + "'" +
             ", estado='" + getEstado() + "'" +
             ", endereco='" + getEndereco() + "'" +
+            ", imagem='" + getImagem() + "'" +
             "}";
     }
 }

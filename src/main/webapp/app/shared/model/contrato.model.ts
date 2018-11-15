@@ -6,6 +6,7 @@ export interface IContrato {
     numPessoas?: number;
     dataInicio?: string;
     dataFim?: string;
+    valor?: number;
     compra?: ICompra;
     seguro?: ISeguro;
 }
@@ -16,6 +17,7 @@ export class Contrato implements IContrato {
         public numPessoas?: number,
         public dataInicio?: string,
         public dataFim?: string,
+        public valor?: number,
         public compra?: ICompra,
         public seguro?: ISeguro
     ) {}

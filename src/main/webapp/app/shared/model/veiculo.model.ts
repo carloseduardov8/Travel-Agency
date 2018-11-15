@@ -8,6 +8,7 @@ export interface IVeiculo {
     modelo?: string;
     cor?: string;
     numPassageiros?: number;
+    imagem?: string;
     locacaos?: ILocacao[];
     locadora?: ILocadora;
 }
@@ -20,6 +21,7 @@ export class Veiculo implements IVeiculo {
         public modelo?: string,
         public cor?: string,
         public numPassageiros?: number,
+        public imagem?: string,
         public locacaos?: ILocacao[],
         public locadora?: ILocadora
     ) {}

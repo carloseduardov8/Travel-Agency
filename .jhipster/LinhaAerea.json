@@ -1,5 +1,14 @@
 {
-    "name": "LinhaAerea",
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "voo",
+            "otherEntityName": "voo",
+            "otherEntityRelationshipName": "linhaAerea"
+        }
+    ],
     "fields": [
         {
             "fieldName": "nome",
@@ -14,23 +23,17 @@
             "fieldValidateRules": [
                 "required"
             ]
-        }
-    ],
-    "relationships": [
+        },
         {
-            "relationshipType": "one-to-many",
-            "relationshipName": "voo",
-            "otherEntityName": "voo",
-            "otherEntityRelationshipName": "linhaAerea"
+            "fieldName": "imagem",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20181025033518",
-    "entityTableName": "linha_aerea",
     "dto": "no",
-    "pagination": "no",
+    "searchEngine": false,
     "service": "no",
+    "entityTableName": "linha_aerea",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*"
+    "pagination": "no"
 }
