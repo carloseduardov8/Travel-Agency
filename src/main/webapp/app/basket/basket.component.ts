@@ -15,10 +15,12 @@ export class BasketComponent implements OnInit {
     dateIn: string;
     dateOut: string;
     passengers: string;
+	viewWindow: int;
 
     constructor(private route: ActivatedRoute, private router: Router, private vooService: VooService) {
         this.route.params.subscribe(params => {
             console.log(params);
+			this.viewWindow = 1;
             if (params) {
                 this.from = params.from;
                 this.to = params.to;
@@ -30,6 +32,11 @@ export class BasketComponent implements OnInit {
     }
 
     ngOnInit() {}
+
+	// Troca o estado da janela (alterna entre mostrar passagem, hotel, etc)
+    toggleWindow(num) {
+        this.viewWindow = num;
+    }
 
     // Ir para uma das páginas de selecao com os parametros selecionados
     goTo(page: string) {
