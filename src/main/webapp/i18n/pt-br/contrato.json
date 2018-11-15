@@ -19,6 +19,7 @@
             "numPessoas": "Num Pessoas",
             "dataInicio": "Data Inicio",
             "dataFim": "Data Fim",
+            "valor": "Valor",
             "compra": "Compra",
             "seguro": "Seguro"
         }

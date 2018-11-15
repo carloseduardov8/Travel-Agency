@@ -7,11 +7,21 @@
 		<h5 class="text-center" jhiTranslate="basket.subtitle">Subtitle</h5>
 		<hr class="h1-hr"/>
 
+		<!-- Menu com as 4 opcoes -->
+		<div class="product-selection">
+			<hr class="product-hr"/>
+			<a (click)="toggleWindow(1)" class="product-icon" id="plane-icon"></a>
+			<a (click)="toggleWindow(2)" class="product-icon" id="hotel-icon"></a>
+			<a (click)="toggleWindow(3)" class="product-icon" id="insurance-icon"></a>
+			<a (click)="toggleWindow(4)" class="product-icon" id="car-icon"></a>
+			<a class="product-icon" id="checkout-icon"></a>
+		</div>
+
 		<!-- Box contendo os tickets -->
 		<div class="ticket-box">
 
 			<!-- Passagem aérea -->
-			<a class="ticket plane-ticket" (click)="goTo('choose-plane')">
+			<a *ngIf="viewWindow == 1" class="ticket plane-ticket" (click)="goTo('choose-plane')">
 				<div class="absolute-pos">
 					<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.title">Plane Ticket</span>
 				</div>
@@ -38,25 +48,22 @@
 
 
 			<!-- Hotel -->
-			<a  class="ticket hotel-ticket" (click)="goTo('choose-hotel')">
+			<a  *ngIf="viewWindow == 2" class="ticket hotel-ticket" (click)="goTo('choose-hotel')">
 				<span id="hotel-ticket-title" jhiTranslate="global.ticket.hotel.title">Hotel</span>
 			</a>
 
-            <br>
 
             <!-- Veiculo -->
-            <a  (click)="goTo('choose-vehicle')">
+            <a *ngIf="viewWindow == 3" (click)="goTo('choose-vehicle')">
                 Veículo
             </a>
 
-            <br>
 
             <!-- Seguro -->
-            <a  (click)="goTo('choose-insurance')">
+            <a *ngIf="viewWindow == 4" (click)="goTo('choose-insurance')">
                 Seguro
             </a>
 
-            <br>
 
 
             <!-- Botão de compra -->

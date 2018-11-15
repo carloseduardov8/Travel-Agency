@@ -5,16 +5,16 @@
     </div>
     <div class="offset-md-2 col-md-8">
         <div class="alert alert-warning text-center">
-            <span class="lead" class="text-center">Compre sua passagem e reserve seu hotel sem preocupações</span>
+            <span class="lead" class="text-center" jhiTranslate="home.intro">Compre sua passagem e reserve seu hotel sem preocupações</span>
         </div>
 
         <div>
             <form autocomplete="off" [formGroup]="registerForm" class="card jh-card form-search-passengers" (ngSubmit)="onSubmit(from,to, dateIn, dateOut, passengers)">
                 <div class="form-row">
                     <div class="col">
-                        <label for="from">Origem</label>
+                        <label for="from" jhiTranslate="home.origem">Origem</label>
                         <select id="from" class="form-control" required #from formControlName="from" [ngClass]="{ 'is-invalid': submitted && f.from.errors }">
-                            <option value="">Selecione uma cidade</option>
+                            <option value="" jhiTranslate="home.selecione">Selecione uma cidade</option>
                             <option value="Rio de Janeiro">Rio de Janeiro</option>
                             <option value="São Paulo">São Paulo</option>
                             <option value="Londres">Londres</option>
@@ -24,9 +24,9 @@
                         </div>
                     </div>
                     <div class="col">
-                        <label for="to">Destino</label>
+                        <label for="to" jhiTranslate="home.destino">Destino</label>
                         <select id="to" class="form-control" required #to formControlName="to" [ngClass]="{ 'is-invalid': submitted && f.to.errors }">
-                            <option value="">Selecione uma cidade</option>
+                            <option value="" jhiTranslate="home.selecione">Selecione uma cidade</option>
                             <option value="Rio de Janeiro">Rio de Janeiro</option>
                             <option value="São Paulo">São Paulo</option>
                             <option value="Londres">Londres</option>
@@ -39,17 +39,17 @@
 
                 <div class="form-row mt-3">
                     <div class="datepicker-container col-md-3 col-6">
-                        <label>Data de Ida</label>
+                        <label jhiTranslate="home.dataIda">Data de Ida</label>
                         <input type="text" class="form-control" id="datepicker-start" required #dateIn value="{{dateInDefault}}">
                     </div>
 
                     <div class="datepicker-container  col-md-3 col-6">
-                        <label>Data de Volta</label>
+                        <label jhiTranslate="home.dataVolta">Data de Volta</label>
                         <input type="text" class="form-control" id="datepicker-end" placeholder="Opcional" #dateOut>
                     </div>
 
                     <div class="col-md-3 col-6">
-                        <label>Nº de Passageiros</label>
+                        <label jhiTranslate="home.numPassageiros">Nº de Passageiros</label>
                         <select class="form-control text-center" required #passengers>
                             <option value="1">1</option>
                             <option value="2">2</option>

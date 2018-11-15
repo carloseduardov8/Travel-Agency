@@ -46,6 +46,9 @@ public class Seguradora implements Serializable {
     @Column(name = "endereco", nullable = false)
     private String endereco;
 
+    @Column(name = "imagem")
+    private String imagem;
+
     @OneToMany(mappedBy = "seguradora")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Seguro> seguros = new HashSet<>();
@@ -124,6 +127,19 @@ public class Seguradora implements Serializable {
         this.endereco = endereco;
     }
 
+    public String getImagem() {
+        return imagem;
+    }
+
+    public Seguradora imagem(String imagem) {
+        this.imagem = imagem;
+        return this;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
     public Set<Seguro> getSeguros() {
         return seguros;
     }
@@ -179,6 +195,7 @@ public class Seguradora implements Serializable {
             ", cidade='" + getCidade() + "'" +
             ", estado='" + getEstado() + "'" +
             ", endereco='" + getEndereco() + "'" +
+            ", imagem='" + getImagem() + "'" +
             "}";
     }
 }

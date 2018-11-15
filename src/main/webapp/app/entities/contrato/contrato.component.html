@@ -18,6 +18,7 @@
             <th><span jhiTranslate="viajatoApp.contrato.numPessoas">Num Pessoas</span></th>
             <th><span jhiTranslate="viajatoApp.contrato.dataInicio">Data Inicio</span></th>
             <th><span jhiTranslate="viajatoApp.contrato.dataFim">Data Fim</span></th>
+            <th><span jhiTranslate="viajatoApp.contrato.valor">Valor</span></th>
             <th><span jhiTranslate="viajatoApp.contrato.compra">Compra</span></th>
             <th><span jhiTranslate="viajatoApp.contrato.seguro">Seguro</span></th>
             <th></th>
@@ -29,6 +30,7 @@
                 <td>{{contrato.numPessoas}}</td>
                 <td>{{contrato.dataInicio}}</td>
                 <td>{{contrato.dataFim}}</td>
+                <td>{{contrato.valor}}</td>
                 <td>
                     <div *ngIf="contrato.compra">
                         <a [routerLink]="['../compra', contrato.compra?.id, 'view' ]" >{{contrato.compra?.id}}</a>

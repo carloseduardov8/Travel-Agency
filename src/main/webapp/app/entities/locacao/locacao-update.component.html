@@ -10,17 +10,6 @@
                         [(ngModel)]="locacao.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="viajatoApp.locacao.inicio" for="field_inicio">Inicio</label>
-                    <input type="text" class="form-control" name="inicio" id="field_inicio"
-                        [(ngModel)]="locacao.inicio" required/>
-                    <div [hidden]="!(editForm.controls.inicio?.dirty && editForm.controls.inicio?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.inicio?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="viajatoApp.locacao.dataInicio" for="field_dataInicio">Data Inicio</label>
                     <input type="text" class="form-control" name="dataInicio" id="field_dataInicio"
                         [(ngModel)]="locacao.dataInicio" required/>

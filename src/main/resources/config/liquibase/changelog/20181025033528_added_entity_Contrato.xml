@@ -34,6 +34,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="valor" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
             <column name="compra_id" type="bigint">
                 <constraints nullable="true" />
             </column>

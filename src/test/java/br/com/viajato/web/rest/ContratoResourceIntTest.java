@@ -48,6 +48,9 @@ public class ContratoResourceIntTest {
     private static final String DEFAULT_DATA_FIM = "AAAAAAAAAA";
     private static final String UPDATED_DATA_FIM = "BBBBBBBBBB";
 
+    private static final Float DEFAULT_VALOR = 1F;
+    private static final Float UPDATED_VALOR = 2F;
+
     @Autowired
     private ContratoRepository contratoRepository;
 
@@ -88,7 +91,8 @@ public class ContratoResourceIntTest {
         Contrato contrato = new Contrato()
             .numPessoas(DEFAULT_NUM_PESSOAS)
             .dataInicio(DEFAULT_DATA_INICIO)
-            .dataFim(DEFAULT_DATA_FIM);
+            .dataFim(DEFAULT_DATA_FIM)
+            .valor(DEFAULT_VALOR);
         return contrato;
     }
 
@@ -115,6 +119,7 @@ public class ContratoResourceIntTest {
         assertThat(testContrato.getNumPessoas()).isEqualTo(DEFAULT_NUM_PESSOAS);
         assertThat(testContrato.getDataInicio()).isEqualTo(DEFAULT_DATA_INICIO);
         assertThat(testContrato.getDataFim()).isEqualTo(DEFAULT_DATA_FIM);
+        assertThat(testContrato.getValor()).isEqualTo(DEFAULT_VALOR);
     }
 
     @Test
@@ -192,6 +197,24 @@ public class ContratoResourceIntTest {
 
     @Test
     @Transactional
+    public void checkValorIsRequired() throws Exception {
+        int databaseSizeBeforeTest = contratoRepository.findAll().size();
+        // set the field null
+        contrato.setValor(null);
+
+        // Create the Contrato, which fails.
+
+        restContratoMockMvc.perform(post("/api/contratoes")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(contrato)))
+            .andExpect(status().isBadRequest());
+
+        List<Contrato> contratoList = contratoRepository.findAll();
+        assertThat(contratoList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllContratoes() throws Exception {
         // Initialize the database
         contratoRepository.saveAndFlush(contrato);
@@ -203,7 +226,8 @@ public class ContratoResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(contrato.getId().intValue())))
             .andExpect(jsonPath("$.[*].numPessoas").value(hasItem(DEFAULT_NUM_PESSOAS)))
             .andExpect(jsonPath("$.[*].dataInicio").value(hasItem(DEFAULT_DATA_INICIO.toString())))
-            .andExpect(jsonPath("$.[*].dataFim").value(hasItem(DEFAULT_DATA_FIM.toString())));
+            .andExpect(jsonPath("$.[*].dataFim").value(hasItem(DEFAULT_DATA_FIM.toString())))
+            .andExpect(jsonPath("$.[*].valor").value(hasItem(DEFAULT_VALOR.doubleValue())));
     }
     
     @Test
@@ -219,7 +243,8 @@ public class ContratoResourceIntTest {
             .andExpect(jsonPath("$.id").value(contrato.getId().intValue()))
             .andExpect(jsonPath("$.numPessoas").value(DEFAULT_NUM_PESSOAS))
             .andExpect(jsonPath("$.dataInicio").value(DEFAULT_DATA_INICIO.toString()))
-            .andExpect(jsonPath("$.dataFim").value(DEFAULT_DATA_FIM.toString()));
+            .andExpect(jsonPath("$.dataFim").value(DEFAULT_DATA_FIM.toString()))
+            .andExpect(jsonPath("$.valor").value(DEFAULT_VALOR.doubleValue()));
     }
 
     @Test
@@ -245,7 +270,8 @@ public class ContratoResourceIntTest {
         updatedContrato
             .numPessoas(UPDATED_NUM_PESSOAS)
             .dataInicio(UPDATED_DATA_INICIO)
-            .dataFim(UPDATED_DATA_FIM);
+            .dataFim(UPDATED_DATA_FIM)
+            .valor(UPDATED_VALOR);
 
         restContratoMockMvc.perform(put("/api/contratoes")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -259,6 +285,7 @@ public class ContratoResourceIntTest {
         assertThat(testContrato.getNumPessoas()).isEqualTo(UPDATED_NUM_PESSOAS);
         assertThat(testContrato.getDataInicio()).isEqualTo(UPDATED_DATA_INICIO);
         assertThat(testContrato.getDataFim()).isEqualTo(UPDATED_DATA_FIM);
+        assertThat(testContrato.getValor()).isEqualTo(UPDATED_VALOR);
     }
 
     @Test

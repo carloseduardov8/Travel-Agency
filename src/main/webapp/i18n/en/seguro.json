@@ -3,24 +3,24 @@
     "viajatoApp": {
         "seguro" : {
             "home": {
-                "title": "Seguros",
-                "createLabel": "Create a new Seguro",
-                "createOrEditLabel": "Create or edit a Seguro"
+                "title": "Insurance Plan",
+                "createLabel": "Create a new Insurance Plan",
+                "createOrEditLabel": "Create or edit a Insurance Plan"
             },
-            "created": "A new Seguro is created with identifier {{ param }}",
-            "updated": "A Seguro is updated with identifier {{ param }}",
-            "deleted": "A Seguro is deleted with identifier {{ param }}",
+            "created": "A new Insurance Plan is created with identifier {{ param }}",
+            "updated": "An Insurance Plan is updated with identifier {{ param }}",
+            "deleted": "An Insurance Plan is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Seguro {{ id }}?"
+                "question": "Are you sure you want to delete Insurance Plan {{ id }}?"
             },
             "detail": {
-                "title": "Seguro"
+                "title": "Insurance Plan"
             },
-            "nome": "Nome",
-            "descricao": "Descricao",
-            "valorPorPessoa": "Valor Por Pessoa",
-            "contrato": "Contrato",
-            "seguradora": "Seguradora"
+            "nome": "Name",
+            "descricao": "Discription",
+            "valorPorPessoa": "Individual Value",
+            "contrato": "Contract",
+            "seguradora": "Insurance Company"
         }
     }
 }

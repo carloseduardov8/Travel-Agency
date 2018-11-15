@@ -45,6 +45,9 @@ public class LinhaAereaResourceIntTest {
     private static final String DEFAULT_TELEFONE = "AAAAAAAAAA";
     private static final String UPDATED_TELEFONE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_IMAGEM = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGEM = "BBBBBBBBBB";
+
     @Autowired
     private LinhaAereaRepository linhaAereaRepository;
 
@@ -84,7 +87,8 @@ public class LinhaAereaResourceIntTest {
     public static LinhaAerea createEntity(EntityManager em) {
         LinhaAerea linhaAerea = new LinhaAerea()
             .nome(DEFAULT_NOME)
-            .telefone(DEFAULT_TELEFONE);
+            .telefone(DEFAULT_TELEFONE)
+            .imagem(DEFAULT_IMAGEM);
         return linhaAerea;
     }
 
@@ -110,6 +114,7 @@ public class LinhaAereaResourceIntTest {
         LinhaAerea testLinhaAerea = linhaAereaList.get(linhaAereaList.size() - 1);
         assertThat(testLinhaAerea.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testLinhaAerea.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
+        assertThat(testLinhaAerea.getImagem()).isEqualTo(DEFAULT_IMAGEM);
     }
 
     @Test
@@ -179,7 +184,8 @@ public class LinhaAereaResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(linhaAerea.getId().intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
-            .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE.toString())));
+            .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE.toString())))
+            .andExpect(jsonPath("$.[*].imagem").value(hasItem(DEFAULT_IMAGEM.toString())));
     }
     
     @Test
@@ -194,7 +200,8 @@ public class LinhaAereaResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(linhaAerea.getId().intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
-            .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE.toString()));
+            .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE.toString()))
+            .andExpect(jsonPath("$.imagem").value(DEFAULT_IMAGEM.toString()));
     }
 
     @Test
@@ -219,7 +226,8 @@ public class LinhaAereaResourceIntTest {
         em.detach(updatedLinhaAerea);
         updatedLinhaAerea
             .nome(UPDATED_NOME)
-            .telefone(UPDATED_TELEFONE);
+            .telefone(UPDATED_TELEFONE)
+            .imagem(UPDATED_IMAGEM);
 
         restLinhaAereaMockMvc.perform(put("/api/linha-aereas")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -232,6 +240,7 @@ public class LinhaAereaResourceIntTest {
         LinhaAerea testLinhaAerea = linhaAereaList.get(linhaAereaList.size() - 1);
         assertThat(testLinhaAerea.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testLinhaAerea.getTelefone()).isEqualTo(UPDATED_TELEFONE);
+        assertThat(testLinhaAerea.getImagem()).isEqualTo(UPDATED_IMAGEM);
     }
 
     @Test

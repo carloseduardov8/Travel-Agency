@@ -7,6 +7,7 @@ export interface ILocadora {
     cidade?: string;
     estado?: string;
     endereco?: string;
+    imagem?: string;
     veiculos?: IVeiculo[];
 }
 
@@ -18,6 +19,7 @@ export class Locadora implements ILocadora {
         public cidade?: string,
         public estado?: string,
         public endereco?: string,
+        public imagem?: string,
         public veiculos?: IVeiculo[]
     ) {}
 }

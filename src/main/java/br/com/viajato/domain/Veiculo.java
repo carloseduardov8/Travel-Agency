@@ -47,6 +47,9 @@ public class Veiculo implements Serializable {
     @Column(name = "num_passageiros", nullable = false)
     private Integer numPassageiros;
 
+    @Column(name = "imagem")
+    private String imagem;
+
     @OneToMany(mappedBy = "veiculo")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Locacao> locacaos = new HashSet<>();
@@ -129,6 +132,19 @@ public class Veiculo implements Serializable {
         this.numPassageiros = numPassageiros;
     }
 
+    public String getImagem() {
+        return imagem;
+    }
+
+    public Veiculo imagem(String imagem) {
+        this.imagem = imagem;
+        return this;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
     public Set<Locacao> getLocacaos() {
         return locacaos;
     }
@@ -197,6 +213,7 @@ public class Veiculo implements Serializable {
             ", modelo='" + getModelo() + "'" +
             ", cor='" + getCor() + "'" +
             ", numPassageiros=" + getNumPassageiros() +
+            ", imagem='" + getImagem() + "'" +
             "}";
     }
 }

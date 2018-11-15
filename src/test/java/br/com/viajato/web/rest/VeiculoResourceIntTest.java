@@ -54,6 +54,9 @@ public class VeiculoResourceIntTest {
     private static final Integer DEFAULT_NUM_PASSAGEIROS = 1;
     private static final Integer UPDATED_NUM_PASSAGEIROS = 2;
 
+    private static final String DEFAULT_IMAGEM = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGEM = "BBBBBBBBBB";
+
     @Autowired
     private VeiculoRepository veiculoRepository;
 
@@ -96,7 +99,8 @@ public class VeiculoResourceIntTest {
             .fabricante(DEFAULT_FABRICANTE)
             .modelo(DEFAULT_MODELO)
             .cor(DEFAULT_COR)
-            .numPassageiros(DEFAULT_NUM_PASSAGEIROS);
+            .numPassageiros(DEFAULT_NUM_PASSAGEIROS)
+            .imagem(DEFAULT_IMAGEM);
         return veiculo;
     }
 
@@ -125,6 +129,7 @@ public class VeiculoResourceIntTest {
         assertThat(testVeiculo.getModelo()).isEqualTo(DEFAULT_MODELO);
         assertThat(testVeiculo.getCor()).isEqualTo(DEFAULT_COR);
         assertThat(testVeiculo.getNumPassageiros()).isEqualTo(DEFAULT_NUM_PASSAGEIROS);
+        assertThat(testVeiculo.getImagem()).isEqualTo(DEFAULT_IMAGEM);
     }
 
     @Test
@@ -251,7 +256,8 @@ public class VeiculoResourceIntTest {
             .andExpect(jsonPath("$.[*].fabricante").value(hasItem(DEFAULT_FABRICANTE.toString())))
             .andExpect(jsonPath("$.[*].modelo").value(hasItem(DEFAULT_MODELO.toString())))
             .andExpect(jsonPath("$.[*].cor").value(hasItem(DEFAULT_COR.toString())))
-            .andExpect(jsonPath("$.[*].numPassageiros").value(hasItem(DEFAULT_NUM_PASSAGEIROS)));
+            .andExpect(jsonPath("$.[*].numPassageiros").value(hasItem(DEFAULT_NUM_PASSAGEIROS)))
+            .andExpect(jsonPath("$.[*].imagem").value(hasItem(DEFAULT_IMAGEM.toString())));
     }
     
     @Test
@@ -269,7 +275,8 @@ public class VeiculoResourceIntTest {
             .andExpect(jsonPath("$.fabricante").value(DEFAULT_FABRICANTE.toString()))
             .andExpect(jsonPath("$.modelo").value(DEFAULT_MODELO.toString()))
             .andExpect(jsonPath("$.cor").value(DEFAULT_COR.toString()))
-            .andExpect(jsonPath("$.numPassageiros").value(DEFAULT_NUM_PASSAGEIROS));
+            .andExpect(jsonPath("$.numPassageiros").value(DEFAULT_NUM_PASSAGEIROS))
+            .andExpect(jsonPath("$.imagem").value(DEFAULT_IMAGEM.toString()));
     }
 
     @Test
@@ -297,7 +304,8 @@ public class VeiculoResourceIntTest {
             .fabricante(UPDATED_FABRICANTE)
             .modelo(UPDATED_MODELO)
             .cor(UPDATED_COR)
-            .numPassageiros(UPDATED_NUM_PASSAGEIROS);
+            .numPassageiros(UPDATED_NUM_PASSAGEIROS)
+            .imagem(UPDATED_IMAGEM);
 
         restVeiculoMockMvc.perform(put("/api/veiculos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -313,6 +321,7 @@ public class VeiculoResourceIntTest {
         assertThat(testVeiculo.getModelo()).isEqualTo(UPDATED_MODELO);
         assertThat(testVeiculo.getCor()).isEqualTo(UPDATED_COR);
         assertThat(testVeiculo.getNumPassageiros()).isEqualTo(UPDATED_NUM_PASSAGEIROS);
+        assertThat(testVeiculo.getImagem()).isEqualTo(UPDATED_IMAGEM);
     }
 
     @Test

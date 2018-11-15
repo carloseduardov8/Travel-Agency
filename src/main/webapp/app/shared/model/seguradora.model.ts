@@ -7,6 +7,7 @@ export interface ISeguradora {
     cidade?: string;
     estado?: string;
     endereco?: string;
+    imagem?: string;
     seguros?: ISeguro[];
 }
 
@@ -18,6 +19,7 @@ export class Seguradora implements ISeguradora {
         public cidade?: string,
         public estado?: string,
         public endereco?: string,
+        public imagem?: string,
         public seguros?: ISeguro[]
     ) {}
 }

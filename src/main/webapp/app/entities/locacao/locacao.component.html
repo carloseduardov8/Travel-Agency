@@ -15,7 +15,6 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="viajatoApp.locacao.inicio">Inicio</span></th>
             <th><span jhiTranslate="viajatoApp.locacao.dataInicio">Data Inicio</span></th>
             <th><span jhiTranslate="viajatoApp.locacao.dataFim">Data Fim</span></th>
             <th><span jhiTranslate="viajatoApp.locacao.valor">Valor</span></th>
@@ -27,7 +26,6 @@
             <tbody>
             <tr *ngFor="let locacao of locacaos ;trackBy: trackId">
                 <td><a [routerLink]="['/locacao', locacao.id, 'view' ]">{{locacao.id}}</a></td>
-                <td>{{locacao.inicio}}</td>
                 <td>{{locacao.dataInicio}}</td>
                 <td>{{locacao.dataFim}}</td>
                 <td>{{locacao.valor}}</td>

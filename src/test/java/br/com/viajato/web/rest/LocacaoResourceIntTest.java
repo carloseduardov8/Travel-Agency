@@ -39,9 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ViajatoApp.class)
 public class LocacaoResourceIntTest {
 
-    private static final String DEFAULT_INICIO = "AAAAAAAAAA";
-    private static final String UPDATED_INICIO = "BBBBBBBBBB";
-
     private static final String DEFAULT_DATA_INICIO = "AAAAAAAAAA";
     private static final String UPDATED_DATA_INICIO = "BBBBBBBBBB";
 
@@ -89,7 +86,6 @@ public class LocacaoResourceIntTest {
      */
     public static Locacao createEntity(EntityManager em) {
         Locacao locacao = new Locacao()
-            .inicio(DEFAULT_INICIO)
             .dataInicio(DEFAULT_DATA_INICIO)
             .dataFim(DEFAULT_DATA_FIM)
             .valor(DEFAULT_VALOR);
@@ -116,7 +112,6 @@ public class LocacaoResourceIntTest {
         List<Locacao> locacaoList = locacaoRepository.findAll();
         assertThat(locacaoList).hasSize(databaseSizeBeforeCreate + 1);
         Locacao testLocacao = locacaoList.get(locacaoList.size() - 1);
-        assertThat(testLocacao.getInicio()).isEqualTo(DEFAULT_INICIO);
         assertThat(testLocacao.getDataInicio()).isEqualTo(DEFAULT_DATA_INICIO);
         assertThat(testLocacao.getDataFim()).isEqualTo(DEFAULT_DATA_FIM);
         assertThat(testLocacao.getValor()).isEqualTo(DEFAULT_VALOR);
@@ -139,24 +134,6 @@ public class LocacaoResourceIntTest {
         // Validate the Locacao in the database
         List<Locacao> locacaoList = locacaoRepository.findAll();
         assertThat(locacaoList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    @Transactional
-    public void checkInicioIsRequired() throws Exception {
-        int databaseSizeBeforeTest = locacaoRepository.findAll().size();
-        // set the field null
-        locacao.setInicio(null);
-
-        // Create the Locacao, which fails.
-
-        restLocacaoMockMvc.perform(post("/api/locacaos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(locacao)))
-            .andExpect(status().isBadRequest());
-
-        List<Locacao> locacaoList = locacaoRepository.findAll();
-        assertThat(locacaoList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -224,7 +201,6 @@ public class LocacaoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(locacao.getId().intValue())))
-            .andExpect(jsonPath("$.[*].inicio").value(hasItem(DEFAULT_INICIO.toString())))
             .andExpect(jsonPath("$.[*].dataInicio").value(hasItem(DEFAULT_DATA_INICIO.toString())))
             .andExpect(jsonPath("$.[*].dataFim").value(hasItem(DEFAULT_DATA_FIM.toString())))
             .andExpect(jsonPath("$.[*].valor").value(hasItem(DEFAULT_VALOR.doubleValue())));
@@ -241,7 +217,6 @@ public class LocacaoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(locacao.getId().intValue()))
-            .andExpect(jsonPath("$.inicio").value(DEFAULT_INICIO.toString()))
             .andExpect(jsonPath("$.dataInicio").value(DEFAULT_DATA_INICIO.toString()))
             .andExpect(jsonPath("$.dataFim").value(DEFAULT_DATA_FIM.toString()))
             .andExpect(jsonPath("$.valor").value(DEFAULT_VALOR.doubleValue()));
@@ -268,7 +243,6 @@ public class LocacaoResourceIntTest {
         // Disconnect from session so that the updates on updatedLocacao are not directly saved in db
         em.detach(updatedLocacao);
         updatedLocacao
-            .inicio(UPDATED_INICIO)
             .dataInicio(UPDATED_DATA_INICIO)
             .dataFim(UPDATED_DATA_FIM)
             .valor(UPDATED_VALOR);
@@ -282,7 +256,6 @@ public class LocacaoResourceIntTest {
         List<Locacao> locacaoList = locacaoRepository.findAll();
         assertThat(locacaoList).hasSize(databaseSizeBeforeUpdate);
         Locacao testLocacao = locacaoList.get(locacaoList.size() - 1);
-        assertThat(testLocacao.getInicio()).isEqualTo(UPDATED_INICIO);
         assertThat(testLocacao.getDataInicio()).isEqualTo(UPDATED_DATA_INICIO);
         assertThat(testLocacao.getDataFim()).isEqualTo(UPDATED_DATA_FIM);
         assertThat(testLocacao.getValor()).isEqualTo(UPDATED_VALOR);

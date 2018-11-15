@@ -90,19 +90,6 @@ public class VeiculoResource {
     }
 
     /**
-     * GET  /veiculos/:cidade : get veiculos by cidade.
-     *
-     * @param cidade the cidade of the veiculo's locadora
-     * @return the ResponseEntity with status 200 (OK) and the list of veiculos in body
-     */
-    @GetMapping("/veiculos/cidade/{cidade}")
-    @Timed
-    public List<Veiculo> getVeiculosByCidade(@PathVariable String cidade) {
-        log.debug("REST request to get Veiculos by Cidade");
-        return veiculoRepository.getVeiculosByCidade(cidade);
-    }
-
-    /**
      * GET  /veiculos/:id : get the "id" veiculo.
      *
      * @param id the id of the veiculo to retrieve

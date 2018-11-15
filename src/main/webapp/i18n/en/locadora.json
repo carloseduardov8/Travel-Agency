@@ -21,6 +21,7 @@
             "cidade": "Cidade",
             "estado": "Estado",
             "endereco": "Endereco",
+            "imagem": "Imagem",
             "veiculo": "Veiculo"
         }
     }

@@ -1,5 +1,14 @@
 {
-    "name": "Seguradora",
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "seguro",
+            "otherEntityName": "seguro",
+            "otherEntityRelationshipName": "seguradora"
+        }
+    ],
     "fields": [
         {
             "fieldName": "nome",
@@ -35,23 +44,17 @@
             "fieldValidateRules": [
                 "required"
             ]
-        }
-    ],
-    "relationships": [
+        },
         {
-            "relationshipType": "one-to-many",
-            "relationshipName": "seguro",
-            "otherEntityName": "seguro",
-            "otherEntityRelationshipName": "seguradora"
+            "fieldName": "imagem",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20181025033527",
-    "entityTableName": "seguradora",
     "dto": "no",
-    "pagination": "no",
+    "searchEngine": false,
     "service": "no",
+    "entityTableName": "seguradora",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*"
+    "pagination": "no"
 }

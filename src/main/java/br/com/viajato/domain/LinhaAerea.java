@@ -34,6 +34,9 @@ public class LinhaAerea implements Serializable {
     @Column(name = "telefone", nullable = false)
     private String telefone;
 
+    @Column(name = "imagem")
+    private String imagem;
+
     @OneToMany(mappedBy = "linhaAerea")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Voo> voos = new HashSet<>();
@@ -71,6 +74,19 @@ public class LinhaAerea implements Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public LinhaAerea imagem(String imagem) {
+        this.imagem = imagem;
+        return this;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public Set<Voo> getVoos() {
@@ -125,6 +141,7 @@ public class LinhaAerea implements Serializable {
             "id=" + getId() +
             ", nome='" + getNome() + "'" +
             ", telefone='" + getTelefone() + "'" +
+            ", imagem='" + getImagem() + "'" +
             "}";
     }
 }

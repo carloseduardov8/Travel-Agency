@@ -15,5 +15,12 @@
         },
         "like": "If you like JHipster, don't forget to give us a star on",
         "github": "GitHub"
+		"intro": "Buy your tickets and reservations with no effort"
+		"origem": "Origin"
+		"destino": "Destination"
+		"selecione": "Select a city"
+		"dataIda": "Date of Departure"
+		"dataVolta": "Date of Return"
+		"numPassageiros": "# of Passengers"
     }
 }
