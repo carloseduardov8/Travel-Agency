@@ -1,13 +1,21 @@
 {
-    "name": "Locacao",
-    "fields": [
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
         {
-            "fieldName": "inicio",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "relationshipType": "many-to-one",
+            "relationshipName": "veiculo",
+            "otherEntityName": "veiculo",
+            "otherEntityField": "id"
         },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "compra",
+            "otherEntityName": "compra",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
         {
             "fieldName": "dataInicio",
             "fieldType": "String",
@@ -30,27 +38,11 @@
             ]
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "veiculo",
-            "otherEntityName": "veiculo",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "compra",
-            "otherEntityName": "compra",
-            "otherEntityField": "id"
-        }
-    ],
     "changelogDate": "20181025033522",
-    "entityTableName": "locacao",
     "dto": "no",
-    "pagination": "no",
+    "searchEngine": false,
     "service": "no",
+    "entityTableName": "locacao",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*"
+    "pagination": "no"
 }

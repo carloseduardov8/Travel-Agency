@@ -3,7 +3,6 @@ import { ICompra } from 'app/shared/model//compra.model';
 
 export interface ILocacao {
     id?: number;
-    inicio?: string;
     dataInicio?: string;
     dataFim?: string;
     valor?: number;
@@ -14,7 +13,6 @@ export interface ILocacao {
 export class Locacao implements ILocacao {
     constructor(
         public id?: number,
-        public inicio?: string,
         public dataInicio?: string,
         public dataFim?: string,
         public valor?: number,

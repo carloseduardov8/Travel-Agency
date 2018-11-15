@@ -3,25 +3,24 @@
     "viajatoApp": {
         "locacao" : {
             "home": {
-                "title": "Rent",
-                "createLabel": "Create a new Rent",
-                "createOrEditLabel": "Create or edit a Rent"
+                "title": "Locacaos",
+                "createLabel": "Create a new Locacao",
+                "createOrEditLabel": "Create or edit a Locacao"
             },
-            "created": "A new Rent is created with identifier {{ param }}",
-            "updated": "A Rent is updated with identifier {{ param }}",
-            "deleted": "A Rent is deleted with identifier {{ param }}",
+            "created": "A new Locacao is created with identifier {{ param }}",
+            "updated": "A Locacao is updated with identifier {{ param }}",
+            "deleted": "A Locacao is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Rent {{ id }}?"
+                "question": "Are you sure you want to delete Locacao {{ id }}?"
             },
             "detail": {
-                "title": "Rent"
+                "title": "Locacao"
             },
-            "inicio": "Start",
-            "dataInicio": "Start Date",
-            "dataFim": "End Date",
-            "valor": "Value",
-            "veiculo": "Vehicle",
-            "compra": "Purchase"
+            "dataInicio": "Data Inicio",
+            "dataFim": "Data Fim",
+            "valor": "Valor",
+            "veiculo": "Veiculo",
+            "compra": "Compra"
         }
     }
 }

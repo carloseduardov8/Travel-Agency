@@ -25,10 +25,6 @@ public class Locacao implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "inicio", nullable = false)
-    private String inicio;
-
-    @NotNull
     @Column(name = "data_inicio", nullable = false)
     private String dataInicio;
 
@@ -55,19 +51,6 @@ public class Locacao implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getInicio() {
-        return inicio;
-    }
-
-    public Locacao inicio(String inicio) {
-        this.inicio = inicio;
-        return this;
-    }
-
-    public void setInicio(String inicio) {
-        this.inicio = inicio;
     }
 
     public String getDataInicio() {
@@ -160,7 +143,6 @@ public class Locacao implements Serializable {
     public String toString() {
         return "Locacao{" +
             "id=" + getId() +
-            ", inicio='" + getInicio() + "'" +
             ", dataInicio='" + getDataInicio() + "'" +
             ", dataFim='" + getDataFim() + "'" +
             ", valor=" + getValor() +

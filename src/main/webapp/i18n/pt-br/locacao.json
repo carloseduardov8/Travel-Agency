@@ -16,7 +16,6 @@
             "detail": {
                 "title": "Locacao"
             },
-            "inicio": "Inicio",
             "dataInicio": "Data Inicio",
             "dataFim": "Data Fim",
             "valor": "Valor",
