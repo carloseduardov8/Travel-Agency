@@ -16,13 +16,13 @@
             "detail": {
                 "title": "Hotel"
             },
-            "nome": "Nome",
-            "nota": "Nota",
-            "telefone": "Telefone",
-            "cidade": "Cidade",
-            "estado": "Estado",
-            "endereco": "Endereco",
-            "quarto": "Quarto"
+            "nome": "Name",
+            "nota": "Grade",
+            "telefone": "Phone",
+            "cidade": "City",
+            "estado": "State",
+            "endereco": "Address",
+            "quarto": "Room"
         }
     }
 }

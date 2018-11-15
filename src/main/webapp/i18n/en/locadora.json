@@ -3,25 +3,25 @@
     "viajatoApp": {
         "locadora" : {
             "home": {
-                "title": "Locadoras",
-                "createLabel": "Create a new Locadora",
-                "createOrEditLabel": "Create or edit a Locadora"
+                "title": "Rental",
+                "createLabel": "Create a new Rental",
+                "createOrEditLabel": "Create or edit a Rental"
             },
-            "created": "A new Locadora is created with identifier {{ param }}",
-            "updated": "A Locadora is updated with identifier {{ param }}",
-            "deleted": "A Locadora is deleted with identifier {{ param }}",
+            "created": "A new Rental is created with identifier {{ param }}",
+            "updated": "A Rental is updated with identifier {{ param }}",
+            "deleted": "A Rental is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Locadora {{ id }}?"
+                "question": "Are you sure you want to delete Rental {{ id }}?"
             },
             "detail": {
-                "title": "Locadora"
+                "title": "Rental"
             },
-            "nome": "Nome",
-            "telefone": "Telefone",
-            "cidade": "Cidade",
-            "estado": "Estado",
-            "endereco": "Endereco",
-            "veiculo": "Veiculo"
+            "nome": "Name",
+            "telefone": "Phone",
+            "cidade": "City",
+            "estado": "State",
+            "endereco": "Address",
+            "veiculo": "Vehicle"
         }
     }
 }

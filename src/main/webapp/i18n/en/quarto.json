@@ -3,24 +3,24 @@
     "viajatoApp": {
         "quarto" : {
             "home": {
-                "title": "Quartos",
-                "createLabel": "Create a new Quarto",
-                "createOrEditLabel": "Create or edit a Quarto"
+                "title": "Rooms",
+                "createLabel": "Create a new Room",
+                "createOrEditLabel": "Create or edit a Room"
             },
-            "created": "A new Quarto is created with identifier {{ param }}",
-            "updated": "A Quarto is updated with identifier {{ param }}",
-            "deleted": "A Quarto is deleted with identifier {{ param }}",
+            "created": "A new Room is created with identifier {{ param }}",
+            "updated": "A Room is updated with identifier {{ param }}",
+            "deleted": "A Room is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Quarto {{ id }}?"
+                "question": "Are you sure you want to delete Room {{ id }}?"
             },
             "detail": {
-                "title": "Quarto"
+                "title": "Room"
             },
-            "tipo": "Tipo",
-            "capacidade": "Capacidade",
-            "diaria": "Diaria",
-            "descricao": "Descricao",
-            "reserva": "Reserva",
+            "tipo": "Type",
+            "capacidade": "Capacity",
+            "diaria": "Daily Rate",
+            "descricao": "Discription",
+            "reserva": "Reservation",
             "hotel": "Hotel"
         }
     }

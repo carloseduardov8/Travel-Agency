@@ -3,23 +3,23 @@
     "viajatoApp": {
         "compra" : {
             "home": {
-                "title": "Compras",
-                "createLabel": "Create a new Compra",
-                "createOrEditLabel": "Create or edit a Compra"
+                "title": "Purchase",
+                "createLabel": "Create a new Purchase",
+                "createOrEditLabel": "Create or edit a Purchase"
             },
-            "created": "A new Compra is created with identifier {{ param }}",
-            "updated": "A Compra is updated with identifier {{ param }}",
-            "deleted": "A Compra is deleted with identifier {{ param }}",
+            "created": "A new Purchase is created with identifier {{ param }}",
+            "updated": "A Purchase is updated with identifier {{ param }}",
+            "deleted": "A Purchase is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Compra {{ id }}?"
+                "question": "Are you sure you want to delete Purchase {{ id }}?"
             },
             "detail": {
-                "title": "Compra"
+                "title": "Purchase"
             },
-            "passagem": "Passagem",
-            "locacao": "Locacao",
-            "reserva": "Reserva",
-            "contrato": "Contrato",
+            "passagem": "Ticket",
+            "locacao": "Rent",
+            "reserva": "Reservation",
+            "contrato": "Contract",
             "user": "User"
         }
     }

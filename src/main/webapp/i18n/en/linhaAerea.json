@@ -3,22 +3,22 @@
     "viajatoApp": {
         "linhaAerea" : {
             "home": {
-                "title": "Linha Aereas",
-                "createLabel": "Create a new Linha Aerea",
-                "createOrEditLabel": "Create or edit a Linha Aerea"
+                "title": "Airline",
+                "createLabel": "Create a new Airline",
+                "createOrEditLabel": "Create or edit a Airline"
             },
-            "created": "A new Linha Aerea is created with identifier {{ param }}",
-            "updated": "A Linha Aerea is updated with identifier {{ param }}",
-            "deleted": "A Linha Aerea is deleted with identifier {{ param }}",
+            "created": "A new Airline is created with identifier {{ param }}",
+            "updated": "An Airline is updated with identifier {{ param }}",
+            "deleted": "An Airline is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Linha Aerea {{ id }}?"
+                "question": "Are you sure you want to delete Airline {{ id }}?"
             },
             "detail": {
-                "title": "Linha Aerea"
+                "title": "Airline"
             },
-            "nome": "Nome",
-            "telefone": "Telefone",
-            "voo": "Voo"
+            "nome": "Name",
+            "telefone": "Phone",
+            "voo": "Flight"
         }
     }
 }
