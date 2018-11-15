@@ -14,13 +14,13 @@
             "follow": "contate @java_hipster on Twitter"
         },
         "like": "Se você gosta do JHipster, não se esqueça de avaliar no",
-        "github": "GitHub"
-		"intro": "Compre sua passagem e reserve seu hotel sem preocupações"
-		"origem": "Origem"
-		"destino": "Destino"
-		"selecione": "Selecione uma cidade"
-		"dataIda": "Data de Ida"
-		"dataVolta": "Data de Volta"
+        "github": "GitHub",
+		"intro": "Compre sua passagem e reserve seu hotel sem preocupações",
+		"origem": "Origem",
+		"destino": "Destino",
+		"selecione": "Selecione uma cidade",
+		"dataIda": "Data de Ida",
+		"dataVolta": "Data de Volta",
 		"numPassageiros": "Nº de Passageiros"
     }
 }
