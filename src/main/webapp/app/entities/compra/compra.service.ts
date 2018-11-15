@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
 import { ICompra } from 'app/shared/model/compra.model';
+import { ISeguro } from 'app/shared/model/seguro.model';
 
 type EntityResponseType = HttpResponse<ICompra>;
 type EntityArrayResponseType = HttpResponse<ICompra[]>;
@@ -25,6 +26,10 @@ export class CompraService {
 
     find(id: number): Observable<EntityResponseType> {
         return this.http.get<ICompra>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    }
+
+    getComprasByUser(): Observable<EntityArrayResponseType> {
+        return this.http.get<ISeguro[]>(`${this.resourceUrl}/comprasByUser`, { observe: 'response' });
     }
 
     query(req?: any): Observable<EntityArrayResponseType> {

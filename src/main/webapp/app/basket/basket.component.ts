@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VooService } from 'app/entities/voo';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { IVoo } from 'app/shared/model/voo.model';
+import { CompraService } from 'app/entities/compra';
+import { BasketService } from 'app/basket/basket.service';
 
 @Component({
     selector: 'jhi-basket',
@@ -16,7 +18,12 @@ export class BasketComponent implements OnInit {
     dateOut: string;
     passengers: string;
 
-    constructor(private route: ActivatedRoute, private router: Router, private vooService: VooService) {
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private vooService: VooService,
+        private basketService: BasketService
+    ) {
         this.route.params.subscribe(params => {
             console.log(params);
             if (params) {

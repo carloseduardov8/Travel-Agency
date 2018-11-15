@@ -61,7 +61,10 @@
 
             <!-- Botão de compra -->
 			<div class="our-button">
-				<input type="submit" class="btn btn-outline-warning btn-block" value="{{ 'basket.purchase' | translate }}" />
+				<input type="submit" class="btn btn-outline-warning btn-block"
+                       [disabled]="basketService.isEmpty()"
+                       value="{{ 'basket.purchase' | translate }}"
+                        (click)="goTo('payment')"/>
 			</div>
 
 		</div>

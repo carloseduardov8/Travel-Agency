@@ -24,6 +24,8 @@ import * as moment from 'moment';
 import { ViajatoAppChooseInsuranceModule } from './choose-insurance/choose-insurance.module';
 import { ViajatoAppChooseHotelModule } from './choose-hotel/choose-hotel.module';
 import { ViajatoAppChooseVehicleModule } from './choose-vehicle/choose-vehicle.module';
+import { ViajatoAppPaymentModule } from './payment/payment.module';
+import { ViajatoAppPurchasesModule } from './purchases/purchases.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
@@ -41,7 +43,9 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         ViajatoAppChoosePlaneModule,
         ViajatoAppChooseInsuranceModule,
         ViajatoAppChooseHotelModule,
-        ViajatoAppChooseVehicleModule
+        ViajatoAppChooseVehicleModule,
+        ViajatoAppPaymentModule,
+        ViajatoAppPurchasesModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],

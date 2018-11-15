@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-9">
+
+        <!-- Título da página e descrição -->
+        <h1 class="text-capitalize text-center h1-pages">Compras</h1>
+        <hr class="h1-hr"/>
+
+        <div *ngIf="!withoutPurchases">
+            <ul>
+                <li *ngFor="let compra of compras">
+                    {{ compra.id}}
+                </li>
+            </ul>
+        </div>
+
+        <div *ngIf="withoutPurchases">
+            Nenhuma compra realizada.
+        </div>
+</div>

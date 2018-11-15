@@ -96,6 +96,12 @@ export class ChooseInsuranceComponent implements OnInit {
         contrato.compra = this.basketService.compra;
 
         console.log(contrato);
+
+        // Adiciona contrato a cesta
+        this.basketService.contratos.push(contrato);
+
+        // Volta a pagina anterior
+        this.back();
     }
 
     // Funcao para voltar ao componente anterior

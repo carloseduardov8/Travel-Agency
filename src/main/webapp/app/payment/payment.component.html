@@ -1,0 +1,125 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+
+        <!-- Título da página e descrição -->
+        <h1 class="text-capitalize text-center h1-pages">Pagamento</h1>
+        <h5 class="text-center">Finalize a sua compra</h5>
+        <hr class="h1-hr"/>
+
+        <!-- Tabela com as passagens adquiridas -->
+        <div *ngIf="passagens.length > 0" class="passagens">
+            <br>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Origem</th>
+                    <th scope="col">Destino</th>
+                    <th scope="col">Data de ida</th>
+                    <th scope="col">Data de chegada</th>
+                    <th scope="col">Preço</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let passagem of passagens">
+                    <td>{{ passagem.voo.linhaAerea.nome }}</td>
+                    <td>{{ passagem.voo.origem }}</td>
+                    <td>{{ passagem.voo.destino }}</td>
+                    <td>{{ passagem.voo.partida }}</td>
+                    <td>{{ passagem.voo.chegada }}</td>
+                    <td>R$ {{ passagem.voo.valor | number:'1.2' }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tabela com as reservas adquiridas -->
+        <div *ngIf="reservas.length > 0" class="reservas">
+            <br>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Hospedagem</th>
+                    <th scope="col">Nº de pessoas</th>
+                    <th scope="col">Check in</th>
+                    <th scope="col">Check out</th>
+                    <th scope="col">Preço</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let reserva of reservas">
+                    <td>{{ reserva.quarto.hotel.nome }}</td>
+                    <td>{{ reserva.numPessoas }}</td>
+                    <td>{{ reserva.dataInicio }}</td>
+                    <td>{{ reserva.dataFim }}</td>
+                    <td>R$ {{ reserva.valor | number:'1.2' }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tabela com as locacoes de veiculos adquiridas -->
+        <div *ngIf="locacoes.length > 0" class="locacoes">
+            <br>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Locadora</th>
+                    <th scope="col">Veiculo</th>
+                    <th scope="col">Inicio</th>
+                    <th scope="col">Fim</th>
+                    <th scope="col">Preço</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let locacao of locacoes">
+                    <td>{{ locacao.veiculo.locadora.nome }}</td>
+                    <td>{{ locacao.veiculo.modelo }}</td>
+                    <td>{{ locacao.dataInicio }}</td>
+                    <td>{{ locacao.dataFim }}</td>
+                    <td>R$ {{ locacao.valor | number:'1.2' }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tabela com os seguros adquiridos -->
+        <div *ngIf="contratos.length > 0" class="seguros">
+            <br>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Seguro</th>
+                    <th scope="col">Nº de pessoas</th>
+                    <th scope="col">Início</th>
+                    <th scope="col">Fim</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let contrato of contratos">
+                    <td>{{ contrato.seguro.nome }}</td>
+                    <td>{{ contrato.numPessoas }}</td>
+                    <td>{{ contrato.dataInicio.split(" ")[0] }}</td>
+                    <td>{{ contrato.dataFim.split(" ")[0] }}</td>
+                    <td>R$ {{ contrato.seguro.valorPorPessoa * contrato.numPessoas | number:'1.2' }}</td>
+                    <!-- <td><button (click)="delItem(contratos,contrato)">X</button> </td> -->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Botão de compra -->
+    <div class="our-button">
+        <input type="submit" class="btn btn-outline-warning btn-block"
+               value="{{ 'basket.purchase' | translate }}"
+               (click)="confirmPayment()"/>
+    </div>
+
+    <div class="col-md-1">
+
+    </div>
+</div>

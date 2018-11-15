@@ -89,6 +89,19 @@ public class CompraResource {
     }
 
     /**
+     * GET  /compras : get all the compras.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of compras in body
+     */
+    @GetMapping("/compras/comprasByUser")
+    @Timed
+    public List<Compra> getAllComprasByUser() {
+        log.debug("REST request to get all Compras");
+        return compraRepository.findByUserIsCurrentUser();
+    }
+
+
+    /**
      * GET  /compras/:id : get the "id" compra.
      *
      * @param id the id of the compra to retrieve
