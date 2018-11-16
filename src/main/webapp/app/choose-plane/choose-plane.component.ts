@@ -52,7 +52,8 @@ export class ChoosePlaneComponent implements OnInit {
         private location: Location
     ) {
         this.route.params.subscribe(params => {
-            console.log(params);
+          console.log("Parametros:");
+          console.log(params);
             if (params) {
                 if (params.from && params.to && params.dateIn) {
                     console.log('Passengers are ' + params.passengers);

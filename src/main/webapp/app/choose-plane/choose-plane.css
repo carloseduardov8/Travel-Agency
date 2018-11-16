@@ -6,12 +6,6 @@
 }
 
 /* Flip ticket css */
-.tp-wrapper {
-    height: 300px;
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .tp-box {
     position: relative;
@@ -51,6 +45,8 @@
 #seat-wrapper {
     margin-top: 0px;
     margin-left: -5px;
+	transform: scale(0.92);
+    -moz-transform: scale(0.92);
 }
 
 .seats {
@@ -58,10 +54,10 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    zoom: 0.8;
-    -moz-transform: scale(0.8);
+    zoom: 0.73;
+    -moz-transform: scale(0.73);
     margin-left: 290px;
-    margin-top: 61px;
+    margin-top: 65px;
 }
 
 .seat-row {
@@ -121,10 +117,10 @@ ol {
     position: relative;
     width: 100%;
     text-align: center;
-    font-size: 8.6px;
+    font-size: 10.5px;
     font-weight: bold;
     line-height: 0.62rem;
-    padding: 5px 1px 3.5px; /* Controls seat size */
+    padding: 5px 0px 3.5px; /* Controls seat size */
     background: #bada55; /* Light green */
     border-radius: 5px;
     animation-duration: 300ms;

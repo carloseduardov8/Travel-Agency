@@ -1,14 +1,73 @@
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
-    <h6 class="text-right">{{message}}</h6>
-    <h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-hotel.title">Title</h1>
-    <hr class="h1-hr"/>
-    <p class="text-justify">{{ quartos | json}}</p>
+
+	  <!-- Box contendo os tickets -->
+  	<div class="ticket-box">
+
+  		<!-- Passagem aérea -->
+  		<div *ngIf="withoutVoos">
+  			<p>Desculpa, não há passagens disponíveis.</p>
+  		</div>
+
+  		<div *ngIf="quartos.length > 0">
+  			<div class="tp-wrapper" *ngFor="let quarto of quartos; let i = index" [attr.data-index]="i">
+
+  					<!-- Plane ticket front -->
+  					<a class="ticket hotel-ticket">
+  						<div>
+  							<div class="absolute-pos">
+  								<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.title">Plane Ticket</span>
+  							</div>
+  							<div class="absolute-pos">
+  								<span id="plane-ticket-flight"> <span jhiTranslate="global.ticket.plane.flight">Flight</span>
+  									nº {{ voo.numero }} </span>
+  							</div>
+  							<div class="absolute-pos">
+  								<span id="plane-ticket-departure"> <span jhiTranslate="global.ticket.plane.departure">Departure</span>
+  									{{ voo.partida }} </span>
+  							</div>
+  							<div class="absolute-pos">
+  								<span id="plane-ticket-arrival"> <span jhiTranslate="global.ticket.plane.arrival">Arrival</span>
+  									{{ voo.chegada }}</span>
+  							</div>
+  							<div class="absolute-pos">
+  								<span id="plane-ticket-from" jhiTranslate="global.ticket.plane.from">From</span>
+  							</div>
+  							<div class="absolute-pos">
+  								<span id="plane-ticket-to" jhiTranslate="global.ticket.plane.to">To </span>
+  							</div>
+  							<div class="absolute-pos">
+  								<div id="plane-ticket-airline1" [className]="voo.linhaAerea.nome">
+  								</div>
+  							</div>
+  							<div class="absolute-pos">
+  								<div id="plane-ticket-airline2" [className]="voo.linhaAerea.nome">
+  								</div>
+  							</div>
+  							<div class="absolute-pos">
+  								<span id="plane-ticket-price">
+  									R$ {{voo.valor | number:'1.2'}}</span>
+  							</div>
+  							<div class="absolute-pos">
+  								<span id="plane-ticket-to-airport">
+  									{{voo.destino.nome}} ({{voo.destino.estado}})</span>
+  							</div>
+  							<div class="absolute-pos">
+  								<span id="plane-ticket-from-airport">
+  									{{voo.origem.nome}} ({{voo.origem.estado}})</span>
+  							</div>
+
+  						</div>
+  					</a>
+
+  			</div>
+  		</div>
+
+
+
+  	</div>
+
   </div>
-    <!-- Botão de voltar -->
-    <div class="our-button">
-        <input type="submit" class="btn btn-outline-warning btn-block"
-               value="{{ 'choose-plane.buttons.back' | translate }}" (click)="back()" />
-    </div>
+  <div class="col-md-1"></div>
 </div>

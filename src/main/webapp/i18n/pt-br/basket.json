@@ -2,6 +2,7 @@
   "basket": {
     "title": "Construa Sua Viagem",
     "subtitle": "Escolha quais aspectos da sua viagem você gostaria de comprar.",
-	"purchase": "Comprar"
+	"purchase": "Comprar",
+	"back": "Voltar"
 	}
 }

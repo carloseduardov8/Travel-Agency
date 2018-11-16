@@ -10,6 +10,7 @@ import { CHOOSE_HOTEL_ROUTE, ChooseHotelComponent } from './';
     declarations: [ChooseHotelComponent],
     entryComponents: [],
     providers: [],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    exports: [ChooseHotelComponent]
 })
 export class ViajatoAppChooseHotelModule {}

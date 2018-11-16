@@ -10,14 +10,24 @@ Our custom CSS goes here
 .our-button {
     margin: 0 auto;
     width: 230px;
-    margin-top: 10px;
+    margin-top: 70px;
+}
+
+.tp-wrapper {
+    height: 300px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	transform: scale(1.3);
+	-moz-transform: scale(1.3);
 }
 
 .ticket-box {
-    margin-top: 10px;
-    margin-bottom: 30px;
-    zoom: 1.3;
-    -moz-transform: scale(1.3);
+	position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .ticket {
@@ -189,7 +199,7 @@ Our custom CSS goes here
 .plane-ticket #plane-ticket-airline1 {
     display: inline-block;
     position: relative;
-    top: 31px;
+    top: 34px;
     left: -268px;
     width: 80px;
     height: 47px;
@@ -199,11 +209,15 @@ Our custom CSS goes here
 .plane-ticket #plane-ticket-airline2 {
     display: inline-block;
     position: relative;
-    top: -22px;
+    top: -18px;
     left: 20px;
     width: 80px;
     height: 47px;
     background-size: contain;
+}
+
+.plane-ticket-btn {
+	margin-top: -40px !important;
 }
 
 .Latam {

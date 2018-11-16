@@ -17,7 +17,7 @@ export class BasketComponent implements OnInit {
     dateIn: string;
     dateOut: string;
     passengers: string;
-	viewWindow: int;
+	viewWindow: Number;
 
     constructor(
         private route: ActivatedRoute,

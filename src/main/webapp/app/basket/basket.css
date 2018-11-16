@@ -1,8 +1,12 @@
 /* basket.css */
 
+.component-window {
+	margin-top: -10px;
+}
+
 .product-selection {
 	position: relative;
-	left: 10px;
+	left: 7px;
 	display: inline-block;
 	margin: 0 auto;
 	height: 170px;
