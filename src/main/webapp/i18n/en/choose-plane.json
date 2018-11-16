@@ -1,7 +1,7 @@
 {
   "choose-plane": {
-    "title": "Choose Your Plane Tickets",
-	"subtitle": "Click on which tickets you'd like to purchase.",
+    "title": "Plane Tickets",
+	"subtitle": "You may select multiple tickets any way you want.",
 	"buttons": {
 		"back": "Back"
 	},

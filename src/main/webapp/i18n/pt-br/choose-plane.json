@@ -1,7 +1,7 @@
 {
   "choose-plane": {
-    "title": "Escolha Sua Passagem Aérea",
-	"subtitle": "Clique nas passagens desejadas.",
+    "title": "Passagem Aérea",
+	"subtitle": "Você pode selecionar múltiplas passagens da maneira que quiser.",
 	"buttons": {
 		"back": "Voltar"
 	},

@@ -10,6 +10,7 @@ import { CHOOSE_INSURANCE_ROUTE, ChooseInsuranceComponent } from './';
     declarations: [ChooseInsuranceComponent],
     entryComponents: [],
     providers: [],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+	exports: [ChooseInsuranceComponent]
 })
 export class ViajatoAppChooseInsuranceModule {}

@@ -4,13 +4,13 @@ import { RouterModule } from '@angular/router';
 import { ViajatoSharedModule } from '../shared';
 
 import { ViajatoAppChoosePlaneModule } from '../choose-plane';
-
 import { ViajatoAppChooseHotelModule } from '../choose-hotel';
+import { ViajatoAppChooseInsuranceModule } from '../choose-insurance';
 
 import { BASKET_ROUTE, BasketComponent } from './';
 
 @NgModule({
-    imports: [ViajatoSharedModule, ViajatoAppChoosePlaneModule, ViajatoAppChooseHotelModule,
+    imports: [ViajatoSharedModule, ViajatoAppChoosePlaneModule, ViajatoAppChooseHotelModule, ViajatoAppChooseInsuranceModule,
        RouterModule.forRoot(BASKET_ROUTE, { useHash: true })],
     declarations: [BasketComponent],
     entryComponents: [],

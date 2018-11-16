@@ -43,8 +43,11 @@ export class BasketComponent implements OnInit {
 	// Troca o estado da janela (alterna entre mostrar passagem, hotel, etc)
     toggleWindow(num) {
 		if (this.viewWindow != num){
+			var fadeTime = 500;
 			$(".component-window").hide();
-			$(".component-window").fadeIn(500);
+			$(".component-window").fadeIn(fadeTime);
+			$(".title-wrapper").hide();
+			$(".title-wrapper").fadeIn(fadeTime);
 		}
         this.viewWindow = num;
     }

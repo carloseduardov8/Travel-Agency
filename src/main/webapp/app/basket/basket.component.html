@@ -3,8 +3,28 @@
 	<div class="col-md-10">
 
 		<!-- Título da página e descrição -->
-		<h1 class="text-capitalize text-center h1-pages" jhiTranslate="basket.title">Title</h1>
-		<h5 class="text-center" jhiTranslate="basket.subtitle">Subtitle</h5>
+		<div class="title-wrapper">
+			<div *ngIf="viewWindow == 1">
+				<h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-plane.title">Title</h1>
+				<h5 class="text-center" jhiTranslate="choose-plane.subtitle">Subtitle</h5>
+			</div>
+
+			<div *ngIf="viewWindow == 2">
+				<h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-hotel.title">Title</h1>
+				<h5 class="text-center" jhiTranslate="choose-hotel.subtitle">Subtitle</h5>
+			</div>
+
+			<div *ngIf="viewWindow == 3">
+				<h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-insurance.title">Title</h1>
+				<h5 class="text-center" jhiTranslate="choose-insurance.subtitle">Subtitle</h5>
+			</div>
+
+			<div *ngIf="viewWindow == 4">
+				<h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-vehicle.title">Title</h1>
+				<h5 class="text-center" jhiTranslate="choose-vehicle.subtitle">Subtitle</h5>
+			</div>
+		</div>
+
 		<hr class="h1-hr"/>
 
 		<!-- Menu com as 4 opcoes -->
@@ -33,14 +53,14 @@
 
 
             <!-- Veiculo -->
-            <a *ngIf="viewWindow == 3" (click)="goTo('choose-vehicle')">
-                Veículo
+            <a *ngIf="viewWindow == 3">
+                <jhi-choose-insurance></jhi-choose-insurance>
             </a>
 
 
             <!-- Seguro -->
             <a *ngIf="viewWindow == 4" (click)="goTo('choose-insurance')">
-                Seguro
+                Veículo
             </a>
 
 		</div>
