@@ -1,1 +1,23 @@
 /* choose-hotel.css */
+
+.hotel-ticket #hotel-ticket-name {
+    left: -211px;
+    top: 14px;
+}
+
+.hotel-ticket #hotel-ticket-description {
+    position: absolute;
+    left: 410px;
+    top: 88px;
+	  width: 250px;
+	  line-height: 25px;
+  	text-align: left;
+    white-space: normal;
+    word-break: break-word;
+}
+
+
+.hotel-ticket #hotel-ticket-rate {
+    left: 135px;
+    top: 0px;
+}

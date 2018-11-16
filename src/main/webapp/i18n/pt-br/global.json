@@ -12,7 +12,7 @@
                 "arrival": "Chegada: "
             },
             "hotel": {
-                "title": "Acomodações"
+				"rate": "Diária"
             }
         },
 		"confirmation-window": {

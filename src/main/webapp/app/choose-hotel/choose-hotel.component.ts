@@ -28,6 +28,7 @@ export class ChooseHotelComponent implements OnInit {
                     console.log('Passengers are ' + params.passengers);
                     this.quartoService.findQuartos(params.to).subscribe((res: HttpResponse<IQuarto[]>) => {
                         this.quartos = res.body;
+						console.log(this.quartos);
                         if (this.quartos.length === 0) {
                             this.withoutQuartos = true;
                         }

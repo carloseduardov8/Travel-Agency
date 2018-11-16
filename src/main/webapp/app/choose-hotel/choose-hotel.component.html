@@ -16,47 +16,21 @@
   					<!-- Plane ticket front -->
   					<a class="ticket hotel-ticket">
   						<div>
+
   							<div class="absolute-pos">
-  								<span id="plane-ticket-title" jhiTranslate="global.ticket.plane.title">Plane Ticket</span>
+  								<span id="hotel-ticket-name">
+  									{{ quarto.hotel.nome }} </span>
   							</div>
-  							<div class="absolute-pos">
-  								<span id="plane-ticket-flight"> <span jhiTranslate="global.ticket.plane.flight">Flight</span>
-  									nº {{ voo.numero }} </span>
+
+							<div class="absolute-pos">
+  								<span id="hotel-ticket-description">
+  									{{ quarto.descricao }} </span>
   							</div>
-  							<div class="absolute-pos">
-  								<span id="plane-ticket-departure"> <span jhiTranslate="global.ticket.plane.departure">Departure</span>
-  									{{ voo.partida }} </span>
+
+							<div class="absolute-pos">
+  								<span id="hotel-ticket-rate"> <span jhiTranslate="global.ticket.hotel.rate">Daily Rate</span>: R$ {{ quarto.diaria }} </span>
   							</div>
-  							<div class="absolute-pos">
-  								<span id="plane-ticket-arrival"> <span jhiTranslate="global.ticket.plane.arrival">Arrival</span>
-  									{{ voo.chegada }}</span>
-  							</div>
-  							<div class="absolute-pos">
-  								<span id="plane-ticket-from" jhiTranslate="global.ticket.plane.from">From</span>
-  							</div>
-  							<div class="absolute-pos">
-  								<span id="plane-ticket-to" jhiTranslate="global.ticket.plane.to">To </span>
-  							</div>
-  							<div class="absolute-pos">
-  								<div id="plane-ticket-airline1" [className]="voo.linhaAerea.nome">
-  								</div>
-  							</div>
-  							<div class="absolute-pos">
-  								<div id="plane-ticket-airline2" [className]="voo.linhaAerea.nome">
-  								</div>
-  							</div>
-  							<div class="absolute-pos">
-  								<span id="plane-ticket-price">
-  									R$ {{voo.valor | number:'1.2'}}</span>
-  							</div>
-  							<div class="absolute-pos">
-  								<span id="plane-ticket-to-airport">
-  									{{voo.destino.nome}} ({{voo.destino.estado}})</span>
-  							</div>
-  							<div class="absolute-pos">
-  								<span id="plane-ticket-from-airport">
-  									{{voo.origem.nome}} ({{voo.origem.estado}})</span>
-  							</div>
+
 
   						</div>
   					</a>

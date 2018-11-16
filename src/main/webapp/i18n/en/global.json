@@ -12,7 +12,7 @@
                 "arrival": "Arrival: "
             },
             "hotel": {
-                "title": "Accommodations"
+                "rate": "Daily Rate"
             }
         },
 		"confirmation-window": {
