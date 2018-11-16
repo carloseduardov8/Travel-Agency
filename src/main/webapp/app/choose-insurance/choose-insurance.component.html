@@ -1,44 +1,60 @@
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
-    <h6 class="text-right">{{message}}</h6>
-    <h1 class="text-center">Escolha seu Seguro de Viagem</h1>
-    <h5 class="text-center">Assistências de viagem com o melhor preço garantido.</h5>
-    <hr/>
 
 
       <div *ngIf="withoutSeguros">
           <p>Desculpa, não há seguros disponíveis para esta configuração.</p>
       </div>
 
-      <div class="offset-md-1 col-md-10" *ngIf="seguros">
-
-          <div class="insurance" *ngFor="let seguro of seguros">
-              <div class="card-insurance row">
-                  <img class="col-md-4 img-responsive" src="https://br.staticontent.com/media/pictures/e487d9e5-bdae-43a3-ac53-c411fb6bea65/190" alt="Card image cap">
-                  <div class="col-md-6 text-left mt-2 insurance-content">
-                      <h5 class="card-title">{{ seguro.nome }}</h5>
-                      <p class="insurance-description">{{ seguro.descricao }}</p>
-                  </div>
-                  <div class="col-md-2 text-center insurance-buy my-3">
-                      <span class="mb-2">Preço por pessoa</span><br>
-                      <span class="insurance-value">R$ {{ seguro.valorPorPessoa * diffDays | number:'1.2' }}</span>
-                      <br>
-                      <span *ngIf="passengers>1" class="insurance-total">Total a pagar: R$ {{ seguro.valorPorPessoa * passengers * diffDays | number:'1.2' }} </span>
-                      <a class="btn insurance-btn btn-block my-2" (click)='buy(seguro)'>
-                          Comprar
-                      </a>
-                  </div>
-              </div>
-
-          </div>
-      </div>
-  </div>
-    <!-- Botão de voltar -->
-    <div class="our-button">
-        <input type="submit" class="btn btn-outline-warning btn-block"
-               value="{{ 'choose-plane.buttons.back' | translate }}" (click)="back()" />
-    </div>
+      <div class="" *ngIf="seguros">
 
 
+		  <div *ngIf="seguros">
+			  <div class="tp-wrapper" *ngFor="let seguro of seguros; let i = index" [attr.data-index]="i">
+
+					  <!-- Plane ticket front -->
+					  <a class="ticket insurance-ticket">
+						  <div>
+
+							  <div class="absolute-pos">
+								  <span id="insurance-ticket-name">
+									  {{ seguro.nome }} </span>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <span id="insurance-ticket-description">
+									  {{ seguro.descricao }} </span>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <span id="insurance-ticket-value-text" jhiTranslate="choose-insurance.value">Valor por pessoa:</span>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <span id="insurance-ticket-value"> R$ {{ seguro.valorPorPessoa | number:'1.2' }}</span>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <span id="insurance-ticket-total">
+								  	  Total: R$ {{ seguro.valorPorPessoa * diffDays * passengers | number:'1.2' }}
+							  	  </span>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <div id="insurance-ticket-seller">
+									  <span jhiTranslate="choose-insurance.seller">Oferecido por</span>
+									  <span> {{ seguro.seguradora.nome }} </span>
+								  </div>
+							  </div>
+
+						  </div>
+					  </a>
+
+			  </div>
+		  </div>
+
+		</div>
+
+	</div>
 </div>

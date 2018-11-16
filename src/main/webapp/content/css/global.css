@@ -51,9 +51,7 @@ Our custom CSS goes here
     background-image: url('../../content/images/boarding-pass.png');
 }
 
-.hotel-ticket {
-    background-image: url('../../content/images/hotel-ticket.png');
-}
+
 
 .ticket span {
     position: relative;

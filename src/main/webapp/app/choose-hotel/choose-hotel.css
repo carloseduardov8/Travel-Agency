@@ -1,5 +1,9 @@
 /* choose-hotel.css */
 
+.hotel-ticket {
+    background-image: url('../../content/images/hotel-ticket.png');
+}
+
 .hotel-ticket #hotel-ticket-name {
     left: -211px;
     top: 14px;

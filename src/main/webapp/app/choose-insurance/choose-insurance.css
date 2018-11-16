@@ -1,58 +1,50 @@
 /* choose-insurance.css */
 
-h1 {
-    color: #f4a83a;
-    font-weight: bold;
+.insurance-ticket {
+    background-image: url('../../content/images/insurance-card.png');
 }
 
-hr {
-    border-color: #f4a83a;
+
+.insurance-ticket #insurance-ticket-name {
+    left: -126px;
+    top: 22px;
+	font-size: 23pt;
 }
 
-.card-insurance {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
-    padding: 35px;
-    margin-bottom: 30px;
-    border-bottom: 4px solid red;
-    border-top-right-radius: 10px;
-    border-top: 5px solid red;
+.insurance-ticket #insurance-ticket-description {
+    position: absolute;
+    left: 115px;
+    top: 103px;
+	  width: 331px;
+	  line-height: 25px;
+  	text-align: left;
+    white-space: normal;
+    word-break: break-word;
 }
 
-.card-insurance img {
-    margin-top: auto;
-    margin-bottom: auto;
-    padding: 0px;
-    padding-right: 10px;
+.insurance-ticket #insurance-ticket-value-text {
+    left: 225px;
+    top: 19px;
 }
 
-.insurance-content {
+.insurance-ticket #insurance-ticket-value {
+	color: #E10000;
+	font-size: 26pt;
+    left: 221px;
+    top: 19px;
 }
 
-.insurance-total {
-    font-size: 0.8em;
-}
-.insurance-buy {
-    font-size: 0.7em;
-    border-left: 1px solid red;
+.insurance-ticket #insurance-ticket-total {
+	font-size: 13pt;
+    left: 220px;
+    top: 19px;
 }
 
-.insurance-value {
-    color: red;
-    font-size: 2em;
-}
-
-.insurance-btn {
-    border: solid 1px red !important;
-    color: red !important;
-    transition: 0.5s;
-}
-
-.insurance-btn:hover {
-    background: red;
-    color: white !important;
-}
-
-.card-title {
-    color: red !important;
-    font-weight: bold;
+.insurance-ticket #insurance-ticket-seller {
+	color: #E10000;
+	position: relative;
+    left: -126px;
+    top: -98px;
+	transform: scale(0.70);
+    -moz-transform: scale(0.70);
 }

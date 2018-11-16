@@ -1,6 +1,9 @@
 {
   "choose-insurance": {
     "title": "Seguro de Viagem",
-	"subtitle": "Para adquirir um seguro, basta selecioná-lo."
+	"subtitle": "Para adquirir um seguro, basta selecioná-lo.",
+	"value": "Valor por pessoa:",
+	"total": "Custo total",
+	"seller": "Oferecido por"
 	}
 }

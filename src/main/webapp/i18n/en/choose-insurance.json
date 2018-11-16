@@ -1,6 +1,9 @@
 {
   "choose-insurance": {
     "title": "Travel Insurance",
-	"subtitle": "To acquire an insurance, simply select it."
+	"subtitle": "To acquire an insurance, simply select it.",
+	"value": "Cost per person:",
+	"total": "Total cost",
+	"seller": "Offered by"
 	}
 }
