@@ -10,7 +10,7 @@
                 <p>Desculpa, não há passagens disponíveis.</p>
             </div>
 
-            <div *ngIf="voos.length > 0">
+            <div *ngIf="voos?.length > 0">
                 <div class="tp-wrapper" *ngFor="let voo of voos; let i = index" [attr.data-index]="i">
                     <div class="tp-box" [@flipState]="voo.flip">
 

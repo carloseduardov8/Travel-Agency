@@ -19,7 +19,7 @@ export class PaymentComponent implements OnInit {
     reservas = new Array<IReserva>();
     contratos = new Array<IContrato>();
     user: IUser;
-
+    total: number = 0;
     constructor(
         private basketService: BasketService,
         private location: Location,
@@ -43,6 +43,17 @@ export class PaymentComponent implements OnInit {
                 console.log(this.user);
             });
         });
+
+        this.calculateSum();
+    }
+
+    // Calcula a soma de tudo o que foi selecionado
+    calculateSum() {
+        this.total = 0;
+        this.locacoes.forEach(locacao => (this.total += locacao.valor));
+        this.contratos.forEach(contrato => (this.total += contrato.valor));
+        this.passagens.forEach(passagem => (this.total += passagem.voo.valor));
+        this.reservas.forEach(reserva => (this.total += reserva.valor));
     }
 
     delItem(items, item) {

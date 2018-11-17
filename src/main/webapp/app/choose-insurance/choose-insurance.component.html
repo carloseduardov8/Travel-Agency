@@ -11,7 +11,8 @@
 
 
 		  <div *ngIf="seguros">
-			  <div class="tp-wrapper" *ngFor="let seguro of seguros; let i = index" [attr.data-index]="i">
+			  <div class="tp-wrapper" *ngFor="let seguro of seguros; let i = index" [attr.data-index]="i"
+                                        (click)="buy(seguro)">
 
 					  <!-- Plane ticket front -->
 					  <a class="ticket insurance-ticket">

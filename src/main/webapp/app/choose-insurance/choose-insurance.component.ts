@@ -70,7 +70,7 @@ export class ChooseInsuranceComponent implements OnInit {
 
                     this.seguroService.findSeguros(params.to).subscribe((res: HttpResponse<IVoo[]>) => {
                         this.seguros = res.body;
-						console.log(this.seguros);
+                        console.log(this.seguros);
                         if (this.seguros.length === 0) {
                             this.withoutSeguros = true;
                         }
@@ -94,15 +94,11 @@ export class ChooseInsuranceComponent implements OnInit {
             ('0' + this.dateOut.getDate()).slice(-2) + '-' + (this.dateOut.getMonth() + 1) + '-' + this.dateOut.getFullYear() + ' 00:00:00';
 
         contrato.numPessoas = this.passengers;
-        contrato.compra = this.basketService.compra;
-
+        contrato.valor = insurance.valorPorPessoa * this.diffDays * this.passengers;
         console.log(contrato);
 
         // Adiciona contrato a cesta
         this.basketService.contratos.push(contrato);
-
-        // Volta a pagina anterior
-        this.back();
     }
 
     // Funcao para voltar ao componente anterior

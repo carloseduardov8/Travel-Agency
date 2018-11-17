@@ -11,7 +11,8 @@
   		</div>
 
   		<div *ngIf="quartos.length > 0">
-  			<div class="tp-wrapper" *ngFor="let quarto of quartos; let i = index" [attr.data-index]="i">
+  			<div class="tp-wrapper" *ngFor="let quarto of quartos; let i = index" [attr.data-index]="i"
+                        (click)="bookRoom(quarto)">
 
   					<!-- Plane ticket front -->
   					<a class="ticket hotel-ticket">
