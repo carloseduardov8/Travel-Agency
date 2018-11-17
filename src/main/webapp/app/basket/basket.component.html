@@ -52,27 +52,27 @@
 
 
 			<!-- Hotel -->
-			<a  *ngIf="viewWindow == 2">
+			<div  *ngIf="viewWindow == 2">
 				<jhi-choose-hotel></jhi-choose-hotel>
-			</a>
+			</div>
 
 
             <!-- Veiculo -->
-            <a *ngIf="viewWindow == 3">
+            <div *ngIf="viewWindow == 3">
                 <jhi-choose-insurance></jhi-choose-insurance>
-            </a>
+            </div>
 
 
             <!-- Seguro -->
-            <a *ngIf="viewWindow == 4">
+            <div *ngIf="viewWindow == 4">
                 <jhi-choose-vehicle></jhi-choose-vehicle>
-            </a>
+            </div>
 
 
             <!-- Pagamento -->
-            <a *ngIf="viewWindow == 5" (click)="goTo('choose-insurance')">
+            <div *ngIf="viewWindow == 5">
                 <jhi-payment></jhi-payment>
-            </a>
+            </div>
 
         </div>
 
