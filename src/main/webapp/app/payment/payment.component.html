@@ -1,11 +1,6 @@
-<div class="row">
+ <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
-
-        <!-- Título da página e descrição -->
-        <h1 class="text-capitalize text-center h1-pages">Pagamento</h1>
-        <h5 class="text-center">Finalize a sua compra</h5>
-        <hr class="h1-hr"/>
 
         <!-- Tabela com as passagens adquiridas -->
         <div *ngIf="passagens.length > 0" class="passagens">
@@ -110,13 +105,22 @@
                 </tbody>
             </table>
         </div>
-    </div>
 
-    <!-- Botão de compra -->
-    <div class="our-button">
-        <input type="submit" class="btn btn-outline-warning btn-block"
-               value="{{ 'basket.purchase' | translate }}"
-               (click)="confirmPayment()"/>
+        <div *ngIf="basketService.isEmpty()" class="text-center">
+            <p>Seu carrinho está vazio.</p>
+        </div>
+
+        <div *ngIf="!basketService.isEmpty()" class="text-right">
+            Total: R$ {{ total | number:'1.2'}}
+        </div>
+
+        <!-- Botão de compra -->
+        <div class="our-button" *ngIf="!basketService.isEmpty()">
+            <input type="submit" class="btn btn-outline-warning btn-block"
+                   value="{{ 'basket.purchase' | translate }}"
+                   (click)="confirmPayment()"/>
+        </div>
+
     </div>
 
     <div class="col-md-1">

@@ -19,10 +19,15 @@
 				<h5 class="text-center" jhiTranslate="choose-insurance.subtitle">Subtitle</h5>
 			</div>
 
-			<div *ngIf="viewWindow == 4">
-				<h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-vehicle.title">Title</h1>
-				<h5 class="text-center" jhiTranslate="choose-vehicle.subtitle">Subtitle</h5>
-			</div>
+            <div *ngIf="viewWindow == 4">
+                <h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-vehicle.title">Title</h1>
+                <h5 class="text-center" jhiTranslate="choose-vehicle.subtitle">Subtitle</h5>
+            </div>
+
+            <div *ngIf="viewWindow == 5">
+                <h1 class="text-capitalize text-center h1-pages" jhiTranslate="payment.title">Title</h1>
+                <h5 class="text-center" jhiTranslate="payment.subtitle">Subtitle</h5>
+            </div>
 		</div>
 
 		<hr class="h1-hr"/>
@@ -34,7 +39,7 @@
 			<a (click)="toggleWindow(2)" class="product-icon" id="hotel-icon"></a>
 			<a (click)="toggleWindow(3)" class="product-icon" id="insurance-icon"></a>
 			<a (click)="toggleWindow(4)" class="product-icon" id="car-icon"></a>
-			<a class="product-icon" id="checkout-icon"></a>
+			<a (click)="toggleWindow(5)" class="product-icon" id="checkout-icon"></a>
 		</div>
 
 		<!-- Box contendo os tickets (passagem aerea, hotel, etc...) -->
@@ -63,7 +68,13 @@
                 Veículo
             </a>
 
-		</div>
+
+            <!-- Pagamento -->
+            <a *ngIf="viewWindow == 5" (click)="goTo('choose-insurance')">
+                <jhi-payment></jhi-payment>
+            </a>
+
+        </div>
 
 
 		<!-- Confirmation window, only display if a seat has been selected -->

@@ -8,10 +8,17 @@ import { ViajatoAppChooseHotelModule } from '../choose-hotel';
 import { ViajatoAppChooseInsuranceModule } from '../choose-insurance';
 
 import { BASKET_ROUTE, BasketComponent } from './';
+import { ViajatoAppPaymentModule } from 'app/payment';
 
 @NgModule({
-    imports: [ViajatoSharedModule, ViajatoAppChoosePlaneModule, ViajatoAppChooseHotelModule, ViajatoAppChooseInsuranceModule,
-       RouterModule.forRoot(BASKET_ROUTE, { useHash: true })],
+    imports: [
+        ViajatoSharedModule,
+        ViajatoAppChoosePlaneModule,
+        ViajatoAppChooseHotelModule,
+        ViajatoAppChooseInsuranceModule,
+        ViajatoAppPaymentModule,
+        RouterModule.forRoot(BASKET_ROUTE, { useHash: true })
+    ],
     declarations: [BasketComponent],
     entryComponents: [],
     providers: [],

@@ -10,6 +10,7 @@ import { PAYMENT_ROUTE, PaymentComponent } from './';
     declarations: [PaymentComponent],
     entryComponents: [],
     providers: [],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    exports: [PaymentComponent]
 })
 export class ViajatoAppPaymentModule {}
