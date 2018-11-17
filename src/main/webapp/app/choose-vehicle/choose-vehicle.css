@@ -1,1 +1,11 @@
 /* choose-vehicle.css */
+
+.vehicle-ticket {
+    background-image: url('../../content/images/vehicle-card.png');
+}
+
+.vehicle-ticket #vehicle-ticket-name {
+    left: -126px;
+    top: 22px;
+    font-size: 23pt;
+}

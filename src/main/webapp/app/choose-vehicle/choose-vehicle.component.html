@@ -1,14 +1,61 @@
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
-    <h6 class="text-right">{{message}}</h6>
-    <h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-vehicle.title">Title</h1>
-    <hr class="h1-hr" />
-    <p class="text-justify">{{ veiculos | json }}</p>
-  </div>
-    <!-- Botão de voltar -->
-    <div class="our-button">
-        <input type="submit" class="btn btn-outline-warning btn-block"
-               value="{{ 'choose-plane.buttons.back' | translate }}" (click)="back()" />
-    </div>
+
+
+      <div *ngIf="withoutVeiculos">
+          <p>Desculpa, não há veiculos disponíveis para esta configuração.</p>
+      </div>
+
+      <div class="" *ngIf="veiculos">
+
+
+		  <div *ngIf="veiculos">
+			  <div class="tp-wrapper" *ngFor="let veiculo of veiculos; let i = index" [attr.data-index]="i"
+                                        (click)="buy(veiculo)">
+
+					  <!-- Plane ticket front -->
+					  <a class="ticket vehicle-ticket">
+						  <div>
+
+							  <div class="absolute-pos">
+								  <span id="vehicle-ticket-name">
+									  {{ veiculo.nome }} </span>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <span id="vehicle-ticket-description">
+									  {{ veiculo.descricao }} </span>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <span id="vehicle-ticket-value-text" jhiTranslate="choose-vehicle.value">Valor por pessoa:</span>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <span id="vehicle-ticket-value"> R$ {{ veiculo.valorPorPessoa | number:'1.2' }}</span>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <span id="vehicle-ticket-total">
+								  	  Total: R$ {{ veiculo.valorPorPessoa * diffDays * passengers | number:'1.2' }}
+							  	  </span>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <div id="vehicle-ticket-seller">
+									  <span jhiTranslate="choose-vehicle.seller">Oferecido por</span>
+									  <span> {{ veiculo.seguradora.nome }} </span>
+								  </div>
+							  </div>
+
+						  </div>
+					  </a>
+
+			  </div>
+		  </div>
+
+		</div>
+
+	</div>
 </div>
