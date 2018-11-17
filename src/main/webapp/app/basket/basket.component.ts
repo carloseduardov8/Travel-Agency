@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VooService } from 'app/entities/voo';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { IVoo } from 'app/shared/model/voo.model';
-import { CompraService } from 'app/entities/compra';
-import { BasketService } from 'app/basket/basket.service';
+
+declare var $: any;
 
 @Component({
     selector: 'jhi-basket',
@@ -17,17 +14,12 @@ export class BasketComponent implements OnInit {
     dateIn: string;
     dateOut: string;
     passengers: string;
-	viewWindow: Number;
+    viewWindow: number;
 
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private vooService: VooService,
-        private basketService: BasketService
-    ) {
+    constructor(private route: ActivatedRoute, private router: Router) {
         this.route.params.subscribe(params => {
             console.log(params);
-			this.viewWindow = 1;
+            this.viewWindow = 0;
             if (params) {
                 this.from = params.from;
                 this.to = params.to;
@@ -40,15 +32,15 @@ export class BasketComponent implements OnInit {
 
     ngOnInit() {}
 
-	// Troca o estado da janela (alterna entre mostrar passagem, hotel, etc)
+    // Troca o estado da janela (alterna entre mostrar passagem, hotel, etc)
     toggleWindow(num) {
-		if (this.viewWindow != num){
-			var fadeTime = 500;
-			$(".component-window").hide();
-			$(".component-window").fadeIn(fadeTime);
-			$(".title-wrapper").hide();
-			$(".title-wrapper").fadeIn(fadeTime);
-		}
+        if (this.viewWindow !== num) {
+            const fadeTime = 500;
+            $('.component-window').hide();
+            $('.component-window').fadeIn(fadeTime);
+            $('.title-wrapper').hide();
+            $('.title-wrapper').fadeIn(fadeTime);
+        }
         this.viewWindow = num;
     }
 

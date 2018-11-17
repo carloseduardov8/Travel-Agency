@@ -4,7 +4,12 @@
 
 		<!-- Título da página e descrição -->
 		<div class="title-wrapper">
-			<div *ngIf="viewWindow == 1">
+            <div *ngIf="viewWindow == 0">
+                <h1 class="text-capitalize text-center h1-pages" jhiTranslate="basket.title">Title</h1>
+                <h5 class="text-center" jhiTranslate="basket.subtitle">Subtitle</h5>
+            </div>
+
+            <div *ngIf="viewWindow == 1">
 				<h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-plane.title">Title</h1>
 				<h5 class="text-center" jhiTranslate="choose-plane.subtitle">Subtitle</h5>
 			</div>
@@ -35,11 +40,11 @@
 		<!-- Menu com as 4 opcoes + ícone do carrinho -->
 		<div class="product-selection">
 			<hr class="product-hr"/>
-			<a (click)="toggleWindow(1)" class="product-icon" id="plane-icon"></a>
-			<a (click)="toggleWindow(2)" class="product-icon" id="hotel-icon"></a>
-			<a (click)="toggleWindow(3)" class="product-icon" id="insurance-icon"></a>
-			<a (click)="toggleWindow(4)" class="product-icon" id="car-icon"></a>
-			<a (click)="toggleWindow(5)" class="product-icon" id="checkout-icon"></a>
+			<a (click)="toggleWindow(1)" class="product-icon" id="plane-icon" [class.brightness]="viewWindow==1" ></a>
+			<a (click)="toggleWindow(2)" class="product-icon" id="hotel-icon" [class.brightness]="viewWindow==2" ></a>
+			<a (click)="toggleWindow(3)" class="product-icon" id="insurance-icon" [class.brightness]="viewWindow==3" ></a>
+			<a (click)="toggleWindow(4)" class="product-icon" id="car-icon" [class.brightness]="viewWindow==4" ></a>
+			<a (click)="toggleWindow(5)" class="product-icon" id="checkout-icon" [class.brightness]="viewWindow==5" ></a>
 		</div>
 
 		<!-- Box contendo os tickets (passagem aerea, hotel, etc...) -->
@@ -52,28 +57,27 @@
 
 
 			<!-- Hotel -->
-			<a  *ngIf="viewWindow == 2">
+			<div  *ngIf="viewWindow == 2">
 				<jhi-choose-hotel></jhi-choose-hotel>
-			</a>
+			</div>
 
 
             <!-- Veiculo -->
-            <a *ngIf="viewWindow == 3">
+            <div *ngIf="viewWindow == 3">
                 <jhi-choose-insurance></jhi-choose-insurance>
-            </a>
+            </div>
 
 
             <!-- Seguro -->
-            <a *ngIf="viewWindow == 4" (click)="goTo('choose-insurance')">
+            <div *ngIf="viewWindow == 4"">
                 Veículo
-            </a>
+            </div>
 
 
             <!-- Pagamento -->
-            <a *ngIf="viewWindow == 5" (click)="goTo('choose-insurance')">
+            <div *ngIf="viewWindow == 5">
                 <jhi-payment></jhi-payment>
-            </a>
-
+            </div>
         </div>
 
 

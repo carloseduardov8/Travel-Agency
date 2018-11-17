@@ -6,11 +6,11 @@
   	<div class="ticket-box">
 
   		<!-- Passagem aérea -->
-  		<div *ngIf="withoutVoos">
-  			<p>Desculpa, não há passagens disponíveis.</p>
+  		<div *ngIf="withoutQuartos">
+  			<p>Desculpa, não há quartos disponíveis para esta configuração.</p>
   		</div>
 
-  		<div *ngIf="quartos.length > 0">
+  		<div *ngIf="quartos?.length > 0">
   			<div class="tp-wrapper" *ngFor="let quarto of quartos; let i = index" [attr.data-index]="i"
                         (click)="bookRoom(quarto)">
 

@@ -1,25 +1,30 @@
 /* basket.css */
 
 .component-window {
-	margin-top: -10px;
-	min-height: 650px;
+    margin-top: -10px;
+    min-height: 650px;
 }
 
 .product-selection {
-	position: relative;
-	left: 7px;
-	display: inline-block;
-	margin: 0 auto;
-	height: 170px;
+    position: relative;
+    left: 7px;
+    display: inline-block;
+    margin: 0 auto;
+    height: 170px;
 }
 
 .product-icon {
-	margin-top: 35px;
-	position: absolute;
-	width: 100px;
-	height: 100px;
-	background-size: contain;
+    margin-top: 35px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-size: contain;
     background-repeat: no-repeat;
+    filter: grayscale(20%);
+}
+
+.brightness {
+    filter: brightness(115%);
 }
 
 .product-icon:hover {
@@ -28,36 +33,36 @@
 }
 
 .product-hr {
-	position: absolute;
-	width: 600px;
-	height: 20px;
-	left: -400px;
-	top: 70px;
-	border: 0;
+    position: absolute;
+    width: 600px;
+    height: 20px;
+    left: -400px;
+    top: 70px;
+    border: 0;
     border-top: 2px solid #f9e098;
 }
 
 #plane-icon {
-	background-image: url('../../content/images/plane-icon.png');
-	left: -450px;
+    background-image: url('../../content/images/plane-icon.png');
+    left: -450px;
 }
 
 #hotel-icon {
-	background-image: url('../../content/images/hotel-icon.png');
-	left: -250px;
+    background-image: url('../../content/images/hotel-icon.png');
+    left: -250px;
 }
 
 #insurance-icon {
-	background-image: url('../../content/images/insurance-icon.png');
-	left: -50px;
+    background-image: url('../../content/images/insurance-icon.png');
+    left: -50px;
 }
 
 #car-icon {
-	background-image: url('../../content/images/car-icon.png');
-	left: 150px;
+    background-image: url('../../content/images/car-icon.png');
+    left: 150px;
 }
 
 #checkout-icon {
-	background-image: url('../../content/images/checkout-icon.png');
-	left: 350px;
+    background-image: url('../../content/images/checkout-icon.png');
+    left: 350px;
 }
