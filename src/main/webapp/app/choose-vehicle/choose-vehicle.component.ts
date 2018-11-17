@@ -29,6 +29,7 @@ export class ChooseVehicleComponent implements OnInit {
                     console.log('Passengers are ' + params.passengers);
                     this.veiculoService.findVeiculos(params.to).subscribe((res: HttpResponse<IVoo[]>) => {
                         this.veiculos = res.body;
+						console.log(this.veiculos);
                         if (this.veiculos.length === 0) {
                             this.withoutVeiculos = true;
                         }

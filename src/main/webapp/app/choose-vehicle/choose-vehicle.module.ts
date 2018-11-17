@@ -10,6 +10,7 @@ import { CHOOSE_VEHICLE_ROUTE, ChooseVehicleComponent } from './';
     declarations: [ChooseVehicleComponent],
     entryComponents: [],
     providers: [],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+	exports: [ChooseVehicleComponent]
 })
 export class ViajatoAppChooseVehicleModule {}
