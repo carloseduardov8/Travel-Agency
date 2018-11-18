@@ -57,6 +57,9 @@ public class VeiculoResourceIntTest {
     private static final String DEFAULT_IMAGEM = "AAAAAAAAAA";
     private static final String UPDATED_IMAGEM = "BBBBBBBBBB";
 
+    private static final Float DEFAULT_VALOR = 1F;
+    private static final Float UPDATED_VALOR = 2F;
+
     @Autowired
     private VeiculoRepository veiculoRepository;
 
@@ -100,7 +103,8 @@ public class VeiculoResourceIntTest {
             .modelo(DEFAULT_MODELO)
             .cor(DEFAULT_COR)
             .numPassageiros(DEFAULT_NUM_PASSAGEIROS)
-            .imagem(DEFAULT_IMAGEM);
+            .imagem(DEFAULT_IMAGEM)
+            .valor(DEFAULT_VALOR);
         return veiculo;
     }
 
@@ -130,6 +134,7 @@ public class VeiculoResourceIntTest {
         assertThat(testVeiculo.getCor()).isEqualTo(DEFAULT_COR);
         assertThat(testVeiculo.getNumPassageiros()).isEqualTo(DEFAULT_NUM_PASSAGEIROS);
         assertThat(testVeiculo.getImagem()).isEqualTo(DEFAULT_IMAGEM);
+        assertThat(testVeiculo.getValor()).isEqualTo(DEFAULT_VALOR);
     }
 
     @Test
@@ -243,6 +248,24 @@ public class VeiculoResourceIntTest {
 
     @Test
     @Transactional
+    public void checkValorIsRequired() throws Exception {
+        int databaseSizeBeforeTest = veiculoRepository.findAll().size();
+        // set the field null
+        veiculo.setValor(null);
+
+        // Create the Veiculo, which fails.
+
+        restVeiculoMockMvc.perform(post("/api/veiculos")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(veiculo)))
+            .andExpect(status().isBadRequest());
+
+        List<Veiculo> veiculoList = veiculoRepository.findAll();
+        assertThat(veiculoList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllVeiculos() throws Exception {
         // Initialize the database
         veiculoRepository.saveAndFlush(veiculo);
@@ -257,7 +280,8 @@ public class VeiculoResourceIntTest {
             .andExpect(jsonPath("$.[*].modelo").value(hasItem(DEFAULT_MODELO.toString())))
             .andExpect(jsonPath("$.[*].cor").value(hasItem(DEFAULT_COR.toString())))
             .andExpect(jsonPath("$.[*].numPassageiros").value(hasItem(DEFAULT_NUM_PASSAGEIROS)))
-            .andExpect(jsonPath("$.[*].imagem").value(hasItem(DEFAULT_IMAGEM.toString())));
+            .andExpect(jsonPath("$.[*].imagem").value(hasItem(DEFAULT_IMAGEM.toString())))
+            .andExpect(jsonPath("$.[*].valor").value(hasItem(DEFAULT_VALOR.doubleValue())));
     }
     
     @Test
@@ -276,7 +300,8 @@ public class VeiculoResourceIntTest {
             .andExpect(jsonPath("$.modelo").value(DEFAULT_MODELO.toString()))
             .andExpect(jsonPath("$.cor").value(DEFAULT_COR.toString()))
             .andExpect(jsonPath("$.numPassageiros").value(DEFAULT_NUM_PASSAGEIROS))
-            .andExpect(jsonPath("$.imagem").value(DEFAULT_IMAGEM.toString()));
+            .andExpect(jsonPath("$.imagem").value(DEFAULT_IMAGEM.toString()))
+            .andExpect(jsonPath("$.valor").value(DEFAULT_VALOR.doubleValue()));
     }
 
     @Test
@@ -305,7 +330,8 @@ public class VeiculoResourceIntTest {
             .modelo(UPDATED_MODELO)
             .cor(UPDATED_COR)
             .numPassageiros(UPDATED_NUM_PASSAGEIROS)
-            .imagem(UPDATED_IMAGEM);
+            .imagem(UPDATED_IMAGEM)
+            .valor(UPDATED_VALOR);
 
         restVeiculoMockMvc.perform(put("/api/veiculos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -322,6 +348,7 @@ public class VeiculoResourceIntTest {
         assertThat(testVeiculo.getCor()).isEqualTo(UPDATED_COR);
         assertThat(testVeiculo.getNumPassageiros()).isEqualTo(UPDATED_NUM_PASSAGEIROS);
         assertThat(testVeiculo.getImagem()).isEqualTo(UPDATED_IMAGEM);
+        assertThat(testVeiculo.getValor()).isEqualTo(UPDATED_VALOR);
     }
 
     @Test

@@ -50,6 +50,10 @@ public class Veiculo implements Serializable {
     @Column(name = "imagem")
     private String imagem;
 
+    @NotNull
+    @Column(name = "valor", nullable = false)
+    private Float valor;
+
     @OneToMany(mappedBy = "veiculo")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Locacao> locacaos = new HashSet<>();
@@ -145,6 +149,19 @@ public class Veiculo implements Serializable {
         this.imagem = imagem;
     }
 
+    public Float getValor() {
+        return valor;
+    }
+
+    public Veiculo valor(Float valor) {
+        this.valor = valor;
+        return this;
+    }
+
+    public void setValor(Float valor) {
+        this.valor = valor;
+    }
+
     public Set<Locacao> getLocacaos() {
         return locacaos;
     }
@@ -214,6 +231,7 @@ public class Veiculo implements Serializable {
             ", cor='" + getCor() + "'" +
             ", numPassageiros=" + getNumPassageiros() +
             ", imagem='" + getImagem() + "'" +
+            ", valor=" + getValor() +
             "}";
     }
 }

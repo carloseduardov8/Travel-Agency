@@ -54,6 +54,13 @@
         {
             "fieldName": "imagem",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "valor",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20181025033521",
