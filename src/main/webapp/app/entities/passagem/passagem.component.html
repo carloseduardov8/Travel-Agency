@@ -15,8 +15,6 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="viajatoApp.passagem.nome">Nome</span></th>
-            <th><span jhiTranslate="viajatoApp.passagem.cpf">Cpf</span></th>
             <th><span jhiTranslate="viajatoApp.passagem.assento">Assento</span></th>
             <th><span jhiTranslate="viajatoApp.passagem.voo">Voo</span></th>
             <th><span jhiTranslate="viajatoApp.passagem.compra">Compra</span></th>
@@ -26,8 +24,6 @@
             <tbody>
             <tr *ngFor="let passagem of passagems ;trackBy: trackId">
                 <td><a [routerLink]="['/passagem', passagem.id, 'view' ]">{{passagem.id}}</a></td>
-                <td>{{passagem.nome}}</td>
-                <td>{{passagem.cpf}}</td>
                 <td>{{passagem.assento}}</td>
                 <td>
                     <div *ngIf="passagem.voo">

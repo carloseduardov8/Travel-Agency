@@ -22,14 +22,6 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="nome" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="cpf" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
             <column name="assento" type="varchar(255)">
                 <constraints nullable="false" />
             </column>

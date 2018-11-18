@@ -90,18 +90,6 @@ public class PassagemResource {
     }
 
     /**
-     * GET  /passagems/compra/{compraId} : get passagems by compraId.
-     *
-     * @return the ResponseEntity with status 200 (OK) and the list of passagems in body
-     */
-    @GetMapping("/passagems/compra/{compraId}")
-    @Timed
-    public List<Passagem> getPassagensByCompraId(@PathVariable Long compraId) {
-        log.debug("REST request to get Passagems by compra id");
-        return passagemRepository.getPassagensByCompraId(compraId);
-    }
-
-    /**
      * GET  /passagems/:id : get the "id" passagem.
      *
      * @param id the id of the passagem to retrieve

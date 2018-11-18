@@ -39,12 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ViajatoApp.class)
 public class PassagemResourceIntTest {
 
-    private static final String DEFAULT_NOME = "AAAAAAAAAA";
-    private static final String UPDATED_NOME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_CPF = "AAAAAAAAAA";
-    private static final String UPDATED_CPF = "BBBBBBBBBB";
-
     private static final String DEFAULT_ASSENTO = "AAAAAAAAAA";
     private static final String UPDATED_ASSENTO = "BBBBBBBBBB";
 
@@ -86,8 +80,6 @@ public class PassagemResourceIntTest {
      */
     public static Passagem createEntity(EntityManager em) {
         Passagem passagem = new Passagem()
-            .nome(DEFAULT_NOME)
-            .cpf(DEFAULT_CPF)
             .assento(DEFAULT_ASSENTO);
         return passagem;
     }
@@ -112,8 +104,6 @@ public class PassagemResourceIntTest {
         List<Passagem> passagemList = passagemRepository.findAll();
         assertThat(passagemList).hasSize(databaseSizeBeforeCreate + 1);
         Passagem testPassagem = passagemList.get(passagemList.size() - 1);
-        assertThat(testPassagem.getNome()).isEqualTo(DEFAULT_NOME);
-        assertThat(testPassagem.getCpf()).isEqualTo(DEFAULT_CPF);
         assertThat(testPassagem.getAssento()).isEqualTo(DEFAULT_ASSENTO);
     }
 
@@ -134,42 +124,6 @@ public class PassagemResourceIntTest {
         // Validate the Passagem in the database
         List<Passagem> passagemList = passagemRepository.findAll();
         assertThat(passagemList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    @Transactional
-    public void checkNomeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = passagemRepository.findAll().size();
-        // set the field null
-        passagem.setNome(null);
-
-        // Create the Passagem, which fails.
-
-        restPassagemMockMvc.perform(post("/api/passagems")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(passagem)))
-            .andExpect(status().isBadRequest());
-
-        List<Passagem> passagemList = passagemRepository.findAll();
-        assertThat(passagemList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkCpfIsRequired() throws Exception {
-        int databaseSizeBeforeTest = passagemRepository.findAll().size();
-        // set the field null
-        passagem.setCpf(null);
-
-        // Create the Passagem, which fails.
-
-        restPassagemMockMvc.perform(post("/api/passagems")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(passagem)))
-            .andExpect(status().isBadRequest());
-
-        List<Passagem> passagemList = passagemRepository.findAll();
-        assertThat(passagemList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -201,8 +155,6 @@ public class PassagemResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(passagem.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME.toString())))
-            .andExpect(jsonPath("$.[*].cpf").value(hasItem(DEFAULT_CPF.toString())))
             .andExpect(jsonPath("$.[*].assento").value(hasItem(DEFAULT_ASSENTO.toString())));
     }
     
@@ -217,8 +169,6 @@ public class PassagemResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(passagem.getId().intValue()))
-            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME.toString()))
-            .andExpect(jsonPath("$.cpf").value(DEFAULT_CPF.toString()))
             .andExpect(jsonPath("$.assento").value(DEFAULT_ASSENTO.toString()));
     }
 
@@ -243,8 +193,6 @@ public class PassagemResourceIntTest {
         // Disconnect from session so that the updates on updatedPassagem are not directly saved in db
         em.detach(updatedPassagem);
         updatedPassagem
-            .nome(UPDATED_NOME)
-            .cpf(UPDATED_CPF)
             .assento(UPDATED_ASSENTO);
 
         restPassagemMockMvc.perform(put("/api/passagems")
@@ -256,8 +204,6 @@ public class PassagemResourceIntTest {
         List<Passagem> passagemList = passagemRepository.findAll();
         assertThat(passagemList).hasSize(databaseSizeBeforeUpdate);
         Passagem testPassagem = passagemList.get(passagemList.size() - 1);
-        assertThat(testPassagem.getNome()).isEqualTo(UPDATED_NOME);
-        assertThat(testPassagem.getCpf()).isEqualTo(UPDATED_CPF);
         assertThat(testPassagem.getAssento()).isEqualTo(UPDATED_ASSENTO);
     }
 

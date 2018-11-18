@@ -16,8 +16,6 @@
             "detail": {
                 "title": "Passagem"
             },
-            "nome": "Nome",
-            "cpf": "Cpf",
             "assento": "Assento",
             "voo": "Voo",
             "compra": "Compra"

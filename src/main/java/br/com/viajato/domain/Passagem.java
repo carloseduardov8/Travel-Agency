@@ -25,14 +25,6 @@ public class Passagem implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "nome", nullable = false)
-    private String nome;
-
-    @NotNull
-    @Column(name = "cpf", nullable = false)
-    private String cpf;
-
-    @NotNull
     @Column(name = "assento", nullable = false)
     private String assento;
 
@@ -51,32 +43,6 @@ public class Passagem implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public Passagem nome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public Passagem cpf(String cpf) {
-        this.cpf = cpf;
-        return this;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getAssento() {
@@ -143,8 +109,6 @@ public class Passagem implements Serializable {
     public String toString() {
         return "Passagem{" +
             "id=" + getId() +
-            ", nome='" + getNome() + "'" +
-            ", cpf='" + getCpf() + "'" +
             ", assento='" + getAssento() + "'" +
             "}";
     }
