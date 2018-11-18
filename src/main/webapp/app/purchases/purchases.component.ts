@@ -76,6 +76,11 @@ export class PurchasesComponent implements OnInit {
                 }
             }
 
+            setTimeout(() => {
+                /** spinner ends after 5 seconds */
+                this.spinner.hide();
+            }, 5000);
+
             console.log('Compras:');
             console.log(this.compras);
         });
