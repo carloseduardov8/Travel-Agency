@@ -90,6 +90,18 @@ public class LocacaoResource {
     }
 
     /**
+     * GET  /locacaos/compra/{compraId} : get locacaos.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of locacaos in body
+     */
+    @GetMapping("/locacaos/compra/{compraId}")
+    @Timed
+    public List<Locacao> getLocacaos(@PathVariable Long compraId) {
+        log.debug("REST request to get Locacaos by CompraId");
+        return locacaoRepository.getLocacoesByCompraId(compraId);
+    }
+
+    /**
      * GET  /locacaos/:id : get the "id" locacao.
      *
      * @param id the id of the locacao to retrieve

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
 import { IPassagem } from 'app/shared/model/passagem.model';
+import { IContrato } from 'app/shared/model/contrato.model';
 
 type EntityResponseType = HttpResponse<IPassagem>;
 type EntityArrayResponseType = HttpResponse<IPassagem[]>;
@@ -25,6 +26,10 @@ export class PassagemService {
 
     find(id: number): Observable<EntityResponseType> {
         return this.http.get<IPassagem>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    }
+
+    getPassagemsByCompraId(id: number): Observable<EntityArrayResponseType> {
+        return this.http.get<IContrato[]>(this.resourceUrl + '/compra/' + id.toString(), { observe: 'response' });
     }
 
     query(req?: any): Observable<EntityArrayResponseType> {

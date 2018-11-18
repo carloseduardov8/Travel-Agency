@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
 import { IReserva } from 'app/shared/model/reserva.model';
+import { IContrato } from 'app/shared/model/contrato.model';
 
 type EntityResponseType = HttpResponse<IReserva>;
 type EntityArrayResponseType = HttpResponse<IReserva[]>;
@@ -30,6 +31,10 @@ export class ReservaService {
     query(req?: any): Observable<EntityArrayResponseType> {
         const options = createRequestOption(req);
         return this.http.get<IReserva[]>(this.resourceUrl, { params: options, observe: 'response' });
+    }
+
+    getReservasByCompraId(id: number): Observable<EntityArrayResponseType> {
+        return this.http.get<IContrato[]>(this.resourceUrl + '/compra/' + id.toString(), { observe: 'response' });
     }
 
     delete(id: number): Observable<HttpResponse<any>> {

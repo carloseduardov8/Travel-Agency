@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
 import { ILocacao } from 'app/shared/model/locacao.model';
+import { IContrato } from 'app/shared/model/contrato.model';
 
 type EntityResponseType = HttpResponse<ILocacao>;
 type EntityArrayResponseType = HttpResponse<ILocacao[]>;
@@ -25,6 +26,10 @@ export class LocacaoService {
 
     find(id: number): Observable<EntityResponseType> {
         return this.http.get<ILocacao>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    }
+
+    getLocacoesByCompraId(id: number): Observable<EntityArrayResponseType> {
+        return this.http.get<IContrato[]>(this.resourceUrl + '/compra/' + id.toString(), { observe: 'response' });
     }
 
     query(req?: any): Observable<EntityArrayResponseType> {

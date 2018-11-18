@@ -90,6 +90,19 @@ public class ContratoResource {
     }
 
     /**
+     * GET  /contratoes/compra/{compraId} : get all the contratoes.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of contratoes in body
+     */
+    @GetMapping("/contratoes/compra/{compraId}")
+    @Timed
+    public List<Contrato> getContratoesByCompraId(@PathVariable Long compraId) {
+        log.debug("REST request to get Contratoes By CompraId");
+        return contratoRepository.getContratosByCompraId(compraId);
+    }
+
+
+    /**
      * GET  /contratoes/:id : get the "id" contrato.
      *
      * @param id the id of the contrato to retrieve

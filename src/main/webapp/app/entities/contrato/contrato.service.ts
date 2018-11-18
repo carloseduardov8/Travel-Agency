@@ -27,6 +27,10 @@ export class ContratoService {
         return this.http.get<IContrato>(`${this.resourceUrl}/${id}`, { observe: 'response' });
     }
 
+    getContratosByCompraId(id: number): Observable<EntityArrayResponseType> {
+        return this.http.get<IContrato[]>(this.resourceUrl + '/compra/' + id.toString(), { observe: 'response' });
+    }
+
     query(req?: any): Observable<EntityArrayResponseType> {
         const options = createRequestOption(req);
         return this.http.get<IContrato[]>(this.resourceUrl, { params: options, observe: 'response' });

@@ -4,6 +4,11 @@ import { UserService } from 'app/core';
 import { HttpResponse } from '@angular/common/http';
 import { IVoo } from 'app/shared/model/voo.model';
 import { ICompra } from 'app/shared/model/compra.model';
+import { ContratoService } from 'app/entities/contrato';
+import { LocacaoService } from 'app/entities/locacao';
+import { ReservaService } from 'app/entities/reserva';
+import { PassagemService } from 'app/entities/passagem';
+import { IPassagem } from 'app/shared/model/passagem.model';
 
 @Component({
     selector: 'jhi-purchases',
@@ -12,9 +17,15 @@ import { ICompra } from 'app/shared/model/compra.model';
 })
 export class PurchasesComponent implements OnInit {
     withoutPurchases = false;
-    compras = [];
+    compras = new Array<ICompra>();
 
-    constructor(private compraService: CompraService) {}
+    constructor(
+        private compraService: CompraService,
+        private contratoService: ContratoService,
+        private locacaoService: LocacaoService,
+        private reservaService: ReservaService,
+        private passagemService: PassagemService
+    ) {}
 
     ngOnInit() {
         console.log(this.compraService.getComprasByUser());
@@ -27,4 +38,6 @@ export class PurchasesComponent implements OnInit {
             console.log(this.compras);
         });
     }
+
+    verCompra() {}
 }

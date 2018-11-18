@@ -20,20 +20,21 @@
 
 							  <div class="absolute-pos">
 								  <span id="vehicle-ticket-name">
-									  {{ veiculo.nome }} </span>
+									  {{ veiculo.modelo }} </span>
 							  </div>
 
 							  <div class="absolute-pos">
 								  <span id="vehicle-ticket-description">
-									  {{ veiculo.descricao }} </span>
+									  Fabricante {{ veiculo.fabricante }} </span>
 							  </div>
 
+<!--
 							  <div class="absolute-pos">
 								  <span id="vehicle-ticket-value-text" jhiTranslate="choose-vehicle.value">Valor por pessoa:</span>
 							  </div>
 
 							  <div class="absolute-pos">
-								  <span id="vehicle-ticket-value"> R$ {{ veiculo.valorPorPessoa | number:'1.2' }}</span>
+								  <span id="vehicle-ticket-value"> R$ {{ veiculo. | number:'1.2' }}</span>
 							  </div>
 
 							  <div class="absolute-pos">
@@ -41,11 +42,12 @@
 								  	  Total: R$ {{ veiculo.valorPorPessoa * diffDays * passengers | number:'1.2' }}
 							  	  </span>
 							  </div>
+-->
 
 							  <div class="absolute-pos">
 								  <div id="vehicle-ticket-seller">
 									  <span jhiTranslate="choose-vehicle.seller">Oferecido por</span>
-									  <span> {{ veiculo.seguradora.nome }} </span>
+									  <span> {{ veiculo.locadora.nome }} </span>
 								  </div>
 							  </div>
 

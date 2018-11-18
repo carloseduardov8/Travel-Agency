@@ -90,6 +90,18 @@ public class ReservaResource {
     }
 
     /**
+     * GET  /reservas/compra/{compraId} : get reservas by compraId.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of reservas in body
+     */
+    @GetMapping("/reservas/compra/{compraId}")
+    @Timed
+    public List<Reserva> getReservasByCompraId(@PathVariable Long compraId) {
+        log.debug("REST request to get Reservas by compraID");
+        return reservaRepository.getReservasByCompraId(compraId);
+    }
+
+    /**
      * GET  /reservas/:id : get the "id" reserva.
      *
      * @param id the id of the reserva to retrieve
