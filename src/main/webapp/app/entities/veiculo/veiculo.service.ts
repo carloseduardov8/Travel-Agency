@@ -28,7 +28,7 @@ export class VeiculoService {
     }
 
     findVeiculos(cidade: String): Observable<EntityArrayResponseType> {
-        return this.http.get<IQuarto[]>(`${this.resourceUrl}/cidade/${cidade}`, { observe: 'response' });
+        return this.http.get<IVeiculo[]>(`${this.resourceUrl}/cidade/${cidade}`, { observe: 'response' });
     }
     query(req?: any): Observable<EntityArrayResponseType> {
         const options = createRequestOption(req);
