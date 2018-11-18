@@ -5,7 +5,59 @@
 }
 
 .vehicle-ticket #vehicle-ticket-name {
-    left: -126px;
-    top: 22px;
-    font-size: 23pt;
+    left: 139px;
+    top: 28px;
+    font-size: 22pt;
+}
+
+.vehicle-ticket #vehicle-ticket-seller {
+    position: relative;
+    left: 139px;
+    top: 12px;
+    transform: scale(0.7);
+    -moz-transform: scale(0.7);
+}
+
+.vehicle-ticket #vehicle-ticket-value {
+    position: relative;
+    left: 139px;
+    top: 79px;
+    transform: scale(1.1);
+    -moz-transform: scale(1.1);
+}
+
+.vehicle-ticket #vehicle-ticket-passengers {
+    left: 122px;
+    top: -57px;
+    font-size: 30pt;
+}
+
+.vehicle-ticket #vehicle-ticket-total {
+    position: relative;
+    left: 139px;
+    top: 75px;
+    transform: scale(0.65);
+    -moz-transform: scale(0.65);
+}
+
+.vehicle-ticket #vehicle-ticket-photo {
+    position: absolute;
+    left: 120px;
+    top: 55px;
+}
+
+.vehicle-ticket #vehicle-ticket-photo img {
+    width: 180px;
+    height: 135px;
+}
+
+.vehicle-ticket #vehicle-ticket-frame {
+    position: absolute;
+    left: 100px;
+    top: 39px;
+}
+
+.vehicle-ticket #vehicle-ticket-frame img {
+    width: 220px;
+    height: 170px;
 }

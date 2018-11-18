@@ -1,6 +1,8 @@
 {
   "choose-vehicle": {
     "title": "Car Rental",
-	"subtitle": "If you wish, simply select an advertised vehicle to rent it."
+	"subtitle": "If you wish, simply select an advertised vehicle to rent it.",
+	"seller": "Offered by",
+	"value": "per day"
 	}
 }

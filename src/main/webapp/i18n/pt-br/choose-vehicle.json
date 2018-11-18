@@ -1,6 +1,8 @@
 {
   "choose-vehicle": {
     "title": "Aluguel de Carro",
-	"subtitle": "Se desejar, basta selecionar um veículo anuciado para alugá-lo."
+	"subtitle": "Se desejar, basta selecionar um veículo anuciado para alugá-lo.",
+	"seller": "Oferecido por",
+	"value": "por dia"
 	}
 }

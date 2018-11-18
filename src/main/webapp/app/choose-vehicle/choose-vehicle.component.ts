@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-//import {JhiAlertService} from "ng-jhipster";
 import { HttpResponse } from '@angular/common/http';
 import { IVoo } from 'app/shared/model/voo.model';
 import { VeiculoService } from 'app/entities/veiculo';
