@@ -1,14 +1,10 @@
 <div class="row">
-	<div class="col-md-1"></div>
+
+    <div class="col-md-1"></div>
 	<div class="col-md-10">
 
-		<!-- Título da página e descrição -->
-		<div class="title-wrapper">
-            <div *ngIf="viewWindow == 0">
-                <h1 class="text-capitalize text-center h1-pages" jhiTranslate="basket.title">Title</h1>
-                <h5 class="text-center" jhiTranslate="basket.subtitle">Subtitle</h5>
-            </div>
-
+        <!-- Título da página e descrição -->
+		<div class="title-wrapper fadeIn">
             <div *ngIf="viewWindow == 1">
 				<h1 class="text-capitalize text-center h1-pages" jhiTranslate="choose-plane.title">Title</h1>
 				<h5 class="text-center" jhiTranslate="choose-plane.subtitle">Subtitle</h5>
@@ -35,20 +31,20 @@
             </div>
 		</div>
 
-		<hr class="h1-hr"/>
+		<hr class="h1-hr fadeIn"/>
 
 		<!-- Menu com as 4 opcoes + ícone do carrinho -->
-		<div class="product-selection">
-			<hr class="product-hr"/>
-			<a (click)="toggleWindow(1)" class="product-icon" id="plane-icon" [class.brightness]="viewWindow==1" ></a>
-			<a (click)="toggleWindow(2)" class="product-icon" id="hotel-icon" [class.brightness]="viewWindow==2" ></a>
+		<div class="product-selection fadeIn-2">
+			<hr class="product-hr fadeIn-3"/>
+			<a (click)="toggleWindow(1)" class="product-icon fadeIn-2" id="plane-icon" [class.brightness]="viewWindow==1" ></a>
+			<a (click)="toggleWindow(2)" class="product-icon fadeIn-2" id="hotel-icon" [class.brightness]="viewWindow==2" ></a>
 			<a (click)="toggleWindow(3)" class="product-icon" id="insurance-icon" [class.brightness]="viewWindow==3" ></a>
 			<a (click)="toggleWindow(4)" class="product-icon" id="car-icon" [class.brightness]="viewWindow==4" ></a>
 			<a (click)="toggleWindow(5)" class="product-icon" id="checkout-icon" [class.brightness]="viewWindow==5" ></a>
 		</div>
 
 		<!-- Box contendo os tickets (passagem aerea, hotel, etc...) -->
-		<div class="component-window">
+		<div class="component-window fadeIn-4">
 
 			<!-- Passagem aérea -->
 			<div *ngIf="viewWindow == 1">

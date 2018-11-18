@@ -1,20 +1,154 @@
 <div class="row">
+    <!-- Loading -->
+    <ngx-spinner
+        bdColor = "rgba(255,255,255,1)"
+        size = "default"
+        color = "#ff9800"
+        type = "ball-grid-pulse"
+    >
+    </ngx-spinner>
+
     <div class="col-md-1"></div>
-    <div class="col-md-9">
+    <div class="col-md-10">
 
         <!-- Título da página e descrição -->
         <h1 class="text-capitalize text-center h1-pages">Compras</h1>
         <hr class="h1-hr"/>
 
         <div *ngIf="!withoutPurchases">
-            <ul>
-                <li *ngFor="let compra of compras">
-                    {{ compra.id}}
-                </li>
-            </ul>
+                <div *ngFor="let compra of compras.reverse()">
+                    <div class="d-flex justify-content-between">
+                        <span>Compra #{{ compra.id}}</span> <span>Total R$ {{ compra.total | number:'1.2' }}</span>
+                    </div>
+
+                    <!-- Tabela com as passagens adquiridas -->
+                    <div *ngIf="compra.passagens?.length > 0" class="passagens">
+                        <br>
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Empresa</th>
+                                <th scope="col">Origem</th>
+                                <th scope="col">Destino</th>
+                                <th scope="col">Data de ida</th>
+                                <th scope="col">Data de chegada</th>
+                                <th scope="col">Preço</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let passagem of compra.passagens">
+                                <td>{{ passagem.voo.linhaAerea.nome }}</td>
+                                <td>{{ passagem.voo.origem }}</td>
+                                <td>{{ passagem.voo.destino }}</td>
+                                <td>{{ passagem.voo.partida }}</td>
+                                <td>{{ passagem.voo.chegada }}</td>
+                                <td>R$ {{ passagem.voo.valor | number:'1.2' }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tabela com as reservas adquiridas -->
+                    <div *ngIf="compra.reservas?.length > 0" class="reservas">
+                        <br>
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Hospedagem</th>
+                                <th scope="col">Nº de pessoas</th>
+                                <th scope="col">Check in</th>
+                                <th scope="col">Check out</th>
+                                <th scope="col">Preço</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let reserva of compra.reservas">
+                                <td>{{ reserva.quarto.hotel.nome }}</td>
+                                <td>{{ reserva.numPessoas }}</td>
+                                <td>{{ reserva.dataInicio }}</td>
+                                <td>{{ reserva.dataFim }}</td>
+                                <td>R$ {{ reserva.valor | number:'1.2' }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tabela com as locacoes de veiculos adquiridas -->
+                    <div *ngIf="compra.locacoes?.length > 0" class="locacoes">
+                        <br>
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Locadora</th>
+                                <th scope="col">Veiculo</th>
+                                <th scope="col">Inicio</th>
+                                <th scope="col">Fim</th>
+                                <th scope="col">Preço</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let locacao of compra.locacoes">
+                                <td>{{ locacao.veiculo.locadora.nome }}</td>
+                                <td>{{ locacao.veiculo.modelo }}</td>
+                                <td>{{ locacao.dataInicio }}</td>
+                                <td>{{ locacao.dataFim }}</td>
+                                <td>R$ {{ locacao.valor | number:'1.2' }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tabela com os seguros adquiridos -->
+                    <div *ngIf="compra.contratos?.length > 0" class="seguros">
+                        <br>
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Seguro</th>
+                                <th scope="col">Nº de pessoas</th>
+                                <th scope="col">Início</th>
+                                <th scope="col">Fim</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let contrato of compra.contratos">
+                                <td>{{ contrato.seguro.nome }}</td>
+                                <td>{{ contrato.numPessoas }}</td>
+                                <td>{{ contrato.dataInicio.split(" ")[0] }}</td>
+                                <td>{{ contrato.dataFim.split(" ")[0] }}</td>
+                                <td>R$ {{ contrato.seguro.valorPorPessoa * contrato.numPessoas | number:'1.2' }}</td>
+                                <!-- <td><button (click)="delItem(contratos,contrato)">X</button> </td> -->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+<!--
+                    <div *ngFor="let passagem of compra.passagens">
+                        {{ passagem | json }}
+                    </div>
+
+                    <div *ngFor="let reserva of compra.reservas">
+                        {{ reserva | json }}
+                    </div>
+
+                    <div *ngFor="let contrato of compra.contratos">
+                        {{ contrato | json }}
+                    </div>
+
+                    <div *ngFor="let locacao of compra.locacoes">
+                        {{ locacao | json }}
+                    </div>
+-->
+                <hr>
+                <br>
+            </div>
         </div>
 
         <div *ngIf="withoutPurchases">
             Nenhuma compra realizada.
         </div>
+    </div>
 </div>

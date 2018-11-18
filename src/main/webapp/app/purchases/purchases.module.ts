@@ -4,9 +4,10 @@ import { RouterModule } from '@angular/router';
 import { ViajatoSharedModule } from '../shared';
 
 import { PURCHASES_ROUTE, PurchasesComponent } from './';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
-    imports: [ViajatoSharedModule, RouterModule.forRoot([PURCHASES_ROUTE], { useHash: true })],
+    imports: [ViajatoSharedModule, RouterModule.forRoot([PURCHASES_ROUTE], { useHash: true }), NgxSpinnerModule],
     declarations: [PurchasesComponent],
     entryComponents: [],
     providers: [],

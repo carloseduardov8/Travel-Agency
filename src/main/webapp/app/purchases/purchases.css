@@ -1,1 +1,6 @@
 /* purchases.css */
+.table .thead-dark th {
+    color: #fff;
+    background-color: #fae0ab !important;
+    border-color: #fae0ab !important;
+}

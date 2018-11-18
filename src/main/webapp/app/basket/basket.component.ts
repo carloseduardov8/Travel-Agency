@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 declare var $: any;
 
@@ -16,10 +17,10 @@ export class BasketComponent implements OnInit {
     passengers: string;
     viewWindow: number;
 
-    constructor(private route: ActivatedRoute, private router: Router) {
+    constructor(private route: ActivatedRoute, private router: Router, private spinner: NgxSpinnerService) {
         this.route.params.subscribe(params => {
             console.log(params);
-            this.viewWindow = 0;
+            this.viewWindow = 1;
             if (params) {
                 this.from = params.from;
                 this.to = params.to;
@@ -30,7 +31,13 @@ export class BasketComponent implements OnInit {
         });
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.spinner.show();
+        setTimeout(() => {
+            /** spinner ends after 2 seconds */
+            this.spinner.hide();
+        }, 2000);
+    }
 
     // Troca o estado da janela (alterna entre mostrar passagem, hotel, etc)
     toggleWindow(num) {

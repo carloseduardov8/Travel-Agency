@@ -12,7 +12,7 @@
 
             <div *ngIf="veiculos">
                 <div class="tp-wrapper" *ngFor="let veiculo of veiculos; let i = index" [attr.data-index]="i"
-                     (click)="buy(veiculo)">
+                     (click)="rent(veiculo)">
 
                     <!-- Plane ticket front -->
                     <a class="ticket vehicle-ticket">

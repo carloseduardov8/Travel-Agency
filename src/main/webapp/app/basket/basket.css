@@ -66,3 +66,37 @@
     background-image: url('../../content/images/checkout-icon.png');
     left: 350px;
 }
+
+.fadeIn,
+.fadeIn-2,
+.fadeIn-3,
+.fadeIn-4 {
+    -webkit-animation: 1s fadeIn backwards;
+    -o-animation: 1s fadeIn backwards;
+    animation: 1s fadeIn backwards;
+}
+
+.fadeIn {
+    animation-delay: 0.5s;
+}
+
+.fadeIn-2 {
+    animation-delay: 1s;
+}
+
+.fadeIn-3 {
+    animation-delay: 1.5s;
+}
+
+.fadeIn-4 {
+    animation-delay: 2s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

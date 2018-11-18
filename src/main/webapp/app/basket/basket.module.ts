@@ -10,6 +10,7 @@ import { ViajatoAppChooseVehicleModule } from '../choose-vehicle';
 
 import { BASKET_ROUTE, BasketComponent } from './';
 import { ViajatoAppPaymentModule } from 'app/payment';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import { ViajatoAppPaymentModule } from 'app/payment';
         ViajatoAppChooseInsuranceModule,
         ViajatoAppChooseVehicleModule,
         ViajatoAppPaymentModule,
+        NgxSpinnerModule,
         RouterModule.forRoot(BASKET_ROUTE, { useHash: true })
     ],
     declarations: [BasketComponent],
