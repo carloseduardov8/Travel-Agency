@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
 import { IVeiculo } from 'app/shared/model/veiculo.model';
-import { IQuarto } from 'app/shared/model/quarto.model';
 
 type EntityResponseType = HttpResponse<IVeiculo>;
 type EntityArrayResponseType = HttpResponse<IVeiculo[]>;
@@ -26,10 +25,6 @@ export class VeiculoService {
 
     find(id: number): Observable<EntityResponseType> {
         return this.http.get<IVeiculo>(`${this.resourceUrl}/${id}`, { observe: 'response' });
-    }
-
-    findVeiculos(cidade: String): Observable<EntityArrayResponseType> {
-        return this.http.get<IQuarto[]>(`${this.resourceUrl}/cidade/${cidade}`, { observe: 'response' });
     }
 
     query(req?: any): Observable<EntityArrayResponseType> {

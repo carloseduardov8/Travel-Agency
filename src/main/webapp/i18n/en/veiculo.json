@@ -22,6 +22,7 @@
             "cor": "Cor",
             "numPassageiros": "Num Passageiros",
             "imagem": "Imagem",
+            "valor": "Valor",
             "locacao": "Locacao",
             "locadora": "Locadora"
         }

@@ -21,6 +21,7 @@
             <th><span jhiTranslate="viajatoApp.veiculo.cor">Cor</span></th>
             <th><span jhiTranslate="viajatoApp.veiculo.numPassageiros">Num Passageiros</span></th>
             <th><span jhiTranslate="viajatoApp.veiculo.imagem">Imagem</span></th>
+            <th><span jhiTranslate="viajatoApp.veiculo.valor">Valor</span></th>
             <th><span jhiTranslate="viajatoApp.veiculo.locadora">Locadora</span></th>
             <th></th>
             </tr>
@@ -34,6 +35,7 @@
                 <td>{{veiculo.cor}}</td>
                 <td>{{veiculo.numPassageiros}}</td>
                 <td>{{veiculo.imagem}}</td>
+                <td>{{veiculo.valor}}</td>
                 <td>
                     <div *ngIf="veiculo.locadora">
                         <a [routerLink]="['../locadora', veiculo.locadora?.id, 'view' ]" >{{veiculo.locadora?.id}}</a>
