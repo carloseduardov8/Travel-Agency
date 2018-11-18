@@ -4,6 +4,8 @@ import br.com.viajato.domain.Veiculo;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Spring Data  repository for the Veiculo entity.
@@ -12,4 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 
+    @Query("SELECT v FROM Veiculo v WHERE v.locadora.cidade LIKE ?1%")
+    List<Veiculo> getVeiculosByCidade(String cidade);
 }

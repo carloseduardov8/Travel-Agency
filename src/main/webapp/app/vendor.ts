@@ -77,5 +77,3 @@ library.add(faCalendarAlt);
 library.add(faSearch);
 library.add(faTrashAlt);
 library.add(faAsterisk);
-
-// jhipster-needle-add-element-to-vendor - JHipster will add new menu items here
