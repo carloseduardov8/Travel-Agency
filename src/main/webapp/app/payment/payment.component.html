@@ -9,6 +9,7 @@
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Empresa</th>
+                    <th scope="col">Assento</th>
                     <th scope="col">Origem</th>
                     <th scope="col">Destino</th>
                     <th scope="col">Data de ida</th>
@@ -19,8 +20,9 @@
                 <tbody>
                 <tr *ngFor="let passagem of passagens">
                     <td>{{ passagem.voo.linhaAerea.nome }}</td>
-                    <td>{{ passagem.voo.origem }}</td>
-                    <td>{{ passagem.voo.destino }}</td>
+                    <td>{{ passagem.assento }}</td>
+                    <td>{{ passagem.voo.origem.nome }}</td>
+                    <td>{{ passagem.voo.destino.nome }}</td>
                     <td>{{ passagem.voo.partida }}</td>
                     <td>{{ passagem.voo.chegada }}</td>
                     <td>R$ {{ passagem.voo.valor | number:'1.2' }}</td>

@@ -10,7 +10,7 @@ import { CHOOSE_PLANE_ROUTE, ChoosePlaneComponent } from './';
     declarations: [ChoosePlaneComponent],
     entryComponents: [],
     providers: [],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [ChoosePlaneComponent]
 })
 export class ViajatoAppChoosePlaneModule {}

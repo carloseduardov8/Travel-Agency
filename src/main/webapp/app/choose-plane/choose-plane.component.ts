@@ -7,6 +7,7 @@ import { IVoo } from 'app/shared/model/voo.model';
 import { JhiAlertService } from 'ng-jhipster';
 import { Passagem } from 'app/shared/model/passagem.model';
 import { Location } from '@angular/common';
+import { BasketService } from 'app/basket/basket.service';
 
 declare var $: any;
 
@@ -49,11 +50,12 @@ export class ChoosePlaneComponent implements OnInit {
         private router: Router,
         private vooService: VooService,
         private jhiAlertService: JhiAlertService,
-        private location: Location
+        private location: Location,
+        private basketService: BasketService
     ) {
         this.route.params.subscribe(params => {
-          console.log("Parametros:");
-          console.log(params);
+            console.log('Parametros:');
+            console.log(params);
             if (params) {
                 if (params.from && params.to && params.dateIn) {
                     console.log('Passengers are ' + params.passengers);
@@ -94,7 +96,7 @@ export class ChoosePlaneComponent implements OnInit {
                                                 // Seat name to be displayed on plane ticket:
                                                 name: this.rows[j] + (numOfSeats - i),
                                                 // Flight that this seat is associated with:
-                                                flight: this.voos[k].numero,
+                                                flight: this.voos[k],
                                                 // Seat status (if selected by the user):
                                                 checked: false
                                             };
@@ -124,12 +126,24 @@ export class ChoosePlaneComponent implements OnInit {
         // Checks state of seat:
         if (seat.checked == false) {
             seat.checked = true;
+            console.log(seat);
             this.seatsSelected.push(seat);
+
+            let passagem = new Passagem();
+            passagem.voo = seat.flight;
+            passagem.assento = seat.name;
+            this.basketService.passagens.push(passagem);
         } else {
             seat.checked = false;
             for (let i = 0; i < this.seatsSelected.length; i++) {
                 if (this.seatsSelected[i].id === seat.id) {
                     this.seatsSelected.splice(i, 1);
+                }
+            }
+
+            for (let i = 0; i < this.basketService.passagens.length; i++) {
+                if (this.basketService.passagens[i].assento === seat.name && this.basketService.passagens[i].voo === seat.flight) {
+                    this.basketService.passagens.splice(i, 1);
                 }
             }
         }
