@@ -20,33 +20,43 @@
 
 							  <div class="absolute-pos">
 								  <span id="vehicle-ticket-name">
-									  {{ veiculo.nome }} </span>
-							  </div>
-
-							  <div class="absolute-pos">
-								  <span id="vehicle-ticket-description">
-									  {{ veiculo.descricao }} </span>
-							  </div>
-
-							  <div class="absolute-pos">
-								  <span id="vehicle-ticket-value-text" jhiTranslate="choose-vehicle.value">Valor por pessoa:</span>
-							  </div>
-
-							  <div class="absolute-pos">
-								  <span id="vehicle-ticket-value"> R$ {{ veiculo.valorPorPessoa | number:'1.2' }}</span>
-							  </div>
-
-							  <div class="absolute-pos">
-								  <span id="vehicle-ticket-total">
-								  	  Total: R$ {{ veiculo.valorPorPessoa * diffDays * passengers | number:'1.2' }}
-							  	  </span>
+									  {{ veiculo.fabricante }} {{ veiculo.modelo }} </span>
 							  </div>
 
 							  <div class="absolute-pos">
 								  <div id="vehicle-ticket-seller">
-									  <span jhiTranslate="choose-vehicle.seller">Oferecido por</span>
-									  <span> {{ veiculo.seguradora.nome }} </span>
+									  <span id="vehicle-ticket-seller-text" jhiTranslate="choose-vehicle.seller">Oferecido por</span>
+									  <span> {{ veiculo.locadora.nome }} </span>
 								  </div>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <div id="vehicle-ticket-value">
+								  		<span>R$ {{ veiculo.locacao.valor | number:'1.2' }}</span>
+								    	<span id="vehicle-ticket-value-text" jhiTranslate="choose-vehicle.value">por dia</span>
+								  </div>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <div id="vehicle-ticket-total">
+								  	  <span>Total: R$ {{ veiculo.locacao.valor * diffDays | number:'1.2' }}</span>
+							  	  </div>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <div id="vehicle-ticket-photo">
+								  	<img [src]='"../../content/images/" + veiculo.imagem'></img>
+								  </div>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <div id="vehicle-ticket-frame">
+								  	<img src="../../content/images/frame.png"></img>
+								  </div>
+							  </div>
+
+							  <div class="absolute-pos">
+								  <span id="vehicle-ticket-passengers">{{ veiculo.numPassageiros }}</span>
 							  </div>
 
 						  </div>
