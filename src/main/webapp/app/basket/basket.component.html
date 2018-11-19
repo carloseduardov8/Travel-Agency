@@ -91,7 +91,7 @@
 					<div id="seat-confirmation">
 						<span>{{ passagem.assento }}</span>
 					</div>
-					<a class="delete-wrapper">
+					<a class="delete-wrapper" (click)="basketService.removePassagem(passagem)">
 						<div class="delete-button"></div>
 					</a>
 				</div>
@@ -101,7 +101,7 @@
 					<span class="confirmation-window-item">
 						{{ reserva.quarto.hotel.nome }}
 					</span>
-					<a class="delete-wrapper">
+					<a class="delete-wrapper" (click)="basketService.removeReserva(reserva)">
 						<div class="delete-button"></div>
 					</a>
 				</div>
@@ -115,24 +115,24 @@
 						({{ contrato.numPessoas }}
 					</span>
 					<span class="confirmation-window-item" jhiTranslate="global.ticket.people">pessoas</span><span class="confirmation-window-item">)</span>
-					<a class="delete-wrapper">
+					<a class="delete-wrapper" (click)="basketService.removeContrato(contrato)">
 						<div class="delete-button"></div>
 					</a>
 				</div>
 
-				<!-- Insurances -->
+				<!-- Vehicles -->
 				<div id="confirmation-window-item-wrapper" *ngFor="let locacao of basketService.locacoes">
 					<span class="confirmation-window-item">
 						{{ locacao.veiculo.fabricante }} {{ locacao.veiculo.modelo }}
 					</span>
-					<a class="delete-wrapper">
+					<a class="delete-wrapper" (click)="basketService.removeLocacao(locacao)">
 						<div class="delete-button"></div>
 					</a>
 				</div>
 
 
 				<div class="our-button confirm-button">
-					<input type="submit" class="btn btn-outline-warning btn-block" value="{{ 'global.confirmation-window.button' | translate }}" />
+					<input type="submit" class="btn btn-outline-warning btn-block" (click)="goToNextWindow()" value="{{ 'global.confirmation-window.button' | translate }}" />
 				</div>
 
 			</div>

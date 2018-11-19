@@ -57,6 +57,11 @@ export class BasketComponent implements OnInit {
         this.viewWindow = num;
     }
 
+    // Redireciona o usuario para a proxima janela (passagem -> hotel -> seguro -> veiculo -> carrinho):
+    goToNextWindow() {
+        this.toggleWindow(this.viewWindow + 1);
+    }
+
     // Ir para uma das páginas de selecao com os parametros selecionados
     goTo(page: string) {
         this.router.navigate([

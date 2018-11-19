@@ -88,6 +88,42 @@ export class BasketService {
         $('.confirmation-window').height(110 + this.totalItems * 31);
     }
 
+    // Remove uma dada passagem do carrinho:
+    removePassagem(passagem) {
+        var index = this.passagens.indexOf(passagem);
+        if (index > -1) {
+            this.passagens.splice(index, 1);
+        }
+        this.resizeConfirmationWindow();
+    }
+
+    // Remove uma dada reserva do carrinho:
+    removeReserva(reserva) {
+        var index = this.reservas.indexOf(reserva);
+        if (index > -1) {
+            this.reservas.splice(index, 1);
+        }
+        this.resizeConfirmationWindow();
+    }
+
+    // Remove uma dada reserva do carrinho:
+    removeContrato(contrato) {
+        var index = this.contratos.indexOf(contrato);
+        if (index > -1) {
+            this.contratos.splice(index, 1);
+        }
+        this.resizeConfirmationWindow();
+    }
+
+    // Remove uma dada locacao do carrinho:
+    removeLocacao(locacao) {
+        var index = this.locacoes.indexOf(locacao);
+        if (index > -1) {
+            this.locacoes.splice(index, 1);
+        }
+        this.resizeConfirmationWindow();
+    }
+
     // Verifica o response da call rest
     private subscribeToSaveResponse(result: Observable<HttpResponse<IContrato>>) {
         result.subscribe((res: HttpResponse<IContrato>) => console.log(res), (res: HttpErrorResponse) => console.log(res));
