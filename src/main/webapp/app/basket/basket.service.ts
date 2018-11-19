@@ -82,6 +82,11 @@ export class BasketService {
         this.contratos = new Array<IContrato>();
     }
 
+    resizeConfirmationWindow() {
+        var totalLength = this.passagens.length + this.locacoes.length + this.reservas.length + this.contratos.length;
+        $('.confirmation-window').height(110 + totalLength * 31);
+    }
+
     // Verifica o response da call rest
     private subscribeToSaveResponse(result: Observable<HttpResponse<IContrato>>) {
         result.subscribe((res: HttpResponse<IContrato>) => console.log(res), (res: HttpErrorResponse) => console.log(res));

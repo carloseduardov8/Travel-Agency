@@ -148,7 +148,7 @@ export class ChoosePlaneComponent implements OnInit {
             }
         }
         // Sets the height of the confirmation window:
-        $('.confirmation-window').height(110 + this.seatsSelected.length * 31);
+        this.basketService.resizeConfirmationWindow();
     }
 
     selectVoos() {

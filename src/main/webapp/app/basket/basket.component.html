@@ -77,8 +77,8 @@
         </div>
 
 
-		<!-- Confirmation window, only display if a seat has been selected -->
-		<div *ngIf="basketService.passagens.length > 0">
+		<!-- Confirmation window, only display if an item has been selected and if not in cart page -->
+		<div [hidden]="!(basketService.passagens.length > 0 && viewWindow != 5)">
 			<div class="confirmation-window">
 				<span id="confirmation-window-title" jhiTranslate="global.confirmation-window.title">Title</span>
 
