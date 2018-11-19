@@ -13,7 +13,9 @@
             },
             "hotel": {
 				"rate": "Diária"
-            }
+            },
+			"for": "para",
+			"people": "pessoas"
         },
 		"sorry": {
 			"start": "Pedimos desculpas, mas não há",

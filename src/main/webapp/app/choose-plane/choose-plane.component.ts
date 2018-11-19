@@ -104,6 +104,8 @@ export class ChoosePlaneComponent implements OnInit {
                                         }
                                     }
                                 }
+                                // Sets the height of the confirmation window:
+                                this.basketService.resizeConfirmationWindow();
                             },
                             (res: HttpErrorResponse) => this.onError(res.message)
                         )

@@ -13,7 +13,9 @@
             },
             "hotel": {
                 "rate": "Daily Rate"
-            }
+            },
+			"for": "for",
+			"people": "people"
         },
 		"sorry": {
 			"start": "We're sorry, but no",

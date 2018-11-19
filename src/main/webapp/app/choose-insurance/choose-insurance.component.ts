@@ -99,6 +99,9 @@ export class ChooseInsuranceComponent implements OnInit {
 
         // Adiciona contrato a cesta
         this.basketService.contratos.push(contrato);
+
+        // Sets the height of the confirmation window:
+        this.basketService.resizeConfirmationWindow();
     }
 
     // Funcao para voltar ao componente anterior

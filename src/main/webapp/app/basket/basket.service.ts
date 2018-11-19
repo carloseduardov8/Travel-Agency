@@ -27,6 +27,7 @@ export class BasketService {
     locacoes = new Array<ILocacao>();
     reservas = new Array<IReserva>();
     contratos = new Array<IContrato>();
+    totalItems: number = 0;
 
     constructor(
         private passagemService: PassagemService,
@@ -83,8 +84,8 @@ export class BasketService {
     }
 
     resizeConfirmationWindow() {
-        var totalLength = this.passagens.length + this.locacoes.length + this.reservas.length + this.contratos.length;
-        $('.confirmation-window').height(110 + totalLength * 31);
+        this.totalItems = this.passagens.length + this.locacoes.length + this.reservas.length + this.contratos.length;
+        $('.confirmation-window').height(110 + this.totalItems * 31);
     }
 
     // Verifica o response da call rest

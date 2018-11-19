@@ -61,6 +61,9 @@ export class ChooseHotelComponent implements OnInit {
 
         // Adiciona reserva a cesta
         this.basketService.reservas.push(reserva);
+
+        // Sets the height of the confirmation window:
+        this.basketService.resizeConfirmationWindow();
     }
 
     ngOnInit() {}

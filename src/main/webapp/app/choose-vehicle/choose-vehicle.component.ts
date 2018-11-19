@@ -62,6 +62,9 @@ export class ChooseVehicleComponent implements OnInit {
 
         // Adiciona locacao a cesta
         this.basketService.locacoes.push(locacao);
+
+        // Sets the height of the confirmation window:
+        this.basketService.resizeConfirmationWindow();
     }
 
     // Funcao para voltar ao componente anterior

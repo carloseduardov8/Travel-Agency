@@ -78,19 +78,44 @@
 
 
 		<!-- Confirmation window, only display if an item has been selected and if not in cart page -->
-		<div [hidden]="!(basketService.passagens.length > 0 && viewWindow != 5)">
-			<div class="confirmation-window">
+		<div [hidden]="!(basketService.totalItems > 0 && viewWindow != 5)">
+			<div class="confirmation-window" [style.height]="110 + basketService.totalItems * 31">
 				<span id="confirmation-window-title" jhiTranslate="global.confirmation-window.title">Title</span>
 
 				<!-- Flight tickets -->
 				<div id="confirmation-window-item-wrapper" *ngFor="let passagem of basketService.passagens">
-					<span id="confirmation-window-item">
+					<span class="confirmation-window-item">
 						<span jhiTranslate="global.ticket.plane.flight">Flight</span>
 						{{ passagem.voo.numero }}:
 					</span>
 					<div id="seat-confirmation">
 						<span>{{ passagem.assento }}</span>
 					</div>
+				</div>
+
+				<!-- Accomodations -->
+				<div id="confirmation-window-item-wrapper" *ngFor="let reserva of basketService.reservas">
+					<span class="confirmation-window-item">
+						{{ reserva.quarto.hotel.nome }}
+					</span>
+				</div>
+
+				<!-- Insurances -->
+				<div id="confirmation-window-item-wrapper" *ngFor="let contrato of basketService.contratos">
+					<span class="confirmation-window-item">
+						{{ contrato.seguro.nome }}
+					</span>
+					<span class="confirmation-window-item">
+						({{ contrato.numPessoas }}
+					</span>
+					<span class="confirmation-window-item" jhiTranslate="global.ticket.people">pessoas</span><span class="confirmation-window-item">)</span>
+				</div>
+
+				<!-- Insurances -->
+				<div id="confirmation-window-item-wrapper" *ngFor="let locacao of basketService.locacoes">
+					<span class="confirmation-window-item">
+						{{ locacao.veiculo.fabricante }} {{ locacao.veiculo.modelo }}
+					</span>
 				</div>
 
 

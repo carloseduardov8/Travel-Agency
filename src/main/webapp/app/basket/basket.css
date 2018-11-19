@@ -13,7 +13,6 @@
     font-family: 'Yellowtail', cursive;
     user-select: none;
     width: 250px;
-    height: 140px;
     z-index: 1000;
     top: 401px;
     left: 75%;
@@ -27,7 +26,7 @@
     top: 4px;
 }
 
-.confirmation-window #confirmation-window-item {
+.confirmation-window .confirmation-window-item {
     position: relative;
     display: inline;
     font-size: 15pt;
