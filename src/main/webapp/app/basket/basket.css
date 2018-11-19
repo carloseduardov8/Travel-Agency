@@ -14,8 +14,10 @@
     user-select: none;
     width: 250px;
     z-index: 1000;
-    top: 401px;
+    top: 419px;
     left: 75%;
+    transform: scale(1.25);
+    -moz-transform: scale(1.25);
 }
 
 .confirmation-window #confirmation-window-title {
@@ -29,11 +31,30 @@
 .confirmation-window .confirmation-window-item {
     position: relative;
     display: inline;
+    width: 40px;
     font-size: 15pt;
     top: 10px;
 }
 
+.confirmation-window .delete-button {
+    position: absolute;
+    left: 10px;
+    top: 9px;
+    background-image: url('../../content/images/trash-icon.png');
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+}
+
+.confirmation-window .delete-wrapper {
+    position: relative;
+    width: 0px;
+    height: 0px;
+}
+
 .confirmation-window #confirmation-window-item-wrapper {
+    position: relative;
+    left: -12px;
     text-align: center;
 }
 
