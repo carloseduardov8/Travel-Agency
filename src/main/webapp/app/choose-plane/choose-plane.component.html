@@ -7,7 +7,9 @@
 
 			<!-- Passagem aérea -->
             <div *ngIf="withoutVoos">
-                <p>Desculpa, não há passagens disponíveis para esta configuração.</p>
+				<span jhiTranslate="global.sorry.start"></span>
+				<span jhiTranslate="global.sorry.plane">Sem nada disponivel.</span>
+				<span jhiTranslate="global.sorry.end"></span>
             </div>
 
             <div *ngIf="voos?.length > 0">

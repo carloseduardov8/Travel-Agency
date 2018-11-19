@@ -4,3 +4,8 @@
     background-color: #fae0ab !important;
     border-color: #fae0ab !important;
 }
+
+#empty-cart {
+    position: relative;
+    top: 20px;
+}

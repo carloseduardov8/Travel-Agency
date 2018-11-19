@@ -15,6 +15,14 @@
 				"rate": "Diária"
             }
         },
+		"sorry": {
+			"start": "Pedimos desculpas, mas não há",
+			"end": "disponíveis para esta configuração.",
+			"plane": "passagens aéreas",
+			"hotel": "acomodações",
+			"insurance": "seguros",
+			"vehicle": "veículos"
+		},
 		"confirmation-window": {
 			"title": "Seleção",
 			"button": "Confirmar"

@@ -2,9 +2,14 @@
   <div class="col-md-1"></div>
   <div class="col-md-10">
 
+	  <!-- Box contendo os tickets -->
+  	<div class="ticket-box">
+
 
       <div *ngIf="withoutSeguros">
-          <br><p>Desculpa, não há seguros disponíveis para esta configuração.</p>
+		  <span jhiTranslate="global.sorry.start"></span>
+		  <span jhiTranslate="global.sorry.insurance">Sem nada disponivel.</span>
+		  <span jhiTranslate="global.sorry.end"></span>
       </div>
 
       <div class="" *ngIf="seguros">
@@ -55,6 +60,7 @@
 			  </div>
 		  </div>
 
+		  </div>
 		</div>
 
 	</div>

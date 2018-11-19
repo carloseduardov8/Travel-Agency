@@ -18,14 +18,14 @@ Our custom CSS goes here
     width: 800px;
     margin-left: auto;
     margin-right: auto;
-	margin-top: 50px;
-	margin-bottom: 50px;
-	transform: scale(1.3);
-	-moz-transform: scale(1.3);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    transform: scale(1.3);
+    -moz-transform: scale(1.3);
 }
 
 .ticket-box {
-	position: relative;
+    position: relative;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -50,8 +50,6 @@ Our custom CSS goes here
 .plane-ticket {
     background-image: url('../../content/images/boarding-pass.png');
 }
-
-
 
 .ticket span {
     position: relative;
@@ -149,7 +147,7 @@ Our custom CSS goes here
 
 .plane-ticket #plane-ticket-flight {
     left: -24px;
-    top: 0px;
+    top: -1px;
 }
 
 .plane-ticket #plane-ticket-departure {
@@ -215,7 +213,7 @@ Our custom CSS goes here
 }
 
 .plane-ticket-btn {
-	margin-top: -40px !important;
+    margin-top: -40px !important;
 }
 
 .Latam {

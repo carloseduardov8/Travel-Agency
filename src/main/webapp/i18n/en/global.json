@@ -15,6 +15,14 @@
                 "rate": "Daily Rate"
             }
         },
+		"sorry": {
+			"start": "We're sorry, but no",
+			"end": "are available for this configuration.",
+			"plane": "plane tickets",
+			"hotel": "accomodations",
+			"insurance": "insurances",
+			"vehicle": "vehicles"
+		},
 		"confirmation-window": {
 			"title": "Selection",
 			"button": "Confirm"

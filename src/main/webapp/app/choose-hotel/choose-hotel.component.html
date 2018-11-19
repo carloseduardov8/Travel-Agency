@@ -7,7 +7,9 @@
 
   		<!-- Passagem aérea -->
   		<div *ngIf="withoutQuartos">
-  			<p>Desculpa, não há quartos disponíveis para esta configuração.</p>
+			<span jhiTranslate="global.sorry.start"></span>
+			<span jhiTranslate="global.sorry.hotel">Sem nada disponivel.</span>
+			<span jhiTranslate="global.sorry.end"></span>
   		</div>
 
   		<div *ngIf="quartos?.length > 0">

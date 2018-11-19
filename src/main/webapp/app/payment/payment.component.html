@@ -109,7 +109,7 @@
         </div>
 
         <div *ngIf="basketService.isEmpty()" class="text-center">
-            <p>Seu carrinho está vazio.</p>
+            <span id="empty-cart" jhiTranslate="payment.empty">Seu carrinho esta vazio.</span>
         </div>
 
         <div *ngIf="!basketService.isEmpty()" class="text-right">

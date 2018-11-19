@@ -2,9 +2,14 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
 
+		<!-- Box contendo os tickets -->
+    	<div class="ticket-box">
+
 
         <div *ngIf="withoutVeiculos">
-            <p>Desculpa, não há veiculos disponíveis para esta configuração.</p>
+            <span jhiTranslate="global.sorry.start"></span>
+			<span jhiTranslate="global.sorry.vehicle">Sem nada disponivel.</span>
+			<span jhiTranslate="global.sorry.end"></span>
         </div>
 
         <div class="" *ngIf="veiculos">
@@ -64,6 +69,8 @@
 
                 </div>
             </div>
+
+			</div>
 
         </div>
 
