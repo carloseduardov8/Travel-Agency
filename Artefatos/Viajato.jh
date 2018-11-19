@@ -7,10 +7,10 @@ entity Aeroporto {
   estado String required,
   endereco String required
 }
-
 entity LinhaAerea {
   nome String required,
-  telefone String required
+  telefone String required,
+  imagem String
 }
 entity Voo {
   numero Integer required,
@@ -18,23 +18,24 @@ entity Voo {
   chegada String required,
   valor Float required
 }
-
 entity Locadora {
   nome String required,
   telefone String required,
   cidade String required,
   estado String required,
-  endereco String required
+  endereco String required,
+  imagem String
 }
 entity Veiculo {
   tipo String required,
   fabricante String required,
   modelo String required,
   cor String required,
-  numPassageiros Integer required
+  numPassageiros Integer required,
+  imagem String,
+  valor Float required
 }
 entity Locacao {
-  inicio String required,
   dataInicio String required,
   dataFim String required,
   valor Float required
@@ -45,7 +46,8 @@ entity Hotel {
   telefone String required,
   cidade String required,
   estado String required,
-  endereco String required
+  endereco String required,
+  imagem String
 }
 entity Quarto {
   tipo String required,
@@ -59,48 +61,33 @@ entity Reserva {
   dataFim String required,
   valor Float required
 }
-
-entity User {
-}
-
 entity Seguradora {
   nome String required,
   telefone String required,
   cidade String required,
   estado String required,
-  endereco String required
+  endereco String required,
+  imagem String
 }
 entity Contrato {
   numPessoas Integer required,
   dataInicio String required,
-  dataFim String required
+  dataFim String required,
+  valor Float required
 }
-
-entity Compra {
-}
-
-entity Passagem{
-  nome String required,
-  cpf String required,
+entity Compra
+entity Passagem {
   assento String required
 }
-
-entity Seguro{
+entity Seguro {
   nome String required,
   descricao String required,
   valorPorPessoa Float required
 }
-
-relationship ManyToOne {
-  Compra{user} to User
-}
-
 relationship OneToMany {
   LinhaAerea{voo} to Voo{linhaAerea},
   Aeroporto{vemDe} to Voo{origem},
   Aeroporto{vaiPara} to Voo{destino},
-  Voo{passagem} to Passagem{voo},
-  Compra{passagem} to Passagem{compra},
   Locadora{veiculo} to Veiculo{locadora},
   Veiculo{locacao} to Locacao{veiculo},
   Compra{locacao} to Locacao{compra},
@@ -109,6 +96,11 @@ relationship OneToMany {
   Compra{reserva} to Reserva{compra},
   Compra{contrato} to Contrato{compra},
   Seguro{contrato} to Contrato{seguro},
-  Seguradora{seguro} to Seguro{seguradora},
+  Voo{passagem} to Passagem{voo},
+  Compra{passagem} to Passagem{compra},
+  Seguradora{seguro} to Seguro{seguradora}
+}
+relationship ManyToOne {
+  Compra{user} to User
 }
 
