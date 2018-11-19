@@ -25,7 +25,7 @@
 		},
 		"confirmation-window": {
 			"title": "Selection",
-			"button": "Confirm"
+			"button": "Next"
 		},
         "menu": {
             "home": "Home",

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { BasketService } from 'app/basket/basket.service';
 
 declare var $: any;
 
@@ -17,7 +18,12 @@ export class BasketComponent implements OnInit {
     passengers: string;
     viewWindow: number;
 
-    constructor(private route: ActivatedRoute, private router: Router, private spinner: NgxSpinnerService) {
+    constructor(
+        private basketService: BasketService,
+        private route: ActivatedRoute,
+        private router: Router,
+        private spinner: NgxSpinnerService
+    ) {
         this.route.params.subscribe(params => {
             console.log(params);
             this.viewWindow = 1;
