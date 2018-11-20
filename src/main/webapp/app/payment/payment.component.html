@@ -2,24 +2,31 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
 
-        <!-- Tabela com as passagens adquiridas -->
+
+        <!-- Seção de passagens adquiridas -->
         <div *ngIf="passagens.length > 0" class="passagens">
-            <br>
+
+			<!-- Titulo da seção: -->
+			<div class="payment-header-wrapper">
+				<span class="payment-header" jhiTranslate="choose-plane.title">Passagens Aéreas</span>
+			</div>
+
+			<!-- Tabela: -->
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Empresa</th>
-                    <th scope="col">Assento</th>
-                    <th scope="col">Origem</th>
-                    <th scope="col">Destino</th>
-                    <th scope="col">Data de ida</th>
-                    <th scope="col">Data de chegada</th>
-                    <th scope="col">Preço</th>
+                    <th scope="col" jhiTranslate="global.payment.passagem.voo">Voo</th>
+                    <th scope="col" jhiTranslate="global.payment.passagem.assento">Assento</th>
+                    <th scope="col" jhiTranslate="global.payment.passagem.origem">Origem</th>
+                    <th scope="col" jhiTranslate="global.payment.passagem.destino">Destino</th>
+                    <th scope="col" jhiTranslate="global.payment.passagem.partida">Partida</th>
+                    <th scope="col" jhiTranslate="global.payment.passagem.chegada">Chegada</th>
+                    <th scope="col" jhiTranslate="global.payment.passagem.valor">Valor</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let passagem of passagens">
-                    <td>{{ passagem.voo.linhaAerea.nome }}</td>
+                    <td>{{ passagem.voo.linhaAerea.nome }} <span jhiTranslate="global.ticket.plane.flight"></span> {{ passagem.voo.numero }}</td>
                     <td>{{ passagem.assento }}</td>
                     <td>{{ passagem.voo.origem.nome }}</td>
                     <td>{{ passagem.voo.destino.nome }}</td>
@@ -31,17 +38,24 @@
             </table>
         </div>
 
-        <!-- Tabela com as reservas adquiridas -->
+
+        <!-- Seção com as reservas adquiridas -->
         <div *ngIf="reservas.length > 0" class="reservas">
-            <br>
+
+			<!-- Titulo da seção: -->
+			<div class="payment-header-wrapper">
+				<span class="payment-header" jhiTranslate="choose-hotel.title">Acomodações</span>
+			</div>
+
+			<!-- Tabela: -->
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Hospedagem</th>
-                    <th scope="col">Nº de pessoas</th>
-                    <th scope="col">Check in</th>
-                    <th scope="col">Check out</th>
-                    <th scope="col">Preço</th>
+                    <th scope="col" jhiTranslate="global.payment.reserva.acomodacao">Hospedagem</th>
+                    <th scope="col" jhiTranslate="global.payment.reserva.numPessoas">Nº de pessoas</th>
+                    <th scope="col" jhiTranslate="global.payment.reserva.checkin">Check in</th>
+                    <th scope="col" jhiTranslate="global.payment.reserva.checkout">Check out</th>
+                    <th scope="col" jhiTranslate="global.payment.reserva.valor">Preço</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,18 +71,24 @@
         </div>
 
 
-        <!-- Tabela com os seguros adquiridos -->
+
+        <!-- Seção com os seguros adquiridos -->
         <div *ngIf="contratos.length > 0" class="seguros">
-            <br>
-            <table class="table">
+
+			<!-- Titutlo da seção -->
+			<div class="payment-header-wrapper">
+				<span class="payment-header" jhiTranslate="choose-insurance.title">Seguros de Viagem</span>
+			</div>
+
+			<!-- Tabela -->
+			<table class="table">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Seguro</th>
-                    <th scope="col">Nº de pessoas</th>
-                    <th scope="col">Início</th>
-                    <th scope="col">Fim</th>
-                    <th scope="col">Preço</th>
-                    <th scope="col"></th>
+                    <th scope="col" jhiTranslate="global.payment.contrato.seguro">Seguro</th>
+                    <th scope="col" jhiTranslate="global.payment.contrato.numPessoas">Nº de pessoas</th>
+                    <th scope="col" jhiTranslate="global.payment.contrato.inicio">Início</th>
+                    <th scope="col" jhiTranslate="global.payment.contrato.fim">Fim</th>
+                    <th scope="col" jhiTranslate="global.payment.contrato.valor">Preço</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -78,23 +98,29 @@
                     <td>{{ contrato.dataInicio.split(" ")[0] }}</td>
                     <td>{{ contrato.dataFim.split(" ")[0] }}</td>
                     <td>R$ {{ contrato.seguro.valorPorPessoa * contrato.numPessoas | number:'1.2' }}</td>
-                    <!-- <td><button (click)="delItem(contratos,contrato)">X</button> </td> -->
-                </tr>
+				</tr>
                 </tbody>
             </table>
         </div>
 
-		<!-- Tabela com as locacoes de veiculos adquiridas -->
+
+		<!-- Seção com as locacoes de veiculos adquiridas -->
         <div *ngIf="locacoes.length > 0" class="locacoes">
-            <br>
-            <table class="table">
+
+			<!-- Titulo da seção -->
+			<div class="payment-header-wrapper">
+				<span class="payment-header" jhiTranslate="choose-vehicle.title">Aluguel de Veículos</span>
+			</div>
+
+			<!-- Tabela -->
+			<table class="table">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Locadora</th>
-                    <th scope="col">Veiculo</th>
-                    <th scope="col">Inicio</th>
-                    <th scope="col">Fim</th>
-                    <th scope="col">Preço</th>
+                    <th scope="col" jhiTranslate="global.payment.locacao.locadora">Locadora</th>
+                    <th scope="col" jhiTranslate="global.payment.locacao.veiculo">Veiculo</th>
+                    <th scope="col" jhiTranslate="global.payment.locacao.inicio">Inicio</th>
+                    <th scope="col" jhiTranslate="global.payment.locacao.fim">Fim</th>
+                    <th scope="col" jhiTranslate="global.payment.locacao.valor">Preço</th>
                 </tr>
                 </thead>
                 <tbody>

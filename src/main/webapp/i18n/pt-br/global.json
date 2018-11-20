@@ -29,6 +29,38 @@
 			"title": "Seleção",
 			"button": "Próximo"
 		},
+		"payment": {
+			"passagem": {
+				"voo": "Voo",
+				"assento": "Assento",
+				"origem": "Origem",
+				"destino": "Destino",
+				"partida": "Partida",
+				"chegada": "Chegada",
+				"valor": "Valor"
+			},
+			"reserva": {
+				"acomodacao": "Acomodação",
+				"numPessoas": "Nº de pessoas",
+				"checkin": "Check In",
+				"checkout": "Check Out",
+				"valor": "Valor"
+			},
+			"contrato": {
+				"seguro": "Seguro",
+				"numPessoas": "Nº de pessoas",
+				"inicio": "Data de Início",
+				"fim": "Data de Término",
+				"valor": "Valor"
+			},
+			"locacao": {
+				"locadora": "Locadora",
+				"veiculo": "Veículo",
+				"inicio": "Data de Início",
+				"fim": "Data de Término",
+				"valor": "Valor"
+			}
+		},
         "menu": {
             "home": "Início",
             "choose-insurance": "Choose Insurance",

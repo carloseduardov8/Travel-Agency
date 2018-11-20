@@ -3,22 +3,22 @@
     "viajatoApp": {
         "passagem" : {
             "home": {
-                "title": "Passagems",
-                "createLabel": "Create a new Passagem",
-                "createOrEditLabel": "Create or edit a Passagem"
+                "title": "Tickets",
+                "createLabel": "Create a new Ticket",
+                "createOrEditLabel": "Create or edit a Ticket"
             },
-            "created": "A new Passagem is created with identifier {{ param }}",
-            "updated": "A Passagem is updated with identifier {{ param }}",
-            "deleted": "A Passagem is deleted with identifier {{ param }}",
+            "created": "A new Ticket is created with identifier {{ param }}",
+            "updated": "A Ticket is updated with identifier {{ param }}",
+            "deleted": "A Ticket is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Passagem {{ id }}?"
+                "question": "Are you sure you want to delete Tiket {{ id }}?"
             },
             "detail": {
-                "title": "Passagem"
+                "title": "Ticket"
             },
-            "assento": "Assento",
-            "voo": "Voo",
-            "compra": "Compra"
+            "assento": "Seat",
+            "voo": "Flight",
+            "compra": "Purchase"
         }
     }
 }
