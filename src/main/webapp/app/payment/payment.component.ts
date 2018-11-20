@@ -6,7 +6,7 @@ import { IContrato } from 'app/shared/model/contrato.model';
 import { BasketService } from 'app/basket/basket.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IUser, Principal, User, UserService } from 'app/core';
+import { IUser, LoginModalService, Principal, User, UserService } from 'app/core';
 
 @Component({
     selector: 'jhi-payment',
@@ -26,7 +26,7 @@ export class PaymentComponent implements OnInit {
         private router: Router,
         private principal: Principal,
         private userService: UserService,
-        private route: ActivatedRoute
+        private loginModalService: LoginModalService
     ) {
         this.locacoes = this.basketService.locacoes;
         this.passagens = this.basketService.passagens;
@@ -35,15 +35,6 @@ export class PaymentComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.principal.identity().then(account => {
-            let login = account.login;
-            this.userService.find(login).subscribe(res => {
-                this.user = res.body;
-                console.log('user');
-                console.log(this.user);
-            });
-        });
-
         this.calculateSum();
     }
 
@@ -56,19 +47,36 @@ export class PaymentComponent implements OnInit {
         this.reservas.forEach(reserva => (this.total += reserva.valor));
     }
 
-    delItem(items, item) {
-        console.log(items);
-        items = items.filter(obj => obj !== item);
-        console.log(items);
-    }
-
+    // Funcao para confirmar pagamento
     confirmPayment() {
-        this.basketService.savePayment(this.user);
-        this.router.navigate(['/purchases', {}]);
+        // verifica se está logado
+        this.principal.identity().then(account => {
+            if (account) {
+                let login = account.login;
+                this.userService.find(login).subscribe(res => {
+                    this.user = res.body;
+                    console.log('user');
+                    console.log(this.user);
+
+                    if (this.user) {
+                        this.basketService.savePayment(this.user);
+                        this.router.navigate(['/purchases', {}]);
+                    }
+                });
+            } else {
+                // Abre modal de login
+                this.login();
+            }
+        });
     }
 
     // Funcao para voltar ao componente anterior
     back() {
         this.location.back();
+    }
+
+    // Abre modal de login
+    login() {
+        this.loginModalService.open();
     }
 }

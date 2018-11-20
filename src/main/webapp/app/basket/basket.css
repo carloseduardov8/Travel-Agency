@@ -3,7 +3,7 @@
 /* Confirmation window (when selecting tickets) */
 .confirmation-window {
     position: fixed;
-    background-color: #f9e098; /* Dark yellow */
+    background-color: rgba(249, 224, 152, 0.95); /* Dark yellow */
     -webkit-animation: fadeIn 0.7s ease-in-out;
     -moz-animation: fadeIn 0.7s ease-in-out;
     -o-animation: fadeIn 0.7s ease-in-out;
@@ -84,7 +84,7 @@
     top: -48px;
     max-width: 100px;
     border-radius: 4px;
-    background-color: #fff5db;
+    background-color: rgba(249, 224, 152, 0.95);
 }
 
 .component-window {
