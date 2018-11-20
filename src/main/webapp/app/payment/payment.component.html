@@ -139,12 +139,15 @@
             <span id="empty-cart" jhiTranslate="payment.empty">Seu carrinho esta vazio.</span>
         </div>
 
-        <div *ngIf="!basketService.isEmpty()" class="text-right">
-            Total: R$ {{ total | number:'1.2'}}
-        </div>
+
+		<!-- Total a pagar: -->
+		<div *ngIf="!basketService.isEmpty()" class="payment-total-wrapper">
+			<span class="payment-total">Total: R$ {{ total | number:'1.2'}}</span>
+		</div>
+
 
         <!-- Botão de compra -->
-        <div class="our-button" *ngIf="!basketService.isEmpty()">
+        <div class="our-button purchase-button" *ngIf="!basketService.isEmpty()">
             <input type="submit" class="btn btn-outline-warning btn-block"
                    value="{{ 'basket.purchase' | translate }}"
                    (click)="confirmPayment()"/>

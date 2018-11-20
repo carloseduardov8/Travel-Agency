@@ -10,6 +10,35 @@
     top: 20px;
 }
 
+/* Botao de compra */
+
+.purchase-button {
+    margin-top: -50px;
+    margin-bottom: 30px;
+    transform: scale(1.2);
+    -moz-transform: scale(1.2);
+}
+
+.purchase-button input {
+    font-size: 11.5pt !important;
+}
+
+/* Total value */
+
+.payment-total-wrapper {
+    margin: 0 auto;
+    width: 1000px;
+    text-align: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.payment-total {
+    font-family: Poppins-Bold;
+    font-size: 14pt;
+    color: #f4a83a;
+}
+
 /* Tabel titles */
 
 .payment-header-wrapper {
