@@ -60,8 +60,11 @@ export class ChooseVehicleComponent implements OnInit {
         locacao.dataInicio = this.dateIn;
         locacao.dataFim = this.dateOut;
 
-        // Adiciona locacao a cesta
-        this.basketService.locacoes.push(locacao);
+        // Checa se locacao ja existe na cesta:
+        if (!this.basketService.containsVehicle(locacao.veiculo)) {
+            // Adiciona locacao a cesta
+            this.basketService.locacoes.push(locacao);
+        }
 
         // Sets the height of the confirmation window:
         this.basketService.resizeConfirmationWindow();

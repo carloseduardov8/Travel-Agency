@@ -124,6 +124,50 @@ export class BasketService {
         this.resizeConfirmationWindow();
     }
 
+    // Returns true if list has obj, false otherwise:
+    containsFlight(voo, assento) {
+        var i;
+        for (i = 0; i < this.passagens.length; i++) {
+            if (this.passagens[i].voo.id === voo && this.passagens[i].assento == assento) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Returns true if list has obj, false otherwise:
+    containsRoom(obj) {
+        var i;
+        for (i = 0; i < this.reservas.length; i++) {
+            if (this.reservas[i].quarto === obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Returns true if list has obj, false otherwise:
+    containsInsurance(obj) {
+        var i;
+        for (i = 0; i < this.contratos.length; i++) {
+            if (this.contratos[i].seguro === obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Returns true if list has obj, false otherwise:
+    containsVehicle(obj) {
+        var i;
+        for (i = 0; i < this.locacoes.length; i++) {
+            if (this.locacoes[i].veiculo === obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Verifica o response da call rest
     private subscribeToSaveResponse(result: Observable<HttpResponse<IContrato>>) {
         result.subscribe((res: HttpResponse<IContrato>) => console.log(res), (res: HttpErrorResponse) => console.log(res));
