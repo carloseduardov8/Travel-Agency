@@ -11,40 +11,52 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
 
-        <!-- Título da página e descrição -->
-        <h1 class="text-capitalize text-center h1-pages">Compras</h1>
-        <hr class="h1-hr"/>
+		<!-- Título da página e descrição -->
+		<div class="title-wrapper fadeIn">
+			<h1 class="text-capitalize text-center h1-pages" jhiTranslate="purchases.title">Title</h1>
+			<h5 class="text-center" jhiTranslate="purchases.subtitle">Subtitle</h5>
+		</div>
+
+		<hr class="h1-hr fadeIn"/>
 
         <div *ngIf="!withoutPurchases">
                 <div *ngFor="let compra of compras.reverse()">
-                    <div class="d-flex justify-content-between">
-                        <span>Compra #{{ compra.id}}</span> <span>Total R$ {{ compra.total | number:'1.2' }}</span>
-                    </div>
+
+					<!-- Titulo da compra: -->
+					<div class="title-wrapper compra-wrapper">
+						<span class="payment-header"><span jhiTranslate="purchases.compra">Compra</span>{{ compra.id}}</span>
+					</div>
+
 
                     <!-- Tabela com as passagens adquiridas -->
                     <div *ngIf="compra.passagens?.length > 0" class="passagens">
-                        <br>
+
+						<!-- Titulo da seção: -->
+						<div class="payment-header-wrapper title-wrapper">
+							<span class="payment-header" jhiTranslate="choose-plane.title">Passagens Aéreas</span>
+						</div>
+
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Empresa</th>
-                                <th scope="col">Assento</th>
-                                <th scope="col">Origem</th>
-                                <th scope="col">Destino</th>
-                                <th scope="col">Data de ida</th>
-                                <th scope="col">Data de chegada</th>
-                                <th scope="col">Preço</th>
+								<th scope="col" jhiTranslate="global.payment.passagem.voo">Voo</th>
+			                    <th scope="col" jhiTranslate="global.payment.passagem.assento">Assento</th>
+			                    <th scope="col" jhiTranslate="global.payment.passagem.origem">Origem</th>
+			                    <th scope="col" jhiTranslate="global.payment.passagem.destino">Destino</th>
+			                    <th scope="col" jhiTranslate="global.payment.passagem.partida">Partida</th>
+			                    <th scope="col" jhiTranslate="global.payment.passagem.chegada">Chegada</th>
+			                    <th scope="col" jhiTranslate="global.payment.passagem.valor">Valor</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr *ngFor="let passagem of compra.passagens">
-                                <td>{{ passagem.voo.linhaAerea.nome }}</td>
-                                <td>{{ passagem.assento }}</td>
-                                <td>{{ passagem.voo.origem.nome }}</td>
-                                <td>{{ passagem.voo.destino.nome }}</td>
-                                <td>{{ passagem.voo.partida }}</td>
-                                <td>{{ passagem.voo.chegada }}</td>
-                                <td>R$ {{ passagem.voo.valor | number:'1.2' }}</td>
+								<td>{{ passagem.voo.linhaAerea.nome }} <span jhiTranslate="global.ticket.plane.flight"></span> {{ passagem.voo.numero }}</td>
+			                    <td>{{ passagem.assento }}</td>
+			                    <td>{{ passagem.voo.origem.nome }}</td>
+			                    <td>{{ passagem.voo.destino.nome }}</td>
+			                    <td>{{ passagem.voo.partida }}</td>
+			                    <td>{{ passagem.voo.chegada }}</td>
+			                    <td>R$ {{ passagem.voo.valor | number:'1.2' }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -52,24 +64,59 @@
 
                     <!-- Tabela com as reservas adquiridas -->
                     <div *ngIf="compra.reservas?.length > 0" class="reservas">
-                        <br>
+
+						<!-- Titulo da seção: -->
+						<div class="payment-header-wrapper title-wrapper">
+							<span class="payment-header" jhiTranslate="choose-hotel.title">Acomodações</span>
+						</div>
+
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Hospedagem</th>
-                                <th scope="col">Nº de pessoas</th>
-                                <th scope="col">Check in</th>
-                                <th scope="col">Check out</th>
-                                <th scope="col">Preço</th>
+								<th scope="col" jhiTranslate="global.payment.reserva.acomodacao">Hospedagem</th>
+			                    <th scope="col" jhiTranslate="global.payment.reserva.numPessoas">Nº de pessoas</th>
+			                    <th scope="col" jhiTranslate="global.payment.reserva.checkin">Check in</th>
+			                    <th scope="col" jhiTranslate="global.payment.reserva.checkout">Check out</th>
+			                    <th scope="col" jhiTranslate="global.payment.reserva.valor">Preço</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr *ngFor="let reserva of compra.reservas">
-                                <td>{{ reserva.quarto.hotel.nome }}</td>
-                                <td>{{ reserva.numPessoas }}</td>
-                                <td>{{ reserva.dataInicio }}</td>
-                                <td>{{ reserva.dataFim }}</td>
-                                <td>R$ {{ reserva.valor | number:'1.2' }}</td>
+								<td>{{ reserva.quarto.hotel.nome }}</td>
+			                    <td>{{ reserva.numPessoas }}</td>
+			                    <td>{{ reserva.dataInicio }}</td>
+			                    <td>{{ reserva.dataFim }}</td>
+			                    <td>R$ {{ reserva.valor | number:'1.2' }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+					<!-- Tabela com os seguros adquiridos -->
+                    <div *ngIf="compra.contratos?.length > 0" class="seguros">
+
+						<!-- Titutlo da seção -->
+						<div class="payment-header-wrapper title-wrapper">
+							<span class="payment-header" jhiTranslate="choose-insurance.title">Seguros de Viagem</span>
+						</div>
+
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+								<th scope="col" jhiTranslate="global.payment.contrato.seguro">Seguro</th>
+			                    <th scope="col" jhiTranslate="global.payment.contrato.numPessoas">Nº de pessoas</th>
+			                    <th scope="col" jhiTranslate="global.payment.contrato.inicio">Início</th>
+			                    <th scope="col" jhiTranslate="global.payment.contrato.fim">Fim</th>
+			                    <th scope="col" jhiTranslate="global.payment.contrato.valor">Preço</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let contrato of compra.contratos">
+								<td>{{ contrato.seguro.nome }}</td>
+			                    <td>{{ contrato.numPessoas }}</td>
+			                    <td>{{ contrato.dataInicio.split(" ")[0] }}</td>
+			                    <td>{{ contrato.dataFim.split(" ")[0] }}</td>
+			                    <td>R$ {{ contrato.seguro.valorPorPessoa * contrato.numPessoas | number:'1.2' }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -77,75 +124,43 @@
 
                     <!-- Tabela com as locacoes de veiculos adquiridas -->
                     <div *ngIf="compra.locacoes?.length > 0" class="locacoes">
-                        <br>
+
+						<!-- Titulo da seção -->
+						<div class="payment-header-wrapper title-wrapper">
+							<span class="payment-header" jhiTranslate="choose-vehicle.title">Aluguel de Veículos</span>
+						</div>
+
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Locadora</th>
-                                <th scope="col">Veiculo</th>
-                                <th scope="col">Inicio</th>
-                                <th scope="col">Fim</th>
-                                <th scope="col">Preço</th>
+								<th scope="col" jhiTranslate="global.payment.locacao.locadora">Locadora</th>
+			                    <th scope="col" jhiTranslate="global.payment.locacao.veiculo">Veiculo</th>
+			                    <th scope="col" jhiTranslate="global.payment.locacao.inicio">Inicio</th>
+			                    <th scope="col" jhiTranslate="global.payment.locacao.fim">Fim</th>
+			                    <th scope="col" jhiTranslate="global.payment.locacao.valor">Preço</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr *ngFor="let locacao of compra.locacoes">
-                                <td>{{ locacao.veiculo.locadora.nome }}</td>
-                                <td>{{ locacao.veiculo.modelo }}</td>
-                                <td>{{ locacao.dataInicio }}</td>
-                                <td>{{ locacao.dataFim }}</td>
-                                <td>R$ {{ locacao.valor | number:'1.2' }}</td>
+								<td>{{ locacao.veiculo.locadora.nome }}</td>
+			                    <td>{{ locacao.veiculo.fabricante }} {{ locacao.veiculo.modelo }}</td>
+			                    <td>{{ locacao.dataInicio }}</td>
+			                    <td>{{ locacao.dataFim }}</td>
+			                    <td>R$ {{ locacao.valor | number:'1.2' }}</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <!-- Tabela com os seguros adquiridos -->
-                    <div *ngIf="compra.contratos?.length > 0" class="seguros">
-                        <br>
-                        <table class="table">
-                            <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Seguro</th>
-                                <th scope="col">Nº de pessoas</th>
-                                <th scope="col">Início</th>
-                                <th scope="col">Fim</th>
-                                <th scope="col">Preço</th>
-                                <th scope="col"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr *ngFor="let contrato of compra.contratos">
-                                <td>{{ contrato.seguro.nome }}</td>
-                                <td>{{ contrato.numPessoas }}</td>
-                                <td>{{ contrato.dataInicio.split(" ")[0] }}</td>
-                                <td>{{ contrato.dataFim.split(" ")[0] }}</td>
-                                <td>R$ {{ contrato.seguro.valorPorPessoa * contrato.numPessoas | number:'1.2' }}</td>
-                                <!-- <td><button (click)="delItem(contratos,contrato)">X</button> </td> -->
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+					<!-- Total pago: -->
+					<div class="payment-total-wrapper">
+						<span class="payment-total">Total: R$ {{ compra.total | number:'1.2'}}</span>
+					</div>
 
-<!--
-                    <div *ngFor="let passagem of compra.passagens">
-                        {{ passagem | json }}
-                    </div>
 
-                    <div *ngFor="let reserva of compra.reservas">
-                        {{ reserva | json }}
-                    </div>
 
-                    <div *ngFor="let contrato of compra.contratos">
-                        {{ contrato | json }}
-                    </div>
+                <hr class="h1-hr fadeIn between-purchases-hr"/>
 
-                    <div *ngFor="let locacao of compra.locacoes">
-                        {{ locacao | json }}
-                    </div>
--->
-                <hr>
-                <br>
             </div>
         </div>
 
