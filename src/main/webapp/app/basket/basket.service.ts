@@ -85,7 +85,7 @@ export class BasketService {
 
     resizeConfirmationWindow() {
         this.totalItems = this.passagens.length + this.locacoes.length + this.reservas.length + this.contratos.length;
-        $('.confirmation-window').height(110 + this.totalItems * 31);
+        $('.confirmation-window').height(124 + this.totalItems * 31);
     }
 
     // Remove uma dada passagem do carrinho:

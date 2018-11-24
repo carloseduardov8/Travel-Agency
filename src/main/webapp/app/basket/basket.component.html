@@ -79,7 +79,7 @@
 
 		<!-- Confirmation window, only display if an item has been selected and if not in cart page -->
 		<div [hidden]="!(basketService.totalItems > 0 && viewWindow != 5)">
-			<div class="confirmation-window" [style.height]="110 + basketService.totalItems * 31">
+			<div class="confirmation-window" [style.height]="124 + basketService.totalItems * 31">
 				<span id="confirmation-window-title" jhiTranslate="global.confirmation-window.title">Title</span>
 
 				<!-- Flight tickets -->

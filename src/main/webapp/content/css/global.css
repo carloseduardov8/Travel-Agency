@@ -145,10 +145,6 @@ Our custom CSS goes here
     background-size: contain;
 }
 
-.plane-ticket-btn {
-    margin-top: -40px !important;
-}
-
 /* Hotel ticket */
 
 .hotel-ticket #hotel-ticket-title {
