@@ -12,17 +12,15 @@
     border-radius: 20px;
     font-family: 'Yellowtail', cursive;
     user-select: none;
-    width: 250px;
+    width: 270px;
     z-index: 1000;
-    top: 419px;
-    left: 75%;
-    transform: scale(1.25);
-    -moz-transform: scale(1.25);
+    top: 405px;
+    left: 77%;
 }
 
 .confirmation-window #confirmation-window-title {
     position: relative;
-    font-size: 20pt;
+    font-size: 22pt;
     opacity: 0.7;
     text-decoration: underline;
     top: 4px;
@@ -31,19 +29,19 @@
 .confirmation-window .confirmation-window-item {
     position: relative;
     display: inline;
-    width: 40px;
-    font-size: 15pt;
+    width: 44px;
+    font-size: 16.5pt;
     top: 10px;
 }
 
 .confirmation-window .delete-button {
     position: absolute;
     left: 10px;
-    top: 9px;
+    top: 8px;
     background-image: url('../../content/images/trash-icon.png');
     background-size: contain;
-    width: 20px;
-    height: 20px;
+    width: 23px;
+    height: 23px;
 }
 
 .confirmation-window .delete-wrapper {

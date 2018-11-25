@@ -134,7 +134,10 @@ export class ChoosePlaneComponent implements OnInit {
             let passagem = new Passagem();
             passagem.voo = seat.flight;
             passagem.assento = seat.name;
-            this.basketService.passagens.push(passagem);
+            // Checks if seat doesnt exist yet:
+            if (!this.basketService.containsFlight(passagem.voo.id, passagem.assento)) {
+                this.basketService.passagens.push(passagem);
+            }
         } else {
             seat.checked = false;
             for (let i = 0; i < this.seatsSelected.length; i++) {

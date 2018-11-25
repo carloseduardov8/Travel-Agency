@@ -79,7 +79,7 @@
 
 		<!-- Confirmation window, only display if an item has been selected and if not in cart page -->
 		<div [hidden]="!(basketService.totalItems > 0 && viewWindow != 5)">
-			<div class="confirmation-window" [style.height]="110 + basketService.totalItems * 31">
+			<div class="confirmation-window" [style.height]="124 + basketService.totalItems * 31">
 				<span id="confirmation-window-title" jhiTranslate="global.confirmation-window.title">Title</span>
 
 				<!-- Flight tickets -->
@@ -111,10 +111,10 @@
 					<span class="confirmation-window-item">
 						{{ contrato.seguro.nome }}
 					</span>
-					<span class="confirmation-window-item">
+					<!--<span class="confirmation-window-item">
 						({{ contrato.numPessoas }}
 					</span>
-					<span class="confirmation-window-item" jhiTranslate="global.ticket.people">pessoas</span><span class="confirmation-window-item">)</span>
+					<span class="confirmation-window-item" jhiTranslate="global.ticket.people">pessoas</span><span class="confirmation-window-item">)</span>-->
 					<a class="delete-wrapper" (click)="basketService.removeContrato(contrato)">
 						<div class="delete-button"></div>
 					</a>

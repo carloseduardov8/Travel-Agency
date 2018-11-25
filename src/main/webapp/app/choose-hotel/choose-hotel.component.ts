@@ -59,8 +59,11 @@ export class ChooseHotelComponent implements OnInit {
         reserva.quarto = quarto;
         console.log(reserva);
 
-        // Adiciona reserva a cesta
-        this.basketService.reservas.push(reserva);
+        // Checa se reserva ja existe na cesta:
+        if (!this.basketService.containsRoom(reserva.quarto)) {
+            // Adiciona reserva a cesta
+            this.basketService.reservas.push(reserva);
+        }
 
         // Sets the height of the confirmation window:
         this.basketService.resizeConfirmationWindow();

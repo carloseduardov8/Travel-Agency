@@ -85,7 +85,7 @@ export class BasketService {
 
     resizeConfirmationWindow() {
         this.totalItems = this.passagens.length + this.locacoes.length + this.reservas.length + this.contratos.length;
-        $('.confirmation-window').height(110 + this.totalItems * 31);
+        $('.confirmation-window').height(124 + this.totalItems * 31);
     }
 
     // Remove uma dada passagem do carrinho:
@@ -122,6 +122,50 @@ export class BasketService {
             this.locacoes.splice(index, 1);
         }
         this.resizeConfirmationWindow();
+    }
+
+    // Returns true if list has obj, false otherwise:
+    containsFlight(voo, assento) {
+        var i;
+        for (i = 0; i < this.passagens.length; i++) {
+            if (this.passagens[i].voo.id === voo && this.passagens[i].assento == assento) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Returns true if list has obj, false otherwise:
+    containsRoom(obj) {
+        var i;
+        for (i = 0; i < this.reservas.length; i++) {
+            if (this.reservas[i].quarto === obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Returns true if list has obj, false otherwise:
+    containsInsurance(obj) {
+        var i;
+        for (i = 0; i < this.contratos.length; i++) {
+            if (this.contratos[i].seguro === obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Returns true if list has obj, false otherwise:
+    containsVehicle(obj) {
+        var i;
+        for (i = 0; i < this.locacoes.length; i++) {
+            if (this.locacoes[i].veiculo === obj) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // Verifica o response da call rest

@@ -97,8 +97,10 @@ export class ChooseInsuranceComponent implements OnInit {
         contrato.valor = insurance.valorPorPessoa * this.diffDays * this.passengers;
         console.log(contrato);
 
-        // Adiciona contrato a cesta
-        this.basketService.contratos.push(contrato);
+        // Checa se contrato ja existe na cesta:
+        if (!this.basketService.containsInsurance(contrato.seguro))
+            // Adiciona contrato a cesta
+            this.basketService.contratos.push(contrato);
 
         // Sets the height of the confirmation window:
         this.basketService.resizeConfirmationWindow();
