@@ -139,7 +139,7 @@ export class BasketService {
     containsRoom(obj) {
         var i;
         for (i = 0; i < this.reservas.length; i++) {
-            if (this.reservas[i].quarto === obj) {
+            if (this.reservas[i].quarto.id === obj.id) {
                 return true;
             }
         }
@@ -150,7 +150,7 @@ export class BasketService {
     containsInsurance(obj) {
         var i;
         for (i = 0; i < this.contratos.length; i++) {
-            if (this.contratos[i].seguro === obj) {
+            if (this.contratos[i].seguro.id === obj.id) {
                 return true;
             }
         }
@@ -161,7 +161,7 @@ export class BasketService {
     containsVehicle(obj) {
         var i;
         for (i = 0; i < this.locacoes.length; i++) {
-            if (this.locacoes[i].veiculo === obj) {
+            if (this.locacoes[i].veiculo.id === obj.id) {
                 return true;
             }
         }
