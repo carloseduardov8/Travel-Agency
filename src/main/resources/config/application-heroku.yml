@@ -12,7 +12,7 @@
 
 eureka:
     instance:
-        hostname: viajato.herokuapp.com
+        hostname: jetlink.herokuapp.com
         non-secure-port: 80
         prefer-ip-address: false
     client:
