@@ -21,6 +21,7 @@ export class ChooseVehicleComponent implements OnInit {
     dateIn: string;
     dateOut: string;
     passengers: number;
+    diffDays = 1;
 
     constructor(
         private route: ActivatedRoute,
@@ -37,6 +38,34 @@ export class ChooseVehicleComponent implements OnInit {
                     this.dateOut = params.dateOut;
                     this.passengers = params.passengers;
                     console.log('Passengers are ' + params.passengers);
+
+                    // Preco calculado pelo preco * numero de passageiros * num de dias
+                    if (params.dateOut) {
+                        this.dateIn = new Date(
+                            params.dateIn
+                                .split('-')
+                                .reverse()
+                                .join('/')
+                        );
+                        this.dateOut = new Date(
+                            params.dateOut
+                                .split('-')
+                                .reverse()
+                                .join('/')
+                        );
+                        let diff = Math.ceil(Math.abs(this.dateOut.getTime() - this.dateIn.getTime()) / (1000 * 3600 * 24));
+                        console.log('Diff ' + diff);
+                        this.diffDays = diff > 1 ? diff : this.diffDays;
+                    } else {
+                        this.dateIn = new Date(
+                            params.dateIn
+                                .split('-')
+                                .reverse()
+                                .join('/')
+                        );
+                        this.dateOut = this.dateIn;
+                    }
+
                     this.veiculoService.findVeiculos(params.to).subscribe((res: HttpResponse<IVoo[]>) => {
                         this.veiculos = res.body;
                         console.log(this.veiculos);
@@ -55,10 +84,10 @@ export class ChooseVehicleComponent implements OnInit {
     rent(vehicle) {
         console.log(vehicle);
         let locacao = new Locacao();
-        locacao.valor = vehicle.valor;
+        locacao.valor = vehicle.valor * this.diffDays;
         locacao.veiculo = vehicle;
-        locacao.dataInicio = this.dateIn;
-        locacao.dataFim = this.dateOut;
+        locacao.dataInicio = ('0' + this.dateIn.getDate()).slice(-2) + '-' + (this.dateIn.getMonth() + 1) + '-' + this.dateIn.getFullYear();
+        locacao.dataFim = ('0' + this.dateOut.getDate()).slice(-2) + '-' + (this.dateOut.getMonth() + 1) + '-' + this.dateOut.getFullYear();
 
         // Checa se locacao ja existe na cesta:
         if (!this.basketService.containsVehicle(locacao.veiculo)) {

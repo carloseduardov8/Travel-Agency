@@ -21,6 +21,7 @@ export class ChooseHotelComponent implements OnInit {
     dateIn: string;
     dateOut: string;
     passengers: number;
+    diffDays = 1;
 
     constructor(
         private route: ActivatedRoute,
@@ -37,6 +38,34 @@ export class ChooseHotelComponent implements OnInit {
                     this.dateOut = params.dateOut;
                     this.passengers = params.passengers;
                     console.log('Passengers are ' + params.passengers);
+
+                    // Preco calculado pelo preco * num de dias
+                    if (params.dateOut) {
+                        this.dateIn = new Date(
+                            params.dateIn
+                                .split('-')
+                                .reverse()
+                                .join('/')
+                        );
+                        this.dateOut = new Date(
+                            params.dateOut
+                                .split('-')
+                                .reverse()
+                                .join('/')
+                        );
+                        let diff = Math.ceil(Math.abs(this.dateOut.getTime() - this.dateIn.getTime()) / (1000 * 3600 * 24));
+                        console.log('Diff ' + diff);
+                        this.diffDays = diff > 1 ? diff : this.diffDays;
+                    } else {
+                        this.dateIn = new Date(
+                            params.dateIn
+                                .split('-')
+                                .reverse()
+                                .join('/')
+                        );
+                        this.dateOut = this.dateIn;
+                    }
+
                     this.quartoService.findQuartos(params.to).subscribe((res: HttpResponse<IQuarto[]>) => {
                         this.quartos = res.body;
                         console.log(this.quartos);
@@ -52,10 +81,10 @@ export class ChooseHotelComponent implements OnInit {
     // Reservar quarto
     bookRoom(quarto: IQuarto) {
         let reserva = new Reserva();
-        reserva.dataFim = this.dateOut;
-        reserva.dataInicio = this.dateIn;
+        reserva.dataInicio = ('0' + this.dateIn.getDate()).slice(-2) + '-' + (this.dateIn.getMonth() + 1) + '-' + this.dateIn.getFullYear();
+        reserva.dataFim = ('0' + this.dateOut.getDate()).slice(-2) + '-' + (this.dateOut.getMonth() + 1) + '-' + this.dateOut.getFullYear();
         reserva.numPessoas = this.passengers;
-        reserva.valor = quarto.diaria;
+        reserva.valor = quarto.diaria * this.diffDays;
         reserva.quarto = quarto;
         console.log(reserva);
 
