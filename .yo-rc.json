@@ -31,7 +31,7 @@
     "clientFramework": "angularX",
     "jhiPrefix": "jhi",
     "herokuDeployType": "git",
-    "herokuAppName": null
+    "herokuAppName": "jet-link"
   },
   "git-provider": "GitHub",
   "git-company": "carloseduardov8",
