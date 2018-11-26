@@ -29,7 +29,8 @@
       "pt-br"
     ],
     "clientFramework": "angularX",
-    "jhiPrefix": "jhi"
+    "jhiPrefix": "jhi",
+    "herokuDeployType": "git"
   },
   "git-provider": "GitHub",
   "git-company": "carloseduardov8",
