@@ -19,7 +19,7 @@ export class BasketComponent implements OnInit {
     viewWindow: number;
 
     constructor(
-        private basketService: BasketService,
+        public basketService: BasketService,
         private route: ActivatedRoute,
         private router: Router,
         private spinner: NgxSpinnerService

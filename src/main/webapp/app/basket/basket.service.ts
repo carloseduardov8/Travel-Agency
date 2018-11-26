@@ -20,6 +20,8 @@ import { User } from 'app/core';
 type EntityResponseType = HttpResponse<IAeroporto>;
 type EntityArrayResponseType = HttpResponse<IAeroporto[]>;
 
+declare var $: any;
+
 @Injectable({ providedIn: 'root' })
 export class BasketService {
     compra = new Compra();

@@ -50,7 +50,7 @@
     "copy-webpack-plugin": "4.5.1",
     "css-loader": "0.28.10",
     "exports-loader": "0.7.0",
-    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "1.1.11",
     "fork-ts-checker-webpack-plugin": "0.4.1",
     "friendly-errors-webpack-plugin": "1.7.0",
@@ -71,7 +71,6 @@
     "rimraf": "2.6.1",
     "simple-progress-webpack-plugin": "1.1.2",
     "style-loader": "0.20.3",
-    "tapable": "1.0.0",
     "terser-webpack-plugin": "1.0.0",
     "thread-loader": "1.1.5",
     "to-string-loader": "1.1.5",
@@ -119,8 +118,8 @@
     "webpack:prod:main": "npm run webpack -- --config webpack/webpack.prod.js --profile",
     "webpack:prod": "npm run cleanup && npm run webpack:prod:main && npm run clean-www",
     "webpack:test": "npm run test",
-    "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js"
+    "webpack-dev-server": "node --max_old_space_size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "webpack": "node --max_old_space_size=2048 node_modules/webpack/bin/webpack.js"
   },
   "jestSonar": {
     "reportPath": "target/test-results/jest",

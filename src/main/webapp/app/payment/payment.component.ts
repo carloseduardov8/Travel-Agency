@@ -21,7 +21,7 @@ export class PaymentComponent implements OnInit {
     user: IUser;
     total: number = 0;
     constructor(
-        private basketService: BasketService,
+        public basketService: BasketService,
         private location: Location,
         private router: Router,
         private principal: Principal,
