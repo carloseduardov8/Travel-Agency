@@ -18,8 +18,8 @@ import { BasketService } from 'app/basket/basket.service';
 export class ChooseHotelComponent implements OnInit {
     quartos: IQuarto[];
     withoutQuartos: boolean;
-    dateIn: string;
-    dateOut: string;
+    dateIn: Date;
+    dateOut: Date;
     passengers: number;
     diffDays = 1;
 

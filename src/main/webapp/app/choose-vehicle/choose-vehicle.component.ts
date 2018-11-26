@@ -18,8 +18,8 @@ import { BasketService } from 'app/basket/basket.service';
 export class ChooseVehicleComponent implements OnInit {
     veiculos: IVeiculo[];
     withoutVeiculos: boolean;
-    dateIn: string;
-    dateOut: string;
+    dateIn: Date;
+    dateOut: Date;
     passengers: number;
     diffDays = 1;
 

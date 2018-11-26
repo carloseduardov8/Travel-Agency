@@ -30,7 +30,8 @@
     ],
     "clientFramework": "angularX",
     "jhiPrefix": "jhi",
-    "herokuDeployType": "git"
+    "herokuDeployType": "git",
+    "herokuAppName": "viajato"
   },
   "git-provider": "GitHub",
   "git-company": "carloseduardov8",
